@@ -1,9 +1,15 @@
 <div class="container">
-  {{partial 'header'}}
-
-  <div id="content" class="content">
-  {{outlet}}
+  <div id="header" class="row">
+    {{partial 'header'}}
+    <div class="col"><hr></div>
   </div>
 
-  {{partial 'footer'}}
+  <div id="content" class="row col">
+    {{outlet}}
+  </div>
+
+  <div id="footer" class="row col">
+    <hr>
+    {{partial 'footer'}}
+  </div>
 </div>

@@ -14,4 +14,5 @@ SkuleOrientation.Router.map(function() {
   this.route('sponsors');
   this.route('register');
   this.route('froshnite');
+  this.route('none', { path: '*path'});
 });

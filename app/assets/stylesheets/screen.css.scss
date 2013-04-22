@@ -13,7 +13,7 @@ body {
   max-width: 60em;
 }
 
-.header {
+#header {
   #header-logo {
     margin-bottom: 1em;
     @media #{$s} { width: 100%; }
@@ -63,7 +63,7 @@ body {
   margin-top: 2em;
 }
 
-.header, .footer {
+#header, #footer {
   @media #{$s} { margin: 1.5em auto; }
   @media #{$m} { margin: 2em auto; }
   @media #{$l} { margin: 2.5em auto; }

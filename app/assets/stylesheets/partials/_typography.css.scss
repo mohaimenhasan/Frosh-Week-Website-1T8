@@ -11,11 +11,9 @@ hr {
   border: 0;
   background-color: #bcbcbc;
   color: #bcbcbc;
-  height: 1px;
 
-  @media #{$s} { width: 80%; }
-  @media #{$m} { width: 90%; }
-  @media #{$l} { width: 95%; }
+  height: 1px;
+  width: 100%;
 }
 
 a {
