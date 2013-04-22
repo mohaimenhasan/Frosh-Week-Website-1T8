@@ -1,0 +1,52 @@
+/* Typography */
+
+@import 'partials/variables';
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+
+body {
+  font-size: 62.5%;
+}
+
+hr {
+  border: 0;
+  background-color: #bcbcbc;
+  color: #bcbcbc;
+  height: 1px;
+
+  @media #{$s} { width: 80%; }
+  @media #{$m} { width: 90%; }
+  @media #{$l} { width: 95%; }
+}
+
+a {
+  text-decoration: none;
+}
+
+ul.horizontal li a {
+  color: #525252;
+
+  &:hover {
+    color: #828282;
+  }
+}
+
+.container {
+  color: #888888;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-variant: normal;
+  font-weight: 400;
+  
+  @media #{$s} { font-size: 1.6em; }
+  @media #{$m} { font-size: 1.8em; }
+  @media #{$l} { font-size: 2.0em; }
+
+  // Anti-aliasing between different browsers.
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, .3);
+}
+
+#footer-meta {
+  font-size: 0.6em;
+}
+

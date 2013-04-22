@@ -1,0 +1,70 @@
+/*
+ *= require grid
+ */
+
+@import 'partials/variables';
+
+body {
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 60em;
+}
+
+.header {
+  #header-logo {
+    margin-bottom: 1em;
+    @media #{$s} { width: 100%; }
+    @media #{$m} { width: 40%; }
+    @media #{$l} { width: 30%; }
+  }
+
+  #header-nav {
+    @media #{$s} {
+      width: 100%;
+      margin-bottom: 1em;
+
+      #header-engsoc-logo {
+        display: none;
+      }
+    }
+
+    @media #{$m} {
+      width: 60%;
+      margin-top: 2em;
+
+      #header-engsoc-logo {
+        margin-bottom: 1.5em;
+        display: block;
+      }
+    }
+
+    @media #{$l} {
+      width: 70%;
+      margin-top: 2em;
+
+      #header-engsoc-logo {
+        margin-bottom: 1.5em;
+        display: block;
+      }
+    }
+  }
+}
+
+#footer-links {
+  @media #{$s} { text-align: center; }
+  @media #{$m} { text-align: left; }
+  @media #{$l} { text-align: left; }
+}
+
+#footer-meta {
+  margin-top: 2em;
+}
+
+.header, .footer {
+  @media #{$s} { margin: 1.5em auto; }
+  @media #{$m} { margin: 2em auto; }
+  @media #{$l} { margin: 2.5em auto; }
+}

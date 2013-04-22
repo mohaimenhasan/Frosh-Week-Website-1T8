@@ -1,5 +1,9 @@
-<h1>Application</h1>
+<div class="container">
+  {{partial 'header'}}
 
-<p>Your content here.</p>
+  <div id="content" class="content">
+  {{outlet}}
+  </div>
 
-{{outlet}}
+  {{partial 'footer'}}
+</div>

@@ -1,0 +1,57 @@
+/*
+ *= require normalize-rails
+ *= require_self
+ *= require grid
+ *= require_tree .
+ */
+
+@import 'compass';
+
+body {
+  background-color: #e6e6e6;
+  background-image: image-url('bg-top.gif'), image-url('bg-bottom.gif');
+  background-position: top center, bottom center;
+  background-repeat: repeat-x, repeat-x;
+}
+
+#header-logo {
+  text-align: center;
+}
+
+#header-engsoc-logo {
+  text-align: right;
+
+  #header-engsoc-logo-img {
+    display: inline-block;
+    background-image: image-url('engsoc.png');
+    height: image-height('engsoc.png');
+    width: image-width('engsoc.png');
+
+    &:hover {
+      background-image: image-url('engsoc-hover.png');
+    }
+  }
+}
+
+ul.grouping {
+  display: inline-block;
+}
+
+ul.horizontal {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    padding: 0 0.5em;
+  }
+}
+
+#header-links {
+  text-align: center;
+}
+
+#footer-meta {
+  text-align: center;
+}
