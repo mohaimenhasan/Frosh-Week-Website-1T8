@@ -5,5 +5,7 @@
 //= require ember-data
 //= require_self
 //= require skule_orientation
-SkuleOrientation = Ember.Application.create();
+App = Ember.Application.create();
+try { Typekit.load(); }
+catch(e) {}
 //= require_tree .

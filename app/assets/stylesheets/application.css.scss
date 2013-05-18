@@ -6,35 +6,24 @@
  */
 
 @import 'compass';
+@import 'partials/variables';
 
 body {
-  background-color: #e6e6e6;
-  background-image: image-url('bg-top.gif'), image-url('bg-bottom.gif');
-  background-position: top center, bottom center;
-  background-repeat: repeat-x, repeat-x;
+  background-color: #F1F1F1;
 }
 
-#header-logo {
-  text-align: center;
-}
+#header {
+  background-color: #FFFFFF;
+  
+  // Drop shadow
+  box-shadow: 0 0 2px #CFCFCF;
+  -moz-box-shadow: 0 0 2px #CFCFCF;
+  -webkit-box-shadow: 0 0 2px #CFCFCF;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=90, Color='#CFCFCF')";
 
-#header-engsoc-logo {
-  text-align: right;
-
-  #header-engsoc-logo-img {
-    display: inline-block;
-    background-image: image-url('engsoc.png');
-    height: image-height('engsoc.png');
-    width: image-width('engsoc.png');
-
-    &:hover {
-      background-image: image-url('engsoc-hover.png');
-    }
+  .selected {
+    font-weight: bold;
   }
-}
-
-ul.grouping {
-  display: inline-block;
 }
 
 ul.horizontal {
@@ -43,15 +32,67 @@ ul.horizontal {
   padding: 0;
 
   li {
-    display: inline-block;
-    padding: 0 0.5em;
+    @media #{$s} {
+      display: list-item;
+      padding: 0 1.5em;
+    }
+    @media #{$m} {
+      display: inline-block;
+      padding: 0 1.5em;
+    }
+    @media #{$l} {
+      display: inline-block;
+      padding: 0 1.5em;
+    }
   }
 }
 
-#header-links {
-  text-align: center;
+#registration-sidebar {
+  #logo {
+    background-image: image-url('logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: image-height('logo.png');
+    width: 100%;
+  }
 }
 
-#footer-meta {
+.registration-info {
+  background-color: #34003E;
+
+  -moz-border-radius: 0.35em;
+  -webkit-border-radius: 0.35em;
+  border-radius: 0.35em;
+
+  margin: 0.5em;
+  padding: 1em;
+}
+
+.registration-step {
+  background-color: #FFFFFF;
+
+  -moz-border-radius: 0.35em;
+  -webkit-border-radius: 0.35em;
+  border-radius: 0.35em;
+
+  margin: 0.5em;
+  padding: 1em;
+  padding-left: 2.25em;
+
+  position: relative;
+}
+
+.registration-bubble {
+  background-color: #34003E;
+  border-radius: 50%;
+  height: 2.5em;
+  width: 2.5em;
+
+  // Center the number.
+  line-height: 2.5em;
+  position: absolute;
   text-align: center;
+
+  top: 0.5em;
+  left: -1.25em;
 }

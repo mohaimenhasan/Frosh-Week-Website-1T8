@@ -4,7 +4,16 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
 
 body {
+  color: #222222;
+  font-family: 'proxima-nova-alt', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-variant: normal;
+  font-weight: 400;
   font-size: 62.5%;
+
+  // Anti-aliasing between different browsers.
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, .3);
 }
 
 hr {
@@ -21,7 +30,7 @@ a {
 }
 
 ul.horizontal li a {
-  color: #525252;
+  color: #34003E;
 
   &:hover {
     color: #828282;
@@ -29,22 +38,12 @@ ul.horizontal li a {
 }
 
 .container {
-  color: #888888;
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-variant: normal;
-  font-weight: 400;
-  
   @media #{$s} { font-size: 1.6em; }
   @media #{$m} { font-size: 1.8em; }
   @media #{$l} { font-size: 2.0em; }
-
-  // Anti-aliasing between different browsers.
-  font-smoothing: antialiased;
-  -webkit-font-smoothing: antialiased;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, .3);
 }
 
-#footer-meta {
-  font-size: 0.6em;
+.registration-info, .registration-bubble {
+  color: #FFFFFF;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
 }
-
