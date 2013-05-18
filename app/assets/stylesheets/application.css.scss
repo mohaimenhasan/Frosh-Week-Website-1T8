@@ -1,29 +1,50 @@
 /*
  *= require normalize-rails
- *= require_self
  *= require grid
+ *= require_self
  *= require_tree .
  */
 
 @import 'compass';
 @import 'partials/variables';
+@import 'partials/mixins';
 
 body {
   background-color: #F1F1F1;
+  margin: 0;
+
+  color: #222222;
+  font: {
+    family: 'proxima-nova-alt', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    variant: normal;
+    weight: 400;
+    size: 62.5%;
+  }
+  @include anti-aliasing;
 }
 
-#header {
-  background-color: #FFFFFF;
-  
-  // Drop shadow
-  box-shadow: 0 0 2px #CFCFCF;
-  -moz-box-shadow: 0 0 2px #CFCFCF;
-  -webkit-box-shadow: 0 0 2px #CFCFCF;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=1, Direction=90, Color='#CFCFCF')";
+.container {
+  margin: 0 auto;
+  width: 100%;
 
-  .selected {
-    font-weight: bold;
+  @include screen-small {
+    font-size: 1.6em;
   }
+  @include screen-medium {
+    font-size: 1.8em;
+  }
+  @include screen-large {
+    font-size: 2.0em;
+  }
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 60em;
+}
+
+a {
+  text-decoration: none;
 }
 
 ul.horizontal {
@@ -32,67 +53,23 @@ ul.horizontal {
   padding: 0;
 
   li {
-    @media #{$s} {
+    padding: 0 1.5em; // TODO(johnliu): test mobile.
+    @include screen-small {
       display: list-item;
-      padding: 0 1.5em;
     }
-    @media #{$m} {
+    @include screen-medium {
       display: inline-block;
-      padding: 0 1.5em;
     }
-    @media #{$l} {
+    @include screen-large {
       display: inline-block;
-      padding: 0 1.5em;
+    }
+
+    a {
+      color: #34003E;
+      &:hover {
+        color: #828282;
+      }
     }
   }
 }
 
-#registration-sidebar {
-  #logo {
-    background-image: image-url('logo.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: image-height('logo.png');
-    width: 100%;
-  }
-}
-
-.registration-info {
-  background-color: #34003E;
-
-  -moz-border-radius: 0.35em;
-  -webkit-border-radius: 0.35em;
-  border-radius: 0.35em;
-
-  margin: 0.5em;
-  padding: 1em;
-}
-
-.registration-step {
-  background-color: #FFFFFF;
-
-  -moz-border-radius: 0.35em;
-  -webkit-border-radius: 0.35em;
-  border-radius: 0.35em;
-
-  margin: 0.5em;
-  padding: 1em;
-  padding-left: 2.25em;
-
-  position: relative;
-}
-
-.registration-bubble {
-  background-color: #34003E;
-  border-radius: 50%;
-  height: 2.5em;
-  width: 2.5em;
-
-  // Center the number.
-  line-height: 2.5em;
-  position: absolute;
-  text-align: center;
-
-  top: 0.5em;
-  left: -1.25em;
-}

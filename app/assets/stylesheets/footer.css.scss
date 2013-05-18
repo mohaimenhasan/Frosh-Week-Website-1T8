@@ -1,0 +1,16 @@
+/* Footer Styles */
+
+@import 'partials/variables';
+@import 'partials/mixins';
+
+#footer {
+  @include screen-small {
+    margin: 1.5em auto;
+  }
+  @include screen-medium {
+    margin: 2.0em auto;
+  }
+  @include screen-large {
+    margin: 2.5em auto;
+  }
+}

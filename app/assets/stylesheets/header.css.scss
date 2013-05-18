@@ -1,0 +1,28 @@
+/* Header Styles */
+
+@import 'partials/variables';
+@import 'partials/mixins';
+
+#header {
+  background-color: #FFFFFF;
+  padding: 1.0em; // TODO(johnliu): test mobile.
+  @include screen-small {
+    text-align: left;
+    margin-bottom: 1.0em;
+  }
+  @include screen-medium {
+    text-align: center;
+    margin-bottom: 1.5em;
+  }
+  @include screen-large {
+    text-align: center;
+    margin-bottom: 2.0em;
+  }
+
+  @include box-shadow(0 0 2px #CFCFCF);
+  @include ms-box-shadow(1, 90, #CFCFCF); // TODO(johnliu): This needs testing.
+
+  .selected {
+    font-weight: bold;
+  }
+}

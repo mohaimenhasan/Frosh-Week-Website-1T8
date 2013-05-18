@@ -1,0 +1,96 @@
+/* Registration Styles */
+
+@import 'partials/variables';
+@import 'partials/mixins';
+
+#registration-sidebar {
+  @include screen-small {
+    width: 100%;
+  }
+  @include screen-medium {
+    width: 40%;
+  }
+  @include screen-large {
+    width: 30%;
+  }
+
+  #logo {
+    background: {
+      image: image-url('logo.png');
+      size: contain; // TODO(johnliu): Browser test.
+      repeat: no-repeat;
+    }
+    height: image-height('logo.png');
+    width: 100%;
+  }
+}
+
+#registration-main {
+  @include screen-small {
+    width: 100%;
+  }
+  @include screen-medium {
+    width: 60%;
+  }
+  @include screen-large {
+    width: 70%;
+  }
+}
+
+.registration-box {
+  @include border-radius(0.35em);
+
+  // TODO(johnliu): test mobile.
+  margin: 0.5em;
+  padding: 1em;
+}
+
+.registration-clear {
+  margin: 0.5em;
+  padding: 1em;
+}
+
+.registration-normal {
+  @extend .registration-box;
+  background-color: #FFFFFF;
+  @include box-shadow(0 1px 2px #DFDFDF); // TODO(johnliu): Add ms version.
+}
+
+.registration-info {
+  @extend .registration-box;
+  background-color: #34003E;
+}
+
+.registration-step {
+  @extend .registration-box;
+
+  background-color: #FFFFFF;
+
+  margin: 0.5em;
+  padding: 1em;
+  padding-left: 2.25em;
+
+  position: relative;
+
+  @include anti-aliasing(0, 0, 0);
+  color: #FFFFFF;
+}
+
+.registration-step-num {
+  background-color: #34003E;
+  @include border-radius(50%);
+  height: 2.5em;
+  width: 2.5em;
+
+  // Center the number.
+  line-height: 2.5em;
+  position: absolute;
+  text-align: center;
+
+  top: 0.5em;
+  left: -1.25em;
+
+  @include anti-aliasing(0, 0, 0);
+  color: #FFFFFF;
+}
+

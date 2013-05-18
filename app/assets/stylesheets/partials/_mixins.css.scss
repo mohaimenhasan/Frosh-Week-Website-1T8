@@ -1,0 +1,30 @@
+/* Mixin Helpers */
+
+@import 'partials/variables';
+
+@mixin screen-small { @media #{$s} { @content; } }
+@mixin screen-medium { @media #{$m} { @content; } }
+@mixin screen-large { @media #{$l} { @content; } }
+
+@mixin anti-aliasing($r: 255, $b: 255, $g: 255) {
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  text-shadow: 0 1px 1px rgba($r, $b, $g, 0.3);
+}
+
+@mixin box-shadow($arguments...) {
+  -moz-box-shadow: $arguments;
+  -webkit-box-shadow: $arguments;
+  box-shadow: $arguments;
+}
+
+// TODO(johnliu): Test how accurately this works.
+@mixin ms-box-shadow($strength, $direction, $color) {
+  -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=#{$strength}, Direction=#{$direction}, Color='#{$color}')";
+}
+
+@mixin border-radius($radius) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
