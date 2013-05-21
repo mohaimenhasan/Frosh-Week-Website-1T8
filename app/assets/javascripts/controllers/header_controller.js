@@ -7,7 +7,13 @@ App.HeaderItemController = Ember.ObjectController.extend({
   needs: ['application'],
 
   active: function() {
-    return (this.get('controllers.application.currentPath') == this.get('route'));
+    var current = this.get('controllers.application.currentPath');
+    var route = this.get('route');
+
+    var sep = current.indexOf('.');
+    current = sep >= 0 ? current.substring(0, sep) : current;
+
+    return current === route;
   }.property('route', 'controllers.application.currentPath'),
 
   select: function(evt) {

@@ -1,11 +1,11 @@
 /* Dead Simple Grid (c) 2012 Vladimir Agafonkin */
 
 .col {
-  padding: 0 1.5em;
+  padding: 0 1.0em;
 }
 
 .row .row {
-  margin: 0 -1.5em;
+  margin: 0 -1.0em;
 }
 
 .row:before, .row:after {

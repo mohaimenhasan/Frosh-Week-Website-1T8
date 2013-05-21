@@ -11,15 +11,28 @@ App.RouteList = [
   Ember.Object.create({ route: 'groups', name: 'Groups' }),
   Ember.Object.create({ route: 'about', name: 'About Us' }),
   Ember.Object.create({ route: 'blog', name: 'Blog' }),
-  Ember.Object.create({ route: 'register', name: 'Register Now' })
+  Ember.Object.create({
+    route: 'register', name: 'Register Now',
+    routes: [
+      { route: 'item', path: '/:item_name' }
+    ]
+  })
 ];
 
 // TODO(johnliu): Handle hash routes.
 App.Router.map(function() {
-  var that = this;
+  var outerContext = this;
   App.RouteList.forEach(function(item) {
+
     if (item.route != 'index')
-      that.route(item.route);
+      outerContext.resource(item.route, function() {
+
+        var innerContext = this;
+        if (typeof item.routes !== 'undefined')
+          item.routes.forEach(function(inner) {
+            innerContext.route(inner.route, { path: inner.path });
+          });
+      });
   });
 
   this.route('none', { path: '*path'});
