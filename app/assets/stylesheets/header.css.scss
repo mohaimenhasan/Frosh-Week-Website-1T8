@@ -4,7 +4,7 @@
 @import 'partials/mixins';
 
 #header, #header-spacer {
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.95);
   padding: 1.0em; // TODO(johnliu): test mobile.
 
   @include screen-small {
@@ -26,6 +26,10 @@
   .selected {
     font-weight: bold;
   }
+}
+
+#header-spacer {
+  visibility: hidden;
 }
 
 #header-wrapper {

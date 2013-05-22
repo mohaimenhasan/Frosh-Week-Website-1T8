@@ -42,6 +42,16 @@
 
     li {
       margin: 0.5em;
+
+      a {
+        color: #000000;
+        text-decoration: none;
+
+        &:hover {
+          color: #34003E;
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
@@ -50,7 +60,7 @@
   @include border-radius(0.35em);
 
   // TODO(johnliu): test mobile.
-  margin: 0.5em;
+  margin: 1em;
   padding: 1em;
 }
 
@@ -65,27 +75,19 @@
   @include box-shadow(0 1px 2px #DFDFDF); // TODO(johnliu): Add ms version.
 }
 
-
-
-
 .registration-info {
   @extend .registration-box;
   background-color: #34003E;
-}
-
-.registration-step {
-  @extend .registration-box;
-
-  background-color: #FFFFFF;
-
-  margin: 0.5em;
-  padding: 1em;
-  padding-left: 2.25em;
-
-  position: relative;
 
   @include anti-aliasing(0, 0, 0);
   color: #FFFFFF;
+}
+
+.registration-step {
+  @extend .registration-normal;
+
+  padding-left: 2.25em;
+  position: relative;
 }
 
 .registration-step-num {

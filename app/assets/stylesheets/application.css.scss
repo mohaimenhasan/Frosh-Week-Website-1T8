@@ -63,10 +63,6 @@ h2 {
   margin-bottom: 0.5em;
 }
 
-.inline-right-align {
-  float: right;
-}
-
 a {
   color: #34003E;
   text-decoration: none;
@@ -100,13 +96,15 @@ ul.horizontal {
   }
 }
 
+.right-align {
+  text-align: right;
+}
+
 button {
   background-color: #606060;
   border: 0;
   color: #FFFFFF;
-  font-weight: bold;
-  margin: 0.3em;
-  padding: 0.3em 0.6em;
+  padding: 0.5em 2em;
   @include border-radius(0.4em);
 
   .alt {

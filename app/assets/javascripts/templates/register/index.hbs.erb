@@ -13,9 +13,8 @@
   <h3 class="small end">Early Bird Pricing: <span style="color: red;">20% OFF</span> until August 15!</h3>
   <ul class="registration-items">
     {{#each model}}
-      <li class="small">
-        {{description}} <strong>${{price}}</strong>
-        <button {{action select this bubbles=false}} class="inline-right-align">Select</button>
+      <li class="">
+        {{#linkTo register.item this}}{{description}} <strong>${{price}}</strong>{{/linkTo}}
       </li>
     {{/each}}
   </ul>

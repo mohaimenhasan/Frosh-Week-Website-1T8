@@ -5,3 +5,9 @@ App.RegisterIndexController = Ember.Controller.extend({
     this.transitionToRoute('register.item', context);
   }
 });
+
+App.RegisterItemController = Ember.Controller.extend({
+  cancel: function() {
+    this.transitionToRoute('register.index');
+  }
+});
