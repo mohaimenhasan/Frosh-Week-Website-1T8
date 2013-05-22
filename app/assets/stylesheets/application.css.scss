@@ -68,7 +68,12 @@ h2 {
 }
 
 a {
+  color: #34003E;
   text-decoration: none;
+
+  &:hover {
+    color: #828282;
+  }
 }
 
 ul {
@@ -92,12 +97,23 @@ ul.horizontal {
       display: inline-block;
     }
 
-    a {
-      color: #34003E;
-      &:hover {
-        color: #828282;
-      }
-    }
   }
 }
 
+button {
+  background-color: #606060;
+  border: 0;
+  color: #FFFFFF;
+  font-weight: bold;
+  margin: 0.3em;
+  padding: 0.3em 0.6em;
+  @include border-radius(0.4em);
+
+  .alt {
+    background-color: #34003E;
+  }
+
+  .go {
+    background-color: #4F7A27;
+  }
+}

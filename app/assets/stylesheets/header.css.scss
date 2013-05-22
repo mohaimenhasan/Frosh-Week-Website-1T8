@@ -3,9 +3,10 @@
 @import 'partials/variables';
 @import 'partials/mixins';
 
-#header {
+#header, #header-spacer {
   background-color: #FFFFFF;
   padding: 1.0em; // TODO(johnliu): test mobile.
+
   @include screen-small {
     text-align: left;
     margin-bottom: 1.5em;
@@ -25,4 +26,10 @@
   .selected {
     font-weight: bold;
   }
+}
+
+#header-wrapper {
+  width: 100%;
+  position: fixed;
+  top: 0;
 }
