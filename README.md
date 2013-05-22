@@ -1,4 +1,4 @@
-orientation.skule.ca server
-===========================
+orientation.skule.ca
+====================
 
-This is the server code for orientation.skule.ca.
+Server and client code for orientation.skule.ca
