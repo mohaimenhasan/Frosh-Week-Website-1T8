@@ -169,7 +169,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_print
+  awesome_print (~> 1)
   bcrypt-ruby (= 3.0.1)
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)
@@ -179,9 +179,9 @@ DEPENDENCIES
   jquery-rails (= 2.2.1)
   modernizr-rails (= 2.6.2.1)
   normalize-rails (= 2.0.1)
-  pg
+  pg (= 0.12.2)
   rails (= 3.2.13)
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)
   uglifier (= 1.0.3)
-  uuidtools
+  uuidtools (= 2.1.4)
