@@ -60,6 +60,19 @@ class Api::PeopleController < ActionController::Base
     render :json => {"person" => res[0]}
   end
 
+  def index
+    conn = open_db
+    q = "SELECT * FROM frosh;"
+    ap q
+    res = conn.exec(q)
+    arr = []
+    res.each do |r|
+      ap r
+      arr.push r
+    end
+    render :json => {"people" => arr}
+  end
+
   private
 
   def open_db
