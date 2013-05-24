@@ -73,6 +73,15 @@ class Api::PeopleController < ActionController::Base
     render :json => {"people" => arr}
   end
 
+  def destroy
+    conn = open_db
+    q = "DELETE FROM frosh WHERE id = '#{params[:id]}';"
+    ap q
+    res = conn.exec(q)
+    ap res
+    render :json => {:status => 'ok'}
+  end
+
   private
 
   def open_db

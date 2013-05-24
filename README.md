@@ -17,7 +17,8 @@ Server and client code for orientation.skule.ca
 2.  Be consistent with what's already there.
 
 ## API
-### Working endpoints
+#### Working endpoints (Open issues for these if there's something you need changed)
 - POST /api/people
 - GET /api/people/ID
 - GET /api/people
+- DELETE /api/people/ID
