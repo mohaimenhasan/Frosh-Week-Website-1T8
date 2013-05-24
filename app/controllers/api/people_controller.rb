@@ -11,7 +11,7 @@ class Api::PeopleController < ActionController::Base
       :emergency_contact_relationship, :emergency_contact_phone_number,
       :dietary_restrictions, :accessibility_requirements, :misc, :type
     ].each do |x|
-       render :json => {:status => 'bad'} and return unless params.key? x         
+      render :json => {:status => 'bad'} and return unless params.key? x         
     end
 
     conn = open_db
