@@ -14,7 +14,7 @@ class Api::PeopleController < ActionController::Base
        render :json => {:status => 'bad'} and return unless params.key? x         
     end
 
-    conn = PGconn.open(:dbname => 'skuleorientation')
+    conn = open_db
     q = 'INSERT INTO frosh (' +
       'first_name, ' +
       'last_name, ' +
@@ -49,6 +49,21 @@ class Api::PeopleController < ActionController::Base
     ap q
     res  = conn.exec(q)
     render :json => {:status => 'ok'}
+  end
+
+  def show
+    conn = open_db
+    q = "SELECT * FROM frosh WHERE id = '#{params[:id]}';"
+    ap q
+    res = conn.exec(q)
+    ap res[0]
+    render :json => {"person" => res[0]}
+  end
+
+  private
+
+  def open_db
+    PGconn.open(:dbname => 'skuleorientation')
   end
 
 end
