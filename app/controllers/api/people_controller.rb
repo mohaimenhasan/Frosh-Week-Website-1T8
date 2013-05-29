@@ -5,6 +5,7 @@ class Api::PeopleController < ActionController::Base
 
   def create
     # Sample: POST http://0.0.0.0:3000/api/people?first_name=j&last_name=a&email=a&discipline=a&residence=a&shirt_size=a&emergency_contact_name=a&emergency_contact_relationship=a&emergency_contact_phone_number=a&dietary_restrictions=a&accessibility_requirements=a&misc=a&type=a
+    params[:verified] = false
     new_user = User.new params.slice :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :group, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified
     new_user.save
     render :json => { :status => 'ok' }
