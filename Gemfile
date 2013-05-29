@@ -11,6 +11,7 @@ gem 'uuidtools',          '2.1.4'
 group :development, :test do
   gem 'rspec-rails',  '2.11.0'
   gem 'awesome_print', '~>1'
+  gem 'annotate', '2.5.0'
 end
 
 group :assets do
