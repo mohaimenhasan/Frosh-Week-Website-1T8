@@ -6,7 +6,6 @@ gem 'jquery-rails',       '2.2.1'
 gem 'ember-rails',        '0.11.1'
 gem 'handlebars-source',  '1.0.0.rc3'
 gem 'pg',                 '0.12.2'
-gem 'uuidtools',          '2.1.4'
 
 group :development, :test do
   gem 'rspec-rails',  '2.11.0'

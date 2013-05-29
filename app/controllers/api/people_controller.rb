@@ -1,6 +1,5 @@
 require 'pg'
 require 'awesome_print'
-require 'uuidtools'
 
 class Api::PeopleController < ActionController::Base
 
