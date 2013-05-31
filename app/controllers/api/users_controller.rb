@@ -3,10 +3,10 @@ require 'awesome_print'
 require 'stripe'
 require 'yaml'
 
-class Api::PeopleController < ActionController::Base
+class Api::UsersController < ActionController::Base
 
   def create
-    # Sample: POST http://0.0.0.0:3000/api/people?first_name=j&last_name=a&email=a&discipline=a&residence=a&shirt_size=a&emergency_contact_name=a&emergency_contact_relationship=a&emergency_contact_phone_number=a&dietary_restrictions=a&accessibility_requirements=a&misc=a&type=a
+    # Sample: POST http://0.0.0.0:3000/api/users?first_name=j&last_name=a&email=a&discipline=a&residence=a&shirt_size=a&emergency_contact_name=a&emergency_contact_relationship=a&emergency_contact_phone_number=a&dietary_restrictions=a&accessibility_requirements=a&misc=a&type=a
     params[:verified] = false
 
     # Set your secret key: remember to change this to your live secret key in production
