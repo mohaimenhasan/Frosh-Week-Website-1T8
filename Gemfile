@@ -8,26 +8,26 @@ gem 'ember-source',           '1.0.0.rc2'
 gem 'ember-data-source',      '0.0.5'
 gem 'handlebars-source',      '1.0.0.rc3'
 gem 'pg',                     '0.12.2'
-gem "validates_phone_number", "~> 2.0.1"
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem "validates_phone_number", '2.0.1'
+gem 'stripe',                 '1.8.3', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :development, :test do
-  gem 'rspec-rails',  '2.11.0'
-  gem 'awesome_print', '~>1'
-  gem 'annotate', '2.5.0'
+  gem 'rspec-rails',          '2.11.0'
+  gem 'awesome_print',        '1.1.0'
+  gem 'annotate',             '2.5.0'
 end
 
 group :assets do
-  gem 'sass-rails',       '3.2.5'
-  gem 'compass-rails',    '1.0.3'
-  gem 'coffee-rails',     '3.2.2'
-  gem 'uglifier',         '1.0.3'
-  gem 'modernizr-rails',  '2.6.2.1'
-  gem 'normalize-rails',  '2.0.1'
+  gem 'sass-rails',           '3.2.5'
+  gem 'compass-rails',        '1.0.3'
+  gem 'coffee-rails',         '3.2.2'
+  gem 'uglifier',             '1.0.3'
+  gem 'modernizr-rails',      '2.6.2.1'
+  gem 'normalize-rails',      '2.0.1'
 end
 
 group :test do
-  gem 'capybara', '1.1.2'
+  gem 'capybara',             '1.1.2'
 end
 
 group :production do
