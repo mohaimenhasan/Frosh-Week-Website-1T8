@@ -7,7 +7,7 @@ class Api::UsersController < ActionController::Base
 
   def create
     # Sample: POST http://0.0.0.0:3000/api/users?discipline=NY=&email=letsmakeithappen@itsgottobenow.com&emergency_name=Fido&emergency_phone=4165554444&emergency_relationship=dog&first_name=bob&group=1&last_name=last&phone=4161112222&shirt_size=M&skip_stripe=yes
-    params[:verified] = true
+    params[:verified] = false
     params[:bursary] = params.has_key?(:bursary) and params[:bursary].to_bool_with_default
 
     unless params.has_key? :skip_stripe and params[:skip_stripe].to_bool
@@ -53,6 +53,12 @@ class Api::UsersController < ActionController::Base
   def update
     User.find(params[:id]).update_attributes params.slice :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :group, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified
     render :json => { :status => 'ok' }
+  end
+
+  def confirm
+    u = User.find(params[:id])
+    u.verified = true if u.confirmation_token == params[:token]
+    render :json => { :status => u.verified }
   end
 
 end

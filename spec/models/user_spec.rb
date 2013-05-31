@@ -20,6 +20,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  bursary                :boolean
+#  confirmation_token     :string(255)
 #
 
 require 'spec_helper'
