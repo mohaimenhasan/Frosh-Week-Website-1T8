@@ -19,7 +19,10 @@
 #  restrictions_misc      :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  bursary                :boolean
 #
+
+
 require 'validates_phone_number'
 
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
