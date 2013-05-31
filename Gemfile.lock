@@ -196,6 +196,6 @@ DEPENDENCIES
   rails (= 3.2.13)
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)
-  stripe!
+  stripe (= 1.8.3)!
   uglifier (= 1.0.3)
   validates_phone_number (~> 2.0.1)
