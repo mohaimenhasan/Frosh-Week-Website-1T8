@@ -6,31 +6,34 @@ require 'yaml'
 class Api::UsersController < ActionController::Base
 
   def create
-    # Sample: POST http://0.0.0.0:3000/api/users?first_name=j&last_name=a&email=a&discipline=a&residence=a&shirt_size=a&emergency_contact_name=a&emergency_contact_relationship=a&emergency_contact_phone_number=a&dietary_restrictions=a&accessibility_requirements=a&misc=a&type=a
-    params[:verified] = false
+    # Sample: POST http://0.0.0.0:3000/api/users?discipline=NY=&email=letsmakeithappen@itsgottobenow.com&emergency_name=Fido&emergency_phone=4165554444&emergency_relationship=dog&first_name=bob&group=1&last_name=last&phone=4161112222&shirt_size=M&skip_stripe=yes
+    params[:verified] = true
 
-    # Set your secret key: remember to change this to your live secret key in production
-    # See your keys here https://manage.stripe.com/account
-    Stripe.api_key = YAML.load_file('stripe_api_key.yml')
+    unless params.has_key? :skip_stripe and params[:skip_stripe].to_bool
+      # Set your secret key: remember to change this to your live secret key in production
+      # See your keys here https://manage.stripe.com/account
+      Stripe.api_key = YAML.load_file('stripe_api_key.yml')
 
-    # Get the credit card details submitted by the form
-    token = params[:stripeToken]
+      # Get the credit card details submitted by the form
+      token = params[:stripeToken]
 
-    # Create the charge on Stripe's servers - this will charge the user's card
-    begin
-      charge = Stripe::Charge.create(
-        :amount => 1000, # amount in cents, again
-        :currency => "cad",
-        :card => token,
-        :description => "payinguser@example.com"
-      )
-    rescue Stripe::CardError => e
-      render :json => { :status => 'card rejected' } and return
+      # Create the charge on Stripe's servers - this will charge the user's card
+      begin
+        charge = Stripe::Charge.create(
+          :amount => 1000, # amount in cents, again
+          :currency => "cad",
+          :card => token,
+          :description => "payinguser@example.com"
+        )
+      rescue Stripe::CardError => e
+        render :json => { :status => 'card rejected' } and return
+      end
     end
 
     new_user = User.new params.slice :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :group, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified
     new_user.save
-    render :json => { :status => 'ok' }
+    ap new_user.errors
+    render :json => { :status => new_user.valid? }
   end
 
   def show

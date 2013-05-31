@@ -27,18 +27,10 @@ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 class User < ActiveRecord::Base
   attr_accessible :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :group, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified
 
-  validates :discipline, presence: true, length: { maximum: 50 }
-  validates :first_name, presence: true, length: { maximum: 50 }
-  validates :emergency_name, presence: true, length: { maximum: 50 }
-  validates :emergency_relationship, presence: true, length: { maximum: 50 }
-  validates :emergency_phone, presence: true, :phone_number => {:ten_digits => true}
-  validates :phone, presence: true, :phone_number => {:ten_digits => true}
-  validates :last_name, presence: true, length: { maximum: 50 }
+  validates :discipline, :first_name, :last_name, :emergency_name, :emergency_relationship, presence: true, length: { maximum: 50 }
+  validates :emergency_phone, :phone, presence: true, :phone_number => {:ten_digits => true}
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
-  validates :group, presence: true
-  validates :shirt_size, presence: true
+  validates :group, :shirt_size, presence: true
   validates :verified, inclusion: { :in => [true, false] }
-  validates :residence, length: { maximum: 50 }
-  validates :restrictions_dietary, length: { maximum: 250 }
-  validates :restrictions_misc, length: { maximum: 250 }
+  validates :residence, :restrictions_dietary, :restrictions_misc, length: { maximum: 50 }
 end
