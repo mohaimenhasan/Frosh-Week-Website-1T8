@@ -6,12 +6,12 @@ gem 'jquery-rails',           '2.2.1'
 gem 'ember-rails',            '0.11.1'
 gem 'handlebars-source',      '1.0.0.rc3'
 gem 'pg',                     '0.12.2'
-gem "validates_phone_number", '~> 2.0.1'
+gem "validates_phone_number", '2.0.1'
 gem 'stripe',                 '1.8.3', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :development, :test do
   gem 'rspec-rails',          '2.11.0'
-  gem 'awesome_print',        '~>1'
+  gem 'awesome_print',        '1.1.0'
   gem 'annotate',             '2.5.0'
 end
 

@@ -182,7 +182,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate (= 2.5.0)
-  awesome_print (~> 1)
+  awesome_print (= 1.1.0)
   bcrypt-ruby (= 3.0.1)
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)
@@ -198,4 +198,4 @@ DEPENDENCIES
   sass-rails (= 3.2.5)
   stripe (= 1.8.3)!
   uglifier (= 1.0.3)
-  validates_phone_number (~> 2.0.1)
+  validates_phone_number (= 2.0.1)
