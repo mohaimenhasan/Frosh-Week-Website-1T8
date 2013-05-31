@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails',              '3.2.13'
-gem 'bcrypt-ruby',        '3.0.1'
-gem 'jquery-rails',       '2.2.1'
-gem 'ember-rails',        '0.11.1'
-gem 'handlebars-source',  '1.0.0.rc3'
-gem 'pg',                 '0.12.2'
+gem 'rails',                  '3.2.13'
+gem 'bcrypt-ruby',            '3.0.1'
+gem 'jquery-rails',           '2.2.1'
+gem 'ember-rails',            '0.12.0'
+gem 'ember-source',           '1.0.0.rc2'
+gem 'ember-data-source',      '0.0.5'
+gem 'handlebars-source',      '1.0.0.rc3'
+gem 'pg',                     '0.12.2'
 gem "validates_phone_number", "~> 2.0.1"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
