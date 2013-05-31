@@ -25,12 +25,13 @@ require 'validates_phone_number'
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 class User < ActiveRecord::Base
-  attr_accessible :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :group, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified
+  attr_accessible :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :group, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified, :bursary
 
   validates :discipline, :first_name, :last_name, :emergency_name, :emergency_relationship, presence: true, length: { maximum: 50 }
   validates :emergency_phone, :phone, presence: true, :phone_number => {:ten_digits => true}
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
   validates :group, :shirt_size, presence: true
   validates :verified, inclusion: { :in => [true, false] }
+  validates :bursary, inclusion: { :in => [true, false] }
   validates :residence, :restrictions_dietary, :restrictions_misc, length: { maximum: 50 }
 end

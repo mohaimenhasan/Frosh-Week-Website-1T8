@@ -8,6 +8,7 @@ class Api::UsersController < ActionController::Base
   def create
     # Sample: POST http://0.0.0.0:3000/api/users?discipline=NY=&email=letsmakeithappen@itsgottobenow.com&emergency_name=Fido&emergency_phone=4165554444&emergency_relationship=dog&first_name=bob&group=1&last_name=last&phone=4161112222&shirt_size=M&skip_stripe=yes
     params[:verified] = true
+    params[:bursary] = params.has_key?(:bursary) and params[:bursary].to_bool_with_default
 
     unless params.has_key? :skip_stripe and params[:skip_stripe].to_bool
       # Set your secret key: remember to change this to your live secret key in production
@@ -30,7 +31,7 @@ class Api::UsersController < ActionController::Base
       end
     end
 
-    new_user = User.new params.slice :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :group, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified
+    new_user = User.new params.slice :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :group, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified, :bursary
     new_user.save
     ap new_user.errors
     render :json => { :status => new_user.valid? }
