@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
   validates :group, presence: true
   validates :shirt_size, presence: true
-  validates :verified, presence: true
+  validates :verified, inclusion: { :in => [true, false] }
   validates :residence, length: { maximum: 50 }
   validates :restrictions_dietary, length: { maximum: 250 }
   validates :restrictions_misc, length: { maximum: 250 }
