@@ -3,9 +3,9 @@
 //= require handlebars
 //= require ember
 //= require ember-data
+//= require ember-easyForm
+//= require ember-validations
 //= require_self
 //= require skule_orientation
-App = Ember.Application.create();
 try { Typekit.load(); }
 catch(e) {}
-//= require_tree .

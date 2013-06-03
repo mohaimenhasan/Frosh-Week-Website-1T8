@@ -4,7 +4,7 @@
       <ul class="horizontal">
         {{#each item in controller}}
           {{#view App.HeaderItemView contentBinding="this"}}
-            <a {{action select item}} {{bindAttr href="item.route"}}>{{item.name}}</a>
+            <a {{action select item}} {{bindAttr href="item.path"}}>{{item.name}}</a>
           {{/view}}
         {{/each}}
       </ul>

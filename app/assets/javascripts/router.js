@@ -5,16 +5,16 @@ if (window.history && window.history.pushState) {
 }
 
 App.RouteList = [
-  Ember.Object.create({ route: 'index', name: 'Home' }),
-  Ember.Object.create({ route: 'schedule', name: 'Events & Schedule' }),
-  Ember.Object.create({ route: 'faq', name: 'FAQs' }),
-  Ember.Object.create({ route: 'groups', name: 'Groups' }),
-  Ember.Object.create({ route: 'about', name: 'About Us' }),
-  Ember.Object.create({ route: 'blog', name: 'Blog' }),
+  Ember.Object.create({ route: 'index',    path: '/',          name: 'Home' }),
+  Ember.Object.create({ route: 'schedule', path: '/schedule',  name: 'Events & Schedule' }),
+  Ember.Object.create({ route: 'faq',      path: '/faq',       name: 'FAQs' }),
+  Ember.Object.create({ route: 'groups',   path: '/groups',    name: 'Groups' }),
+  Ember.Object.create({ route: 'about',    path: '/about',     name: 'About Us' }),
+  Ember.Object.create({ route: 'blog',     path: '/blog',      name: 'Blog' }),
   Ember.Object.create({
-    route: 'register', name: 'Register Now',
+    route: 'packages', path: '/register', name: 'Register Now',
     routes: [
-      { route: 'item', path: '/:item_name' }
+      Ember.Object.create({ route: 'item', path: '/:item_name' })
     ]
   })
 ];
@@ -22,17 +22,15 @@ App.RouteList = [
 // TODO(johnliu): Handle hash routes.
 App.Router.map(function() {
   var outerContext = this;
-  App.RouteList.forEach(function(item) {
-
-    if (item.route != 'index')
-      outerContext.resource(item.route, function() {
-
-        var innerContext = this;
-        if (typeof item.routes !== 'undefined')
-          item.routes.forEach(function(inner) {
-            innerContext.route(inner.route, { path: inner.path });
-          });
-      });
+  App.RouteList.forEach(function(outer) {
+    outerContext.resource(outer.get('route'), { path: outer.get('path') }, function() {
+      var innerContext = this;
+      if (outer.get('routes')) {
+        outer.get('routes').forEach(function(inner) {
+          innerContext.route(inner.get('route'), { path: inner.get('path') });
+        });
+      }
+    });
   });
 
   this.route('none', { path: '*path'});

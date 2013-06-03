@@ -1,3 +1,4 @@
+//= require_self
 //= require ./store
 //= require_tree ./models
 //= require ./router
@@ -6,4 +7,5 @@
 //= require_tree ./views
 //= require_tree ./helpers
 //= require_tree ./templates
-//= require_self
+
+App = Ember.Application.create();

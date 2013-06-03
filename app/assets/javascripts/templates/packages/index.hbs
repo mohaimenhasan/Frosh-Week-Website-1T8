@@ -14,7 +14,9 @@
   <ul class="registration-items">
     {{#each model}}
       <li class="">
-        {{#linkTo register.item this}}{{description}} <strong>${{price}}</strong>{{/linkTo}}
+        {{#linkTo packages.item this}}
+          {{description}} <strong>${{price}}</strong>
+        {{/linkTo}}
       </li>
     {{/each}}
   </ul>

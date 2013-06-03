@@ -100,6 +100,13 @@ ul.horizontal {
   text-align: right;
 }
 
+.col {
+  @include screen-small {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+}
+
 button {
   background-color: #606060;
   border: 0;
@@ -107,11 +114,16 @@ button {
   padding: 0.5em 2em;
   @include border-radius(0.4em);
 
-  .alt {
+  &.alt {
     background-color: #34003E;
   }
 
-  .go {
+  &.go {
     background-color: #4F7A27;
   }
+}
+
+input[type=submit] {
+  @extend button;
+  @extend button.go;
 }
