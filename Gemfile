@@ -7,7 +7,8 @@ gem 'ember-rails',            '0.12.0'
 gem 'ember-source',           '1.0.0.rc4'
 gem 'pg',                     '0.12.2'
 gem "validates_phone_number", '2.0.1'
-gem 'stripe',                 '1.8.3', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe',                 '1.8.3'
+gem 'mandrill-api'
 
 group :development, :test do
   gem 'rspec-rails',          '2.11.0'
