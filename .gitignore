@@ -14,5 +14,8 @@
 /log/*.log
 /tmp
 
-#Sensitive data
+# Editor specific
+.idea
+
+# Sensitive data
 stripe_api_key.yml
