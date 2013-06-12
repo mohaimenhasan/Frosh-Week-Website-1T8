@@ -3,7 +3,7 @@
 @import 'partials/variables';
 @import 'partials/mixins';
 
-#footer {
+.footer {
   @include screen-small {
     margin: 1.5em auto;
   }

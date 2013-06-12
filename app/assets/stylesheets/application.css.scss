@@ -55,6 +55,11 @@ h2 {
   }
 }
 
+h3 {
+  font-weight: 400;
+  size: 1.3em;
+}
+
 .small {
   font-size: 0.9em;
 }
@@ -126,4 +131,18 @@ button {
 input[type=submit] {
   @extend button;
   @extend button.go;
+}
+
+input[type=text], input[type=email], input[type=tel] {
+  height: 1.25em;
+  padding: 0.2em;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  height: 8em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  padding: 0.2em;
 }

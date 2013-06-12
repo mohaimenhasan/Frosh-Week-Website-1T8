@@ -3,76 +3,114 @@
   <!-- TODO(johnliu): Hidden CSRF -->
   <div class="registration-step">
     <div class="registration-step-num">1</div>
-    <h2><strong>Tell us about yourself</strong></h2>
+    <h2>Tell us about yourself</h2>
 
-    {{input firstName label="First name"}}
-    {{input lastName label="Last name"}}
-    {{input email as=email label="Your email address"}}
-    {{input phone as=tel label="Your phone number"}}
-    {{input discipline label="Engineering discipline"}}
-    {{input residence label="Residence"}}
+    <div class="subsection text">
+      {{input firstName label="First name"}}
+      {{input lastName label="Last name"}}
+      {{input email as=email label="Your email address"}}
+      {{input phone as=tel label="Your phone number"}}
+      {{input discipline label="Engineering discipline"}}
+      {{input residence label="Residence"}}
+    </div>
   </div>
 
   <div class="registration-step">
     <div class="registration-step-num">2</div>
-    <h2><strong>Customize your F!rosh Kit</strong></h2>
+    <h2>Customize your F!rosh Kit</h2>
 
-    <h4>What's your t-shirt size?</h4>
-    {{#input shirtSizeS}}
-      {{inputField shirtSizeS as=radio inputConfig="name:shirt"}}
-      {{labelField shirtSizeS text="S"}}
-    {{/input}}
-    {{input shirtSizeM as=radio inputConfig="name:shirt;checked:yes"}}{{labelField shirtSize text="M"}}
-    {{input shirtSizeL as=radio inputConfig="name:shirt"}}{{labelField shirtSize text="L"}}
-    {{input shirtSizeX as=radio inputConfig="name:shirt"}}{{labelField shirtSize text="XL"}}
+    <div class="subsection radio">
+      <span class="input"><label>What's your t-shirt size?</label></span>
+      <div class="choices">
+        {{#input shirtSizeS}}
+          {{inputField shirtSizeS as=radio inputConfig="name:shirt"}}
+          {{labelField shirtSizeS text="S"}}
+        {{/input}}
+        {{#input shirtSizeM}}
+          {{inputField shirtSizeM as=radio inputConfig="name:shirt"}}
+          {{labelField shirtSizeM text="M"}}
+        {{/input}}
+        {{#input shirtSizeL}}
+          {{inputField shirtSizeL as=radio inputConfig="name:shirt"}}
+          {{labelField shirtSizeL text="L"}}
+        {{/input}}
+        {{#input shirtSizeX}}
+          {{inputField shirtSizeX as=radio inputConfig="name:shirt"}}
+          {{labelField shirtSizeX text="XL"}}
+        {{/input}}
+      </div>
+    </div>
   </div>
 
   <div class="registration-step">
     <div class="registration-step-num">3</div>
-    <h2><strong>Health and safety information</strong></h2>
+    <h2>Health and safety information</h2>
 
-    <h3><strong>Emergency contact</strong></h3>
-    {{input emergencyName label="Name"}}
-    {{input emergencyRelationship label="Relationship"}}
-    {{input emergencyPhone label="Phone number"}}
+    <div class="subsection text">
+      <h3>Emergency contact</h3>
+      {{input emergencyName label="Name"}}
+      {{input emergencyRelationship label="Relationship"}}
+      {{input emergencyPhone label="Phone number"}}
+    </div>
 
-    <h3><strong>List any dietary restrictions you may have.</strong></h3>
-    {{#input restrictionsDietary}}
-      {{labelField restrictionsDietary text="Examples include: Halal, Kosher, vegetarian, peanut allergies"}}
-      {{input restrictionsDietary as="text"}}
-      {{errorField restrictionsDietary}}
-    {{/input}}
+    <div class="subsection">
+      <h3>List any dietary restrictions you may have.</h3>
+      {{#input restrictionsDietary}}
+        {{hintField restrictionsDietary text="Examples include: Halal, Kosher, vegetarian, peanut allergies"}}
+        {{inputField restrictionsDietary as=text}}
+        {{errorField restrictionsDietary}}
+      {{/input}}
+    </div>
 
-    <h3><strong>List any accessibility requirements you may need.</strong></h3>
-    {{#input restrictionsAccessibility}}
-      {{labelField restrictionsDietary text="F!rosh Week is committed to U of T's accessibility guidelines."}}"
-      {{input restrictionsAccessibility as="text"}}
-      {{errorField restrictionsAccessibility}}
-    {{/input}}
+    <div class="subsection">
+      <h3>List any accessibility requirements you may need.</h3>
+      {{#input restrictionsAccessibility}}
+        {{hintField restrictionsAccessibility text="F!rosh Week is committed to U of T's accessibility guidelines."}}"
+        {{inputField restrictionsAccessibility as=text}}
+        {{errorField restrictionsAccessibility}}
+      {{/input}}
+    </div>
 
-    <h3><strong>Anything else we should know?</strong></h3>
-    {{input restrictionsMisc as="text"}}
+    <div class="subsection">
+      <h3>Anything else we should know?</h3>
+      {{#input restrictionsMisc}}
+        {{inputField restrictionsMisc as=text}}
+        {{errorField restrictionsMisc}}
+      {{/input}}
+    </div>
   </div>
 
   <div class="registration-step">
     <div class="registration-step-num">4</div>
-    <h2><strong>How will you be paying?</strong></h2>
+    <h2>How will you be paying?</h2>
 
-    <h3><strong>Would you like to apply for the F!rosh Week bursary?</strong></h3>
-    {{#input bursary}}
-      {{labelField bursary text="You may apply if you qualify for OSAP; bursaries will be awarded based on need.
-                                 You will need to fill out an additional short application."}}
-      {{input bursary as="checkbox"}}{{labelField bursary text="Yes"}}
-    {{/input}}
+    <div class="subsection">
+      <h3>Would you like to apply for the F!rosh Week bursary?</h3>
+      <span class="input">
+        <label>
+          You may apply if you qualify for OSAP; bursaries will be awarded based on need.
+          You will need to fill out an additional short application.
+        </label>
+      </span>
+      <div class="checkboxes">
+        {{#input bursary}}
+        {{inputField bursary as=checkbox}}{{labelField bursary text="Yes"}}
+        {{/input}}
+      </div>
+    </div>
 
-    <h3><strong>Pay by credit card</strong></h3>
-    <h4>Secure connection</h4>
-    {{input cardNum label="Card number"}}
-    {{input cardExpires label="Expires"}}
-    {{input cardName label="Name on card"}}
-    {{input cardCVC label="Verification code"}}
+    <div class="subsection text">
+      <h3>Pay by credit card</h3>
+      <h4 class="small">Secure connection</h4>
+      {{input cardNum label="Card number"}}
+      {{input cardExpires label="Expires"}}
+      {{input cardName label="Name on card"}}
+      {{input cardCVC label="Verification code"}}
+    </div>
 
-    {{submit "Pay and register"}}
+    <div class="right-align">
+      {{submit "Pay and register"}}
+    </div>
   </div>
 {{/formFor}}
 

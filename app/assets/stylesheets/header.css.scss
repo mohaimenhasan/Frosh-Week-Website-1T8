@@ -3,7 +3,7 @@
 @import 'partials/variables';
 @import 'partials/mixins';
 
-#header, #header-spacer {
+.header, .header-spacer {
   background-color: rgba(255, 255, 255, 0.95);
   padding: 1.0em; // TODO(johnliu): test mobile.
 
@@ -28,7 +28,7 @@
   }
 }
 
-#header-spacer {
+.header-spacer {
   visibility: hidden;
   @include screen-small {
     display: none;
@@ -41,7 +41,7 @@
   }
 }
 
-#header-wrapper {
+.header-wrapper {
   width: 100%;
   top: 0;
   z-index: 10;
