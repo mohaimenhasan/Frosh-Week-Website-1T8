@@ -1,0 +1,25 @@
+<div id="header-wrapper" class="header-wrapper">
+    <div class="header row">
+        <div class="col">
+            <ul class="horizontal">
+                {{#each item in controller}}
+                    {{#view App.HeaderItemView contentBinding="this"}}
+                        <a {{action select item}} {{bindAttr href="item.path"}}>{{item.name}}</a>
+                    {{/view}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="header" class="header header-spacer row">
+    <div class="col">
+        <ul class="horizontal">
+            {{#each item in controller}}
+                {{#view App.HeaderItemView contentBinding="this"}}
+                    {{item.name}}
+                {{/view}}
+            {{/each}}
+        </ul>
+    </div>
+</div>

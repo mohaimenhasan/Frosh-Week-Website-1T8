@@ -4,195 +4,258 @@
 @import 'partials/mixins';
 
 .registration-sidebar {
-  @include screen-small {
-    width: 100%;
-  }
-  @include screen-medium {
-    width: 35%;
-  }
-  @include screen-large {
-    width: 30%;
-  }
-
-  .logo {
-    background: {
-      image: image-url('logo.png');
-      size: contain; // TODO(johnliu): Browser test.
-      repeat: no-repeat;
+    @include screen-small {
+        width: 100%;
     }
-    height: image-height('logo.png');
-    width: 100%;
-  }
+    @include screen-medium {
+        width: 35%;
+    }
+    @include screen-large {
+        width: 30%;
+    }
+
+    .logo {
+        background: {
+            image: image-url('logo.png');
+            size: contain; // TODO(johnliu): Browser test.
+            repeat: no-repeat;
+        }
+        height: image-height('logo.png');
+        width: 100%;
+    }
 }
 
 .registration-main {
-  @include screen-small {
-    width: 100%;
-  }
-  @include screen-medium {
-    width: 65%;
-  }
-  @include screen-large {
-    width: 70%;
-  }
-
-  ul.registration-items {
-    list-style-type: none;
-    padding: 0;
-
-    li {
-      margin: 0.5em;
-
-      a {
-        color: #000000;
-        text-decoration: none;
-
-        &:hover {
-          color: #34003E;
-          text-decoration: underline;
-        }
-      }
+    @include screen-small {
+        width: 100%;
     }
-  }
+    @include screen-medium {
+        width: 65%;
+    }
+    @include screen-large {
+        width: 70%;
+    }
+
+    ul.registration-items {
+        list-style-type: none;
+        padding: 0;
+
+        li {
+            margin: 0.5em;
+
+            a {
+                color: #000000;
+                text-decoration: none;
+
+                &:hover {
+                    color: #34003E;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
 }
 
 .registration-box {
-  @include border-radius(0.35em);
+    @include border-radius(0.35em);
 
-  // TODO(johnliu): test mobile.
-  margin: 1em;
-  padding: 1em;
+    // TODO(johnliu): test mobile.
+    margin: 1em;
+    padding: 1em;
 }
 
 .registration-clear {
-  margin: 0.5em;
-  padding: 1em;
+    margin: 0.5em;
+    padding: 1em;
 }
 
 .registration-normal {
-  @extend .registration-box;
-  background-color: #FFFFFF;
-  @include box-shadow(0 1px 2px #DFDFDF); // TODO(johnliu): Add ms version.
+    @extend .registration-box;
+    background-color: #FFFFFF;
+    @include box-shadow(0 1px 2px #DFDFDF); // TODO(johnliu): Add ms version.
 }
 
 .registration-info {
-  @extend .registration-box;
-  background-color: #34003E;
+    @extend .registration-box;
+    background-color: #34003E;
 
-  @include anti-aliasing(0, 0, 0);
-  color: #FFFFFF;
+    @include anti-aliasing(0, 0, 0);
+    color: #FFFFFF;
 }
 
+// TODO(johnliu): clean up this css.
 .registration-step {
-  @extend .registration-normal;
+    @extend .registration-normal;
 
-  padding-left: 2.25em;
-  padding-right: 2.25em;
-  position: relative;
+    padding-left: 2.25em;
+    padding-right: 2.25em;
+    position: relative;
 
-  h2 {
-    font-weight: 800;
-    margin-bottom: 0.75em;
-  }
-
-  h3 {
-    font-weight: 800;
-  }
-
-  .subsection {
-    margin-bottom: 1em;
-  }
-
-  .text {
-    .input {
-      line-height: 1.8em;
-
-      @include screen-small {
-        margin: 0.4em;
-        margin-left: 0.5em;
-        margin-bottom: 0.5em;
-        text-align: left;
-      }
-      @include screen-medium {
-        margin: 0.4em;
-        margin-left: 0.5em;
-        margin-bottom: 0.5em;
-        text-align: left;
-      }
-      @include screen-large {
-        margin: 0.4em;
-        text-align: right;
-      }
-
-      input[type=text], input[type=email], input[type=tel] {
-        @include screen-small {
-          float: none;
-          margin-left: 0;
-          margin-right: 0;
-          width: 100%;
-        }
-
-        @include screen-medium {
-          float: none;
-          margin-left: 0;
-          margin-right: 0;
-          width: 100%;
-        }
-
-        @include screen-large {
-          float: right;
-          margin-left: 0.5em;
-          margin-right: 3.5%;
-          width: 52.5%;
-        }
-      }
-    }
-  }
-
-  .radio {
-    span.input {
-      margin-right: 1.5em;
+    h2 {
+        font-weight: 800;
+        margin-bottom: 0.75em;
     }
 
-    .choices {
-      display: inline-block;
-      margin: 0.25em;
+    h3 {
+        font-weight: 800;
+    }
 
-      .input {
-        margin-right: 1em;
-        display: inline;
+    .subsection {
+        margin-bottom: 1em;
+    }
 
-        input[type=radio] {
-          margin-left: 0.25em;
-          margin-right: 0.25em;
+    .subsection.text {
+        & > div {
+            line-height: 2.0em;
+            margin: 0.5em;
+
+            @include screen-small {
+                text-align: left;
+                margin-right: 0;
+            }
+            @include screen-medium {
+                text-align: left;
+                margin-right: 0;
+            }
+            @include screen-large {
+                text-align: right;
+                margin-right: 3.5%;
+            }
         }
-      }
-    }
-  }
 
-  .checkboxes {
-    input[type=checkbox] {
-      margin-left: 0.25em;
-      margin-right: 0.25em;
+        .input {
+            @include input-text {
+                @include box-sizing(border-box);
+                height: 2.0em;
+                padding-left: 0.5em;
+                padding-right: 0.5em;
+
+                @include screen-small {
+                    float: none;
+                    margin-left: 0;
+                    width: 100%;
+                }
+                @include screen-medium {
+                    float: none;
+                    margin-left: 0;
+                    width: 100%;
+                }
+                @include screen-large {
+                    float: right;
+                    margin-left: 0.5em;
+                    width: 52.5%;
+                }
+            }
+        }
+
+        .text-inline {
+            @include screen-small  { text-align: left; }
+            @include screen-medium { text-align: left; }
+            @include screen-large  { text-align: right; }
+
+            .input-inline-group {
+                float: right;
+                margin-bottom: 0.5em;
+                overflow: hidden;
+
+                @include screen-small  { margin-left: 0;     width: 100%; }
+                @include screen-medium { margin-left: 0;     width: 100%; }
+                @include screen-large  { margin-left: 0.5em; width: 52.5%; }
+
+                &.end {
+                    margin-bottom: 1em;
+                }
+            }
+
+            @include input-text {
+                text-align: center;
+
+                &.phone-area {
+                    float: left;
+                    margin-left: 0;
+                    width: 30%;
+                }
+                &.phone-start {
+                    float: left;
+                    margin-left: 2.5%;
+                    width: 30%;
+                }
+                &.phone-end {
+                    float: right;
+                    margin-left: 2.5%;
+                    width: 35%;
+                }
+
+                &.cc-number {
+                    float: left;
+                    margin-left: 0;
+                    width: 75%;
+                }
+                &.cc-cvc {
+                    float: right;
+                    margin-left: 2.5%;
+                    width: 22.5%;
+                }
+
+                &.cc-month {
+                    float: left;
+                    margin-left: 0;
+                    width: 48%;
+                }
+
+                &.cc-year {
+                    float: right;
+                    margin-left: 4%;
+                    width: 48%;
+                }
+            }
+        }
     }
-  }
+
+    .radio {
+        span.input {
+            margin-right: 1.5em;
+        }
+
+        .choices {
+            display: inline-block;
+            margin: 0.25em;
+
+            .input {
+                margin-right: 1em;
+                display: inline;
+
+                input[type=radio] {
+                    margin-left: 0.25em;
+                    margin-right: 0.25em;
+                }
+            }
+        }
+    }
+
+    .checkboxes {
+        input[type=checkbox] {
+            margin-left: 0.25em;
+            margin-right: 0.25em;
+        }
+    }
 }
 
 .registration-step-num {
-  background-color: #34003E;
-  @include border-radius(50%);
-  height: 2.5em;
-  width: 2.5em;
+    background-color: #34003E;
+    @include border-radius(50%);
+    height: 2.5em;
+    width: 2.5em;
 
-  // Center the number.
-  line-height: 2.5em;
-  position: absolute;
-  text-align: center;
+    // Center the number.
+    line-height: 2.5em;
+    position: absolute;
+    text-align: center;
 
-  top: 0.5em;
-  left: -1.25em;
+    top: 0.5em;
+    left: -1.25em;
 
-  @include anti-aliasing(0, 0, 0);
-  color: #FFFFFF;
+    @include anti-aliasing(0, 0, 0);
+    color: #FFFFFF;
 }
 

@@ -1,23 +1,24 @@
 <div class="registration-clear">
-  <h2>Your registration includes:</h2>
-  <ul>
-    <li>Access to <strong>ALL</strong> events.</li>
-    <li>A standard-issue F!rosh Kit with tons of cool stuff (learn more)</li> <!-- TODO(johnliu): Make this a link. -->
-    <li>Free lunch and dinner during full days (Monday and Tuesday)</li>
-    <li>One free Skule yearbook at the end of the year ($20 value)</li>
-  </ul>
+    <h2>Your registration includes:</h2>
+    <ul>
+        <li>Access to <strong>ALL</strong> events.</li>
+        <li>A standard-issue F!rosh Kit with tons of cool stuff (learn more)</li> <!-- TODO(johnliu): Make this a link. -->
+        <li>Free lunch and dinner during full days (Monday and Tuesday)</li>
+        <li>One free Skule yearbook at the end of the year ($20 value)</li>
+    </ul>
 </div>
 
 <div class="registration-normal">
-  <h2>Register <strong>online</strong>!</h2>
-  <h3 class="small end">Early Bird Pricing: <span style="color: red;">20% OFF</span> until August 15!</h3>
-  <ul class="registration-items">
-    {{#each model}}
-      <li class="">
-        {{#linkTo packages.item this}}
-          {{description}} <strong>${{price}}</strong>
-        {{/linkTo}}
-      </li>
-    {{/each}}
-  </ul>
+    <h2>Register <strong>online</strong>!</h2>
+    <!-- TODO(johnliu): Remove inline CSS -->
+    <h3 class="small end">Early Bird Pricing: <span style="color: red;">20% OFF</span> until August 15!</h3>
+    <ul class="registration-items">
+        {{#each model}}
+            <li class="">
+                {{#linkTo packages.item this}}
+                    {{description}} <strong>${{price}}</strong>
+                {{/linkTo}}
+            </li>
+        {{/each}}
+    </ul>
 </div>

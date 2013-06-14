@@ -4,54 +4,54 @@
 @import 'partials/mixins';
 
 .header, .header-spacer {
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 1.0em; // TODO(johnliu): test mobile.
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 1.0em; // TODO(johnliu): test mobile.
 
-  @include screen-small {
-    text-align: left;
-    margin-bottom: 1.5em;
-  }
-  @include screen-medium {
-    text-align: center;
-    margin-bottom: 1.0em;
-  }
-  @include screen-large {
-    text-align: center;
-    margin-bottom: 1.5em;
-  }
+    @include screen-small {
+        text-align: left;
+        margin-bottom: 1.5em;
+    }
+    @include screen-medium {
+        text-align: center;
+        margin-bottom: 1.0em;
+    }
+    @include screen-large {
+        text-align: center;
+        margin-bottom: 1.5em;
+    }
 
-  @include box-shadow(0 0 2px #CFCFCF);
-  @include ms-box-shadow(1, 90, #CFCFCF); // TODO(johnliu): This needs testing.
+    @include box-shadow(0 0 2px #DFDFDF);
+    @include ms-box-shadow(1, 90, #DFDFDF); // TODO(johnliu): This needs testing.
 
-  .selected {
-    font-weight: bold;
-  }
+    .selected {
+        font-weight: bold;
+    }
 }
 
 .header-spacer {
-  visibility: hidden;
-  @include screen-small {
-    display: none;
-  }
-  @include screen-medium {
-    display: inherit;
-  }
-  @include screen-large {
-    display: inherit;
-  }
+    visibility: hidden;
+    @include screen-small {
+        display: none;
+    }
+    @include screen-medium {
+        display: inherit;
+    }
+    @include screen-large {
+        display: inherit;
+    }
 }
 
 .header-wrapper {
-  width: 100%;
-  top: 0;
-  z-index: 10;
-  @include screen-small {
-    position: static;
-  }
-  @include screen-medium {
-    position: fixed;
-  }
-  @include screen-large {
-    position: fixed;
-  }
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    @include screen-small {
+        position: static;
+    }
+    @include screen-medium {
+        position: fixed;
+    }
+    @include screen-large {
+        position: fixed;
+    }
 }
