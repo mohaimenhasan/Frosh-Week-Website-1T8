@@ -13,5 +13,6 @@ Server and client code for orientation.skule.ca
 7.  Hack away.
 
 ## Code Style
-1.  2 spaces for indentation.
-2.  Be consistent with what's already there.
+1.  2 spaces for indentation in JS and Ruby.
+2.  4 spaces for indentation in HTML, CSS.
+3.  Be consistent with what's already there.
