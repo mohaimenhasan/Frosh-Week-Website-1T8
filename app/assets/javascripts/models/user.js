@@ -74,19 +74,43 @@ App.UserRaw = App.User.extend({
     },
 
     phoneAreaCode: {
-      length: { maximum: 10 }
+      length: {
+        allowBlank: true,
+        maximum: 10
+      },
+      numericality: {
+        allowBlank: true,
+        onlyInteger: true
+      }
     },
 
     phoneStart: {
-      length: { maximum: 10 }
+      length: {
+        allowBlank: true,
+        maximum: 10
+      },
+      numericality: {
+        allowBlank: true,
+        onlyInteger: true
+      }
     },
 
     phoneEnd: {
-      length: { maximum: 10 }
+      length: {
+        allowBlank: true,
+        maximum: 10
+      },
+      numericality: {
+        allowBlank: true,
+        onlyInteger: true
+      }
     },
 
     residence: {
-      length: { maximum: 50 }
+      length: {
+        allowBlank: true,
+        maximum: 50
+      }
     },
 
     discipline: {
@@ -113,7 +137,10 @@ App.UserRaw = App.User.extend({
 
     emergencyEmail: {
       presence: true,
-      length: { maximum: 50 }
+      length: { maximum: 50 },
+      format: {
+        // TODO(johnliu): basic email regex format.
+      }
     },
 
     emergencyRelationship: {
@@ -122,27 +149,57 @@ App.UserRaw = App.User.extend({
     },
 
     emergencyPhoneAreaCode: {
-      length: { maximum: 10 }
+      length: {
+        allowBlank: true,
+        maximum: 10
+      },
+      numericality: {
+        allowBlank: true,
+        onlyInteger: true
+      }
     },
 
     emergencyPhoneStart: {
-      length: { maximum: 10 }
+      length: {
+        allowBlank: true,
+        maximum: 10
+      },
+      numericality: {
+        allowBlank: true,
+        onlyInteger: true
+      }
     },
 
     emergencyPhoneEnd: {
-      length: { maximum: 10 }
+      length: {
+        allowBlank: true,
+        maximum: 10
+      },
+      numericality: {
+        allowBlank: true,
+        onlyInteger: true
+      }
     },
 
     restrictionsAccessibility: {
-      length: { maximum: 2000 }
+      length: {
+        allowBlank: true,
+        maximum: 2000
+      }
     },
 
     restrictionsDietary: {
-      length: { maximum: 2000 }
+      length: {
+        allowBlank: true,
+        maximum: 2000
+      }
     },
 
     restrictionsMisc: {
-      length: { maximum: 2000 }
+      length: {
+        allowBlank: true,
+        maximum: 2000
+      }
     },
 
     ccNumber: {
@@ -150,7 +207,12 @@ App.UserRaw = App.User.extend({
       presence: true
     },
 
-    ccExpiration: {
+    ccExpirationMonth: {
+      // TODO(johnliu): use stripe's validators.
+      presence: true
+    },
+
+    ccExpirationYear: {
       // TODO(johnliu): use stripe's validators.
       presence: true
     },

@@ -65,7 +65,7 @@ h3 {
 }
 
 .end {
-    margin-bottom: 1em;
+    margin-top: 1em;
 }
 
 a {
@@ -134,23 +134,27 @@ input[type=submit] {
 }
 
 @include input-text {
-    border-width: 1px;
-    border-color: #000;
+    border-width: 0px;
+    border-color: #CFCFCF;
     border-radius: 0;
-    @include box-shadow(0 1px 2px #CFCFCF);
+    @include box-shadow(0 1px 2px #9F9F9F);
 
     height: 1.25em;
     padding: 0.2em;
     outline: none;
 
     -webkit-appearance: none;
+
+    &:focus {
+        @include box-shadow(0 1px 2px #34003E);
+    }
 }
 
 textarea {
-    border-width: 1px;
-    border-color: #000;
+    border-width: 0px;
+    border-color: #CFCFCF;
     border-radius: 0;
-    @include box-shadow(0 1px 2px #CFCFCF);
+    @include box-shadow(0 1px 2px #9F9F9F);
 
     width: 100%;
     height: 8em;
@@ -161,14 +165,30 @@ textarea {
     outline: none;
 
     -webkit-appearance: none;
+
+    &:focus {
+        @include box-shadow(0 1px 2px #34003E);
+    }
 }
 
 .error {
     @include input-text {
-        border-color: red;
+        @include box-shadow(0 1px 2px #FF0000);
+
+        &:focus {
+            @include box-shadow(0 1px 2px #34003E);
+        }
     }
 
     textarea {
-        border-color: red;
+        @include box-shadow(0 1px 2px #FF0000);
+
+        &:focus {
+            @include box-shadow(0 1px 2px #34003E);
+        }
     }
+}
+
+.clear {
+    clear: both;
 }

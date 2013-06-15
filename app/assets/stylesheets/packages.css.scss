@@ -102,31 +102,46 @@
 
     .subsection {
         margin-bottom: 1em;
+
+        & > div {
+            margin: 0.5em;
+
+            @include screen-small {
+                margin-right: 0;
+            }
+            @include screen-medium {
+                margin-right: 0;
+            }
+            @include screen-large {
+                margin-right: 3.5%;
+            }
+        }
+    }
+
+    .subsection {
+        textarea {
+            @include box-sizing(border-box);
+        }
     }
 
     .subsection.text {
         & > div {
-            line-height: 2.0em;
-            margin: 0.5em;
-
+            line-height: 2em;
             @include screen-small {
                 text-align: left;
-                margin-right: 0;
             }
             @include screen-medium {
                 text-align: left;
-                margin-right: 0;
             }
             @include screen-large {
                 text-align: right;
-                margin-right: 3.5%;
             }
         }
 
         .input {
             @include input-text {
                 @include box-sizing(border-box);
-                height: 2.0em;
+                height: 2em;
                 padding-left: 0.5em;
                 padding-right: 0.5em;
 
@@ -155,16 +170,11 @@
 
             .input-inline-group {
                 float: right;
-                margin-bottom: 0.5em;
-                overflow: hidden;
+                overflow: none;
 
                 @include screen-small  { margin-left: 0;     width: 100%; }
                 @include screen-medium { margin-left: 0;     width: 100%; }
                 @include screen-large  { margin-left: 0.5em; width: 52.5%; }
-
-                &.end {
-                    margin-bottom: 1em;
-                }
             }
 
             @include input-text {
@@ -187,11 +197,12 @@
                 }
 
                 &.cc-number {
+                    text-align: left;
                     float: left;
                     margin-left: 0;
                     width: 75%;
                 }
-                &.cc-cvc {
+                &.cc-cvv {
                     float: right;
                     margin-left: 2.5%;
                     width: 22.5%;
@@ -226,8 +237,8 @@
                 display: inline;
 
                 input[type=radio] {
-                    margin-left: 0.25em;
-                    margin-right: 0.25em;
+                    margin-left: 0.2em;
+                    margin-right: 0.2em;
                 }
             }
         }

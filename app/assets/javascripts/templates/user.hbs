@@ -31,6 +31,7 @@
                         {{inputField phoneEnd as=tel placeholder="5678" inputConfig="class:phone phone-end"}}
                     {{/input}}
                 </div>
+                <div class="clear"></div>
             </div>
             {{#input discipline}}
                 {{labelField discipline text="Engineering discipline"}}
@@ -78,7 +79,7 @@
             <h3>Emergency contact</h3>
             {{#input emergencyName}}
                 {{labelField emergencyName text="Name"}}
-                {{inputField emergencyName placeholder="John"}}
+                {{inputField emergencyName placeholder="John Smith"}}
             {{/input}}
             {{#input emergencyEmail}}
                 {{labelField emergencyEmail text="Email address"}}
@@ -101,6 +102,7 @@
                         {{inputField emergencyPhoneEnd as=tel placeholder="5678" inputConfig="class:phone phone-end"}}
                     {{/input}}
                 </div>
+                <div class="clear"></div>
             </div>
         </div>
 
@@ -115,7 +117,7 @@
         <div class="subsection">
             <h3>List any accessibility requirements you may need.</h3>
             {{#input restrictionsAccessibility}}
-                {{hintField restrictionsAccessibility text="F!rosh Week is committed to U of T's accessibility guidelines."}}"
+                {{hintField restrictionsAccessibility text="F!rosh Week is committed to U of T's accessibility guidelines."}}
                 {{inputField restrictionsAccessibility as=text}}
             {{/input}}
         </div>
@@ -150,35 +152,37 @@
         <div class="subsection text">
             <h3>Pay by credit card</h3>
             <h4 class="small">Secure connection</h4>
-            {{#input cardName}}
-                {{labelField cardName text="Name on card"}}
-                {{inputField cardName placeholder="Jane Smith"}}
+            {{#input ccName}}
+                {{labelField ccName text="Name on card"}}
+                {{inputField ccName placeholder="Jane Smith"}}
             {{/input}}
             <div class="text-inline">
                 <label>Card number</label>
                 <div class="input-inline-group">
-                    {{#input cardNum}}
-                        {{inputField cardNum as=tel inputConfig="class:cc cc-number"}}
+                    {{#input ccNumber}}
+                        {{inputField ccNumber as=tel inputConfig="class:cc cc-number"}}
                     {{/input}}
-                    {{#input cardCVC}}
-                        {{inputField cardCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc"}}
+                    {{#input ccCVV}}
+                        {{inputField ccCVV as=tel placeholder="CVV" inputConfig="class:cc cc-cvv"}}
                     {{/input}}
                 </div>
+                <div class="clear"></div>
             </div>
             <div class="text-inline">
                 <label>Expires</label>
-                <div class="input-inline-group end">
-                    {{#input cardExpirationMonth}}
-                        {{inputField cardExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month"}}
+                <div class="input-inline-group">
+                    {{#input ccExpirationMonth}}
+                        {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month"}}
                     {{/input}}
-                    {{#input cardExpirationYear}}
-                        {{inputField cardExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year"}}
+                    {{#input ccExpirationYear}}
+                        {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year"}}
                     {{/input}}
                 </div>
+                <div class="clear"></div>
             </div>
         </div>
 
-        <div class="right-align">
+        <div class="right-align end">
             {{submit "Pay and register"}}
         </div>
     </div>
