@@ -3,6 +3,7 @@ SkuleOrientation::Application.routes.draw do
 
   namespace :api do
     resources :users
+    resources :packages
 
     match 'confirm/:id/:token' => "users#confirm"
   end
