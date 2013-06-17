@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
 
   def send_confirmation
     m = Mandrill::API.new
+    # TODO(amandeepg): actual data
     message = {
      :subject=> 'Welcome to F!rosh Week!',
      :from_name=> 'F!rosh Leedur',
