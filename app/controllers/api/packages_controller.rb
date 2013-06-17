@@ -5,11 +5,11 @@ class Api::PackagesController < ActionController::Base
   end
 
   def show
-    render :json => { "package" => Package.find(params[:id]) }
+    render :json => { 'package' => Package.find(params[:id]) }
   end
 
   def index
-    render :json => { "packages" => Package.all }
+    render :json => { 'packages' => Package.all }
   end
 
   def destroy

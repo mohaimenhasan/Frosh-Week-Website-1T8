@@ -28,19 +28,19 @@ require 'spec_helper'
 describe User do
 
   before { @user = User.new ({
-    email: "me@amandeep.ca",
-    discipline: "EngSci",
-    emergency_name: "Captain Kirk",
-    emergency_phone: "416 967 1111",
-    emergency_relationship: "Captain",
-    first_name: "Amandeep",
+    email: 'me@amandeep.ca',
+    discipline: 'EngSci',
+    emergency_name: 'Captain Kirk',
+    emergency_phone: '416 967 1111',
+    emergency_relationship: 'Captain',
+    first_name: 'Amandeep',
     group: 1,
-    last_name: "Grewal",
-    phone: "416 555 5555",
-    residence: "Home",
-    restrictions_dietary: "I eat ALL the things!",
-    restrictions_misc: "I prefer to meet no new people",
-    shirt_size: "M",
+    last_name: 'Grewal',
+    phone: '416 555 5555',
+    residence: 'Home',
+    restrictions_dietary: 'I eat ALL the things!',
+    restrictions_misc: 'I prefer to meet no new people',
+    shirt_size: 'M',
     verified: true
   })}
 
@@ -61,103 +61,103 @@ describe User do
   it { should respond_to(:shirt_size) }
   it { should respond_to(:verified) }
 
-  describe "when discipline is not present" do
-    before { @user.discipline = " " }
+  describe 'when discipline is not present' do
+    before { @user.discipline = ' ' }
     it {should_not be_valid }
   end
 
-  describe "when first_name is not present" do
-    before { @user.first_name = " " }
+  describe 'when first_name is not present' do
+    before { @user.first_name = ' ' }
     it {should_not be_valid }
   end
 
-  describe "when emergency_name is not present" do
-    before { @user.emergency_name = " " }
+  describe 'when emergency_name is not present' do
+    before { @user.emergency_name = ' ' }
     it {should_not be_valid }
   end
 
-  describe "when emergency_relationship is not present" do
-    before { @user.emergency_relationship = " " }
+  describe 'when emergency_relationship is not present' do
+    before { @user.emergency_relationship = ' ' }
     it {should_not be_valid }
   end
 
-  describe "when emergency_phone is not present" do
-    before { @user.emergency_phone = " " }
+  describe 'when emergency_phone is not present' do
+    before { @user.emergency_phone = ' ' }
     it {should_not be_valid }
   end
 
-  describe "when last_name is not present" do
-    before { @user.last_name = " " }
+  describe 'when last_name is not present' do
+    before { @user.last_name = ' ' }
     it {should_not be_valid }
   end
 
-  describe "when email is not present" do
-    before { @user.email = " " }
+  describe 'when email is not present' do
+    before { @user.email = ' ' }
     it {should_not be_valid }
   end
 
-  describe "when group is not present" do
-    before { @user.group = " " }
+  describe 'when group is not present' do
+    before { @user.group = ' ' }
     it {should_not be_valid }
   end
 
-  describe "when phone is not present" do
-    before { @user.phone = " " }
+  describe 'when phone is not present' do
+    before { @user.phone = ' ' }
     it {should_not be_valid }
   end
 
-  describe "when shirt_size is not present" do
-    before { @user.shirt_size = " " }
+  describe 'when shirt_size is not present' do
+    before { @user.shirt_size = ' ' }
     it {should_not be_valid }
   end
 
-  describe "when verified is not present" do
-    before { @user.verified = " " }
+  describe 'when verified is not present' do
+    before { @user.verified = ' ' }
     it {should_not be_valid }
   end
 
-  describe "when discipline is too long" do
-    before { @user.discipline = "a" * 51 }
+  describe 'when discipline is too long' do
+    before { @user.discipline = 'a' * 51 }
     it {should_not be_valid }
   end
 
-  describe "when first_name is too long" do
-    before { @user.first_name = "a" * 51 }
+  describe 'when first_name is too long' do
+    before { @user.first_name = 'a' * 51 }
     it {should_not be_valid }
   end
 
-  describe "when emergency_name is too long" do
-    before { @user.emergency_name = "a" * 51 }
+  describe 'when emergency_name is too long' do
+    before { @user.emergency_name = 'a' * 51 }
     it {should_not be_valid }
   end
 
-  describe "when emergency_relationship is too long" do
-    before { @user.emergency_relationship = "a" * 51 }
+  describe 'when emergency_relationship is too long' do
+    before { @user.emergency_relationship = 'a' * 51 }
     it {should_not be_valid }
   end
 
-  describe "when last_name is too long" do
-    before { @user.last_name = "a" * 51 }
+  describe 'when last_name is too long' do
+    before { @user.last_name = 'a' * 51 }
     it {should_not be_valid }
   end
 
-  describe "when residence is too long" do
-    before { @user.residence = "a" * 51 }
+  describe 'when residence is too long' do
+    before { @user.residence = 'a' * 51 }
     it {should_not be_valid }
   end
 
-  describe "when restrictions_dietary is too long" do
-    before { @user.restrictions_dietary = "a" * 251 }
+  describe 'when restrictions_dietary is too long' do
+    before { @user.restrictions_dietary = 'a' * 251 }
     it {should_not be_valid }
   end
 
-  describe "when restrictions_misc is too long" do
-    before { @user.restrictions_misc = "a" * 251 }
+  describe 'when restrictions_misc is too long' do
+    before { @user.restrictions_misc = 'a' * 251 }
     it {should_not be_valid }
   end
 
-  describe "when email format is invalid" do
-    it "should be invalid" do
+  describe 'when email format is invalid' do
+    it 'should be invalid' do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo. foo@bar_baz.com foo@bar+baz.com]
       addresses.each do |invalid_address|
         @user.email = invalid_address
@@ -166,8 +166,8 @@ describe User do
     end
   end
 
-  describe "when email format is valid" do
-    it "should be valid" do
+  describe 'when email format is valid' do
+    it 'should be valid' do
       addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
       addresses.each do |valid_address|
         @user.email = valid_address
@@ -176,9 +176,9 @@ describe User do
     end
   end
 
-  describe "when phone format is invalid" do
-    it "should be invalid" do
-      addresses = ["416967111", "41696711111", "416-967-11x11", "(4416) 967-1111", "(4x16) 967-1111"]
+  describe 'when phone format is invalid' do
+    it 'should be invalid' do
+      addresses = ['416967111', '41696711111', '416-967-11x11', '(4416) 967-1111', '(4x16) 967-1111']
       addresses.each do |invalid_address|
         @user.phone = invalid_address
         @user.should_not be_valid
@@ -186,9 +186,9 @@ describe User do
     end
   end
 
-  describe "when emergency_phone format is invalid" do
-    it "should be invalid" do
-      addresses = ["416967111", "41696711111", "416-967-11x11", "(4416) 967-1111", "(4x16) 967-1111"]
+  describe 'when emergency_phone format is invalid' do
+    it 'should be invalid' do
+      addresses = ['416967111', '41696711111', '416-967-11x11', '(4416) 967-1111', '(4x16) 967-1111']
       addresses.each do |invalid_address|
         @user.emergency_phone = invalid_address
         @user.should_not be_valid
@@ -196,9 +196,9 @@ describe User do
     end
   end
 
-  describe "when phone/emergency_phone format is valid" do
-    it "should be valid" do
-      addresses = ["416-967-1111", "(416) 967-1111", "(416) 9671111", "(416) 967 1111", "(416) 967.1111", "416.967.1111" ,"4169671111"]
+  describe 'when phone/emergency_phone format is valid' do
+    it 'should be valid' do
+      addresses = ['416-967-1111', '(416) 967-1111', '(416) 9671111', '(416) 967 1111', '(416) 967.1111', '416.967.1111' ,'4169671111']
       addresses.each do |valid_address|
         @user.phone = valid_address
         @user.emergency_phone = valid_address

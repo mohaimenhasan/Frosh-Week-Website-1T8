@@ -50,16 +50,16 @@ class User < ActiveRecord::Base
   def send_confirmation
     m = Mandrill::API.new
     message = {
-     :subject=> "Welcome to F!rosh Week!",
-     :from_name=> "F!rosh Leedur",
-     :text=>"Confirm your email. #{self.id} - #{self.confirmation_token}",
+     :subject=> 'Welcome to F!rosh Week!',
+     :from_name=> 'F!rosh Leedur',
+     :text=>'Confirm your email. #{self.id} - #{self.confirmation_token}',
      :to=>[
        {
          :email=> self.email,
-         :name=> "#{self.first_name} #{self.last_name}"
+         :name=> '#{self.first_name} #{self.last_name}'
        }
      ],
-     :from_email=>"sender@yourdomain.com"
+     :from_email=>'sender@yourdomain.com'
     }
     sending = m.messages.send message
     puts sending

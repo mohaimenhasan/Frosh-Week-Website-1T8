@@ -22,9 +22,9 @@ class Api::UsersController < ActionController::Base
       begin
         charge = Stripe::Charge.create(
           :amount => 1000, # amount in cents, again
-          :currency => "cad",
+          :currency => 'cad',
           :card => token,
-          :description => "payinguser@example.com"
+          :description => 'payinguser@example.com'
         )
       rescue Stripe::CardError => e
         render :json => { :status => 'card rejected' } and return
@@ -38,11 +38,11 @@ class Api::UsersController < ActionController::Base
   end
 
   def show
-    render :json => { "person" => User.find(params[:id]) }
+    render :json => { 'person' => User.find(params[:id]) }
   end
 
   def index
-    render :json => { "people" => User.all }
+    render :json => { 'people' => User.all }
   end
 
   def destroy
