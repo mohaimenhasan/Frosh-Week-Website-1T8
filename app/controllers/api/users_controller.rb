@@ -2,8 +2,13 @@ require 'pg'
 require 'awesome_print'
 require 'stripe'
 require 'yaml'
+require 'admin_authorization'
 
 class Api::UsersController < ActionController::Base
+
+  include AdminAuthorization
+
+  before_filter :authorize_admin, :except => [:create, :confirm]
 
   def create
     # Sample: POST http://0.0.0.0:3000/api/users?discipline=NY=&email=letsmakeithappen@itsgottobenow.com&emergency_name=Fido&emergency_phone=4165554444&emergency_relationship=dog&first_name=bob&group=1&last_name=last&phone=4161112222&shirt_size=M&skip_stripe=yes

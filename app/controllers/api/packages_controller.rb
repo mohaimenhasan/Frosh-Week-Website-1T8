@@ -1,8 +1,12 @@
+require 'admin_authorization'
+
 class Api::PackagesController < ActionController::Base
 
-  def create
-    render :json => { :status => 'denied' }
-  end
+  include AdminAuthorization
+
+  before_filter :authorize_admin, :except => [:show, :index]
+
+  def create; end
 
   def show
     render :json => { 'package' => Package.find(params[:id]) }
@@ -17,12 +21,8 @@ class Api::PackagesController < ActionController::Base
     render :json => { 'packages' => packages }
   end
 
-  def destroy
-    render :json => { :status => 'denied' }
-  end
+  def destroy; end
 
-  def update
-    render :json => { :status => 'denied' }
-  end
+  def update; end
 
 end
