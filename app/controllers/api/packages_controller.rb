@@ -9,7 +9,12 @@ class Api::PackagesController < ActionController::Base
   end
 
   def index
-    render :json => { 'packages' => Package.all }
+    if params.has_key? :name
+      packages = Package.where params.slice :name
+    else
+      packages = Package.all
+    end
+    render :json => { 'packages' => packages }
   end
 
   def destroy
