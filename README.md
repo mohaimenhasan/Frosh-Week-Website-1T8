@@ -19,6 +19,7 @@ Server and client code for orientation.skule.ca
 4.  Use single quotes for strings everywhere except when:
     1.  Single quotes are embedded in the string, i.e. "'Hello world', said the monster."
     2.  Variables are to be embedded in the string, i.e. "Hello #{world}"
+    3.  HTML and CSS files. Double quotes should be used strictly for these files.
 5.  Follow the ruby style guide: https://github.com/bbatsov/ruby-style-guide
 6.  Follow the rails style guide: https://github.com/bbatsov/rails-style-guide
 7.  Use JSHint.
