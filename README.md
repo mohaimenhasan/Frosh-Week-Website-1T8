@@ -16,3 +16,9 @@ Server and client code for orientation.skule.ca
 1.  2 spaces for indentation in JS and Ruby.
 2.  4 spaces for indentation in HTML, CSS.
 3.  Be consistent with what's already there.
+4.  Use single quotes for strings everywhere except when:
+    1.  Single quotes are embedded in the string, i.e. "'Hello world', said the monster."
+    2.  Variables are to be embedded in the string, i.e. "Hello #{world}"
+5.  Follow the ruby style guide: https://github.com/bbatsov/ruby-style-guide
+6.  Follow the rails style guide: https://github.com/bbatsov/rails-style-guide
+7.  Use JSHint.
