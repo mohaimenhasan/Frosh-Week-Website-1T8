@@ -1,4 +1,3 @@
-require 'pg'
 require 'awesome_print'
 require 'stripe'
 require 'yaml'
