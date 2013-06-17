@@ -22,3 +22,4 @@ Server and client code for orientation.skule.ca
 5.  Follow the ruby style guide: https://github.com/bbatsov/ruby-style-guide
 6.  Follow the rails style guide: https://github.com/bbatsov/rails-style-guide
 7.  Use JSHint.
+8.  TODOs should take the following form in code: `// TODO(username): gotta do this thing`
