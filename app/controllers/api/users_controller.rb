@@ -20,7 +20,7 @@ class Api::UsersController < ActionController::Base
       unless (Rails.env.development? and params.has_key? :skip_stripe) or params[:bursary_requested]
         result = new_user.process_payment(params[:stripe_token])
         unless result == :success
-          render :json => { :errors => result } and return
+          render :json => { :errors => result }, :status => 422 and return
         end
       end
 
@@ -31,7 +31,7 @@ class Api::UsersController < ActionController::Base
       new_user.save!
       render :json => { :person => new_user.attributes.except('confirmation_token') }
     else
-      render :json => { :errors => new_user.errors }
+      render :json => { :errors => new_user.errors }, :status => 422
     end
   end
 
