@@ -64,5 +64,8 @@ module SkuleOrientation
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.stripe_secret_key = ENV['STRIPE_SECRET_KEY']
+    config.mandrill_from = ENV['MANDRILL_FROM']
   end
 end

@@ -17,7 +17,7 @@ class Api::UsersController < ActionController::Base
     new_user.group = 2 #TODO(amandeepg): group_placer
 
     if new_user.valid?
-      unless (Rails.env.development? and params.has_key? :skip_stripe) or params[:bursary_requested]
+      unless (Rails.env.development? and params.has_key? :skip_stripe) or new_user.bursary_requested
         result = new_user.process_payment(params[:stripe_token])
         unless result == :success
           render :json => { :errors => result }, :status => 422 and return
