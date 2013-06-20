@@ -1,66 +1,61 @@
-require 'pg'
 require 'awesome_print'
-require 'stripe'
-require 'yaml'
+require 'admin_authorization'
 
 class Api::UsersController < ActionController::Base
 
+  include AdminAuthorization
+
+  before_filter :authorize_admin, :except => [:create, :confirm]
+
   def create
-    # Sample: POST http://0.0.0.0:3000/api/users?discipline=NY=&email=letsmakeithappen@itsgottobenow.com&emergency_name=Fido&emergency_phone=4165554444&emergency_relationship=dog&first_name=bob&group=1&last_name=last&phone=4161112222&shirt_size=M&skip_stripe=yes
-    params[:verified] = false
-    params[:bursary] = params.has_key?(:bursary) and params[:bursary].to_bool_with_default
+    # Sample: POST http://0.0.0.0:3000/api/users?discipline=NY&email=letsmakeithappen@itsgottobenow.com&emergency_name=Fido&emergency_phone=4165554444&emergency_relationship=dog&first_name=bob&last_name=last&phone=4161112222&shirt_size=M&gender=m&package_id=3&bursary_requested=true&emergency_email=bob@bob.com&skip_stripe=yes&skip_confirm_email=true
+    
+    new_user = User.new params.slice *User.accessible_attributes
+    new_user.verified = false
+    new_user.bursary_requested = (params.has_key?(:bursary_requested) and params[:bursary_requested].to_bool_with_default)
+    new_user.bursary_chosen = false
+    new_user.group = 2 #TODO(amandeepg): group_placer
 
-    unless params.has_key? :skip_stripe and params[:skip_stripe].to_bool
-      # Set your secret key: remember to change this to your live secret key in production
-      # See your keys here https://manage.stripe.com/account
-      # TODO(amandeepg): find out best way to load config files for heroku. environment variables?
-      Stripe.api_key = YAML.load_file('stripe_api_key.yml')
-
-      # Get the credit card details submitted by the form
-      token = params[:stripeToken]
-
-      # Create the charge on Stripe's servers - this will charge the user's card
-      # TODO(amandeepg): actual data for stripe
-      begin
-        charge = Stripe::Charge.create(
-          :amount => 1000, # amount in cents, again
-          :currency => 'cad',
-          :card => token,
-          :description => 'payinguser@example.com'
-        )
-      rescue Stripe::CardError => e
-        render :json => { :status => 'card rejected' } and return
+    if new_user.valid?
+      unless (Rails.env.development? and params.has_key? :skip_stripe) or params[:bursary_requested]
+        result = new_user.process_payment(params[:stripe_token])
+        unless result == :success
+          render :json => { :errors => result } and return
+        end
       end
-    end
 
-    new_user = User.new params.slice :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :group, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified, :bursary
-    new_user.save
-    ap new_user.errors
-    render :json => { :status => new_user.valid? }
+      unless Rails.env.development? and params.has_key? :skip_confirm_email
+        new_user.send_confirmation
+      end
+
+      new_user.save!
+      render :json => { :person => new_user.attributes.except('confirmation_token') }
+    else
+      render :json => { :errors => new_user.errors }
+    end
   end
 
   def show
-    render :json => { 'person' => User.find(params[:id]) }
+    render :json => { :person => User.find(params[:id]) }
   end
 
   def index
-    render :json => { 'people' => User.all }
+    render :json => { :people => User.all }
   end
 
   def destroy
     User.find(params[:id]).destroy
-    render :json => { :status => 'ok' }
+    render :json => { :status => :ok }
   end
 
   def update
-    User.find(params[:id]).update_attributes params.slice :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :group, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified
-    render :json => { :status => 'ok' }
+    render :json => { :status => :denied }
   end
 
   def confirm
     u = User.find(params[:id])
     u.verified = true if u.confirmation_token == params[:token]
-    render :json => { :status => u.verified }
+    render :json => { :status => u.attributes.except('confirmation_token') }
   end
 
 end
