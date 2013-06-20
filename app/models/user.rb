@@ -31,7 +31,7 @@ VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 class User < ActiveRecord::Base
 
-  attr_accessible :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :group, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified, :bursary, :confirmation_token
+  attr_accessible :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :group, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified, :bursary, :confirmation_token, :gender
 
   validates :discipline, :first_name, :last_name, :emergency_name, :emergency_relationship, presence: true, length: { maximum: 50 }
   validates :emergency_phone, :phone, presence: true, :phone_number => {:ten_digits => true}

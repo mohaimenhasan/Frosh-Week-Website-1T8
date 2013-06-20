@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613070922) do
+ActiveRecord::Schema.define(:version => 20130620081351) do
 
   create_table "packages", :force => true do |t|
     t.string   "name"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20130613070922) do
     t.datetime "updated_at",             :null => false
     t.boolean  "bursary"
     t.string   "confirmation_token"
+    t.string   "gender"
   end
 
 end
