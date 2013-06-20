@@ -23,15 +23,13 @@
 #  confirmation_token     :string(255)
 #
 
-
 require 'validates_phone_number'
 require 'mandrill'
+require 'stripe'
 
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 class User < ActiveRecord::Base
-  before_save :create_confirmation
-  after_save  :send_confirmation
 
   attr_accessible :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :group, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified, :bursary, :confirmation_token
 
@@ -43,26 +41,41 @@ class User < ActiveRecord::Base
   validates :bursary, inclusion: { :in => [true, false] }
   validates :residence, :restrictions_dietary, :restrictions_misc, length: { maximum: 50 }
 
-  def create_confirmation
-    self.confirmation_token = Digest::SHA1.hexdigest([Time.now, rand].join)
-  end
-
   def send_confirmation
+    self.confirmation_token = Digest::SHA1.hexdigest([Time.now, rand].join)
     m = Mandrill::API.new
     # TODO(amandeepg): actual data
     message = {
-     :subject=> 'Welcome to F!rosh Week!',
-     :from_name=> 'F!rosh Leedur',
-     :text=>'Confirm your email. #{self.id} - #{self.confirmation_token}',
-     :to=>[
+     :subject => 'Welcome to F!rosh Week!',
+     :from_name => 'F!rosh Leedur',
+     :text =>"Confirm your email. #{self.id} - #{self.confirmation_token}",
+     :to => [
        {
-         :email=> self.email,
-         :name=> '#{self.first_name} #{self.last_name}'
+         :email => self.email,
+         :name => '#{self.first_name} #{self.last_name}'
        }
      ],
-     :from_email=>'sender@yourdomain.com'
+     :from_email => ENV['MANDRILL_FROM']
     }
-    sending = m.messages.send message
-    puts sending
+    m.messages.send message
+  end
+
+  def process_payment(token)
+    Stripe.api_key = ENV['STRIPE_APIKEY']
+
+    # Create the charge on Stripe's servers - this will charge the user's card
+    begin
+      Stripe::Charge.create(
+        :amount => 1000, # amount in cents, again
+        :currency => 'cad',
+        :card => token,
+        :description => self.email,
+      )
+
+      :success
+    rescue Exception => e  
+      e.message
+    end
   end
 end
+

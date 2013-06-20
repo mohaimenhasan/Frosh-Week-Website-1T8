@@ -18,4 +18,4 @@
 .idea
 
 # Sensitive data
-stripe_api_key.yml
+.env
