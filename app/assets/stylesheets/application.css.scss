@@ -192,3 +192,11 @@ textarea {
 .clear {
     clear: both;
 }
+
+input[type=radio] {
+    visibility: hidden;
+}
+
+input[type=checkbox] {
+    visibility: hidden;
+}

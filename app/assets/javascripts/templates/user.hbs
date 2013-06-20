@@ -162,8 +162,8 @@
                     {{#input ccNumber}}
                         {{inputField ccNumber as=tel inputConfig="class:cc cc-number"}}
                     {{/input}}
-                    {{#input ccCVV}}
-                        {{inputField ccCVV as=tel placeholder="CVV" inputConfig="class:cc cc-cvv"}}
+                    {{#input ccCVC}}
+                        {{inputField ccCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc"}}
                     {{/input}}
                 </div>
                 <div class="clear"></div>
@@ -171,10 +171,10 @@
             <div class="text-inline">
                 <label>Expires</label>
                 <div class="input-inline-group">
-                    {{#input ccExpirationMonth}}
+                    {{#input ccExpiration}}
                         {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month"}}
                     {{/input}}
-                    {{#input ccExpirationYear}}
+                    {{#input ccExpiration}}
                         {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year"}}
                     {{/input}}
                 </div>

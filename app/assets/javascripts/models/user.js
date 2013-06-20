@@ -1,22 +1,23 @@
-App.User = DS.Model.extend(Ember.Validations.Mixin);
-App.User.reopen({
+App.User = DS.Model.extend({
   /* Meta Information */
   email: DS.attr('string'),
   verified: DS.attr('boolean'),
-  creation: DS.attr('date'),
+  createdAt: DS.attr('date'),
 
   /* Basic Information */
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
+  gender: DS.attr('string'),
   phone: DS.attr('string'),
   residence: DS.attr('string'),
   discipline: DS.attr('string'),
 
   /* Package Information */
-  packageType: DS.hasMany('App.Package'),
+  packageId: DS.attr('number'),
   shirtSize: DS.attr('string'),
   group: DS.attr('string'),
-  bursary: DS.attr('boolean'),
+  bursaryRequested: DS.attr('boolean'),
+  bursaryChosen: DS.attr('boolean'),
 
   /* Emergency Contact Information */
   emergencyName: DS.attr('string'),
@@ -29,37 +30,19 @@ App.User.reopen({
   restrictionsAccessibility: DS.attr('string'),
   restrictionsMisc: DS.attr('string'),
 
-  /* Credit Card Information (not stored server side) */
-  ccNumber: DS.attr('string'),
-  ccExpiration: DS.attr('date'),
-  ccName: DS.attr('string'),
-  ccCVV: DS.attr('number')
+  /* Credit Card Token (not stored server side) */
+  ccToken: DS.attr('string')
 });
 
-App.UserRaw = App.User.extend({
-  phoneAreaCode: DS.attr('number'),
-  phoneStart: DS.attr('number'),
-  phoneEnd: DS.attr('number'),
-
-  emergencyPhoneAreaCode: DS.attr('number'),
-  emergencyPhoneStart: DS.attr('number'),
-  emergencyPhoneEnd: DS.attr('number'),
-
-  shirtSizeS: DS.attr('boolean'),
-  shirtSizeM: DS.attr('boolean'),
-  shirtSizeL: DS.attr('boolean'),
-  shirtSizeX: DS.attr('boolean'),
-
-  ccExpirationMonth: DS.attr('number'),
-  ccExpirationYear: DS.attr('number'),
-
-  /* Client side validations */
+App.UserForm = Ember.Object.extend(Ember.Validations.Mixin)
+App.UserForm.reopen({
   validations: {
     email: {
       presence: true,
       length: { maximum: 50 },
       format: {
-        // TODO(johnliu): basic regex for email validation.
+        with: /.+@.+\..+/i,
+        allowBlank: true
       }
     },
 
@@ -139,7 +122,8 @@ App.UserRaw = App.User.extend({
       presence: true,
       length: { maximum: 50 },
       format: {
-        // TODO(johnliu): basic email regex format.
+        with: /.+@.+\..+/i,
+        allowBlank: true
       }
     },
 
@@ -203,28 +187,67 @@ App.UserRaw = App.User.extend({
     },
 
     ccNumber: {
-      // TODO(johnliu): use stripe's validators.
-      presence: true
+      absence: {
+        unless: function(object, validator) {
+          return Stripe.card.validateCardNumber(object.get('ccNumber'));
+        }
+      },
+      presence: {
+        unless: function(object, validator) {
+          return Stripe.card.validateCardNumber(object.get('ccNumber'));
+        }
+      }
     },
 
-    ccExpirationMonth: {
-      // TODO(johnliu): use stripe's validators.
-      presence: true
-    },
+    ccExpiration: {
+      absence: {
+        unless: function(object, validator) {
+          var month = object.get('ccExpirationMonth');
+          var year = object.get('ccExpirationYear');
 
-    ccExpirationYear: {
-      // TODO(johnliu): use stripe's validators.
-      presence: true
+          if (month || year) {
+            month = parseInt(month, 10);
+            year = parseInt(year, 10) + 2000;
+            return Stripe.card.validateExpiry(month, year);
+          }
+
+          return false;
+        }
+      },
+      presence: {
+        unless: function(object, validator) {
+          var month = object.get('ccExpirationMonth');
+          var year = object.get('ccExpirationYear');
+
+          if (month || year) {
+            month = parseInt(month, 10);
+            year = parseInt(year, 10) + 2000;
+            return Stripe.card.validateExpiry(month, year);
+          }
+
+          return false;
+        }
+      }
     },
 
     ccName: {
-      // TODO(johnliu): use stripe's validators.
-      presence: true
+      presence: true,
+      length: { maximum: 50 }
     },
 
-    ccCVV: {
-      // TODO(johnliu): use stripe's validators.
-      presence: true
+    ccCVC: {
+      absence: {
+        unless: function(object, validator) {
+          var cvc = object.get('ccCVC');
+          return cvc.length > 0 && Stripe.card.validateCVC(cvc);
+        }
+      },
+      presence: {
+        unless: function(object, validator) {
+          var cvc = object.get('ccCVC');
+          return cvc.length > 0 && Stripe.card.validateCVC(cvc);
+        }
+      }
     }
   }
 });
