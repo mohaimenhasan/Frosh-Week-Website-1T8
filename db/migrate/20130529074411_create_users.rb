@@ -15,6 +15,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :emergency_phone
       t.string :restrictions_dietary
       t.string :restrictions_misc
+      t.boolean :bursary
+      t.string :confirmation_token
+      t.string :gender
 
       t.timestamps
     end
