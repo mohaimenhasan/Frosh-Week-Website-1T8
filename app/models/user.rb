@@ -21,6 +21,7 @@
 #  updated_at             :datetime         not null
 #  bursary                :boolean
 #  confirmation_token     :string(255)
+#  gender                 :string(255)
 #
 
 require 'validates_phone_number'
