@@ -70,13 +70,13 @@ class User < ActiveRecord::Base
          :name => '#{self.first_name} #{self.last_name}'
        }
      ],
-     :from_email => ENV['MANDRILL_FROM']
+     :from_email => Rails.application.config.mandrill_from
     }
     m.messages.send message
   end
 
   def process_payment(token)
-    Stripe.api_key = ENV['STRIPE_APIKEY']
+    Stripe.api_key = Rails.application.config.stripe_secret_key
 
     # Create the charge on Stripe's servers - this will charge the user's card
     begin
