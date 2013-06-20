@@ -7,9 +7,9 @@
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "modernizr" %>
     <script type="text/javascript" src="//use.typekit.net/llg4dti.js"></script>
-    <script type="text/javascript" src="https://js.stripe.com/v2/">
-        <!-- TODO(johnliu): Set based on environment -->
-        Stripe.setPublishableKey('pk_test_KrFLNJf4EqWbQ8uStvEn6Z79')
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script>
+        Stripe.setPublishableKey('<%= Rails.application.config.stripe_publishable_key %>')
     </script>
     <%= javascript_include_tag "application" %>
     <meta name="description" content="F!rosh Week 1T3">
