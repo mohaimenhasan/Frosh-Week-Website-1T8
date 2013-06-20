@@ -8,16 +8,16 @@ class Api::UsersController < ActionController::Base
   before_filter :authorize_admin, :except => [:create, :confirm]
 
   def create
-    # Sample: POST http://0.0.0.0:3000/api/users?discipline=NY&email=letsmakeithappen@itsgottobenow.com&emergency_name=Fido&emergency_phone=4165554444&emergency_relationship=dog&first_name=bob&last_name=last&phone=4161112222&shirt_size=M&gender=m&skip_stripe=yes&skip_confirm_email=true
-    params[:verified] = false
-    params[:bursary] = params.has_key?(:bursary) and params[:bursary].to_bool_with_default
-
-    new_user = User.new params.slice :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified, :bursary, :gender
-    new_user.group = 2
-    ap new_user.errors
+    # Sample: POST http://0.0.0.0:3000/api/users?discipline=NY&email=letsmakeithappen@itsgottobenow.com&emergency_name=Fido&emergency_phone=4165554444&emergency_relationship=dog&first_name=bob&last_name=last&phone=4161112222&shirt_size=M&gender=m&package_id=3&bursary_requested=true&emergency_email=bob@bob.com&skip_stripe=yes&skip_confirm_email=true
+    
+    new_user = User.new params.slice *User.accessible_attributes
+    new_user.verified = false
+    new_user.bursary_requested = (params.has_key?(:bursary_requested) and params[:bursary_requested].to_bool_with_default)
+    new_user.bursary_chosen = false
+    new_user.group = 2 #TODO(amandeepg): group_placer
 
     if new_user.valid?
-      unless Rails.env.development? and params.has_key? :skip_stripe
+      unless (Rails.env.development? and params.has_key? :skip_stripe) or params[:bursary_requested]
         result = new_user.process_payment(params[:stripe_token])
         unless result == :success
           render :json => { :errors => result } and return
@@ -49,8 +49,7 @@ class Api::UsersController < ActionController::Base
   end
 
   def update
-    User.find(params[:id]).update_attributes params.slice :discipline, :email, :emergency_name, :emergency_phone, :emergency_relationship, :first_name, :last_name, :phone, :residence, :restrictions_dietary, :restrictions_misc, :shirt_size, :verified, :gender
-    render :json => { :status => :ok }
+    render :json => { :status => :denied }
   end
 
   def confirm
