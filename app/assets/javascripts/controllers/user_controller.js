@@ -28,37 +28,52 @@ App.UserController = Ember.ObjectController.extend({
       content.get('emergencyPhoneEnd').toString();
 
     var userCCExpiration = new Date(content.get('ccExpirationYear') + 2000,
-      content.get('ccExpirationMonth') - 1, 01);
+      content.get('ccExpirationMonth') - 1, 1);
 
-    var transaction = this.get('store').transaction();
-    var user = transaction.createRecord(App.User, {
-      email: content.get('email'),
-      verified: false,
-      // creation date must be set on server.
+    var handleTransaction = function(status, response) {
+      if (response.error) {
+        console.log(response.error);
+      } else {
+        console.log(response['id']);
 
-      firstName: content.get('firstName'),
-      lastName: content.get('lastName'),
-      phone: userPhone,
-      residence: content.get('residence'),
-      discipline: content.get('discipline'),
+        var transaction = this.get('store').transaction();
+        var user = transaction.createRecord(App.User, {
+          email: content.get('email'),
+          verified: false,
+          // creation date must be set on server.
 
-      packageId: selectedPackage.get('id'),
-      shirtSize: userShirtSize,
-      // group must be set on the server.
-      bursaryRequested: this.get('bursary') == 'on',
-      // bursaryChosen must be set on the server.
+          firstName: content.get('firstName'),
+          lastName: content.get('lastName'),
+          phone: userPhone,
+          residence: content.get('residence'),
+          discipline: content.get('discipline'),
 
-      emergencyName: content.get('emergencyName'),
-      emergencyEmail: content.get('emergencyEmail'),
-      emergencyRelationship: content.get('emergencyRelationship'),
-      emergencyPhone: userEmergencyPhone,
+          packageId: selectedPackage.get('id'),
+          shirtSize: userShirtSize,
+          // group must be set on the server.
+          bursaryRequested: this.get('bursary') == 'on',
+          // bursaryChosen must be set on the server.
 
-      restrictionsDietary: content.get('restrictionsDietary'),
-      restrictionsAccessibility: content.get('restrictionsAccessibility'),
-      restrictionsMisc: content.get('restrictionsMisc'),
+          emergencyName: content.get('emergencyName'),
+          emergencyEmail: content.get('emergencyEmail'),
+          emergencyRelationship: content.get('emergencyRelationship'),
+          emergencyPhone: userEmergencyPhone,
 
-      ccToken: null // TODO(johnliu): add stripe token.
-    });
-    transaction.commit();
+          restrictionsDietary: content.get('restrictionsDietary'),
+          restrictionsAccessibility: content.get('restrictionsAccessibility'),
+          restrictionsMisc: content.get('restrictionsMisc'),
+
+          ccToken: response['id']
+        });
+        transaction.commit();
+      }
+    };
+
+    Stripe.card.createToken({
+        number: content.get('ccNumber'),
+        cvc: content.get('ccCVC'),
+        exp_month: userCCExpiration.getMonth(),
+        exp_year: userCCExpiration.getYear()
+      }, handleTransaction);
   }
 });
