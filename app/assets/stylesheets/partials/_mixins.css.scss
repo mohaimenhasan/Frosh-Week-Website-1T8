@@ -30,7 +30,7 @@
 }
 
 @mixin box-sizing($sizing) {
-    -moz-box-shadow: $sizing;
+    -moz-box-sizing: $sizing;
     -webkit-box-sizing: $sizing;
     box-sizing: $sizing;
 }
