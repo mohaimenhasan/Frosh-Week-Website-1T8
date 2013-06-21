@@ -23,6 +23,39 @@ body {
     @include anti-aliasing;
 }
 
+select {
+    border: 0;
+    border-radius: 0;
+    @include box-shadow(0 1px 2px #9F9F9F);
+    @include box-sizing(border-box);
+
+    color: #222222;
+    height: 2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+
+    @include screen-small {
+        float: none;
+        margin-left: 0;
+        width: 100%;
+    }
+    @include screen-medium {
+        float: none;
+        margin-left: 0;
+        width: 100%;
+    }
+    @include screen-large {
+        float: right;
+        margin-left: 0.5em;
+        width: 52.5%;
+    }
+
+    -webkit-appearance: none;
+    @include anti-aliasing;
+}
+
 .container {
     margin: 0 auto;
     width: 100%;

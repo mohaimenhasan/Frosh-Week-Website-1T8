@@ -44,6 +44,7 @@ App.UserController = Ember.ObjectController.extend({
 
           firstName: content.get('firstName'),
           lastName: content.get('lastName'),
+          gender: content.get('gender'),
           phone: userPhone,
           residence: content.get('residence'),
           discipline: content.get('discipline'),

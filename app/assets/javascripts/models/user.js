@@ -34,6 +34,25 @@ App.User = DS.Model.extend({
   ccToken: DS.attr('string')
 });
 
+App.UserFormEngineeringDisciplines = [
+  'Engineering Science',
+  'Track One',
+  'Chemical',
+  'Civil',
+  'Computer',
+  'Electrical',
+  'Industrial',
+  'Materials',
+  'Mechanical',
+  'Mineral'
+];
+
+App.UserFormGender = [
+  '',
+  'Male',
+  'Female'
+];
+
 App.UserForm = Ember.Object.extend(Ember.Validations.Mixin)
 App.UserForm.reopen({
   validations: {
@@ -54,6 +73,12 @@ App.UserForm.reopen({
     lastName: {
       presence: true,
       length: { maximum: 50 }
+    },
+
+    gender: {
+      inclusion: {
+        in: App.UserFormGender
+      }
     },
 
     phoneAreaCode: {
@@ -99,17 +124,7 @@ App.UserForm.reopen({
     discipline: {
       presence: true,
       inclusion: {
-        // TODO(johnliu): define somewhere.
-        in: [ 'Engineering Science',
-              'Chemical',
-              'Industrial',
-              'Mechanical',
-              'Mineral',
-              'Civil',
-              'Electrical',
-              'Computer',
-              'Material Science',
-              'Track One' ]
+        in: App.UserFormEngineeringDisciplines
       }
     },
 

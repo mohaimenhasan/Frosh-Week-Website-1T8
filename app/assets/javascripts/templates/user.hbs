@@ -18,6 +18,15 @@
                 {{labelField email text="Your email address"}}
                 {{inputField email as=email placeholder="jane@example.com"}}
             {{/input}}
+            {{#input gender}}
+                {{labelField gender text="Gender"}}
+                {{inputField gender
+                    as='select'
+                    collection='App.UserFormGender'
+                    selection='gender'
+                    optionValuePath='content'
+                    optionLabelPath='content'}}
+            {{/input}}
             <div class="text-inline">
                 <label>Phone number</label>
                 <div class="input-inline-group">
@@ -35,7 +44,12 @@
             </div>
             {{#input discipline}}
                 {{labelField discipline text="Engineering discipline"}}
-                {{inputField discipline placeholder="Engineering Science"}}
+                {{inputField discipline
+                             as='select'
+                             collection='App.UserFormEngineeringDisciplines'
+                             selection='discipline'
+                             optionValuePath='content'
+                             optionLabelPath='content'}}
             {{/input}}
             {{#input residence}}
                 {{labelField residence text="Residence"}}
