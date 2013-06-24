@@ -24,7 +24,7 @@ body {
 }
 
 select {
-    border: 0;
+    border-width: 0;
     border-radius: 0;
     @include box-shadow(0 1px 2px #9F9F9F);
     @include box-sizing(border-box);
@@ -35,6 +35,7 @@ select {
     padding-right: 0.5em;
     padding-top: 0.4em;
     padding-bottom: 0.4em;
+    outline: none;
 
     @include screen-small {
         float: none;
@@ -167,8 +168,7 @@ input[type=submit] {
 }
 
 @include input-text {
-    border-width: 0px;
-    border-color: #CFCFCF;
+    border-width: 0;
     border-radius: 0;
     @include box-shadow(0 1px 2px #9F9F9F);
 
@@ -184,8 +184,7 @@ input[type=submit] {
 }
 
 textarea {
-    border-width: 0px;
-    border-color: #CFCFCF;
+    border-width: 0;
     border-radius: 0;
     @include box-shadow(0 1px 2px #9F9F9F);
 
@@ -226,10 +225,42 @@ textarea {
     clear: both;
 }
 
-input[type=radio] {
-    visibility: hidden;
+input[type=radio], input[type=checkbox] {
+    display: none;
 }
 
-input[type=checkbox] {
-    visibility: hidden;
+input[type=radio] + label {
+    @include border-radius(100%);
+}
+
+input[type=checkbox] + label {
+    color: #FFFFFF;
+}
+
+input[type=radio] + label, input[type=checkbox] + label {
+    margin: 0 0.25em;
+
+    cursor: pointer;
+    border: 0;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #FFFFFF;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+
+    @include box-shadow(0 1px 2px #9F9F9F);
+    @include box-sizing(border-box);
+
+    &:hover {
+        background-color: #9F9F9F;
+    }
+}
+
+input[type=radio]:checked + label, input[type=checkbox]:checked + label {
+    color: #FFFFFF;
+    background-color: #34003E;
 }

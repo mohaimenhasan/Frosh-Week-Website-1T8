@@ -31,13 +31,13 @@
                 <label>Phone number</label>
                 <div class="input-inline-group">
                     {{#input phoneAreaCode}}
-                        {{inputField phoneAreaCode as=tel placeholder="647" inputConfig="class:phone phone-area"}}
+                        {{inputField phoneAreaCode as=tel placeholder="647" inputConfig="maxlength:3;class:phone phone-area"}}
                     {{/input}}
                     {{#input phoneStart}}
-                        {{inputField phoneStart as=tel placeholder="123" inputConfig="class:phone phone-start"}}
+                        {{inputField phoneStart as=tel placeholder="123" inputConfig="maxlength:3;class:phone phone-start"}}
                     {{/input}}
                     {{#input phoneEnd}}
-                        {{inputField phoneEnd as=tel placeholder="5678" inputConfig="class:phone phone-end"}}
+                        {{inputField phoneEnd as=tel placeholder="5678" inputConfig="maxlength:4;class:phone phone-end"}}
                     {{/input}}
                 </div>
                 <div class="clear"></div>
@@ -67,19 +67,23 @@
             <div class="choices">
                 {{#input shirtSizeS}}
                     {{inputField shirtSizeS as=radio inputConfig="name:shirt"}}
-                    {{labelField shirtSizeS text="S"}}
+                    {{labelField shirtSizeS text=" "}}
+                    <label>S</label>
                 {{/input}}
                 {{#input shirtSizeM}}
                     {{inputField shirtSizeM as=radio inputConfig="name:shirt"}}
-                    {{labelField shirtSizeM text="M"}}
+                    {{labelField shirtSizeM text=" "}}
+                    <label>M</label>
                 {{/input}}
                 {{#input shirtSizeL}}
                     {{inputField shirtSizeL as=radio inputConfig="name:shirt"}}
-                    {{labelField shirtSizeL text="L"}}
+                    {{labelField shirtSizeL text=" "}}
+                    <label>L</label>
                 {{/input}}
                 {{#input shirtSizeX}}
                     {{inputField shirtSizeX as=radio inputConfig="name:shirt"}}
-                    {{labelField shirtSizeX text="XL"}}
+                    {{labelField shirtSizeX text=" "}}
+                    <label>XL</label>
                 {{/input}}
             </div>
         </div>
@@ -107,13 +111,13 @@
                 <label>Phone number</label>
                 <div class="input-inline-group">
                     {{#input emergencyPhoneAreaCode}}
-                        {{inputField emergencyPhoneAreaCode as=tel placeholder="647" inputConfig="class:phone phone-area"}}
+                        {{inputField emergencyPhoneAreaCode as=tel placeholder="647" inputConfig="maxlength:3;class:phone phone-area"}}
                     {{/input}}
                     {{#input emergencyPhoneStart}}
-                        {{inputField emergencyPhoneStart as=tel placeholder="123" inputConfig="class:phone phone-start"}}
+                        {{inputField emergencyPhoneStart as=tel placeholder="123" inputConfig="maxlength:3;class:phone phone-start"}}
                     {{/input}}
                     {{#input emergencyPhoneEnd}}
-                        {{inputField emergencyPhoneEnd as=tel placeholder="5678" inputConfig="class:phone phone-end"}}
+                        {{inputField emergencyPhoneEnd as=tel placeholder="5678" inputConfig="maxlength:4;class:phone phone-end"}}
                     {{/input}}
                 </div>
                 <div class="clear"></div>
@@ -158,7 +162,8 @@
             </span>
             <div class="checkboxes">
                 {{#input bursary}}
-                    {{inputField bursary as=checkbox}}{{labelField bursary text="Yes"}}
+                    {{inputField bursary as=checkbox}}{{labelField bursary text="✔"}}
+                    <label>Yes</label>
                 {{/input}}
             </div>
         </div>

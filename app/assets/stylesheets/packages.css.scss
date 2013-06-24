@@ -226,28 +226,30 @@
     .radio {
         span.input {
             margin-right: 1.5em;
+            vertical-align: middle;
         }
 
         .choices {
             display: inline-block;
-            margin: 0.25em;
 
             .input {
-                margin-right: 1em;
-                display: inline;
+                margin-left: 0.5em;
+                margin-right: 0.5em;
+                display: inline-block;
+                height: auto;
 
-                input[type=radio] {
-                    margin-left: 0.2em;
-                    margin-right: 0.2em;
+                label {
+                    line-height: 1.8em;
+                    vertical-align: middle;
                 }
             }
         }
     }
 
     .checkboxes {
-        input[type=checkbox] {
-            margin-left: 0.25em;
-            margin-right: 0.25em;
+        label {
+            line-height: 1.2em;
+            vertical-align: middle;
         }
     }
 }
