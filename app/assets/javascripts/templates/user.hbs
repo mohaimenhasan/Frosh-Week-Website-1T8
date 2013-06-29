@@ -202,7 +202,9 @@
         </div>
 
         <div class="right-align end">
-            {{submit "Pay and register"}}
+            {{#submit class="ladda-button" data-style="zoom-out"}}
+                <span class="ladda-label">Pay and register</span>
+            {{/submit}}
         </div>
     </div>
 {{/formFor}}

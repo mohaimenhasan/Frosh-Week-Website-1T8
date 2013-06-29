@@ -29,15 +29,17 @@ App.UserController = Ember.ObjectController.extend({
 
     var userCCExpiration = new Date(content.get('ccExpirationYear') + 2000,
       content.get('ccExpirationMonth') - 1, 1);
+    var submitButton = Ladda.create(document.querySelector('button[type=submit]'));
 
+    var that = this;
     var handleTransaction = function(status, response) {
       if (response.error) {
         console.log(response.error);
       } else {
         console.log(response['id']);
 
-        var transaction = this.get('store').transaction();
-        var user = transaction.createRecord(App.User, {
+        var transaction = that.get('store').transaction();
+        transaction.createRecord(App.User, {
           email: content.get('email'),
           verified: false,
           // creation date must be set on server.
@@ -68,8 +70,10 @@ App.UserController = Ember.ObjectController.extend({
         });
         transaction.commit();
       }
+      submitButton.stop();
     };
 
+    submitButton.start();
     Stripe.card.createToken({
         number: content.get('ccNumber'),
         cvc: content.get('ccCVC'),

@@ -181,6 +181,7 @@ Ember.Handlebars.registerHelper('submit', function(value, options) {
   }
   options.hash.context = this;
   options.hash.value = value || 'Submit';
+  options.hash.isBlock = !!(options.fn);
   return Ember.Handlebars.helpers.view.call(this, Ember.EasyForm.Submit, options);
 });
 
@@ -413,13 +414,12 @@ Ember.EasyForm.Select = Ember.Select.extend();
 
 
 (function() {
-Ember.EasyForm.Submit = Ember.View.extend({
-  tagName: 'input',
-  attributeBindings: ['type', 'value'],
+Ember.EasyForm.Submit = Ember.EasyForm.BaseView.extend({
+  tagName: 'button',
+  attributeBindings: ['type', 'data-style'],
   type: 'submit',
   init: function() {
     this._super();
-    this.set('value', this.value);
   },
   onClick: function() {
     if (this.get('context').validate()) {

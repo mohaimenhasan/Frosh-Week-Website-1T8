@@ -1,6 +1,7 @@
 /*
  *= require normalize-rails
  *= require grid
+ *= require ladda-themeless
  *= require_self
  *= require_tree .
  */
@@ -28,6 +29,9 @@ select {
     border-radius: 0;
     @include box-shadow(0 1px 2px #9F9F9F);
     @include box-sizing(border-box);
+    &:focus {
+        @include box-shadow(0 1px 2px #34003E);
+    }
 
     color: #222222;
     height: 2em;
@@ -153,16 +157,28 @@ button {
     padding: 0.5em 2em;
     @include border-radius(0.4em);
 
-    &.alt {
-        background-color: #34003E;
+    &:hover {
+        background-color: #808080;
     }
 
     &.go {
         background-color: #4F7A27;
+
+        &:hover {
+            background-color: #6EA634;
+        }
+
+        &:disabled {
+            background-color: #606060;
+
+            &:hover {
+                background-color: #606060;
+            }
+        }
     }
 }
 
-input[type=submit] {
+input[type=submit], button[type=submit] {
     @extend button;
     @extend button.go;
 }
@@ -238,7 +254,7 @@ input[type=checkbox] + label {
 }
 
 input[type=radio] + label, input[type=checkbox] + label {
-    margin: 0 0.25em;
+    margin: 0 0.125em;
 
     cursor: pointer;
     border: 0;
