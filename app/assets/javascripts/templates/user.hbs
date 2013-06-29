@@ -62,30 +62,16 @@
         <div class="registration-step-num">2</div>
         <h2>Customize your F!rosh Kit</h2>
 
-        <div class="subsection radio">
-            <span class="input"><label>What's your t-shirt size?</label></span>
-            <div class="choices">
-                {{#input shirtSizeS}}
-                    {{inputField shirtSizeS as=radio inputConfig="name:shirt"}}
-                    {{labelField shirtSizeS text=" "}}
-                    <label>S</label>
-                {{/input}}
-                {{#input shirtSizeM}}
-                    {{inputField shirtSizeM as=radio inputConfig="name:shirt"}}
-                    {{labelField shirtSizeM text=" "}}
-                    <label>M</label>
-                {{/input}}
-                {{#input shirtSizeL}}
-                    {{inputField shirtSizeL as=radio inputConfig="name:shirt"}}
-                    {{labelField shirtSizeL text=" "}}
-                    <label>L</label>
-                {{/input}}
-                {{#input shirtSizeX}}
-                    {{inputField shirtSizeX as=radio inputConfig="name:shirt"}}
-                    {{labelField shirtSizeX text=" "}}
-                    <label>XL</label>
-                {{/input}}
-            </div>
+        <div class="subsection text">
+            {{#input shirtSize}}
+              {{labelField shirtSize text="What's your t-shirt size?"}}
+              {{inputField shirtSize
+                           as='select'
+                           collection='App.UserFormShirtSize'
+                           selection='shirtSize'
+                           optionValuePath='content'
+                           optionLabelPath='content'}}
+            {{/input}}
         </div>
     </div>
 
@@ -168,38 +154,40 @@
             </div>
         </div>
 
-        <div class="subsection text">
-            <h3>Pay by credit card</h3>
-            <h4 class="small">Secure connection</h4>
-            {{#input ccName}}
+        {{#unless bursary}}
+            <div class="subsection text">
+                <h3>Pay by credit card</h3>
+                <h4 class="small">Secure connection</h4>
+              {{#input ccName}}
                 {{labelField ccName text="Name on card"}}
                 {{inputField ccName placeholder="Jane Smith"}}
-            {{/input}}
-            <div class="text-inline">
-                <label>Card number</label>
-                <div class="input-inline-group">
-                    {{#input ccNumber}}
+              {{/input}}
+                <div class="text-inline">
+                    <label>Card number</label>
+                    <div class="input-inline-group">
+                      {{#input ccNumber}}
                         {{inputField ccNumber as=tel inputConfig="class:cc cc-number"}}
-                    {{/input}}
-                    {{#input ccCVC}}
+                      {{/input}}
+                      {{#input ccCVC}}
                         {{inputField ccCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc"}}
-                    {{/input}}
+                      {{/input}}
+                    </div>
+                    <div class="clear"></div>
                 </div>
-                <div class="clear"></div>
-            </div>
-            <div class="text-inline">
-                <label>Expires</label>
-                <div class="input-inline-group">
-                    {{#input ccExpiration}}
+                <div class="text-inline">
+                    <label>Expires</label>
+                    <div class="input-inline-group">
+                      {{#input ccExpiration}}
                         {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month"}}
-                    {{/input}}
-                    {{#input ccExpiration}}
+                      {{/input}}
+                      {{#input ccExpiration}}
                         {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year"}}
-                    {{/input}}
+                      {{/input}}
+                    </div>
+                    <div class="clear"></div>
                 </div>
-                <div class="clear"></div>
             </div>
-        </div>
+        {{/unless}}
 
         <div class="right-align end">
             {{#submit class="ladda-button" data-style="zoom-out"}}

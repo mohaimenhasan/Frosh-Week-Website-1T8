@@ -1,6 +1,30 @@
 App.UserController = Ember.ObjectController.extend({
   needs: ['packagesItem'],
 
+  userPhone: function() {
+    var content = this.get('content');
+
+    var areaCode = content.get('phoneAreaCode');
+    var start = content.get('phoneStart');
+    var end = content.get('phoneEnd');
+
+    if (areaCode && start && end) {
+      return areaCode.toString() + start.toString() + end.toString();
+    }
+  }.property('content.phoneAreaCode', 'content.phoneStart', 'content.phoneEnd'),
+
+  userEmergencyPhone: function() {
+    var content = this.get('content');
+
+    var areaCode = content.get('emergencyPhoneAreaCode');
+    var start = content.get('emergencyPhoneStart');
+    var end = content.get('emergencyPhoneEnd');
+
+    if (areaCode && start && end) {
+      return areaCode.toString() + start.toString() + end.toString();
+    }
+  }.property('content.emergencyPhoneAreaCode', 'content.emergencyPhoneStart', 'content.emergencyPhoneEnd'),
+
   init: function() {
     this._super();
     this.set('content', App.UserForm.create({}));
@@ -11,24 +35,8 @@ App.UserController = Ember.ObjectController.extend({
     var content = this.get('content');
 
     // Prepare parts of the user object from form data.
-    var userPhone =
-      content.get('phoneAreaCode').toString() +
-      content.get('phoneStart').toString() +
-      content.get('phoneEnd').toString();
-
-    var userShirtSize =
-      content.get('shirtSizeS') == 'on' ? 'S' :
-      content.get('shirtSizeM') == 'on' ? 'M' :
-      content.get('shirtSizeL') == 'on' ? 'L' :
-      content.get('shirtSizeX') == 'on' ? 'X' : 'M';
-
-    var userEmergencyPhone =
-      content.get('emergencyPhoneAreaCode').toString() +
-      content.get('emergencyPhoneStart').toString() +
-      content.get('emergencyPhoneEnd').toString();
-
-    var userCCExpiration = new Date(content.get('ccExpirationYear') + 2000,
-      content.get('ccExpirationMonth') - 1, 1);
+    var userCCExpirationYear = parseInt(content.get('ccExpirationYear')) + 2000;
+    var userCCExpirationMonth = parseInt(content.get('ccExpirationMonth')) - 1;
     var submitButton = Ladda.create(document.querySelector('button[type=submit]'));
 
     var that = this;
@@ -47,20 +55,20 @@ App.UserController = Ember.ObjectController.extend({
           firstName: content.get('firstName'),
           lastName: content.get('lastName'),
           gender: content.get('gender'),
-          phone: userPhone,
+          phone: that.get('userPhone') || '',
           residence: content.get('residence'),
           discipline: content.get('discipline'),
 
           packageId: selectedPackage.get('id'),
-          shirtSize: userShirtSize,
+          shirtSize: content.get('shirtSize'),
           // group must be set on the server.
-          bursaryRequested: this.get('bursary') == 'on',
+          bursaryRequested: !!content.get('bursary'),
           // bursaryChosen must be set on the server.
 
           emergencyName: content.get('emergencyName'),
           emergencyEmail: content.get('emergencyEmail'),
           emergencyRelationship: content.get('emergencyRelationship'),
-          emergencyPhone: userEmergencyPhone,
+          emergencyPhone: that.get('userEmergencyPhone') || '',
 
           restrictionsDietary: content.get('restrictionsDietary'),
           restrictionsAccessibility: content.get('restrictionsAccessibility'),
@@ -69,16 +77,25 @@ App.UserController = Ember.ObjectController.extend({
           ccToken: response['id']
         });
         transaction.commit();
+        if (transaction.isValid()) {
+          console.log('lol valid');
+        } else {
+          console.log('nope');
+        }
       }
       submitButton.stop();
     };
 
     submitButton.start();
-    Stripe.card.createToken({
+    if (content.get('bursary')) {
+      handleTransaction(null, { id: 0 });
+    } else {
+      Stripe.card.createToken({
         number: content.get('ccNumber'),
         cvc: content.get('ccCVC'),
-        exp_month: userCCExpiration.getMonth(),
-        exp_year: userCCExpiration.getYear()
+        exp_month: userCCExpirationMonth,
+        exp_year: userCCExpirationYear
       }, handleTransaction);
+    }
   }
 });

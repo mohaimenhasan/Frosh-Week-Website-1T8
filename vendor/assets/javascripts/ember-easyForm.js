@@ -218,11 +218,15 @@ Ember.EasyForm.BaseView = Ember.View.extend({
 
 
 (function() {
-Ember.EasyForm.Checkbox = Ember.Checkbox.extend();
-
+Ember.EasyForm.Checkbox = Ember.Checkbox.extend({
+  init: function() {
+    this._super();
+    this.addObserver('checked', function() {
+      this.set('context.content.' + this.property, this.get('checked'));
+    });
+  }
+});
 })();
-
-
 
 (function() {
 Ember.EasyForm.Error = Ember.EasyForm.BaseView.extend({

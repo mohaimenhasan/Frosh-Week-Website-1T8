@@ -42,15 +42,22 @@ App.UserFormEngineeringDisciplines = [
   'Computer',
   'Electrical',
   'Industrial',
-  'Materials',
+  'Material Science',
   'Mechanical',
   'Mineral'
 ];
 
 App.UserFormGender = [
-  '',
+  '-',
   'Male',
   'Female'
+];
+
+App.UserFormShirtSize = [
+  'Small',
+  'Medium',
+  'Large',
+  'Extra Large'
 ];
 
 App.UserForm = Ember.Object.extend(Ember.Validations.Mixin)
@@ -125,6 +132,12 @@ App.UserForm.reopen({
       presence: true,
       inclusion: {
         in: App.UserFormEngineeringDisciplines
+      }
+    },
+
+    shirtSize: {
+      inclusion: {
+        in: App.UserFormShirtSize
       }
     },
 
@@ -209,6 +222,7 @@ App.UserForm.reopen({
       },
       presence: {
         unless: function(object, validator) {
+          if (object.get('bursary')) return true;
           return Stripe.card.validateCardNumber(object.get('ccNumber'));
         }
       }
@@ -231,6 +245,8 @@ App.UserForm.reopen({
       },
       presence: {
         unless: function(object, validator) {
+          if (object.get('bursary')) return true;
+
           var month = object.get('ccExpirationMonth');
           var year = object.get('ccExpirationYear');
 
@@ -246,7 +262,11 @@ App.UserForm.reopen({
     },
 
     ccName: {
-      presence: true,
+      presence: {
+        unless: function(object, validator) {
+          return object.get('bursary');
+        }
+      },
       length: { maximum: 50 }
     },
 
@@ -254,13 +274,15 @@ App.UserForm.reopen({
       absence: {
         unless: function(object, validator) {
           var cvc = object.get('ccCVC');
-          return cvc.length > 0 && Stripe.card.validateCVC(cvc);
+          return cvc && cvc.length > 0 && Stripe.card.validateCVC(cvc);
         }
       },
       presence: {
         unless: function(object, validator) {
+          if (object.get('bursary')) return true;
+
           var cvc = object.get('ccCVC');
-          return cvc.length > 0 && Stripe.card.validateCVC(cvc);
+          return cvc && cvc.length > 0 && Stripe.card.validateCVC(cvc);
         }
       }
     }
