@@ -8,4 +8,16 @@
 //= require_tree ./helpers
 //= require_tree ./templates
 
+Ember.EasyForm.Config.registerWrapper('orientation', {
+  formClass: '',
+  fieldErrorClass: 'error',
+  inputClass: 'input',
+  hintClass: '',
+  labelClass: '',
+  wrapControls: false,
+  controlsWrapperClass: ''
+});
+
+Ember.EasyForm.Config.registerInputType('checkbox', Ember.EasyForm.Checkbox);
+
 App = Ember.Application.create();
