@@ -27,21 +27,10 @@
                     optionValuePath='content'
                     optionLabelPath='content'}}
             {{/input}}
-            <div class="text-inline">
-                <label>Phone number</label>
-                <div class="input-inline-group">
-                    {{#input phoneAreaCode}}
-                        {{inputField phoneAreaCode as=tel placeholder="647" inputConfig="maxlength:3;class:phone phone-area"}}
-                    {{/input}}
-                    {{#input phoneStart}}
-                        {{inputField phoneStart as=tel placeholder="123" inputConfig="maxlength:3;class:phone phone-start"}}
-                    {{/input}}
-                    {{#input phoneEnd}}
-                        {{inputField phoneEnd as=tel placeholder="5678" inputConfig="maxlength:4;class:phone phone-end"}}
-                    {{/input}}
-                </div>
-                <div class="clear"></div>
-            </div>
+            {{#input phone}}
+                {{labelField phone text="Phone number"}}
+                {{inputField phone as=tel placeholder="647 123 4567"}}
+            {{/input}}
             {{#input discipline}}
                 {{labelField discipline text="Engineering discipline"}}
                 {{inputField discipline
@@ -53,7 +42,7 @@
             {{/input}}
             {{#input residence}}
                 {{labelField residence text="Residence"}}
-                {{inputField residence placeholder="Chestnut"}}
+                {{inputField residence}}
             {{/input}}
         </div>
     </div>
@@ -93,21 +82,10 @@
                 {{labelField emergencyRelationship text="Relationship"}}
                 {{inputField emergencyRelationship placeholder="Father"}}
             {{/input}}
-            <div class="text-inline">
-                <label>Phone number</label>
-                <div class="input-inline-group">
-                    {{#input emergencyPhoneAreaCode}}
-                        {{inputField emergencyPhoneAreaCode as=tel placeholder="647" inputConfig="maxlength:3;class:phone phone-area"}}
-                    {{/input}}
-                    {{#input emergencyPhoneStart}}
-                        {{inputField emergencyPhoneStart as=tel placeholder="123" inputConfig="maxlength:3;class:phone phone-start"}}
-                    {{/input}}
-                    {{#input emergencyPhoneEnd}}
-                        {{inputField emergencyPhoneEnd as=tel placeholder="5678" inputConfig="maxlength:4;class:phone phone-end"}}
-                    {{/input}}
-                </div>
-                <div class="clear"></div>
-            </div>
+            {{#input emergencyPhone}}
+                {{labelField emergencyPhone text="Phone number"}}
+                {{inputField emergencyPhone placeholder="647 123 5678"}}
+            {{/input}}
         </div>
 
         <div class="subsection">
@@ -158,34 +136,60 @@
             <div class="subsection text">
                 <h3>Pay by credit card</h3>
                 <h4 class="small">Secure connection</h4>
-              {{#input ccName}}
-                {{labelField ccName text="Name on card"}}
-                {{inputField ccName placeholder="Jane Smith"}}
-              {{/input}}
+                {{#input ccName}}
+                    {{labelField ccName text="Name on card"}}
+                    {{inputField ccName placeholder="Jane Smith"}}
+                {{/input}}
                 <div class="text-inline">
                     <label>Card number</label>
                     <div class="input-inline-group">
-                      {{#input ccNumber}}
-                        {{inputField ccNumber as=tel inputConfig="class:cc cc-number"}}
-                      {{/input}}
-                      {{#input ccCVC}}
-                        {{inputField ccCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc"}}
-                      {{/input}}
+                        {{#input ccNumber}}
+                            {{inputField ccNumber as=tel inputConfig="class:cc cc-number"}}
+                        {{/input}}
+                        {{#input ccCVC}}
+                            {{inputField ccCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc"}}
+                        {{/input}}
                     </div>
                     <div class="clear"></div>
                 </div>
                 <div class="text-inline">
                     <label>Expires</label>
                     <div class="input-inline-group">
-                      {{#input ccExpiration}}
-                        {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month"}}
-                      {{/input}}
-                      {{#input ccExpiration}}
-                        {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year"}}
-                      {{/input}}
+                        {{#input ccExpiration}}
+                            {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month"}}
+                        {{/input}}
+                        {{#input ccExpiration}}
+                            {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year"}}
+                        {{/input}}
                     </div>
                     <div class="clear"></div>
                 </div>
+            </div>
+        {{else}}
+            <div class="subsection text">
+                <h3>Fill out your bursary application details</h3>
+                {{#input bursaryScholarshipAmount}}
+                    {{labelField bursaryScholarshipAmount text="Entrance Scholarship"}}
+                    {{inputField bursaryScholarshipAmount placeholder="3000.00"}}
+                {{/input}}
+            </div>
+            <div class="subsection">
+                <h3>Please describe the motivation and paths for you to select the enrolled engineering program at U of T (300 words).</h3>
+                {{#input bursaryEngineeringMotivation}}
+                    {{inputField bursaryEngineeringMotivation as=text}}
+                {{/input}}
+            </div>
+            <div class="subsection">
+                <h3>Please describe in 300 words of why you would need financial support for attending Engineering Orientation 1T3.</h3>
+                {{#input bursaryFinancialReasoning}}
+                    {{inputField bursaryFinancialReasoning as=text}}
+                {{/input}}
+            </div>
+            <div class="subsection">
+                <h3>Describe what you would like to do after graduation.</h3>
+                {{#input bursaryAfterGraduation}}
+                    {{inputField bursaryAfterGraduation as=text}}
+                {{/input}}
             </div>
         {{/unless}}
 

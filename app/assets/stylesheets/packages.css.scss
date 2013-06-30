@@ -180,22 +180,6 @@
             @include input-text {
                 text-align: center;
 
-                &.phone-area {
-                    float: left;
-                    margin-left: 0;
-                    width: 30%;
-                }
-                &.phone-start {
-                    float: left;
-                    margin-left: 2.5%;
-                    width: 30%;
-                }
-                &.phone-end {
-                    float: right;
-                    margin-left: 2.5%;
-                    width: 35%;
-                }
-
                 &.cc-number {
                     text-align: left;
                     float: left;
@@ -231,7 +215,9 @@
     }
 
     .error-toast {
-        color: #FF0000;
+        strong {
+            color: #FF0000;
+        }
         margin: 1.5em;
         text-align: left;
     }

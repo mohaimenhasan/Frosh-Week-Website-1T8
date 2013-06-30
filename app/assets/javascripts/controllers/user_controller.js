@@ -1,30 +1,6 @@
 App.UserController = Ember.ObjectController.extend({
   needs: ['packagesItem'],
 
-  userPhone: function() {
-    var content = this.get('content');
-
-    var areaCode = content.get('phoneAreaCode');
-    var start = content.get('phoneStart');
-    var end = content.get('phoneEnd');
-
-    if (areaCode && start && end) {
-      return areaCode.toString() + start.toString() + end.toString();
-    }
-  }.property('content.phoneAreaCode', 'content.phoneStart', 'content.phoneEnd'),
-
-  userEmergencyPhone: function() {
-    var content = this.get('content');
-
-    var areaCode = content.get('emergencyPhoneAreaCode');
-    var start = content.get('emergencyPhoneStart');
-    var end = content.get('emergencyPhoneEnd');
-
-    if (areaCode && start && end) {
-      return areaCode.toString() + start.toString() + end.toString();
-    }
-  }.property('content.emergencyPhoneAreaCode', 'content.emergencyPhoneStart', 'content.emergencyPhoneEnd'),
-
   init: function() {
     this._super();
     this.set('content', App.UserForm.create({}));
@@ -49,13 +25,13 @@ App.UserController = Ember.ObjectController.extend({
         var transaction = that.get('store').transaction();
         var record = transaction.createRecord(App.User, {
           email: content.get('email'),
-          verified: false,
+          // verified must be set on server.
           // creation date must be set on server.
 
           firstName: content.get('firstName'),
           lastName: content.get('lastName'),
           gender: content.get('gender'),
-          phone: that.get('userPhone') || '',
+          phone: content.get('phone') || '',
           residence: content.get('residence'),
           discipline: content.get('discipline'),
 
@@ -64,11 +40,16 @@ App.UserController = Ember.ObjectController.extend({
           // group must be set on the server.
           bursaryRequested: !!content.get('bursary'),
           // bursaryChosen must be set on the server.
+          // bursaryPaid must be set on server.
+          bursaryScholarshipAmount: content.get('bursaryPaid') || 0,
+          bursaryEngineeringMotivation: content.get('bursaryEngineeringMotivation') || '',
+          bursaryFinancialReasoning: content.get('bursaryFinancialReasoning') || '',
+          bursaryAfterGraduation: content.get('bursaryAfterGraduation') || '',
 
           emergencyName: content.get('emergencyName'),
           emergencyEmail: content.get('emergencyEmail'),
           emergencyRelationship: content.get('emergencyRelationship'),
-          emergencyPhone: that.get('userEmergencyPhone') || '',
+          emergencyPhone: content.get('emergencyPhone'),
 
           restrictionsDietary: content.get('restrictionsDietary'),
           restrictionsAccessibility: content.get('restrictionsAccessibility'),
@@ -78,15 +59,27 @@ App.UserController = Ember.ObjectController.extend({
         });
         transaction.commit();
 
-        record.on('didLoad', function() {
-          console.log('did load');
+        record.on('didCreate', function() {
+          // Transition to receipt page.
           submitButton.stop();
         });
 
         record.on('becameError', function() {
-          console.log(record);
-          console.log(record.get('errors'));
-          console.log('did error');
+          content.set('error', true);
+          submitButton.stop();
+        });
+
+        record.on('becameInvalid', function() {
+          var errors = record.get('errors');
+
+          for (var key in errors) {
+            if (key == 'stripe') {
+
+            } else if (errors.hasOwnProperty(key)) {
+              content.set('errors.' + key, errors[key][0]);
+            }
+          }
+
           content.set('error', true);
           submitButton.stop();
         });
@@ -94,6 +87,7 @@ App.UserController = Ember.ObjectController.extend({
     };
 
     submitButton.start();
+    content.set('error', false);
     if (content.get('bursary')) {
       handleTransaction(null, { id: 0 });
     } else {

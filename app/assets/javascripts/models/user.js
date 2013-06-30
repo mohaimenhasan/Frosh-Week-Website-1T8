@@ -30,6 +30,13 @@ App.User = DS.Model.extend({
   restrictionsAccessibility: DS.attr('string'),
   restrictionsMisc: DS.attr('string'),
 
+  /* Bursary Information */
+  bursaryPaid: DS.attr('boolean'),
+  bursaryScholarshipAmount: DS.attr('number'),
+  bursaryEngineeringMotivation: DS.attr('string'),
+  bursaryFinancialReasoning: DS.attr('string'),
+  bursaryAfterGraduation: DS.attr('string'),
+
   /* Credit Card Token (not stored server side) */
   ccToken: DS.attr('string')
 });
@@ -88,36 +95,14 @@ App.UserForm.reopen({
       }
     },
 
-    phoneAreaCode: {
+    phone: {
       length: {
         allowBlank: true,
-        maximum: 3
+        maximum: 50
       },
-      numericality: {
+      format: {
         allowBlank: true,
-        onlyInteger: true
-      }
-    },
-
-    phoneStart: {
-      length: {
-        allowBlank: true,
-        maximum: 3
-      },
-      numericality: {
-        allowBlank: true,
-        onlyInteger: true
-      }
-    },
-
-    phoneEnd: {
-      length: {
-        allowBlank: true,
-        maximum: 4
-      },
-      numericality: {
-        allowBlank: true,
-        onlyInteger: true
+        with: /^[^a-zA-Z]+$/
       }
     },
 
@@ -160,37 +145,10 @@ App.UserForm.reopen({
       length: { maximum: 50 }
     },
 
-    emergencyPhoneAreaCode: {
-      length: {
-        allowBlank: true,
-        maximum: 3
-      },
-      numericality: {
-        allowBlank: true,
-        onlyInteger: true
-      }
-    },
-
-    emergencyPhoneStart: {
-      length: {
-        allowBlank: true,
-        maximum: 3
-      },
-      numericality: {
-        allowBlank: true,
-        onlyInteger: true
-      }
-    },
-
-    emergencyPhoneEnd: {
-      length: {
-        allowBlank: true,
-        maximum: 4
-      },
-      numericality: {
-        allowBlank: true,
-        onlyInteger: true
-      }
+    emergencyPhone: {
+      presence: true,
+      length: { maximum: 50 },
+      format: { with: /^[^a-zA-Z]+$/ }
     },
 
     restrictionsAccessibility: {
@@ -210,6 +168,50 @@ App.UserForm.reopen({
     restrictionsMisc: {
       length: {
         allowBlank: true,
+        maximum: 2000
+      }
+    },
+
+    bursaryScholarshipAmount: {
+      presence: {
+        if: function(object, validator) {
+          return !!object.get('bursary');
+        }
+      },
+      numericality: {
+        allowBlank: true
+      }
+    },
+
+    bursaryEngineeringMotivation: {
+      presence: {
+        if: function(object, validator) {
+          return !!object.get('bursary');
+        }
+      },
+      length: {
+        maximum: 2000
+      }
+    },
+
+    bursaryFinancialReasoning: {
+      presence: {
+        if: function(object, validator) {
+          return !!object.get('bursary');
+        }
+      },
+      length: {
+        maximum: 2000
+      }
+    },
+
+    bursaryAfterGraduation: {
+      presence: {
+        if: function(object, validator) {
+          return !!object.get('bursary');
+        }
+      },
+      length: {
         maximum: 2000
       }
     },
@@ -264,7 +266,7 @@ App.UserForm.reopen({
     ccName: {
       presence: {
         unless: function(object, validator) {
-          return object.get('bursary');
+          return !!object.get('bursary');
         }
       },
       length: { maximum: 50 }
