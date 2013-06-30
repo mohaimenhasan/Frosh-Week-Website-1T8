@@ -31,6 +31,7 @@
 require 'validates_phone_number'
 require 'mandrill'
 require 'stripe'
+require 'awesome_print'
 
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -96,8 +97,13 @@ class User < ActiveRecord::Base
       )
 
       :success
-    rescue Exception => e  
-      e.message
+    rescue Stripe::CardError => e
+      code = e.json_body[:code]
+      type = e.json_body[:type]
+      error_to_return = code ? code : type
+      { stripe: json_body }
+    rescue Stripe::StripeError => e
+      { stripe: e.message }
     end
   end
 end
