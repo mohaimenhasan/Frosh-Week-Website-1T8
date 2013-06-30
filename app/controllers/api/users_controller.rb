@@ -10,17 +10,20 @@ class Api::UsersController < ActionController::Base
   def create
     # Sample: POST http://0.0.0.0:3000/api/users?discipline=Chemical&email=a@b.com&emergency_phone=4169671111&emergency_name=Fido&emergency_relationship=dog&first_name=bob&last_name=last&shirt_size=Medium&gender=Male&package_id=3&bursary_requested=true&emergency_email=c@d.com&skip_stripe=yes&skip_confirm_email=true&no_json=true
     
-    if params.has_key? :no_json
-      new_user = User.new params.slice *User.accessible_attributes
-    else
-      new_user = User.new params["user"].slice *User.accessible_attributes
-    end
+    user_data = 
+      if params.has_key? :no_json
+        params
+      else
+        params["user"]
+      end
+
+    new_user = User.new user_data.slice *User.accessible_attributes
 
     new_user.verified = false
-    new_user.bursary_requested = (params.has_key?(:bursary_requested) and params[:bursary_requested].to_bool_with_default)
+    new_user.bursary_requested = (user_data.has_key?(:bursary_requested) and user_data[:bursary_requested].to_bool_with_default)
     new_user.bursary_chosen = nil
 
-    if (Rails.env.development? and params.has_key? :random_gender_disc)
+    if (Rails.env.development? and user_data.has_key? :random_gender_disc)
       disps = ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral'];
       genders = ['Male', 'Female']
       new_user.gender = genders[rand genders.count]
@@ -38,14 +41,14 @@ class Api::UsersController < ActionController::Base
     #Useful method to check for group stats: Group.all.each {|g| p g.name.to_s << ": " << g.users.count.to_s << ", " << g.users.where(gender: 'Female').count.to_s << ", " << g.users.where(discipline:'Mineral').count.to_s}
 
     if new_user.valid?
-      unless (Rails.env.development? and params.has_key? :skip_stripe) or new_user.bursary_requested
-        result = new_user.process_payment(params[:cc_token])
+      unless (Rails.env.development? and user_data.has_key? :skip_stripe) or new_user.bursary_requested
+        result = new_user.process_payment(user_data[:cc_token])
         unless result == :success
           render :json => { :errors => result }, :status => 422 and return
         end
       end
 
-      unless Rails.env.development? and params.has_key? :skip_confirm_email
+      unless Rails.env.development? and user_data.has_key? :skip_confirm_email
         new_user.send_confirmation
       end
 
