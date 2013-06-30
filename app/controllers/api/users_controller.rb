@@ -8,14 +8,34 @@ class Api::UsersController < ActionController::Base
   before_filter :authorize_admin, :except => [:create, :confirm]
 
   def create
-    # Sample: POST http://0.0.0.0:3000/api/users?discipline=Chemical&email=a@b.com&emergency_phone=4169671111&emergency_name=Fido&emergency_relationship=dog&first_name=bob&last_name=last&shirt_size=Medium&gender=Male&package_id=3&bursary_requested=true&emergency_email=c@d.com&skip_stripe=yes&skip_confirm_email=true
+    # Sample: POST http://0.0.0.0:3000/api/users?discipline=Chemical&email=a@b.com&emergency_phone=4169671111&emergency_name=Fido&emergency_relationship=dog&first_name=bob&last_name=last&shirt_size=Medium&gender=Male&package_id=3&bursary_requested=true&emergency_email=c@d.com&skip_stripe=yes&skip_confirm_email=true&no_json=true
     
-    new_user = User.new params["user"].slice *User.accessible_attributes
+    if params.has_key? :no_json
+      new_user = User.new params.slice *User.accessible_attributes
+    else
+      new_user = User.new params["user"].slice *User.accessible_attributes
+    end
+
     new_user.verified = false
     new_user.bursary_requested = (params.has_key?(:bursary_requested) and params[:bursary_requested].to_bool_with_default)
     new_user.bursary_chosen = nil
 
-    new_user.group = Group.offset(rand Group.count).first
+    if (Rails.env.development? and params.has_key? :random_gender_disc)
+      disps = ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral'];
+      genders = ['Male', 'Female']
+      new_user.gender = genders[rand genders.count]
+      new_user.discipline = disps[rand disps.count]
+    end
+
+    empty_group = Group.includes(:users).where(users: {group_id: nil}).first
+    new_user.group =
+      if empty_group
+        empty_group
+      else
+        Group.select("groups.name, groups.id, count(nullif(users.gender='" + new_user.gender + "', false)) AS gender_count, count(nullif(users.discipline='" + new_user.discipline + "', false)) AS disc_count, count(users.id) AS users_count").joins(:users).group('groups.name, groups.id').order('users_count ASC').order('gender_count ASC').order("disc_count ASC").first
+      end
+
+    #Useful method to check for group stats: Group.all.each {|g| p g.name.to_s << ": " << g.users.count.to_s << ", " << g.users.where(gender: 'Female').count.to_s << ", " << g.users.where(discipline:'Mineral').count.to_s}
 
     if new_user.valid?
       unless (Rails.env.development? and params.has_key? :skip_stripe) or new_user.bursary_requested
