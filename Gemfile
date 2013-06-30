@@ -6,7 +6,7 @@ gem 'jquery-rails',           '2.2.1'
 gem 'ember-rails',            '0.12.0'
 gem 'ember-source',           '1.0.0.rc4'
 gem 'pg',                     '0.12.2'
-gem "phony_rails"
+gem 'phony_rails'
 gem 'stripe',                 '1.8.3'
 gem 'mandrill-api'
 

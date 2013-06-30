@@ -51,38 +51,38 @@ class User < ActiveRecord::Base
 
   belongs_to :group
 
-  phony_normalize :phone, :default_country_code => 'US'
-  phony_normalize :emergency_phone, :default_country_code => 'US'
+  phony_normalize :phone, default_country_code: 'US'
+  phony_normalize :emergency_phone, default_country_code: 'US'
 
   validates :first_name, :last_name, :emergency_name, :emergency_relationship, presence: true, length: { maximum: 50 }
-  validates :discipline, inclusion: { :in => ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral'] }
-  validates_plausible_phone :phone, :allow_blank => true
+  validates :discipline, inclusion: { in: ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral'] }
+  validates_plausible_phone :phone, allow_blank: true
   validates_plausible_phone :emergency_phone
   validates :email, :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX } 
-  validates :shirt_size, inclusion: { :in => ['Small', 'Medium', 'Large', 'Extra Large']}
+  validates :shirt_size, inclusion: { in: ['Small', 'Medium', 'Large', 'Extra Large']}
   validates :package_id, presence: true
-  validates :verified, inclusion: { :in => [true, false] }
-  validates :bursary_chosen, inclusion: { :in => [nil, true, false] }
-  validates :bursary_requested, inclusion: { :in => [true, false] }
+  validates :verified, inclusion: { in: [true, false] }
+  validates :bursary_chosen, inclusion: { in: [nil, true, false] }
+  validates :bursary_requested, inclusion: { in: [true, false] }
   validates :residence, length: { maximum: 50 }
   validates :restrictions_dietary, :restrictions_misc, :restrictions_accessibility, length: { maximum: 2000 }
-  validates :gender, inclusion: { :in => ['Male', 'Female', '-'] }
+  validates :gender, inclusion: { in: ['Male', 'Female', '-'] }
 
   def send_confirmation
     self.confirmation_token = Digest::SHA1.hexdigest([Time.now, rand].join)
     m = Mandrill::API.new
     # TODO(amandeepg): actual data
     message = {
-     :subject => 'Welcome to F!rosh Week!',
-     :from_name => 'F!rosh Leedur',
-     :text =>"Confirm your email. #{self.id} - #{self.confirmation_token}",
-     :to => [
+     subject: 'Welcome to F!rosh Week!',
+     from_name: 'F!rosh Leedur',
+     text: "Confirm your email. #{self.id} - #{self.confirmation_token}",
+     to: [
        {
-         :email => self.email,
-         :name => '#{self.first_name} #{self.last_name}'
+         email: self.email,
+         name: '#{self.first_name} #{self.last_name}'
        }
      ],
-     :from_email => Rails.application.config.mandrill_from
+     from_email: Rails.application.config.mandrill_from
     }
     m.messages.send message
   end
@@ -93,10 +93,10 @@ class User < ActiveRecord::Base
     # Create the charge on Stripe's servers - this will charge the user's card
     begin
       Stripe::Charge.create(
-        :amount => 1000, # amount in cents, again
-        :currency => 'cad',
-        :card => token,
-        :description => self.email,
+        amount: 1000, # amount in cents, again
+        currency: 'cad',
+        card: token,
+        description: self.email,
       )
 
       :success
