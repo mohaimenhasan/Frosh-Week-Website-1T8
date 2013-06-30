@@ -10,7 +10,7 @@ class Api::UsersController < ActionController::Base
   def create
     # Sample: POST http://0.0.0.0:3000/api/users?discipline=Chemical&email=a@b.com&emergency_phone=4169671111&emergency_name=Fido&emergency_relationship=dog&first_name=bob&last_name=last&shirt_size=Medium&gender=Male&package_id=3&bursary_requested=true&emergency_email=c@d.com&skip_stripe=yes&skip_confirm_email=true
     
-    new_user = User.new params.slice *User.accessible_attributes
+    new_user = User.new params["user"].slice *User.accessible_attributes
     new_user.verified = false
     new_user.bursary_requested = (params.has_key?(:bursary_requested) and params[:bursary_requested].to_bool_with_default)
     new_user.bursary_chosen = nil
@@ -19,7 +19,7 @@ class Api::UsersController < ActionController::Base
 
     if new_user.valid?
       unless (Rails.env.development? and params.has_key? :skip_stripe) or new_user.bursary_requested
-        result = new_user.process_payment(params[:stripe_token])
+        result = new_user.process_payment(params[:cc_token])
         unless result == :success
           render :json => { :errors => result }, :status => 422 and return
         end
