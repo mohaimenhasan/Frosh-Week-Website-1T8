@@ -31,7 +31,7 @@
 require 'phony'
 require 'mandrill'
 require 'stripe'
-require 'awesome_print'
+require 'awesome_print' if Rails.env.development?
 
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

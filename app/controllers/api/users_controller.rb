@@ -1,4 +1,4 @@
-require 'awesome_print'
+require 'awesome_print' if Rails.env.development?
 require 'admin_authorization'
 
 class Api::UsersController < ActionController::Base
