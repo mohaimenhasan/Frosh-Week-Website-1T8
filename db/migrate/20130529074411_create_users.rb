@@ -7,7 +7,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :gender
       t.string :shirt_size
-      t.integer :group
       t.string :phone
       t.string :residence
       t.integer :package_id
@@ -19,9 +18,10 @@ class CreateUsers < ActiveRecord::Migration
       t.string :emergency_phone
       t.string :emergency_relationship
       t.string :emergency_email
-      t.string :restrictions_dietary
-      t.string :restrictions_accessibility
-      t.string :restrictions_misc
+      t.text :restrictions_dietary
+      t.text :restrictions_accessibility
+      t.text :restrictions_misc
+      t.belongs_to :group
 
       t.timestamps
     end
