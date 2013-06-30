@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'rails',                  '3.2.13'
 gem 'bcrypt-ruby',            '3.0.1'
 gem 'jquery-rails',           '2.2.1'
