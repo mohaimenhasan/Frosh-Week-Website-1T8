@@ -4,12 +4,12 @@ class Api::PackagesController < ActionController::Base
 
   include AdminAuthorization
 
-  before_filter :authorize_admin, :except => [:show, :index]
+  before_filter :authorize_admin, except: [:show, :index]
 
   def create; end
 
   def show
-    render :json => { 'package' => Package.find(params[:id]) }
+    render json: { package: Package.find(params[:id]) }
   end
 
   def index
@@ -18,7 +18,7 @@ class Api::PackagesController < ActionController::Base
     else
       packages = Package.all
     end
-    render :json => { 'packages' => packages }
+    render json: { packages: => packages }
   end
 
   def destroy; end
