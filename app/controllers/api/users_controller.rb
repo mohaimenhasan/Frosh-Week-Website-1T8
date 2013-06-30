@@ -32,17 +32,18 @@ class Api::UsersController < ActionController::Base
       new_user.discipline = disps[rand disps.count]
     end
 
-    empty_group = Group.includes(:users).where(users: {group_id: nil}).first
-    new_user.group =
-      if empty_group
-        empty_group
-      else
-        Group.select("groups.name, groups.id, count(nullif(users.gender='" + new_user.gender + "', false)) AS gender_count, count(nullif(users.discipline='" + new_user.discipline + "', false)) AS disc_count, count(users.id) AS users_count").joins(:users).group('groups.name, groups.id').order('users_count ASC').order('gender_count ASC').order("disc_count ASC").first
-      end
-
-    #Useful method to check for group stats: Group.all.each {|g| p g.name.to_s << ": " << g.users.count.to_s << ", " << g.users.where(gender: 'Female').count.to_s << ", " << g.users.where(discipline:'Mineral').count.to_s}
-
     if new_user.valid?
+
+      empty_group = Group.includes(:users).where(users: {group_id: nil}).first
+      new_user.group =
+        if empty_group
+          empty_group
+        else
+          Group.select("groups.name, groups.id, count(nullif(users.gender='" + new_user.gender + "', false)) AS gender_count, count(nullif(users.discipline='" + new_user.discipline + "', false)) AS disc_count, count(users.id) AS users_count").joins(:users).group('groups.name, groups.id').order('users_count ASC').order('gender_count ASC').order("disc_count ASC").first
+        end
+
+      #Useful method to check for group stats: Group.all.each {|g| p g.name.to_s << ": " << g.users.count.to_s << ", " << g.users.where(gender: 'Female').count.to_s << ", " << g.users.where(discipline:'Mineral').count.to_s}
+
       unless (Rails.env.development? and user_data.has_key? :skip_stripe) or new_user.bursary_requested
         result = new_user.process_payment(user_data[:cc_token])
         unless result == :success
