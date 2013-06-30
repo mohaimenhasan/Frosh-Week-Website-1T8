@@ -91,7 +91,7 @@ class User < ActiveRecord::Base
     # Create the charge on Stripe's servers - this will charge the user's card
     begin
       Stripe::Charge.create(
-        amount: 1000, # amount in cents, again
+        amount: Package.find(self.package_id.to_i).price * 100, # amount in cents
         currency: 'cad',
         card: token,
         description: self.email,
