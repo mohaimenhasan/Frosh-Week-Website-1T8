@@ -55,18 +55,18 @@ class Api::UsersController < ActionController::Base
       end
 
       new_user.save!
-      render json: { person: new_user.attributes.except('confirmation_token') }
+      render json: { user: new_user.attributes.except('confirmation_token') }
     else
       render json: { errors: new_user.errors }, status: 422
     end
   end
 
   def show
-    render json: { person: User.find(params[:id]) }
+    render json: { user: User.find(params[:id]) }
   end
 
   def index
-    render json: { people: User.all }
+    render json: { users: User.all }
   end
 
   def destroy
