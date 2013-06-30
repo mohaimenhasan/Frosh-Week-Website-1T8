@@ -11,6 +11,7 @@ gem 'pg',                     '0.12.2'
 gem 'phony_rails',            '0.4.0'
 gem 'stripe',                 '1.8.3'
 gem 'mandrill-api',           '1.0.31'
+gem 'unicorn',                '4.6.3'
 
 group :development, :test do
   gem 'rspec-rails',          '2.11.0'
