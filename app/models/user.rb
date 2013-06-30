@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   validates :bursary_requested, inclusion: { :in => [true, false] }
   validates :residence, length: { maximum: 50 }
   validates :restrictions_dietary, :restrictions_misc, :restrictions_accessibility, length: { maximum: 2000 }
-  validates :gender, inclusion: { :in => ['Male', 'Female'] }
+  validates :gender, inclusion: { :in => ['Male', 'Female', '-'] }
 
   def send_confirmation
     self.confirmation_token = Digest::SHA1.hexdigest([Time.now, rand].join)
