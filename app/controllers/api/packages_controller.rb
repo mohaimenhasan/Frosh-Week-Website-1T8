@@ -18,7 +18,7 @@ class Api::PackagesController < ActionController::Base
     else
       packages = Package.all
     end
-    render json: { packages: => packages }
+    render json: { packages: packages }
   end
 
   def destroy; end
