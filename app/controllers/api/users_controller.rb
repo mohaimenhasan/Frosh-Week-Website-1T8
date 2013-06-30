@@ -8,7 +8,7 @@ class Api::UsersController < ActionController::Base
   before_filter :authorize_admin, except:[:create, :confirm]
 
   def create
-    # Sample: POST http://0.0.0.0:3000/api/users?discipline=Chemical&email=a@b.com&emergency_phone=4169671111&emergency_name=Fido&emergency_relationship=dog&first_name=bob&last_name=last&shirt_size=Medium&gender=Male&package_id=3&bursary_requested=true&emergency_email=c@d.com&skip_stripe=yes&skip_confirm_email=true&no_json=true
+    # Sample: POST http://0.0.0.0:3000/api/users?discipline=Chemical&email=a@b.com&emergency_phone=4169671111&emergency_name=Fido&emergency_relationship=dog&first_name=bob&last_name=last&shirt_size=Medium&gender=Male&package_id=2&bursary_requested=false&emergency_email=c@d.com&skip_stripe=yes&skip_confirm_email=true&no_json=true
     
     user_data = 
       if params.has_key? :no_json
@@ -24,6 +24,7 @@ class Api::UsersController < ActionController::Base
       new_user.bursary_requested = (user_data.has_key?(:bursary_requested) and user_data[:bursary_requested].to_bool_with_default)
     end
     new_user.bursary_chosen = nil
+    new_user.bursary_paid = false
 
     if Rails.env.development? and user_data.has_key? :random_gender_disc
       disps = ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral']

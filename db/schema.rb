@@ -43,6 +43,11 @@ ActiveRecord::Schema.define(:version => 20130628053938) do
     t.integer  "package_id"
     t.boolean  "bursary_requested"
     t.boolean  "bursary_chosen"
+    t.boolean  "bursary_paid"
+    t.integer  "bursary_scholarship_amount"
+    t.text     "bursary_engineering_motivation"
+    t.text     "bursary_financial_reasoning"
+    t.text     "bursary_after_graduation"
     t.string   "confirmation_token"
     t.boolean  "verified"
     t.string   "emergency_name"
@@ -53,8 +58,8 @@ ActiveRecord::Schema.define(:version => 20130628053938) do
     t.text     "restrictions_accessibility"
     t.text     "restrictions_misc"
     t.integer  "group_id"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
 end
