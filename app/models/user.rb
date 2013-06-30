@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
      to: [
        {
          email: self.email,
-         name: '#{self.first_name} #{self.last_name}'
+         name: "#{self.first_name} #{self.last_name}"
        }
      ],
      from_email: Rails.application.config.mandrill_from
@@ -88,8 +88,6 @@ class User < ActiveRecord::Base
   end
 
   def process_payment(token)
-    Stripe.api_key = Rails.application.config.stripe_secret_key
-
     # Create the charge on Stripe's servers - this will charge the user's card
     begin
       Stripe::Charge.create(
