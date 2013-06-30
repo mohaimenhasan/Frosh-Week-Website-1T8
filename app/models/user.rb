@@ -28,7 +28,7 @@
 #  updated_at                 :datetime         not null
 #
 
-require 'validates_phone_number'
+require 'phony'
 require 'mandrill'
 require 'stripe'
 require 'awesome_print'
@@ -51,10 +51,13 @@ class User < ActiveRecord::Base
 
   belongs_to :group
 
+  phony_normalize :phone, :default_country_code => 'US'
+  phony_normalize :emergency_phone, :default_country_code => 'US'
+
   validates :first_name, :last_name, :emergency_name, :emergency_relationship, presence: true, length: { maximum: 50 }
   validates :discipline, inclusion: { :in => ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral'] }
-  validates :phone, :allow_blank => true, :phone_number => {:ten_digits => true}
-  validates :emergency_phone, :phone_number => {:ten_digits => true}
+  validates_plausible_phone :phone, :allow_blank => true
+  validates_plausible_phone :emergency_phone
   validates :email, :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX } 
   validates :shirt_size, inclusion: { :in => ['Small', 'Medium', 'Large', 'Extra Large']}
   validates :package_id, presence: true
