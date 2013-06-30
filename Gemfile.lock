@@ -196,11 +196,11 @@ DEPENDENCIES
   ember-rails (= 0.12.0)
   ember-source (= 1.0.0.rc4)
   jquery-rails (= 2.2.1)
-  mandrill-api
+  mandrill-api (= 1.0.31)
   modernizr-rails (= 2.6.2.1)
   normalize-rails (= 2.0.1)
   pg (= 0.12.2)
-  phony_rails
+  phony_rails (= 0.4.0)
   rails (= 3.2.13)
   rspec-rails (= 2.11.0)
   sass-rails (= 3.2.5)
