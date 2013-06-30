@@ -20,7 +20,9 @@ class Api::UsersController < ActionController::Base
     new_user = User.new user_data.slice *User.accessible_attributes
 
     new_user.verified = false
-    new_user.bursary_requested = (user_data.has_key?(:bursary_requested) and user_data[:bursary_requested].to_bool_with_default)
+    if params.has_key? :no_json
+      new_user.bursary_requested = (user_data.has_key?(:bursary_requested) and user_data[:bursary_requested].to_bool_with_default)
+    end
     new_user.bursary_chosen = nil
 
     if Rails.env.development? and user_data.has_key? :random_gender_disc
