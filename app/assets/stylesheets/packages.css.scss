@@ -223,35 +223,17 @@
         }
     }
 
-    .radio {
-        span.input {
-            margin-right: 1.5em;
-            vertical-align: middle;
-        }
-
-        .choices {
-            display: inline-block;
-            margin-left: 0;
-            margin-right: 0;
-
-            .input {
-                margin-right: 0.25em;
-                display: inline-block;
-                height: auto;
-
-                label {
-                    line-height: 1.8em;
-                    vertical-align: middle;
-                }
-            }
-        }
-    }
-
     .checkboxes {
         label {
             line-height: 1.2em;
             vertical-align: middle;
         }
+    }
+
+    .error-toast {
+        color: #FF0000;
+        margin: 1.5em;
+        text-align: left;
     }
 }
 

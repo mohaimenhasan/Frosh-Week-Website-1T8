@@ -190,6 +190,17 @@
         {{/unless}}
 
         <div class="right-align end">
+            {{#if error}}
+                <div class="error-toast">
+                    <p><strong>Something went wrong when submitting the form!</strong></p>
+                    <p>Here's what you can do:</p>
+                    <ol>
+                        <li>See if you have any missing information that may be required</li>
+                        <li>Try again later</li>
+                        <li>Contact us at <b><a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a></b></li>
+                    </ol>
+                </div>
+            {{/if}}
             {{#submit class="ladda-button" data-style="zoom-out"}}
                 <span class="ladda-label">Pay and register</span>
             {{/submit}}

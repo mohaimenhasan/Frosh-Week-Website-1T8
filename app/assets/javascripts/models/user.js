@@ -91,7 +91,7 @@ App.UserForm.reopen({
     phoneAreaCode: {
       length: {
         allowBlank: true,
-        maximum: 10
+        maximum: 3
       },
       numericality: {
         allowBlank: true,
@@ -102,7 +102,7 @@ App.UserForm.reopen({
     phoneStart: {
       length: {
         allowBlank: true,
-        maximum: 10
+        maximum: 3
       },
       numericality: {
         allowBlank: true,
@@ -113,7 +113,7 @@ App.UserForm.reopen({
     phoneEnd: {
       length: {
         allowBlank: true,
-        maximum: 10
+        maximum: 4
       },
       numericality: {
         allowBlank: true,
@@ -163,7 +163,7 @@ App.UserForm.reopen({
     emergencyPhoneAreaCode: {
       length: {
         allowBlank: true,
-        maximum: 10
+        maximum: 3
       },
       numericality: {
         allowBlank: true,
@@ -174,7 +174,7 @@ App.UserForm.reopen({
     emergencyPhoneStart: {
       length: {
         allowBlank: true,
-        maximum: 10
+        maximum: 3
       },
       numericality: {
         allowBlank: true,
@@ -185,7 +185,7 @@ App.UserForm.reopen({
     emergencyPhoneEnd: {
       length: {
         allowBlank: true,
-        maximum: 10
+        maximum: 4
       },
       numericality: {
         allowBlank: true,

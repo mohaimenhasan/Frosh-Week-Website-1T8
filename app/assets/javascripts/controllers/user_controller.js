@@ -42,12 +42,12 @@ App.UserController = Ember.ObjectController.extend({
     var that = this;
     var handleTransaction = function(status, response) {
       if (response.error) {
-        console.log(response.error);
+        // This should never happen since we validate client side.
+        content.set('error', true);
+        submitButton.stop();
       } else {
-        console.log(response['id']);
-
         var transaction = that.get('store').transaction();
-        transaction.createRecord(App.User, {
+        var record = transaction.createRecord(App.User, {
           email: content.get('email'),
           verified: false,
           // creation date must be set on server.
@@ -77,13 +77,20 @@ App.UserController = Ember.ObjectController.extend({
           ccToken: response['id']
         });
         transaction.commit();
-        if (transaction.isValid()) {
-          console.log('lol valid');
-        } else {
-          console.log('nope');
-        }
+
+        record.on('didLoad', function() {
+          console.log('did load');
+          submitButton.stop();
+        });
+
+        record.on('becameError', function() {
+          console.log(record);
+          console.log(record.get('errors'));
+          console.log('did error');
+          content.set('error', true);
+          submitButton.stop();
+        });
       }
-      submitButton.stop();
     };
 
     submitButton.start();
