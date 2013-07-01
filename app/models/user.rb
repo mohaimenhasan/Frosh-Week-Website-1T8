@@ -108,14 +108,10 @@ class User < ActiveRecord::Base
 
       :success
     rescue Stripe::CardError => e
-      if e.resonds_to? :json_body
-        code = e.json_body[:code]
-        type = e.json_body[:type]
-        error_to_return = code ? code : type
-        { stripe: json_body }
-      else
-        { stripe: e.message }
-      end
+      code = e.json_body[:code]
+      type = e.json_body[:type]
+      error_to_return = code ? code : type
+      { stripe: error_to_return }
     rescue Stripe::StripeError => e
       { stripe: e.message }
     end
