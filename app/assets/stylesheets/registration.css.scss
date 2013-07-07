@@ -1,56 +1,41 @@
-/* Registration Styles */
+/* Orientation Registration Styles
+ *
+ * This is the style sheet for registration related pages.
+ *
+ * author: John Liu
+ * version: 0.0.1
+ */
 
-@import 'partials/variables';
-@import 'partials/mixins';
+@import 'compass';
+@import 'library';
+@import 'core';
 
-.registration-sidebar {
-    @include screen-small {
-        width: 100%;
-    }
-    @include screen-medium {
-        width: 35%;
-    }
-    @include screen-large {
-        width: 30%;
-    }
+.registration-logo {
+    background: {
+        image: image-url($logo);
+        size: contain;
+        repeat: no-repeat;
+        position: center;
+    };
 
-    .logo {
-        background: {
-            image: image-url('logo.png');
-            size: contain; // TODO(johnliu): Browser test.
-            repeat: no-repeat;
-        }
-        height: image-height('logo.png');
-        width: 100%;
-    }
+    width: 100%;
+    height: image-height($logo);
 }
 
-.registration-main {
-    @include screen-small {
-        width: 100%;
-    }
-    @include screen-medium {
-        width: 65%;
-    }
-    @include screen-large {
-        width: 70%;
-    }
+ul.registration-items {
+    list-style-type: none;
+    padding: 0;
 
-    ul.registration-items {
-        list-style-type: none;
-        padding: 0;
+    li {
+        margin: 0.5em;
 
-        li {
-            margin: 0.5em;
+        a {
+            color: #000000;
+            text-decoration: none;
 
-            a {
-                color: #000000;
-                text-decoration: none;
-
-                &:hover {
-                    color: #34003E;
-                    text-decoration: underline;
-                }
+            &:hover {
+                color: #34003E;
+                text-decoration: underline;
             }
         }
     }
@@ -79,7 +64,7 @@
     @extend .registration-box;
     background-color: #34003E;
 
-    @include anti-aliasing(0, 0, 0);
+    @include anti-aliasing-dark;
     color: #FFFFFF;
 }
 
@@ -237,7 +222,7 @@
     top: 0.5em;
     left: -1.25em;
 
-    @include anti-aliasing(0, 0, 0);
+    @include anti-aliasing-dark;
     color: #FFFFFF;
 }
 

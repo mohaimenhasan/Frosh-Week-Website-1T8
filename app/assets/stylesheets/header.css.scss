@@ -1,24 +1,21 @@
-/* Header Styles */
+/* Orientation Header Styles
+ *
+ * This is the stylesheet for the header view element.
+ *
+ * author:  John Liu
+ * version: 0.0.1
+ */
 
-@import 'partials/variables';
-@import 'partials/mixins';
+@import 'compass';
+@import 'library';
 
 .header, .header-spacer {
     background-color: rgba(255, 255, 255, 0.95);
-    padding: 1.0em; // TODO(johnliu): test mobile.
+    padding: 1.0em;
 
-    @include screen-small {
-        text-align: left;
-        margin-bottom: 1.5em;
-    }
-    @include screen-medium {
-        text-align: center;
-        margin-bottom: 1.0em;
-    }
-    @include screen-large {
-        text-align: center;
-        margin-bottom: 1.5em;
-    }
+    @include screen-small   { text-align: left; }
+    @include screen-medium  { text-align: center; }
+    @include screen-large   { text-align: center; }
 
     @include box-shadow(0 0 2px #DFDFDF);
     @include ms-box-shadow(1, 90, #DFDFDF); // TODO(johnliu): This needs testing.

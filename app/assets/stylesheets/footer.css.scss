@@ -1,7 +1,12 @@
-/* Footer Styles */
+/* Orientation Footer Styles
+ *
+ * This is the stylesheet for the footer view element.
+ *
+ * author:  John Liu
+ * version: 0.0.1
+ */
 
-@import 'partials/variables';
-@import 'partials/mixins';
+@import 'library';
 
 .footer {
     @include screen-small {

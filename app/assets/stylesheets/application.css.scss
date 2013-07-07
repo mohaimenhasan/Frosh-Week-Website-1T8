@@ -2,45 +2,34 @@
  *= require normalize-rails
  *= require grid
  *= require ladda-themeless
+
  *= require_self
- *= require_tree .
+ *= require core
+ *= require header
+ *= require footer
+
+ *= require home
+ *= require registration
  */
 
 @import 'compass';
-@import 'partials/variables';
-@import 'partials/mixins';
+@import 'library';
 
-body {
-    background-color: #F1F1F1;
-    margin: 0;
-
-    color: #222222;
-    font: {
-        family: 'proxima-nova-alt', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        variant: normal;
-        weight: 400;
-        size: 62.5%;
+.col {
+    @include screen-small {
+        padding: { left: 0.5em; right: 0.5em; };
     }
-    @include anti-aliasing;
+    @include screen-medium {
+        padding: { left: 1em; right: 1em; };
+    }
+    @include screen-large {
+        padding: { left: 1em; right: 1em; };
+    }
 }
 
+// ------------- below this line is garbage --------------- //
+
 select {
-    border-width: 0;
-    border-radius: 0;
-    @include box-shadow(0 1px 2px #9F9F9F);
-    @include box-sizing(border-box);
-    &:focus {
-        @include box-shadow(0 1px 2px #34003E);
-    }
-
-    color: #222222;
-    height: 2em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    padding-top: 0.4em;
-    padding-bottom: 0.4em;
-    outline: none;
-
     @include screen-small {
         float: none;
         margin-left: 0;
@@ -56,46 +45,6 @@ select {
         margin-left: 0.5em;
         width: 52.5%;
     }
-
-    -webkit-appearance: none;
-    @include anti-aliasing;
-}
-
-.container {
-    margin: 0 auto;
-    width: 100%;
-
-    @include screen-small {
-        font-size: 1.4em;
-    }
-    @include screen-medium {
-        font-size: 1.6em;
-    }
-    @include screen-large {
-        font-size: 1.8em;
-    }
-}
-
-.content {
-    margin: 0 auto;
-    max-width: 60em;
-}
-
-h1, h2, h3, h4, h5, h6, p, ul, ol {
-    margin: 0;
-    padding: 0;
-}
-
-h2 {
-    font: {
-        weight: 400;
-        size: 1.4em;
-    }
-}
-
-h3 {
-    font-weight: 400;
-    size: 1.3em;
 }
 
 .small {
@@ -106,135 +55,20 @@ h3 {
     margin-top: 1em;
 }
 
-a {
-    color: #34003E;
-    text-decoration: none;
-
-    &:hover {
-        color: #828282;
-    }
-}
-
-ul, ol {
-    padding-left: 1.5em;
-}
-
-ul.horizontal {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-        padding: 0 1.5em; // TODO(johnliu): test mobile.
-        @include screen-small {
-            display: list-item;
-        }
-        @include screen-medium {
-            display: inline-block;
-        }
-        @include screen-large {
-            display: inline-block;
-        }
-
-    }
-}
-
 .right-align {
     text-align: right;
 }
 
-.col {
-    @include screen-small {
-        padding-left: 0.5em;
-        padding-right: 0.5em;
-    }
-}
-
-button {
+hr {
+    border-width: 0px;
+    height: 2px;
+    color: #606060;
     background-color: #606060;
-    border: 0;
-    color: #FFFFFF;
-    padding: 0.5em 2em;
-    @include border-radius(0.4em);
-
-    &:hover {
-        background-color: #808080;
-    }
-
-    &.go {
-        background-color: #4F7A27;
-
-        &:hover {
-            background-color: #6EA634;
-        }
-
-        &:disabled {
-            background-color: #606060;
-
-            &:hover {
-                background-color: #606060;
-            }
-        }
-    }
-}
-
-input[type=submit], button[type=submit] {
-    @extend button;
-    @extend button.go;
-}
-
-@include input-text {
-    border-width: 0;
-    border-radius: 0;
-    @include box-shadow(0 1px 2px #9F9F9F);
-
-    height: 1.25em;
-    padding: 0.2em;
-    outline: none;
-
-    -webkit-appearance: none;
-
-    &:focus {
-        @include box-shadow(0 1px 2px #34003E);
-    }
 }
 
 textarea {
-    border-width: 0;
-    border-radius: 0;
-    @include box-shadow(0 1px 2px #9F9F9F);
-
-    width: 100%;
-    height: 8em;
     margin-top: 0.5em;
     margin-bottom: 1em;
-    padding: 0.2em;
-    resize: none;
-    outline: none;
-
-    -webkit-appearance: none;
-
-    &:focus {
-        @include box-shadow(0 1px 2px #34003E);
-    }
-}
-
-.error {
-    @include input-text {
-        @include box-shadow(0 1px 2px #FF0000);
-
-        &:focus {
-            @include box-shadow(0 1px 2px #34003E);
-        }
-    }
-
-    textarea {
-        @include box-shadow(0 1px 2px #FF0000);
-
-        &:focus {
-            @include box-shadow(0 1px 2px #34003E);
-        }
-    }
 }
 
 .clear {

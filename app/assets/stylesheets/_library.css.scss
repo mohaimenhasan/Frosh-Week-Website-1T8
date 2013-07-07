@@ -1,0 +1,74 @@
+/* Library Helpers
+ *
+ * Reusable functions and mixins.
+ *
+ * author:  John Liu
+ * version: 0.0.1
+ */
+
+@import 'compass';
+
+/* Mixins
+ * ------
+ */
+
+@mixin screen-small {
+    @media #{'only screen'} { @content; }
+}
+@mixin screen-medium {
+    @media #{'only screen and (min-width: 38em)'} { @content; }
+}
+@mixin screen-large {
+    @media #{'only screen and (min-width: 54em)'} { @content; }
+}
+
+@mixin anti-aliasing($r: 255, $b: 255, $g: 255, $radius: 0.3) {
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-shadow: 0 1px 1px rgba($r, $b, $g, $radius);
+}
+
+@mixin anti-aliasing-light {
+    @include anti-aliasing(255, 255, 255, 0.3);
+}
+
+@mixin anti-aliasing-dark {
+    @include anti-aliasing(0, 0, 0, 0.3);
+}
+
+// TODO(johnliu): Test how accurately this works.
+@mixin ms-box-shadow($strength, $direction, $color) {
+    -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=#{$strength}, Direction=#{$direction}, Color='#{$color}')";
+}
+
+@mixin input-text {
+    input {
+        &:not([type=submit]),
+        &:not([type=file]),
+        &:not([type=checkbox]),
+        &:not([type=radio]),
+        &:not([type=button]) {
+            @content;
+        }
+    }
+}
+
+@mixin stylistic-section($background-color: '') {
+    width: 100%;
+    overflow: auto;
+    @if $background-color != '' {
+        background-color: $background-color;
+    }
+}
+
+/* Functions
+ * ---------
+ */
+
+@function image-scaled-height($image, $multiplier) {
+    @return image-height($image) * $multiplier;
+}
+
+@function image-scaled-width($image, $multiplier) {
+    @return image-width($image) * $multiplier;
+}

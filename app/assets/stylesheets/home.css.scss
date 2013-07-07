@@ -1,0 +1,141 @@
+/* Orientation Home Styles
+ *
+ * This is the style sheet for the home page.
+ *
+ * author:  John Liu
+ * version: 0.0.1
+ */
+
+@import 'compass';
+@import 'library';
+@import 'core';
+
+$logo-scaling: 0.7;
+$logo-background-color: transparentize($box-normal-color, 0.1);
+
+$home-banner-image: 'home-banner.jpg';
+$home-banner-scaling-s: 0.5;
+$home-banner-scaling-m: 0.75;
+$home-banner-scaling-l: 1.25;
+
+
+/* Mixins
+ * ------
+ */
+
+@mixin home-content-padding {
+    @include screen-small {
+        padding: { top: 1em; bottom: 1em; };
+    };
+    @include screen-medium {
+        padding: { top: 3em; bottom: 3em; };
+    };
+    @include screen-large {
+        padding: { top: 5em; bottom: 5em; };
+    };
+}
+
+
+/* Core
+ * ----
+ */
+
+.home {
+    h1 {
+        margin-bottom: 0.5em;
+    }
+
+    button.go {
+        font-size: 2em;
+    }
+
+    @include screen-small {
+        text-align: center;
+        li { list-style-type: none; }
+    };
+    @include screen-medium {
+        text-align: left;
+        li { list-style-type: disc; }
+    };
+    @include screen-large {
+        text-align: left;
+        li { list-style-type: disc; }
+    };
+
+    .side, .main, .half, .full {
+        @include home-content-padding;
+    };
+
+    .full {
+        text-align: center;
+    }
+}
+
+
+/* Logo, banner specific styles
+ * ----------------------------
+ */
+
+.home-banner {
+    @include box-shadow($box-shadow-args $box-normal-shadow-color);
+    @include stylistic-section;
+
+    background: {
+        image: image-url($home-banner-image);
+        size: cover;
+        position: center;
+    };
+    width: 100%;
+
+    @include screen-small {
+        height: image-scaled-height($home-banner-image, $home-banner-scaling-s);
+    };
+    @include screen-medium {
+        height: image-scaled-height($home-banner-image, $home-banner-scaling-m);
+    };
+    @include screen-large {
+        height: image-scaled-height($home-banner-image, $home-banner-scaling-l);
+    };
+}
+
+.home-logo-wrapper {
+    @extend .box-normal;
+
+    background-color: $logo-background-color;
+
+    margin: 0 auto;
+    max-width: image-scaled-width($logo, $logo-scaling);
+    position: relative;
+
+    @include transition(background-color 0.5s);
+
+    @include screen-small {
+        top: 2em;
+    };
+    @include screen-medium {
+        top: 4em;
+    };
+    @include screen-large {
+        top: 4em;
+    };
+
+    &:hover {
+        background-color: $box-normal-color;
+    };
+}
+
+.home-logo {
+    background: {
+        image: image-url($logo);
+        size: contain;
+        position: center;
+        repeat: no-repeat;
+    };
+
+    width: 100%;
+    height: image-scaled-height($logo, $logo-scaling);
+}
+
+.home-signup-button {
+    display: block;
+}
