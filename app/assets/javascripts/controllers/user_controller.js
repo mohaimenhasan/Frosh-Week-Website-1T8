@@ -1,9 +1,22 @@
 App.UserController = Ember.ObjectController.extend({
-  needs: ['packagesItem'],
+  needs: ['packagesItem', 'packagesReceipt'],
 
   init: function() {
     this._super();
     this.set('content', App.UserForm.create({}));
+  },
+
+  stripeError: function(code) {
+    var content = this.get('content');
+
+    if (code === 'incorrect_number' || code === 'invalid_number' ||
+        code === 'expired_card' || code === 'card_declined') {
+      content.set('errors.ccNumber', 'Invalid card number.');
+    } else if (code === 'invalid_expiry_month' || code === 'invalid_expiry_year') {
+      content.set('errors.ccExpiration', 'Invalid expiration date.');
+    } else if (code === 'invalid_cvc' || code === 'incorrect_cvc') {
+      content.set('errors.ccCVC', 'Invalid CVC.');
+    }
   },
 
   submit: function() {
@@ -19,6 +32,9 @@ App.UserController = Ember.ObjectController.extend({
     var handleTransaction = function(status, response) {
       if (response.error) {
         // This should never happen since we validate client side.
+        if (response.error.hasOwnProperty('code')) {
+          that.stripeError(response.error.code);
+        }
         content.set('error', true);
         submitButton.stop();
       } else {
@@ -62,6 +78,8 @@ App.UserController = Ember.ObjectController.extend({
         record.on('didCreate', function() {
           // Transition to receipt page.
           submitButton.stop();
+          that.get('controllers.packagesReceipt').set('model', record);
+          that.transitionToRoute('packages.receipt');
         });
 
         record.on('becameError', function() {
@@ -73,8 +91,8 @@ App.UserController = Ember.ObjectController.extend({
           var errors = record.get('errors');
 
           for (var key in errors) {
-            if (key == 'stripe') {
-
+            if (key === 'stripe') {
+              that.stripeError(errors[key][0]);
             } else if (errors.hasOwnProperty(key)) {
               content.set('errors.' + key, errors[key][0]);
             }
