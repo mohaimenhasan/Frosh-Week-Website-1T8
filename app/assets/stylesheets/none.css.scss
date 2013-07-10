@@ -1,0 +1,53 @@
+/* Orientation 404 Styles
+ *
+ * This is the style sheet for the 404 page.
+ *
+ * author:  John Liu
+ * version: 0.0.1
+ */
+
+@import 'compass';
+@import 'library';
+@import 'core';
+
+
+/* Mixins
+ * ------
+ */
+
+@mixin none-content-padding {
+    @include screen-small {
+        padding: { top: 1em; bottom: 1em; };
+    };
+    @include screen-medium {
+        padding: { top: 3em; bottom: 3em; };
+    };
+    @include screen-large {
+        padding: { top: 5em; bottom: 5em; };
+    };
+}
+
+
+/* Core
+ * ----
+ */
+
+.none {
+    .side, .main, .half, .full {
+        @include none-content-padding;
+    };
+
+    .full {
+        text-align: center;
+    }
+}
+
+
+/* Logo
+ * ----
+ */
+
+.none-logo {
+    max-width: 30em;
+    width: 100%;
+}
