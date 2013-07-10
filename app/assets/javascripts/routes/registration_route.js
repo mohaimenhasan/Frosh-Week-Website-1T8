@@ -1,10 +1,10 @@
-App.PackagesIndexRoute = Ember.Route.extend({
+App.RegistrationIndexRoute = Ember.Route.extend({
   model: function() {
     return App.Package.find();
   }
 });
 
-App.PackagesItemRoute = Ember.Route.extend({
+App.RegistrationItemRoute = Ember.Route.extend({
   model: function(params) {
     return App.Package.find({ key: params.key });
   },
@@ -26,7 +26,7 @@ App.PackagesItemRoute = Ember.Route.extend({
     }
 
     if (!hack) {
-      this.transitionTo('packages.index');
+      this.transitionTo('registration.index');
     }
 
     controller.set('model', hack);
@@ -37,7 +37,7 @@ App.PackagesItemRoute = Ember.Route.extend({
   }
 });
 
-App.PackagesReceiptRoute = Ember.Route.extend({
+App.RegistrationReceiptRoute = Ember.Route.extend({
   renderTemplate: function(controller, model) {
 //    if (controller.get('model')) {
       this._super(controller, model);

@@ -1,5 +1,5 @@
 App.UserController = Ember.ObjectController.extend({
-  needs: ['packagesItem', 'packagesReceipt'],
+  needs: ['registrationItem', 'registrationReceipt'],
 
   showAccessibilityInfo: false,
 
@@ -26,7 +26,7 @@ App.UserController = Ember.ObjectController.extend({
   },
 
   submit: function() {
-    var selectedPackage = this.get('controllers.packagesItem').get('model');
+    var selectedPackage = this.get('controllers.registrationItem').get('model');
     var content = this.get('content');
 
     // Prepare parts of the user object from form data.
@@ -84,8 +84,8 @@ App.UserController = Ember.ObjectController.extend({
         record.on('didCreate', function() {
           // Transition to receipt page.
           submitButton.stop();
-          that.get('controllers.packagesReceipt').set('model', record);
-          that.transitionToRoute('packages.receipt');
+          that.get('controllers.registrationReceipt').set('model', record);
+          that.transitionToRoute('registration.receipt');
         });
 
         record.on('becameError', function() {
