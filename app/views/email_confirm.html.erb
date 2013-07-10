@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Confirm your email</title>
+</head>
+
+<body style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:dimgrey;">
+  <div style="background-color:whitesmoke;padding:20px;">
+    <div style="font-size:2em;background-color:#A2228E;padding:20px;color:white;">
+      <img style="max-width:100%;vertical-align:middle;margin:5px" src="http://placehold.it/225x100" />
+      <span>Confirm your email</span>
+    </div>
+
+    <div>
+      <p>Hey <%= self.first_name %> <%= self.last_name %>,</p>
+
+      <p>Thanks for registering for F!rosh Week 1T3. There's only one more thing you need
+      to do: We need you to confirm the email you used to register. Then you're all good
+      to go!</p>
+
+      <div style="text-align:center;">
+        <a href="<%= Rails.application.routes.url_helpers.api_confirm_email_url(host: Rails.application.config.hostname, id: self.id, token:self.confirmation_token) %>">
+          <div style="font-size:1.3em;background-color:#A2228E;margin-top:20px;margin-bottom:20px;padding:20px;color:white;display:inline-block;">
+            Click here to confirm your email
+          </div>
+        </a>
+      </div>
+
+      <p style="font-style: italic;">If you didn't use this email to register for F!rosh
+      Week, please contact <a href="support@orientation.skule.ca">support@orientation.skule.ca</a>.</p>
+
+      <p>Thanks,<br />
+      Your Engineering Orientation Committee, 2013</p>
+    </div>
+  </div>
+</body>
+</html>
