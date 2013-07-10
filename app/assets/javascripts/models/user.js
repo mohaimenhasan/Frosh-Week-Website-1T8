@@ -126,10 +126,10 @@ App.UserForm.reopen({
       }
     },
 
-//    emergencyName: {
-//      presence: true,
-//      length: { maximum: 50 }
-//    },
+    emergencyName: {
+      presence: true,
+      length: { maximum: 50 }
+    },
 
     emergencyEmail: {
       presence: true,
