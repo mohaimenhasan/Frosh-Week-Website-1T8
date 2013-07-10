@@ -57,6 +57,10 @@
         @include registration-input-floats;
         @include registration-input-style;
     }
+
+    section .col {
+        padding: { left: 1em; right: 1em; };
+    }
 }
 
 
@@ -194,6 +198,26 @@
 }
 
 
+/* Receipt
+ * -------
+ */
+
+.registration-receipt {
+    .main {
+        width: 65%;
+
+        &.total {
+            text-align: right;
+        }
+    }
+
+    .side {
+        width: 35%;
+        text-align: center;
+    }
+}
+
+
 /* Logo
  * ----
  */
@@ -208,4 +232,8 @@
 
     width: 100%;
     height: image-height($logo);
+
+    &.top {
+        background-position: top center;
+    }
 }

@@ -2,32 +2,36 @@
     <div class="content row">
         <div class="side col">
             {{#linkTo index}}<div class="registration-logo"></div>{{/linkTo}}
-            <div class="box-clear">
-                <h2>Your registration includes:</h2>
-                <ul>
+            <section class="box-clear">
+                <h2>Why register?</h2>
+                <ul class="registration-side">
                     <li>Access to <strong>ALL</strong> events.</li>
-                    <li>A standard-issue F!rosh Kit with tons of cool stuff</li> <!-- (learn more) TODO(johnliu): Make this a link. -->
-                    <li>Free lunch and dinner during full days (Monday and Tuesday)</li>
-                    <li>One free Skule yearbook at the end of the year ($20 value)</li>
+                    <li>A standard issue F!rosh Kit with tons of cool stuff.</li>
+                    <li>Free lunch and dinner on Monday and Tuesday.</li>
+                    <li>One free Skule yearbook at the end of the year ($20 value).</li>
                 </ul>
-            </div>
+            </section>
         </div>
 
         <div class="main col">
-            <div class="box-normal">
-                <h1>Register <strong>online</strong>!</h1>
-                <!-- TODO(johnliu): Remove inline CSS -->
-                <h3 class="small">Early Bird Pricing: <span class="red">20% OFF</span> until August 15!</h3>
-                <ul class="registration-items">
-                    {{#each model}}
-                        <li class="">
+            <section class="box-normal">
+                <h1>
+                    Register online!
+                    <span class="subtitle">Early Bird: <span class="red">20% off</span> until August 15!</span>
+                </h1>
+                {{#each model}}
+                    <div class="registration-item">
+                        <h3>
                             {{#linkTo packages.item this}}
-                                {{description}} <strong>${{price}}</strong>
+                                {{name}} <strong>${{price}}</strong>
                             {{/linkTo}}
-                        </li>
-                    {{/each}}
-                </ul>
-            </div>
+                        </h3>
+                        <p>
+                            {{description}}
+                        </p>
+                    </div>
+                {{/each}}
+            </section>
         </div>
     </div>
 </section>

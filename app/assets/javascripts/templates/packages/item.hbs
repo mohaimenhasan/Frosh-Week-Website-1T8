@@ -1,10 +1,19 @@
-<div class="registration-info">
-    You're about to register for...
+<section class="section-normal">
+    <div class="content row">
+        <div class="side col">
+            {{#linkTo index}}<div class="registration-logo"></div>{{/linkTo}}
+        </div>
 
-    <h2>{{model.description}} Package - $<strong>{{model.price}}</strong></h2>
-    <div class="right-align end">
-        <button class="ladda-button" {{action cancel}}>&lt; Change Kit</button>
+        <div class="main col">
+            <div class="box-highlight">
+                You're about to register for...
+                <h1>{{model.name}} Package - $<strong>{{model.price}}</strong></h1>
+                <div class="align-right">
+                    <button {{action cancel}}>&lt; Change Kit</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 
 {{render user}}

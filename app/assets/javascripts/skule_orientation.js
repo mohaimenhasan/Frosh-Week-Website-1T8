@@ -12,8 +12,8 @@ Ember.EasyForm.Config.registerWrapper('orientation', {
   formClass: '',
   fieldErrorClass: 'error',
   inputClass: 'input',
-  hintClass: '',
-  labelClass: '',
+  hintClass: 'hint',
+  labelClass: 'label',
   wrapControls: false,
   controlsWrapperClass: ''
 });

@@ -1,9 +1,15 @@
 App.UserController = Ember.ObjectController.extend({
   needs: ['packagesItem', 'packagesReceipt'],
 
+  showAccessibilityInfo: false,
+
   init: function() {
     this._super();
     this.set('content', App.UserForm.create({}));
+  },
+
+  toggleAccessibilityInfo: function() {
+    this.set('showAccessibilityInfo', !this.get('showAccessibilityInfo'));
   },
 
   stripeError: function(code) {
