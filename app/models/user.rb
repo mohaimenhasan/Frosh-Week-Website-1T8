@@ -115,9 +115,9 @@ class User < ActiveRecord::Base
       code = e.json_body[:error][:code]
       type = e.json_body[:error][:type]
       error_to_return = code ? code : type
-      { stripe: error_to_return }
+      { cc_token: [error_to_return] }
     rescue Stripe::StripeError => e
-      { stripe: e.message }
+      { cc_token: [e.message] }
     end
   end
 end

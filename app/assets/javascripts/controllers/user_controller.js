@@ -14,6 +14,7 @@ App.UserController = Ember.ObjectController.extend({
 
   stripeError: function(code) {
     var content = this.get('content');
+    console.log(code);
 
     if (code === 'incorrect_number' || code === 'invalid_number' ||
         code === 'expired_card' || code === 'card_declined') {
@@ -95,9 +96,10 @@ App.UserController = Ember.ObjectController.extend({
 
         record.on('becameInvalid', function() {
           var errors = record.get('errors');
+          console.log(errors);
 
           for (var key in errors) {
-            if (key === 'stripe') {
+            if (key === 'ccToken') {
               that.stripeError(errors[key][0]);
             } else if (errors.hasOwnProperty(key)) {
               content.set('errors.' + key, errors[key][0]);
