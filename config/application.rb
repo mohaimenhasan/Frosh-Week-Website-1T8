@@ -72,5 +72,8 @@ module SkuleOrientation
     config.mandrill_from = ENV['MANDRILL_FROM']
 
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
+
+    config.hostname = ENV['HOSTNAME']
+
   end
 end

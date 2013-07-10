@@ -19,3 +19,5 @@
 
 # Sensitive data
 .env
+
+*.DS_STORE

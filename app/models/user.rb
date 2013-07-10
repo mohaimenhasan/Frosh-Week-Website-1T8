@@ -36,6 +36,7 @@
 require 'phony'
 require 'mandrill'
 require 'stripe'
+require 'erb'
 require 'awesome_print' if Rails.env.development?
 
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -77,14 +78,17 @@ class User < ActiveRecord::Base
   validates :restrictions_dietary, :restrictions_misc, :restrictions_accessibility, length: { maximum: 2000 }
   validates :gender, inclusion: { in: ['Male', 'Female', '-'] }
 
-  def send_confirmation
+  def create_token
     self.confirmation_token = Digest::SHA1.hexdigest([Time.now, rand].join)
+  end
+
+  def send_confirmation
     m = Mandrill::API.new
     # TODO(amandeepg): actual data
     message = {
      subject: 'Welcome to F!rosh Week!',
-     from_name: 'F!rosh Leedur',
-     text: "Confirm your email. #{self.id} - #{self.confirmation_token}",
+     from_name: 'F!rosh Week',
+     html: ERB.new(File.read(Rails.root.join('app/views/email_confirm.html.erb'))).result(binding),
      to: [
        {
          email: self.email,

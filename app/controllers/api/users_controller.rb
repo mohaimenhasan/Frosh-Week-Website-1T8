@@ -52,11 +52,13 @@ class Api::UsersController < ActionController::Base
         end
       end
 
+      new_user.create_token
+      new_user.save!
+
       unless Rails.env.development? and user_data.has_key? :skip_confirm_email
         new_user.send_confirmation
       end
 
-      new_user.save!
       render json: { user: new_user.attributes.except('confirmation_token') }
     else
       render json: { errors: new_user.errors }, status: 422
@@ -83,7 +85,8 @@ class Api::UsersController < ActionController::Base
   def confirm
     u = User.find(params[:id])
     u.verified = true if u.confirmation_token == params[:token]
-    render json: { status: u.attributes.except('confirmation_token') }
+    u.save!
+    render json: { user: u.attributes.except('confirmation_token') }
   end
 
 end
