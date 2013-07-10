@@ -13,8 +13,8 @@ class Api::PackagesController < ActionController::Base
   end
 
   def index
-    if params.has_key? :name
-      packages = Package.where params.slice :name
+    if params.has_key? :key
+      packages = Package.where params.slice :key
     else
       packages = Package.all
     end

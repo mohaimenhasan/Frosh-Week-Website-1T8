@@ -21,7 +21,8 @@ ActiveRecord::Schema.define(:version => 20130628053938) do
 
   create_table "packages", :force => true do |t|
     t.string   "name"
-    t.string   "description"
+    t.string   "key"
+    t.text     "description"
     t.integer  "price"
     t.integer  "count"
     t.integer  "max"
