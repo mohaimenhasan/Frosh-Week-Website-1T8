@@ -6,7 +6,7 @@ App.PackagesIndexRoute = Ember.Route.extend({
 
 App.PackagesItemRoute = Ember.Route.extend({
   model: function(params) {
-    return App.Package.find({ name: params.name });
+    return App.Package.find({ key: params.key });
   },
 
   renderTemplate: function(controller, model) {
@@ -33,7 +33,7 @@ App.PackagesItemRoute = Ember.Route.extend({
   },
 
   serialize: function(model) {
-    return { name: model.get('name') };
+    return { key: model.get('key') };
   }
 });
 
