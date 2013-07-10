@@ -8,20 +8,20 @@
 
 @import 'compass';
 @import 'library';
+@import 'core';
 
 .header, .header-spacer {
-    background-color: rgba(255, 255, 255, 0.95);
-    padding: 1.0em;
+    @include box-shadow($box-shadow-args $white-alt);
+
+    background-color: $white-translucent;
+    padding: 1em;
 
     @include screen-small   { text-align: left; }
     @include screen-medium  { text-align: center; }
     @include screen-large   { text-align: center; }
 
-    @include box-shadow(0 0 2px #DFDFDF);
-    @include ms-box-shadow(1, 90, #DFDFDF); // TODO(johnliu): This needs testing.
-
     .selected {
-        font-weight: bold;
+        font-weight: $font-weight-bold;
     }
 }
 

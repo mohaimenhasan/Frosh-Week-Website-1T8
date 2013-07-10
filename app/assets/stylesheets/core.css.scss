@@ -17,44 +17,23 @@
 
 // Global Variables
 
-
 $font-weight-normal: 400;
 $font-weight-bold: 700;
 $box-shadow-args: 0 1px 2px;
 
-$text-dark-color: #222222;
-$text-light-color: #FFFFFF;
-$text-red-color: #FF0000;
-$text-green-color: #4F7A27;
-
-$heading-dark-color: #444444;
-$heading-light-color: #F1F1F1;
-
-$background-color: #F1F1F1;
-
-$link-color: #34003E;
-$link-hover-color: #808080;
-
-$input-text-color: #222222;
-$input-shadow-color: #9F9F9F;
-$input-shadow-error-color: #FF0000;
-$input-shadow-focus-color: #34003E;
-
-$button-text-color: #FFFFFF;
-$button-color: #606060;
-$button-hover-color: #808080;
-
-$submit-button-color: #4F7A27;
-$submit-button-hover-color: #6EA634;
-
 $logo: 'logo.png';
 
-$box-normal-color: #FFFFFF;
-$box-normal-shadow-color: #DFDFDF;
-$box-highlight-color: #34003E;
-
-$section-alt-background-color: #FFFFFF;
-$section-highlight-background-color: #34003E;
+$white: #FFFFFF;
+$white-alt: #DFDFDF;
+$white-translucent: transparentize($white, 0.1);
+$gray: #808080;
+$gray-alt: #606060;
+$black: #222222;
+$black-alt: #444444;
+$purple: #34003E;
+$red: #FF0000;
+$green: #4F7A27;
+$green-alt: #6EA634;
 
 /* Mixins
  * ------
@@ -62,16 +41,32 @@ $section-highlight-background-color: #34003E;
 
 @mixin font-on-light {
     @include anti-aliasing-light;
-    color: $text-dark-color;
+    color: $black;
 }
 
 @mixin font-on-dark {
     @include anti-aliasing-dark;
-    color: $text-light-color;
+    color: $white;
+}
+
+@mixin link-on-light {
+    color: $purple;
+
+    &:hover {
+        color: $gray;
+    };
+}
+
+@mixin link-on-dark {
+    color: $green;
+
+    &:hover {
+        color: $green-alt;
+    };
 }
 
 @mixin heading-style($size: '', $weight: '', $invert: false) {
-    margin-bottom: 0.2em;
+    margin-bottom: 0.25em;
 
     @if $size != '' {
         font-size: $size;
@@ -82,16 +77,16 @@ $section-highlight-background-color: #34003E;
     }
 
     @if $invert {
-        color: $heading-light-color;
+        color: $white-alt;
     } @else {
-        color: $heading-dark-color;
+        color: $black-alt;
     }
 
     &.light {
-        color: $heading-light-color;
+        color: $white-alt;
     }
     &.dark {
-        color: $heading-dark-color;
+        color: $black-alt;
     }
 }
 
@@ -119,34 +114,34 @@ $section-highlight-background-color: #34003E;
 
 @mixin input-style {
     @include anti-aliasing-light;
-    @include box-shadow($box-shadow-args $input-shadow-color);
+    @include box-shadow($box-shadow-args $gray);
     @include box-sizing(border-box);
 
     -webkit-appearance: none;
     outline: none;
 
     border: { width: 0; radius: 0; };
-    //width: 100%;
-    color: $input-text-color;
+    width: 100%;
+    color: $black;
     padding: { left: 0.5em; right: 0.5em; top: 0.4em; bottom: 0.4em; };
 
     &:focus {
-        @include box-shadow($box-shadow-args $input-shadow-focus-color);
+        @include box-shadow($box-shadow-args $purple);
     };
 }
 
 @mixin input-style-error {
-    @include box-shadow($box-shadow-args $input-shadow-error-color);
+    @include box-shadow($box-shadow-args $red);
 
     &:focus {
-        @include box-shadow($box-shadow-args $input-shadow-focus-color);
+        @include box-shadow($box-shadow-args $purple);
     };
 }
 
-@mixin button-style($text-color: $button-text-color,
-                    $background-color: $button-color,
-                    $hover-text-color: $button-text-color,
-                    $hover-background-color: $button-hover-color) {
+@mixin button-style($text-color: $white,
+                    $background-color: $gray,
+                    $hover-text-color: $white,
+                    $hover-background-color: $gray-alt) {
     @include border-radius(0.4em);
     @include transition(background-color 0.5s, color 0.5s);
 
@@ -174,7 +169,7 @@ body {
     @include font-on-light;
 
     margin: 0;
-    background-color: $background-color;
+    background-color: $white-alt;
     font: {
         family: 'proxima-nova-alt', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         weight: $font-weight-normal;
@@ -195,9 +190,9 @@ body {
     margin: 0 auto;
     max-width: 60em;
 
-    @include screen-small   { margin: { top: 1.5em; bottom: 1.5em; }; }
-    @include screen-medium  { margin: { top: 1.0em; bottom: 2.0em; }; }
-    @include screen-large   { margin: { top: 1.5em; bottom: 2.5em; }; }
+    @include screen-small   { margin: { top: 0em; bottom: 0em; }; }
+    @include screen-medium  { margin: { top: 0em; bottom: 0em; }; }
+    @include screen-large   { margin: { top: 0em; bottom: 0em; }; }
 }
 
 .box-clear {
@@ -206,17 +201,21 @@ body {
 
 .box-normal {
     @include rounded-box;
-    @include box-shadow($box-shadow-args $box-normal-shadow-color);
+    @include box-shadow($box-shadow-args $white-alt);
     @include font-on-light;
-    background-color: $box-normal-color;
+    background-color: $white;
 }
 
 .box-highlight {
     @include rounded-box;
-    @include box-shadow($box-shadow-args $box-normal-shadow-color);
+    @include box-shadow($box-shadow-args $white-alt);
     @include headings-invert(true);
     @include font-on-dark;
-    background-color: $box-highlight-color;
+    a {
+        @include link-on-dark;
+    }
+
+    background-color: $purple;
 }
 
 .section-normal {
@@ -224,13 +223,16 @@ body {
 }
 
 .section-alt {
-    @include stylistic-section($section-alt-background-color);
+    @include stylistic-section($white);
 }
 
 .section-highlight {
-    @include stylistic-section($section-highlight-background-color);
+    @include stylistic-section($purple);
     @include headings-invert(true);
     @include font-on-dark;
+    a {
+        @include link-on-dark;
+    }
 }
 
 .side {
@@ -238,7 +240,7 @@ body {
     @include screen-medium  { width: 40%; };
     @include screen-large   { width: 35%; };
 
-    &.right {
+    &.float-right {
         @include screen-small   { float: none; };
         @include screen-medium  { float: right; };
         @include screen-large   { float: right; };
@@ -261,6 +263,25 @@ body {
     width: 100%;
 }
 
+.align-right {
+    text-align: right;
+}
+
+.float-right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+hr {
+    border: 0;
+    color: $black-alt;
+    background-color: $black-alt;
+    height: 2px;
+}
+
 
 /* Typography
  * ----------
@@ -269,7 +290,7 @@ body {
 h1, h2, h3, h4, h5, h6, p, ul, ol {
     margin: 0;
     padding: 0;
-    line-height: 1.2;
+    line-height: 1.25;
 }
 
 h1 { @include heading-style(2.2em, $font-weight-normal, false); }
@@ -295,12 +316,8 @@ p {
 }
 
 a {
-    color: $link-color;
+    @include link-on-light;
     text-decoration: none;
-
-    &:hover {
-        color: $link-hover-color;
-    };
 }
 
 ul, ol {
@@ -325,11 +342,11 @@ ul, ol {
 }
 
 .red {
-    color: $text-red-color;
+    color: $red;
 }
 
 .green {
-    color: $text-green-color;
+    color: $green;
 }
 
 
@@ -355,6 +372,47 @@ select {
     height: 2em;
 }
 
+input[type=radio] + label {
+    @include border-radius(100%);
+}
+
+input[type=radio], input[type=checkbox] {
+    display: none;
+
+    & + label {
+        @include box-shadow($box-shadow-args $gray);
+        @include box-sizing(border-box);
+
+        color: $white;
+        cursor: pointer;
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        border: {
+            width: 4px;
+            style: solid;
+            color: $white;
+        }
+        margin: { top: 0; left: 0.125em; bottom: 0; right: 0.125em; };
+        width: 1.5em;
+        height: 1.5em;
+        line-height: 1.25em;
+
+        &:hover {
+            background-color: $gray-alt;
+        }
+
+        & + label {
+            vertical-align: middle;
+        }
+    }
+
+    &:checked + label {
+        color: $white;
+        background-color: $purple;
+    }
+}
+
 .error {
     @include input-text {
         @include input-style-error;
@@ -365,15 +423,10 @@ select {
     };
 }
 
-
-/* Buttons
- * -------
- */
-
 input[type=button], button {
     @include button-style;
 }
 
 input[type=submit], button[type=submit], button.go {
-    @include button-style($button-text-color, $submit-button-color, $button-text-color, $submit-button-hover-color);
+    @include button-style($white, $green, $white, $green-alt);
 }

@@ -10,14 +10,11 @@
 @import 'library';
 @import 'core';
 
-$logo-scaling: 0.7;
-$logo-background-color: transparentize($box-normal-color, 0.1);
-
 $home-banner-image: 'home-banner.jpg';
 $home-banner-scaling-s: 0.5;
 $home-banner-scaling-m: 0.75;
 $home-banner-scaling-l: 1.25;
-
+$logo-scaling: 0.7;
 
 /* Mixins
  * ------
@@ -77,7 +74,7 @@ $home-banner-scaling-l: 1.25;
  */
 
 .home-banner {
-    @include box-shadow($box-shadow-args $box-normal-shadow-color);
+    @include box-shadow($box-shadow-args $white-alt);
     @include stylistic-section;
 
     background: {
@@ -101,7 +98,7 @@ $home-banner-scaling-l: 1.25;
 .home-logo-wrapper {
     @extend .box-normal;
 
-    background-color: $logo-background-color;
+    background-color: $white-translucent;
 
     margin: 0 auto;
     max-width: image-scaled-width($logo, $logo-scaling);
@@ -120,7 +117,7 @@ $home-banner-scaling-l: 1.25;
     };
 
     &:hover {
-        background-color: $box-normal-color;
+        background-color: $white;
     };
 }
 

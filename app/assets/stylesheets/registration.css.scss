@@ -10,157 +10,88 @@
 @import 'library';
 @import 'core';
 
-.registration-logo {
-    background: {
-        image: image-url($logo);
-        size: contain;
-        repeat: no-repeat;
-        position: center;
+
+/* Mixins
+ * ------
+ */
+
+@mixin registration-input-floats {
+    @include screen-small   { float: none; };
+    @include screen-medium  { float: none; };
+    @include screen-large   { float: right; };
+}
+
+@mixin registration-input-style {
+    @include screen-small {
+        margin-left: 0;
+        width: 100%;
     };
-
-    width: 100%;
-    height: image-height($logo);
+    @include screen-medium {
+        margin-left: 0;
+        width: 100%;
+    };
+    @include screen-large {
+        margin-left: 0.5em;
+        width: 52.5%;
+    };
 }
 
-ul.registration-items {
-    list-style-type: none;
-    padding: 0;
 
-    li {
-        margin: 0.5em;
+/* Core
+ * ----
+ */
 
-        a {
-            color: #000000;
-            text-decoration: none;
+.registration {
+    margin: { top: 1em; bottom: 1em; };
 
-            &:hover {
-                color: #34003E;
-                text-decoration: underline;
-            }
-        }
+    h1 {
+        margin-bottom: 0.5em;
+    }
+
+    @include input-text {
+        @include registration-input-floats;
+        @include registration-input-style;
+    }
+
+    select {
+        @include registration-input-floats;
+        @include registration-input-style;
     }
 }
 
-.registration-box {
-    @include border-radius(0.35em);
 
-    // TODO(johnliu): test mobile.
-    margin: 1em;
-    padding: 1em;
-}
+/* Form
+ * ----
+ */
 
-.registration-clear {
+.registration-form-group {
     margin: 0.5em;
-    padding: 1em;
-}
 
-.registration-normal {
-    @extend .registration-box;
-    background-color: #FFFFFF;
-    @include box-shadow(0 1px 2px #DFDFDF); // TODO(johnliu): Add ms version.
-}
-
-.registration-info {
-    @extend .registration-box;
-    background-color: #34003E;
-
-    @include anti-aliasing-dark;
-    color: #FFFFFF;
-}
-
-// TODO(johnliu): clean up this css.
-.registration-step {
-    @extend .registration-normal;
-
-    padding-left: 2.25em;
-    padding-right: 2.25em;
-    position: relative;
-
-    h2 {
-        font-weight: 800;
-        margin-bottom: 0.75em;
-    }
-
-    h3 {
-        font-weight: 800;
-    }
-
-    .subsection {
-        margin-bottom: 1em;
-
-        & > div {
-            margin: 0.5em;
-
-            @include screen-small {
-                margin-right: 0;
-            }
-            @include screen-medium {
-                margin-right: 0;
-            }
-            @include screen-large {
-                margin-right: 3.5%;
-            }
-        }
-    }
-
-    .subsection {
-        textarea {
-            @include box-sizing(border-box);
-        }
-    }
-
-    .subsection.text {
-        & > div {
-            line-height: 2em;
-            @include screen-small {
-                text-align: left;
-            }
-            @include screen-medium {
-                text-align: left;
-            }
-            @include screen-large {
-                text-align: right;
-            }
-        }
+    .input {
+        margin: { top: 0.5em; bottom: 0.5em; };
 
         .input {
-            @include input-text {
-                @include box-sizing(border-box);
-                height: 2em;
-                padding-left: 0.5em;
-                padding-right: 0.5em;
+            margin: { top: 0; bottom: 0; };
+        }
+    }
 
-                @include screen-small {
-                    float: none;
-                    margin-left: 0;
-                    width: 100%;
-                }
-                @include screen-medium {
-                    float: none;
-                    margin-left: 0;
-                    width: 100%;
-                }
-                @include screen-large {
-                    float: right;
-                    margin-left: 0.5em;
-                    width: 52.5%;
-                }
-            }
+    &.aligned {
+        .input {
+            @include screen-small {
+                text-align: left;
+            };
+            @include screen-medium {
+                text-align: left;
+            };
+            @include screen-large {
+                text-align: right;
+            };
         }
 
-        .text-inline {
-            @include screen-small  { text-align: left; }
-            @include screen-medium { text-align: left; }
-            @include screen-large  { text-align: right; }
-
-            .input-inline-group {
-                float: right;
-                overflow: none;
-
-                @include screen-small  { margin-left: 0;     width: 100%; }
-                @include screen-medium { margin-left: 0;     width: 100%; }
-                @include screen-large  { margin-left: 0.5em; width: 52.5%; }
-            }
+        .inline {
+            @include registration-input-style;
+            float: right;
+            overflow: visible;
 
             @include input-text {
                 text-align: center;
@@ -180,49 +111,101 @@ ul.registration-items {
                 &.cc-month {
                     float: left;
                     margin-left: 0;
-                    width: 48%;
+                    width: 48.75%;
                 }
 
                 &.cc-year {
                     float: right;
-                    margin-left: 4%;
-                    width: 48%;
+                    margin-left: 2.5%;
+                    width: 48.75%;
                 }
             }
         }
-    }
 
-    .checkboxes {
-        label {
-            line-height: 1.2em;
-            vertical-align: middle;
-        }
-    }
-
-    .error-toast {
-        strong {
-            color: #FF0000;
-        }
-        margin: 1.5em;
-        text-align: left;
+        @include screen-small {
+            line-height: normal;
+        };
+        @include screen-medium {
+            line-height: normal;
+        };
+        @include screen-large {
+            line-height: 2em;
+        };
     }
 }
 
-.registration-step-num {
-    background-color: #34003E;
-    @include border-radius(50%);
-    height: 2.5em;
-    width: 2.5em;
+.registration-form-step {
+    position: relative;
 
-    // Center the number.
-    line-height: 2.5em;
-    position: absolute;
-    text-align: center;
+    h2 {
+        @include screen-small {
+            text-align: center;
+            margin-top: 0.25em;
+            margin-left: 0;
+        };
+        @include screen-medium {
+            text-align: left;
+            margin-top: 0;
+            margin-left: 0.5em;
+        };
+        @include screen-large {
+            text-align: left;
+            margin-top: 0;
+            margin-left: 0.5em;
+        };
+    }
 
-    top: 0.5em;
-    left: -1.25em;
+    section {
+        margin-bottom: 1.5em;
+    }
 
-    @include anti-aliasing-dark;
-    color: #FFFFFF;
+    .number {
+        @include box-shadow($box-shadow-args $white-alt);
+        @include headings-invert(true);
+        @include font-on-dark;
+        @include border-radius(50%);
+
+        font-weight: $font-weight-bold;
+        background-color: $purple;
+        width: 2.25em;
+        height: 2.25em;
+        line-height: 2.25em;
+        text-align: center;
+
+        @include screen-small {
+            position: absolute;
+            top: -1em;
+            left: -1.125em;
+            margin-left: 50%;
+        };
+        @include screen-medium {
+            position: absolute;
+            top: 1em;
+            left: -1.125em;
+            margin-left: 0;
+        };
+        @include screen-large {
+            position: absolute;
+            top: 1em;
+            left: -1.125em;
+            margin-left: 0;
+        };
+    }
 }
 
+
+/* Logo
+ * ----
+ */
+
+.registration-logo {
+    background: {
+        image: image-url($logo);
+        size: contain;
+        repeat: no-repeat;
+        position: center;
+    };
+
+    width: 100%;
+    height: image-height($logo);
+}
