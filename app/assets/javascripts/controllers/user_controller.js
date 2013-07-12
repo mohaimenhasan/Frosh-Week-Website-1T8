@@ -85,6 +85,7 @@ App.UserController = Ember.ObjectController.extend({
         record.on('didCreate', function() {
           // Transition to receipt page.
           submitButton.stop();
+          that.set('content', App.UserForm.create({}));
           that.get('controllers.registrationReceipt').set('model', record);
           that.transitionToRoute('registration.receipt');
         });
