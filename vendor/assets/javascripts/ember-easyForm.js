@@ -455,8 +455,6 @@ Ember.EasyForm.TextArea = Ember.TextArea.extend({
 
     var that = this;
     this.addObserver('toggled', function() {
-      console.log(that);
-
       var value;
       if (that.reverse === "true") {
         value = that.toggled ? '' : null;
