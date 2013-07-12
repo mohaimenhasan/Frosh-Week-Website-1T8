@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require handlebars
+//= require fastclick
 //= require spin
 //= require ladda
 //= require ember
@@ -9,5 +10,10 @@
 //= require ember-validations
 //= require_self
 //= require skule_orientation
+
 try { Typekit.load(); }
 catch(e) {}
+
+$(function() {
+  FastClick.attach(document.body);
+});

@@ -236,13 +236,17 @@ App.UserForm.reopen({
           var month = object.get('ccExpirationMonth');
           var year = object.get('ccExpirationYear');
 
-          if (month || year) {
+          if (month && year) {
             month = parseInt(month, 10);
             year = parseInt(year, 10) + 2000;
             return Stripe.card.validateExpiry(month, year);
           }
 
-          return false;
+          if (typeof month === 'undefined' || typeof year === 'undefined') {
+            return true;
+          } else {
+            return false;
+          }
         }
       },
       presence: {
@@ -252,13 +256,17 @@ App.UserForm.reopen({
           var month = object.get('ccExpirationMonth');
           var year = object.get('ccExpirationYear');
 
-          if (month || year) {
+          if (month && year) {
             month = parseInt(month, 10);
             year = parseInt(year, 10) + 2000;
             return Stripe.card.validateExpiry(month, year);
           }
 
-          return false;
+          if (typeof month === 'undefined' || typeof year === 'undefined') {
+            return true;
+          } else {
+            return false;
+          }
         }
       }
     },

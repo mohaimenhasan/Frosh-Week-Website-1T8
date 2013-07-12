@@ -22,11 +22,11 @@
                         {{#input gender}}
                             {{labelField gender text="Gender"}}
                             {{inputField gender
-                            as='select'
-                            collection='App.UserFormGender'
-                            selection='gender'
-                            optionValuePath='content'
-                            optionLabelPath='content'}}
+                            as=select
+                            collection=App.UserFormGender
+                            selection=gender
+                            optionValuePath=content
+                            optionLabelPath=content}}
                         {{/input}}
                         {{#input phone}}
                             {{labelField phone text="Phone number"}}
@@ -35,11 +35,11 @@
                         {{#input discipline}}
                             {{labelField discipline text="Engineering discipline"}}
                             {{inputField discipline
-                            as='select'
-                            collection='App.UserFormEngineeringDisciplines'
-                            selection='discipline'
-                            optionValuePath='content'
-                            optionLabelPath='content'}}
+                            as=select
+                            collection=App.UserFormEngineeringDisciplines
+                            selection=discipline
+                            optionValuePath=content
+                            optionLabelPath=content}}
                         {{/input}}
                         {{#input residence}}
                             {{labelField residence text="Residence"}}
@@ -62,11 +62,11 @@
                         {{#input shirtSize}}
                             {{labelField shirtSize text="What's your t-shirt size?"}}
                             {{inputField shirtSize
-                            as='select'
-                            collection='App.UserFormShirtSize'
-                            selection='shirtSize'
-                            optionValuePath='content'
-                            optionLabelPath='content'}}
+                            as=select
+                            collection=App.UserFormShirtSize
+                            selection=shirtSize
+                            optionValuePath=content
+                            optionLabelPath=content}}
                         {{/input}}
                     </section>
                 </section>
@@ -97,7 +97,7 @@
                         {{/input}}
                         {{#input emergencyPhone}}
                             {{labelField emergencyPhone text="Phone number"}}
-                            {{inputField emergencyPhone placeholder="647 123 5678"}}
+                            {{inputField emergencyPhone as=tel placeholder="647 123 5678"}}
                         {{/input}}
                     </section>
 
@@ -111,23 +111,21 @@
                     <section class="registration-form-group">
                         <h3>
                             List any accessibility requirements you may need.
-                            <a {{action toggleAccessibilityInfo}} href="#">
+                            <span class="toggle-block" {{action toggleAccessibilityInfo}}>
                                 {{#unless showAccessibilityInfo}}
                                     Learn more.
                                 {{else}}
                                     Hide extra info.
                                 {{/unless}}
-                            </a>
+                            </span>
                         </h3>
-                        {{#if showAccessibilityInfo}}
-                            <div class="info">
-                                The Engineering Society is striving to create an accessible and inclusive Orientation.
-                                If you require accommodations for a disability and/or religious accommodations, please
-                                provide details in the box below. We ask that you provide this information by
-                                <strong>August 12th, 2013</strong>. If you would prefer to speak to someone directly,
-                                please contact us at <a href="mailto:orientation@skule.ca">orientation@skule.ca</a>.
-                            </div>
-                        {{/if}}
+                        <p {{bindAttr class=":info showAccessibilityInfo:showing:hidden"}}>
+                            The Engineering Society is striving to create an accessible and inclusive Orientation.
+                            If you require accommodations for a disability and/or religious accommodations, please
+                            provide details in the box below. We ask that you provide this information by
+                            <strong>August 12th, 2013</strong>. If you would prefer to speak to someone directly,
+                            please contact us at <a href="mailto:orientation@skule.ca" tabindex="-1">orientation@skule.ca</a>.
+                        </p>
                         {{#input restrictionsAccessibility}}
                             {{inputField restrictionsAccessibility as=text}}
                         {{/input}}
@@ -163,7 +161,7 @@
                         {{/input}}
                     </section>
 
-                    {{#unless bursary}}
+                    <div {{bindAttr class=":registration-payment bursary:hidden:showing"}}>
                         <section class="registration-form-group aligned">
                             <h3>
                                 Pay by credit card
@@ -171,17 +169,17 @@
                             </h3>
                             {{#input ccName}}
                                 {{labelField ccName text="Name on card"}}
-                                {{inputField ccName placeholder="Jane Smith"}}
+                                {{inputField ccName placeholder="Jane Smith" toggledBinding=bursary reverse="true"}}
                             {{/input}}
 
                             <div class="input">
                                 <label>Card number</label>
                                 <div class="inline">
                                     {{#input ccNumber}}
-                                        {{inputField ccNumber as=tel placeholder="1234 1234 1234 1234" inputConfig="class:cc cc-number"}}
+                                        {{inputField ccNumber as=tel placeholder="1234 1234 1234 1234" inputConfig="class:cc cc-number" toggledBinding=bursary reverse="true"}}
                                     {{/input}}
                                     {{#input ccCVC}}
-                                        {{inputField ccCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc"}}
+                                        {{inputField ccCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc" toggledBinding=bursary reverse="true"}}
                                     {{/input}}
                                 </div>
                                 <div class="clear"></div>
@@ -191,69 +189,67 @@
                                 <label>Expires</label>
                                 <div class="inline">
                                     {{#input ccExpiration}}
-                                        {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month"}}
+                                        {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month" toggledBinding=bursary reverse="true"}}
                                     {{/input}}
                                     {{#input ccExpiration}}
-                                        {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year"}}
+                                        {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year" toggledBinding=bursary reverse="true"}}
                                     {{/input}}
                                 </div>
                                 <div class="clear"></div>
                             </div>
                         </section>
-                    {{else}}
+                    </div>
+
+                    <div {{bindAttr class=":registration-bursary bursary:showing:hidden"}}>
                         <section class="registration-form-group aligned">
                             <h3>Fill out your bursary application details</h3>
                             {{#input bursaryScholarshipAmount}}
                                 {{labelField bursaryScholarshipAmount text="Entrance Scholarship"}}
-                                {{inputField bursaryScholarshipAmount placeholder="3000.00"}}
+                                {{inputField bursaryScholarshipAmount placeholder="3000.00" toggledBinding=bursary reverse="false"}}
                             {{/input}}
                         </section>
 
                         <section class="registration-form-group">
                             <h3>Please describe the motivation and paths for you to select the enrolled engineering program at U of T (300 words).</h3>
                             {{#input bursaryEngineeringMotivation}}
-                                {{inputField bursaryEngineeringMotivation as=text}}
+                                {{inputField bursaryEngineeringMotivation as=text toggledBinding=bursary reverse="false"}}
                             {{/input}}
                         </section>
 
                         <section class="registration-form-group">
                             <h3>Please describe in 300 words of why you would need financial support for attending Engineering Orientation 1T3.</h3>
                             {{#input bursaryFinancialReasoning}}
-                                {{inputField bursaryFinancialReasoning as=text}}
+                                {{inputField bursaryFinancialReasoning as=text toggledBinding=bursary reverse="false"}}
                             {{/input}}
                         </section>
 
                         <section class="registration-form-group">
                             <h3>Describe what you would like to do after graduation.</h3>
                             {{#input bursaryAfterGraduation}}
-                                {{inputField bursaryAfterGraduation as=text}}
+                                {{inputField bursaryAfterGraduation as=text toggledBinding=bursary reverse="false"}}
                             {{/input}}
                         </section>
-                    {{/unless}}
+                    </div>
                 </section>
             </div>
         </div>
     </section>
 
-    {{#if error}}
-        <section class="section-normal">
-            <div class="content row">
-                <div class="main col float-right">
-                    <section class="box-highlight">
-                        <div class="error-toast">
-                            <h2>Oops! Something went wrong!</h2>
-                            Here's what you can do:
-                            <ul>
-                                <li>See if you have any missing information that may be required</li>
-                                <li>Try again later</li>
-                                <li>Contact us at <b><a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a></b></li>
-                            </ul>
-                        </div>
-                    </section>
-                </div>
+    <section {{bindAttr class=":section-normal :registration-error isValid:hidden:showing"}}>
+        <div class="content row">
+            <div class="main col float-right">
+                <section class="box-highlight">
+                    <h2>Oops! Something went wrong!</h2>
+                    Here's what you can do:
+                    <ul>
+                        <li>See if you have any missing information that may be required</li>
+                        <li>Try again later</li>
+                        <li>Contact us at <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b></li>
+                    </ul>
+                </section>
             </div>
-        </section>
-    {{/if}}
+        </div>
+    </section>
 
     <section class="section-normal">
         <div class="content row">

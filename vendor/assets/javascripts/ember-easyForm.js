@@ -420,10 +420,18 @@ Ember.EasyForm.Select = Ember.Select.extend();
 (function() {
 Ember.EasyForm.Submit = Ember.EasyForm.BaseView.extend({
   tagName: 'button',
-  attributeBindings: ['type', 'data-style'],
+  attributeBindings: ['type', 'data-style', 'disabled'],
   type: 'submit',
+  disabled: null,
   init: function() {
     this._super();
+
+    var that = this;
+    this.addObserver('context.isValid', function() {
+      var isValid = this.get('context.isValid');
+      var value = isValid ? null : '';
+      this.set('disabled', value);
+    });
   },
   onClick: function() {
     if (this.get('context').validate()) {
@@ -437,15 +445,53 @@ Ember.EasyForm.Submit = Ember.EasyForm.BaseView.extend({
 
 
 (function() {
-Ember.EasyForm.TextArea = Ember.TextArea.extend();
+Ember.EasyForm.TextArea = Ember.TextArea.extend({
+  attributeBindings: ['disabled'],
+  disabled: null,
+  reverse: "false",
+  toggled: true,
+  init: function() {
+    this._super();
 
+    var that = this;
+    this.addObserver('toggled', function() {
+      console.log(that);
+
+      var value;
+      if (that.reverse === "true") {
+        value = that.toggled ? '' : null;
+      } else {
+        value = that.toggled ? null : '';
+      }
+      that.set('disabled', value);
+    });
+  }
+});
 })();
 
 
 
 (function() {
-Ember.EasyForm.TextField = Ember.TextField.extend();
+Ember.EasyForm.TextField = Ember.TextField.extend({
+  attributeBindings: ['disabled'],
+  disabled: null,
+  reverse: "false",
+  toggled: true,
+  init: function() {
+    this._super();
 
+    var that = this;
+    this.addObserver('toggled', function() {
+      var value;
+      if (that.reverse === "true") {
+        value = that.toggled ? '' : null;
+      } else {
+        value = that.toggled ? null : '';
+      }
+      that.set('disabled', value);
+    });
+  }
+});
 })();
 
 

@@ -42,6 +42,8 @@
  */
 
 .registration {
+    @include transition(all 0.5s);
+
     margin: { top: 1em; bottom: 1em; };
 
     h1 {
@@ -60,6 +62,32 @@
 
     section .col {
         padding: { left: 1em; right: 1em; };
+    }
+
+    .toggle-block {
+        @extend a;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .info {
+        @include slide(10em);
+    }
+}
+
+
+/* Packages
+ * --------
+ */
+
+.registration-item {
+    @include transition(all 0.3s);
+
+    padding: 0.5em;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $white-alt;
     }
 }
 
@@ -195,6 +223,28 @@
             margin-left: 0;
         };
     }
+}
+
+.registration-payment {
+    @include slide(20em);
+
+    // Hack to fix margin's from not collapsing.
+    section:first-child {
+        margin-top: 0;
+    }
+}
+
+.registration-bursary {
+    @include slide(80em);
+
+    // Hack to fix margin's from not collapsing.
+    section:first-child {
+        margin-top: 0;
+    }
+}
+
+.registration-error {
+    @include slide(20em);
 }
 
 

@@ -4,8 +4,26 @@ App.UserController = Ember.ObjectController.extend({
   showAccessibilityInfo: false,
 
   init: function() {
-    this._super();
-    this.set('content', App.UserForm.create({}));
+    this._super.apply(this, arguments);
+    this.set('content', App.UserForm.create({ isValid: true }));
+
+    var that = this;
+    this.addObserver('content.bursary', function() {
+      var content = that.get('content');
+
+      // Validate opposite of toggle, to clear previous validations.
+      if (content.get('bursary')) {
+        content.validate('ccName');
+        content.validate('ccNumber');
+        content.validate('ccCVC');
+        content.validate('ccExpiration');
+      } else {
+        content.validate('bursaryScholarshipAmount');
+        content.validate('bursaryEngineeringMotivation');
+        content.validate('bursaryFinancialReasoning');
+        content.validate('bursaryAfterGraduation');
+      }
+    });
   },
 
   toggleAccessibilityInfo: function() {
@@ -42,7 +60,7 @@ App.UserController = Ember.ObjectController.extend({
         if (response.error.hasOwnProperty('code')) {
           that.stripeError(response.error.code);
         }
-        content.set('error', true);
+        content.set('isValid', false);
         submitButton.stop();
       } else {
         var transaction = that.get('store').transaction();
@@ -91,7 +109,7 @@ App.UserController = Ember.ObjectController.extend({
         });
 
         record.on('becameError', function() {
-          content.set('error', true);
+          content.set('isValid', false);
           submitButton.stop();
         });
 
@@ -107,23 +125,29 @@ App.UserController = Ember.ObjectController.extend({
             }
           }
 
-          content.set('error', true);
+          content.set('isValid', false);
           submitButton.stop();
         });
       }
     };
 
     submitButton.start();
-    content.set('error', false);
+    content.set('isValid', true);
+
+    var delayedHandleTransaction = function(status, response) {
+      window.setTimeout(handleTransaction, 250, status, response);
+    };
+
     if (content.get('bursary')) {
-      handleTransaction(null, { id: 0 });
+      delayedHandleTransaction(null, { id: 0 });
     } else {
       Stripe.card.createToken({
+        name: content.get('ccName'),
         number: content.get('ccNumber'),
         cvc: content.get('ccCVC'),
         exp_month: userCCExpirationMonth,
         exp_year: userCCExpirationYear
-      }, handleTransaction);
+      }, delayedHandleTransaction);
     }
   }
 });

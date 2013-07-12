@@ -112,8 +112,25 @@ $green-alt: #6EA634;
     @include box;
 }
 
+@mixin slide($height) {
+    @include transition(all 0.5s);
+    overflow: hidden;
+
+    &.showing {
+        max-height: $height;
+        opacity: 1;
+    }
+
+    &.hidden {
+        margin-bottom: 0;
+        max-height: 0;
+        opacity: 0;
+    }
+}
+
 @mixin input-style {
     @include anti-aliasing-light;
+    @include transition(all 0.3s);
     @include box-shadow($box-shadow-args $gray);
     @include box-sizing(border-box);
 
@@ -141,9 +158,11 @@ $green-alt: #6EA634;
 @mixin button-style($text-color: $white,
                     $background-color: $gray,
                     $hover-text-color: $white,
-                    $hover-background-color: $gray-alt) {
+                    $hover-background-color: $gray-alt,
+                    $disabled-text-color: $white,
+                    $disabled-background-color: $gray) {
     @include border-radius(0.4em);
-    @include transition(background-color 0.5s, color 0.5s);
+    @include transition(all 0.3s);
 
     border: 0;
     padding: { left: 2em; right: 2em; top: 0.5em; bottom: 0.5em; };
@@ -151,10 +170,19 @@ $green-alt: #6EA634;
     background-color: $background-color;
     color: $text-color;
 
+    -webkit-user-select: none;
+
     &:hover, &:focus {
-        outline: none;
-        background-color: $hover-background-color;
-        color: $hover-text-color;
+        &:not(:disabled) {
+            outline: none;
+            background-color: $hover-background-color;
+            color: $hover-text-color;
+        }
+    };
+
+    &:disabled {
+        background-color: $disabled-background-color;
+        color: $disabled-text-color;
     };
 }
 
@@ -211,6 +239,11 @@ body {
     @include box-shadow($box-shadow-args $white-alt);
     @include headings-invert(true);
     @include font-on-dark;
+
+    p {
+        @include font-on-dark;
+    }
+
     a {
         @include link-on-dark;
     }
@@ -230,6 +263,11 @@ body {
     @include stylistic-section($purple);
     @include headings-invert(true);
     @include font-on-dark;
+
+    p {
+        @include font-on-dark;
+    }
+
     a {
         @include link-on-dark;
     }
@@ -312,12 +350,14 @@ h6 { @include heading-style(1.0em, $font-weight-normal, false); }
 }
 
 p {
+    @include font-on-light;
     margin-bottom: 1em;
 }
 
 a {
     @include link-on-light;
     text-decoration: none;
+    -webkit-user-select: none;
 }
 
 ul, ol {
@@ -377,7 +417,8 @@ input[type=radio] + label {
 }
 
 input[type=radio], input[type=checkbox] {
-    display: none;
+    position: absolute;
+    left: -99999px; // This is a hack to enable tab indexing.
 
     & + label {
         @include box-shadow($box-shadow-args $gray);
@@ -398,13 +439,19 @@ input[type=radio], input[type=checkbox] {
         height: 1.5em;
         line-height: 1.25em;
 
-        &:hover {
+        &:hover, &:focus {
+            @include box-shadow($box-shadow-args $purple);
             background-color: $gray-alt;
         }
 
         & + label {
             vertical-align: middle;
         }
+    }
+
+    &:focus + label {
+        @include box-shadow($box-shadow-args $purple);
+        background-color: $gray-alt;
     }
 
     &:checked + label {

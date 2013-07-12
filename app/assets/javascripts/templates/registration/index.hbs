@@ -21,14 +21,14 @@
                 </h1>
                 {{#each model}}
                     <div class="registration-item">
-                        <h3>
-                            {{#linkTo registration.item this}}
-                                {{name}} <strong>${{price}}</strong>
-                            {{/linkTo}}
-                        </h3>
-                        <p>
-                            {{description}}
-                        </p>
+                        {{#linkTo registration.item this}}
+                            <h3>
+                                <strong>${{price}}</strong> {{name}}
+                            </h3>
+                            <p>
+                                {{description}}
+                            </p>
+                        {{/linkTo}}
                     </div>
                 {{/each}}
             </section>
