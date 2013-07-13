@@ -1,3 +1,4 @@
+screen = Screen(1)
 bursary = True
 
 # Settings
@@ -8,7 +9,7 @@ Settings.SlowMotionDelay = 0
 switchApp('Google Chrome')
 
 # Personal Information
-type("1373701450896.png", 'John\t')
+screen.type("1373701450896.png", 'John\t')
 type('Liu\t')
 type('johnliu.dev@gmail.com\t')
 type('\t') # Gender

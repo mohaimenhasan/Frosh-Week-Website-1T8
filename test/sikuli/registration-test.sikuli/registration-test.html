@@ -70,6 +70,7 @@
 <h2>registration-test.sikuli</h2> <a href="registration-test.zip">(Download this script)</a>
 </div>
 <pre class="sikuli-code">
+screen = Screen(<span class="dig">1</span>)
 bursary = True
 
 <span class="cmt"># Settings
@@ -80,7 +81,7 @@ Settings.SlowMotionDelay = <span class="dig">0</span>
 switchApp(<span class="str">'Google Chrome'</span>)
 
 <span class="cmt"># Personal Information
-</span><span class="skw">type</span>(<img src="1373701450896.png" />, <span class="str">'John\t'</span>)
+</span>screen.<span class="skw">type</span>(<img src="1373701450896.png" />, <span class="str">'John\t'</span>)
 <span class="skw">type</span>(<span class="str">'Liu\t'</span>)
 <span class="skw">type</span>(<span class="str">'johnliu.dev@gmail.com\t'</span>)
 <span class="skw">type</span>(<span class="str">'\t'</span>) <span class="cmt"># Gender</span>
