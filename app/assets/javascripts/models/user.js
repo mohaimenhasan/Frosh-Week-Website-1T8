@@ -67,7 +67,7 @@ App.UserFormShirtSize = [
   'Extra Large'
 ];
 
-App.UserForm = Ember.Object.extend(Ember.Validations.Mixin)
+App.UserForm = Ember.Object.extend(Ember.Validations.Mixin);
 App.UserForm.reopen({
   validations: {
     email: {
@@ -224,7 +224,9 @@ App.UserForm.reopen({
       },
       presence: {
         unless: function(object, validator) {
-          if (object.get('bursary')) return true;
+          if (object.get('bursary')) {
+            return true;
+          }
           return Stripe.card.validateCardNumber(object.get('ccNumber'));
         }
       }
@@ -251,7 +253,9 @@ App.UserForm.reopen({
       },
       presence: {
         unless: function(object, validator) {
-          if (object.get('bursary')) return true;
+          if (object.get('bursary')) {
+            return true;
+          }
 
           var month = object.get('ccExpirationMonth');
           var year = object.get('ccExpirationYear');
@@ -289,7 +293,9 @@ App.UserForm.reopen({
       },
       presence: {
         unless: function(object, validator) {
-          if (object.get('bursary')) return true;
+          if (object.get('bursary')) {
+            return true;
+          }
 
           var cvc = object.get('ccCVC');
           return cvc && cvc.length > 0 && Stripe.card.validateCVC(cvc);
