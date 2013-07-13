@@ -29,6 +29,10 @@ App.RegistrationReceiptController = Ember.Controller.extend({
         });
       }
     });
+  },
+
+  print: function() {
+    window.print();
   }
 });
 

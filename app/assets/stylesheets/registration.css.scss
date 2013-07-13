@@ -288,6 +288,10 @@
     }
 }
 
+.registration-print-button {
+    @include print { display: none; };
+}
+
 .registration-receipt-items {
     margin: { top: 1em; bottom: 2em; };
 }
