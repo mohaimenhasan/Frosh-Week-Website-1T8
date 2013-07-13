@@ -59,7 +59,7 @@ class Api::UsersController < ActionController::Base
         new_user.send_confirmation
       end
 
-      render json: { user: new_user.attributes.except('confirmation_token') }
+      render json: { user: new_user.attributes.except('confirmation_token').merge(cc_token: user_data[:cc_token]) }
     else
       render json: { errors: new_user.errors }, status: 422
     end
