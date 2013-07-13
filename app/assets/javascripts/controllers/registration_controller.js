@@ -31,3 +31,14 @@ App.RegistrationReceiptController = Ember.Controller.extend({
     });
   }
 });
+
+App.RegistrationBursaryController = Ember.Controller.extend({
+  init: function() {
+    var that = this;
+    this.addObserver('model', function() {
+      if (!this.get('model')) {
+        that.transitionToRoute('registration.index');
+      }
+    });
+  }
+});

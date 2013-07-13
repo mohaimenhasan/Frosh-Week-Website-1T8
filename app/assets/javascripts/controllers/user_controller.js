@@ -1,5 +1,5 @@
 App.UserController = Ember.ObjectController.extend({
-  needs: ['registrationItem', 'registrationReceipt'],
+  needs: ['registrationItem', 'registrationReceipt', 'registrationBursary'],
 
   showAccessibilityInfo: false,
 
@@ -104,9 +104,15 @@ App.UserController = Ember.ObjectController.extend({
         record.on('didCreate', function() {
           // Transition to receipt page.
           submitButton.stop();
+          if (that.get('content.bursary')) {
+            that.get('controllers.registrationBursary').set('model', record);
+            that.transitionToRoute('registration.bursary');
+          } else {
+            that.get('controllers.registrationReceipt').set('model', record);
+            that.transitionToRoute('registration.receipt');
+          }
+
           that.set('content', App.UserForm.create({}));
-          that.get('controllers.registrationReceipt').set('model', record);
-          that.transitionToRoute('registration.receipt');
         });
 
         record.on('becameError', function() {

@@ -48,3 +48,15 @@ App.RegistrationReceiptRoute = Ember.Route.extend({
     controller.notifyPropertyChange('model');
   }
 });
+
+App.RegistrationBursaryRoute = Ember.Route.extend({
+  renderTemplate: function(controller, model) {
+    if (controller.get('model')) {
+      this._super(controller, model);
+    }
+  },
+
+  setupController: function(controller, model) {
+    controller.notifyPropertyChange('model');
+  }
+});
