@@ -429,19 +429,20 @@ input[type=radio], input[type=checkbox] {
         display: inline-block;
         text-align: center;
         vertical-align: middle;
+        background-color: $white;
         border: {
-            width: 4px;
+            width: 0.35em;
             style: solid;
             color: $white;
         }
         margin: { top: 0; left: 0.125em; bottom: 0; right: 0.125em; };
         width: 1.5em;
         height: 1.5em;
-        line-height: 1.25em;
 
         &:hover, &:focus {
             @include box-shadow($box-shadow-args $purple);
             background-color: $gray-alt;
+            border-color: $white-alt;
         }
 
         & + label {
@@ -452,11 +453,13 @@ input[type=radio], input[type=checkbox] {
     &:focus + label {
         @include box-shadow($box-shadow-args $purple);
         background-color: $gray-alt;
+        border-color: $white-alt;
     }
 
     &:checked + label {
         color: $white;
         background-color: $purple;
+        border-color: $white;
     }
 }
 
