@@ -3,6 +3,7 @@ App.User = DS.Model.extend({
   email: DS.attr('string'),
   verified: DS.attr('boolean'),
   createdAt: DS.attr('date'),
+  ticketId: DS.attr('number'),
 
   /* Basic Information */
   firstName: DS.attr('string'),

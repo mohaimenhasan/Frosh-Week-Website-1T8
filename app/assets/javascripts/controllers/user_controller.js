@@ -68,6 +68,7 @@ App.UserController = Ember.ObjectController.extend({
           email: content.get('email'),
           // verified must be set on server.
           // creation date must be set on server.
+          // ticketId must be set on the server.
 
           firstName: content.get('firstName'),
           lastName: content.get('lastName'),
