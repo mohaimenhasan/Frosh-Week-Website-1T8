@@ -4,6 +4,7 @@
 //= require fastclick
 //= require spin
 //= require ladda
+//= require moment
 //= require ember
 //= require ember-data
 //= require ember-easyForm

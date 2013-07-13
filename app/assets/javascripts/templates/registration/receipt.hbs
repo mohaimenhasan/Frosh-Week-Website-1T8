@@ -7,18 +7,12 @@
                 <h2>All done!</h2>
                 <h3>What now?</h3>
                 <ul>
-                    <li>Watch out for your confirmation email and receipt email. You will need to confirm your email.</li>
+                    <li>
+                        Watch out for your confirmation email.
+                        <strong>You will need to confirm your email to get your ticket.</strong>
+                    </li>
                     <li>Get acquainted with your F!rosh group.</li>
                     <li>Stay tuned for emails with more instructions!</li>
-                </ul>
-            </section>
-
-            <section class="box-highlight">
-                Your F!rosh group is...
-                <h2>µ <strong>Mu</strong></h2>
-                <ul>
-                    <li>Read detailed introduction.</li>
-                    <li>Meet your F!rosh group on Facebook.</li>
                 </ul>
             </section>
         </div>
@@ -29,8 +23,9 @@
                     <div class="col main">
                         <h1>
                             Receipt
-                            <span class="subtitle">Paid on <strong>June 30, 2013</strong></span>
-                            <!--<span class="subtitle">Print this for your records.</span>-->
+                            <span class="subtitle">
+                                Paid on: <strong>{{timestamp model.createdAt format="MMMM DD, YYYY"}}</strong>
+                            </span>
                         </h1>
                     </div>
                     <div class="col side">
@@ -38,34 +33,67 @@
                     </div>
                 </div>
 
-                <hr>
-
                 <div class="row">
-                    <div class="col main">
-                        F!rosh Kit Early Bird + Hart House Farm + Commuter Program Package
+                    <div class="col half float-right">
+                        <p class="small">
+                            <strong>University of Toronto Engineering Society</strong> <br>
+                            B740 Sanford Fleming Building <br>
+                            10 King's College Road <br>
+                            Toronto, Ontario, M5S 3G4 <br>
+                            <br>
+                            T: (416) 978-2917 <br>
+                            E: <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a> <br>
+                            @: <a href="http://twitter.com/Skule_FroshWeek">@Skule_FroshWeek</a>
+                        </p>
                     </div>
-                    <div class="col side">
-                        <strong>$205</strong>
+
+                    <div class="col half">
+                        <p class="small">
+                            <strong>Billing:</strong> <br>
+                            {{ccData.name}} <br>
+                            {{ccData.type}} - {{ccData.last4}} <br>
+                        </p>
+
+                        <p class="small">
+                            <strong>Registrant:</strong> <br>
+                            {{model.firstName}} {{model.lastName}}<br>
+                            {{model.email}} <br>
+                        </p>
                     </div>
+
                 </div>
 
-                <hr>
+                <section class="registration-receipt-items">
+                    <h2>Purchased Kit</h2>
+                    <hr>
+                    <div class="row">
+                        <div class="col main">
+                            {{selectedPackage.name}}
+                        </div>
+                        <div class="col side">
+                            <strong>${{selectedPackage.price}}</strong>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col main total">
+                            <strong>Total</strong>
+                        </div>
+                        <div class="col side">
+                            <strong>${{selectedPackage.price}}</strong>
+                        </div>
+                    </div>
+                </section>
 
                 <div class="row">
-                    <div class="col main total">
-                        <strong>Total</strong>
-                    </div>
-                    <div class="col side">
-                        <strong>$205</strong>
+                    <div class="col full">
+                        <p class="small">
+                            Print a copy of this for your records. <br>
+                            For any problems regarding your purchase, contact
+                            <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a> for help.
+                        </p>
                     </div>
                 </div>
-            </section>
-
-            <section class="box-normal">
-                <h1>
-                    Ticket
-                    <span class="subtitle">Required for admission</span>
-                </h1>
             </section>
         </div>
     </div>

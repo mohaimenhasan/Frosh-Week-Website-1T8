@@ -19,6 +19,7 @@
     @include screen-small   { text-align: left; }
     @include screen-medium  { text-align: center; }
     @include screen-large   { text-align: center; }
+    @include print          { display: none; }
 
     .selected {
         font-weight: $font-weight-bold;

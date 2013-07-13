@@ -203,6 +203,8 @@ body {
         weight: $font-weight-normal;
         size: 62.5%;
     };
+
+    @include print { background-color: $white; };
 }
 
 .container {
@@ -221,6 +223,7 @@ body {
     @include screen-small   { margin: { top: 0em; bottom: 0em; }; }
     @include screen-medium  { margin: { top: 0em; bottom: 0em; }; }
     @include screen-large   { margin: { top: 0em; bottom: 0em; }; }
+    @include print          { max-width: 6in; }
 }
 
 .box-clear {
@@ -309,6 +312,10 @@ body {
     float: right;
 }
 
+.float-left {
+    float: left;
+}
+
 .clear {
     clear: both;
 }
@@ -379,6 +386,10 @@ ul, ol {
             @include screen-large   { display: inline-block; };
         }
     }
+}
+
+.small {
+    font-size: 0.8em;
 }
 
 .red {

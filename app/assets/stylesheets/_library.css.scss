@@ -13,13 +13,16 @@
  */
 
 @mixin screen-small {
-    @media #{'only screen'} { @content; }
+    @media #{'all'} { @content; }
 }
 @mixin screen-medium {
     @media #{'only screen and (min-width: 38em)'} { @content; }
 }
 @mixin screen-large {
     @media #{'only screen and (min-width: 54em)'} { @content; }
+}
+@mixin print {
+    @media #{'only print'} { @content; }
 }
 
 @mixin anti-aliasing($r: 255, $b: 255, $g: 255, $radius: 0.3) {

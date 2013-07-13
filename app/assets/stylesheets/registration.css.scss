@@ -259,12 +259,37 @@
         &.total {
             text-align: right;
         }
+
+        @include print {
+            width: 60%;
+            float: left;
+        }
     }
 
     .side {
         width: 35%;
         text-align: center;
+
+        @include print {
+            width: 30%;
+            float: right;
+        }
     }
+
+    .half {
+        @include print {
+            float: left;
+        }
+    }
+
+    .registration-logo {
+        height: image-height($logo) * 0.5;
+        @include print { display: block; };
+    }
+}
+
+.registration-receipt-items {
+    margin: { top: 1em; bottom: 2em; };
 }
 
 
@@ -282,6 +307,8 @@
 
     width: 100%;
     height: image-height($logo);
+
+    @include print { display: none; };
 
     &.top {
         background-position: top center;

@@ -39,9 +39,9 @@ App.RegistrationItemRoute = Ember.Route.extend({
 
 App.RegistrationReceiptRoute = Ember.Route.extend({
   renderTemplate: function(controller, model) {
-//    if (controller.get('model')) {
+    if (controller.get('model')) {
       this._super(controller, model);
-//    }
+    }
   },
 
   setupController: function(controller, model) {
