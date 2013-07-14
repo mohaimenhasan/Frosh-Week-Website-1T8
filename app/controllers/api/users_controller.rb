@@ -1,11 +1,6 @@
 require 'awesome_print' if Rails.env.development?
-require 'admin_authorization'
 
 class Api::UsersController < ActionController::Base
-
-  include AdminAuthorization
-
-  before_filter :authorize_admin, except:[:create, :confirm]
 
   def create
     # Sample: POST http://0.0.0.0:3000/api/users?discipline=Chemical&email=a@b.com&emergency_phone=4169671111&emergency_name=Fido&emergency_relationship=dog&first_name=bob&last_name=last&shirt_size=Medium&gender=Male&package_id=2&bursary_requested=false&emergency_email=c@d.com&skip_stripe=yes&skip_confirm_email=true&no_json=true
@@ -68,28 +63,23 @@ class Api::UsersController < ActionController::Base
     end
   end
 
-  def show
-    render json: { user: User.find(params[:id]) }
-  end
-
   def index
-    render json: { users: User.all }
-  end
+    if params.has_key? :id and params.has_key? :confirmation_token
+      render json: { users: User.where(params.slice(:id, :confirmation_token)) } and return
+    end
 
-  def destroy
-    User.find(params[:id]).destroy
-    render json: { status: :ok }
+    render json: { users: [] }
   end
 
   def update
-    render json: { status: :denied }
-  end
-
-  def confirm
     u = User.find(params[:id])
-    u.verified = true if u.confirmation_token == params[:token]
-    u.save!
-    render json: { user: u.attributes.except('confirmation_token') }
+    if u.confirmation_token == params[:confirmation_token]
+      u.verified = true
+      u.save!
+      render json: { user: u.attributes.except('confirmation_token') } and return
+    end
+
+    render json: { user: nil }
   end
 
 end

@@ -5,8 +5,6 @@ SkuleOrientation::Application.routes.draw do
     resources :users
     resources :packages
     resources :groups
-
-    match 'confirm/:id/:token' => "users#confirm", :as => :confirm_email
   end
 
   # Forward other routing to be done on client-side.
