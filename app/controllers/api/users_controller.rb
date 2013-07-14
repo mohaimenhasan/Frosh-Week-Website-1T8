@@ -51,7 +51,7 @@ class Api::UsersController < ActionController::Base
       end
 
       new_user.create_token
-      new_user.save!
+      new_user.create_ticket_number
 
       unless Rails.env.development? and user_data.has_key? :skip_confirm_email
         new_user.send_confirmation

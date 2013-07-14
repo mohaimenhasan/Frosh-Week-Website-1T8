@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
                   :confirmation_token, :verified,
                   :emergency_name, :emergency_phone, :emergency_relationship, :emergency_email,
                   :restrictions_dietary, :restrictions_accessibility, :restrictions_misc,
-                  :charge_id
+                  :charge_id, :ticket_number
 
   belongs_to :group
   belongs_to :package
@@ -81,6 +81,13 @@ class User < ActiveRecord::Base
 
   def create_token
     self.confirmation_token = Digest::SHA1.hexdigest([Time.now, rand].join)
+    save!
+  end
+
+  def create_ticket_number
+    self.ticket_number = (self.id.to_i * 100) + rand(100)
+    self.ticket_number = self.ticket_number.to_s.rjust(6, '0')
+    save!
   end
 
   def send_confirmation
@@ -110,6 +117,7 @@ class User < ActiveRecord::Base
       )
 
       self.charge_id = charge["id"]
+      save!
 
       :success
     rescue Stripe::CardError => e

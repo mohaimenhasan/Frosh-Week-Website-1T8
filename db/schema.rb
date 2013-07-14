@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20130628053938) do
     t.text     "restrictions_accessibility"
     t.text     "restrictions_misc"
     t.string   "charge_id"
+    t.string   "ticket_number"
     t.integer  "group_id"
     t.integer  "package_id"
     t.datetime "created_at",                     :null => false

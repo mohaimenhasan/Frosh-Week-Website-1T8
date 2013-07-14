@@ -26,6 +26,7 @@ class CreateUsers < ActiveRecord::Migration
       t.text :restrictions_accessibility
       t.text :restrictions_misc
       t.string :charge_id
+      t.string :ticket_number
       t.belongs_to :group
       t.belongs_to :package
 
