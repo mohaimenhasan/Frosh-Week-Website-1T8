@@ -113,6 +113,22 @@ class User < ActiveRecord::Base
     Mandrill::API.new.messages.send message
   end
 
+  def send_receipt
+    message = {
+     subject: '[Orientation] Required registration step - Confirm your email',
+     from_name: 'University of Toronto Engineering Orientation',
+     html: ERB.new(File.read(Rails.root.join('app/views/email_receipt.html.erb'))).result(binding),
+     to: [
+       {
+         email: self.email,
+         name: "#{self.first_name} #{self.last_name}"
+       }
+     ],
+     from_email: Rails.application.config.mandrill_from
+    }
+    Mandrill::API.new.messages.send message
+  end
+
   def process_payment(token)
     # Create the charge on Stripe's servers - this will charge the user's card
     begin

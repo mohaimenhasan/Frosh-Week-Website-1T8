@@ -64,6 +64,7 @@ class Api::UsersController < ActionController::Base
     u = User.find(params[:id])
     if u.confirmation_token == params[:confirmation_token]
       u.verified = true
+      u.send_receipt
       u.save!
       render json: { user: u.attributes.except('confirmation_token') } and return
     end
