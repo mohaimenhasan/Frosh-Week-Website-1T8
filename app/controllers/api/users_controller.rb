@@ -46,7 +46,7 @@ class Api::UsersController < ActionController::Base
 
       new_user.send_confirmation unless Rails.env.development? and user_data.has_key? :skip_confirm_email
 
-      render json: { user: new_user.attributes.except('confirmation_token').merge(cc_token: user_data[:cc_token]) }
+      render json: { user: new_user.attributes.except('confirmation_token').merge(new_user.credit_info) }
     else
       render json: { errors: new_user.errors }, status: 422
     end
@@ -66,7 +66,7 @@ class Api::UsersController < ActionController::Base
       u.verified = true
       u.send_receipt
       u.save!
-      render json: { user: u.attributes.except('confirmation_token') } and return
+      render json: { user: u.attributes.except('confirmation_token').merge(new_user.credit_info) } and return
     end
 
     render json: { user: nil }

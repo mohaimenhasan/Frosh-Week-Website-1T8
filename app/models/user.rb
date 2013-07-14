@@ -182,5 +182,14 @@ class User < ActiveRecord::Base
     Stripe::Charge.retrieve(self.charge_id)["card"]["type"]
   end
 
+  def credit_info
+    card = Stripe::Charge.retrieve(self.charge_id)["card"]
+    {
+      card_name: card["name"],
+      card_last4: card["last4"],
+      card_type: card["type"],
+    }
+  end
+
 end
 
