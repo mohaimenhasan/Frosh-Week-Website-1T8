@@ -16,18 +16,11 @@ class Api::UsersController < ActionController::Base
 
     new_user.verified = false
 
-    if params.has_key? :no_json
-      new_user.bursary_requested = (user_data.has_key?(:bursary_requested) and user_data[:bursary_requested].to_bool_with_default)
-    end
+    new_user.bursary_requested = (user_data.has_key?(:bursary_requested) and user_data[:bursary_requested].to_bool_with_default) if params.has_key? :no_json
     new_user.bursary_chosen = nil
     new_user.bursary_paid = false
 
-    if Rails.env.development? and user_data.has_key? :random_gender_disc
-      disps = ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral']
-      genders = ['Male', 'Female']
-      new_user.gender = genders[rand genders.count]
-      new_user.discipline = disps[rand disps.count]
-    end
+    new_user.set_random_gender_disc if Rails.env.development? and user_data.has_key? :random_gender_disc
 
     new_user.package = Package.find(user_data[:package_id].to_i)
 
@@ -45,17 +38,13 @@ class Api::UsersController < ActionController::Base
 
       unless (Rails.env.development? and user_data.has_key? :skip_stripe) or new_user.bursary_requested
         result = new_user.process_payment(user_data[:cc_token])
-        unless result == :success
-          render json: { errors: result }, status: 422 and return
-        end
+        render json: { errors: result }, status: 422 and return unless result == :success
       end
 
       new_user.create_token
       new_user.create_ticket_number
 
-      unless Rails.env.development? and user_data.has_key? :skip_confirm_email
-        new_user.send_confirmation
-      end
+      new_user.send_confirmation unless Rails.env.development? and user_data.has_key? :skip_confirm_email
 
       render json: { user: new_user.attributes.except('confirmation_token').merge(cc_token: user_data[:cc_token]) }
     else

@@ -90,6 +90,13 @@ class User < ActiveRecord::Base
     save!
   end
 
+  def set_random_gender_disc
+    disps = ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral']
+    genders = ['Male', 'Female']
+    self.gender = genders[rand genders.count]
+    self.discipline = disps[rand disps.count]
+  end
+
   def send_confirmation
     message = {
      subject: '[Orientation] Required registration step - Confirm your email',
