@@ -20,6 +20,7 @@ class Api::UsersController < ActionController::Base
     new_user = User.new user_data.slice *User.accessible_attributes
 
     new_user.verified = false
+
     if params.has_key? :no_json
       new_user.bursary_requested = (user_data.has_key?(:bursary_requested) and user_data[:bursary_requested].to_bool_with_default)
     end
@@ -32,6 +33,8 @@ class Api::UsersController < ActionController::Base
       new_user.gender = genders[rand genders.count]
       new_user.discipline = disps[rand disps.count]
     end
+
+    new_user.package = Package.find(user_data[:package_id].to_i)
 
     if new_user.valid?
 

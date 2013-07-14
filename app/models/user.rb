@@ -11,7 +11,6 @@
 #  shirt_size                     :string(255)
 #  phone                          :string(255)
 #  residence                      :string(255)
-#  package_id                     :integer
 #  bursary_requested              :boolean
 #  bursary_chosen                 :boolean
 #  bursary_paid                   :boolean
@@ -28,7 +27,9 @@
 #  restrictions_dietary           :text
 #  restrictions_accessibility     :text
 #  restrictions_misc              :text
+#  charge_id                      :string(255)
 #  group_id                       :integer
+#  package_id                     :integer
 #  created_at                     :datetime         not null
 #  updated_at                     :datetime         not null
 #
@@ -49,14 +50,15 @@ class User < ActiveRecord::Base
                   :gender,
                   :shirt_size,
                   :phone, :residence,
-                  :package_id,
                   :bursary_requested, :bursary_chosen,
                   :bursary_paid, :bursary_scholarship_amount, :bursary_engineering_motivation, :bursary_financial_reasoning, :bursary_after_graduation,
                   :confirmation_token, :verified,
                   :emergency_name, :emergency_phone, :emergency_relationship, :emergency_email,
-                  :restrictions_dietary, :restrictions_accessibility, :restrictions_misc
+                  :restrictions_dietary, :restrictions_accessibility, :restrictions_misc,
+                  :charge_id
 
   belongs_to :group
+  belongs_to :package
 
   phony_normalize :phone, default_country_code: 'US'
   phony_normalize :emergency_phone, default_country_code: 'US'
@@ -67,7 +69,6 @@ class User < ActiveRecord::Base
   validates_plausible_phone :emergency_phone
   validates :email, :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX } 
   validates :shirt_size, inclusion: { in: ['Small', 'Medium', 'Large', 'Extra Large']}
-  validates :package_id, inclusion: { in: 1..Package.count }
   validates :verified, inclusion: { in: [true, false] }
   validates :bursary_chosen, inclusion: { in: [nil, true, false] }
   validates :bursary_requested, inclusion: { in: [true, false] }
@@ -83,11 +84,9 @@ class User < ActiveRecord::Base
   end
 
   def send_confirmation
-    m = Mandrill::API.new
-    # TODO(amandeepg): actual data
     message = {
-     subject: 'Welcome to F!rosh Week!',
-     from_name: 'F!rosh Week',
+     subject: '[Orientation] Required registration step - Confirm your email',
+     from_name: 'University of Toronto Engineering Orientation',
      html: ERB.new(File.read(Rails.root.join('app/views/email_confirm.html.erb'))).result(binding),
      to: [
        {
@@ -97,18 +96,20 @@ class User < ActiveRecord::Base
      ],
      from_email: Rails.application.config.mandrill_from
     }
-    m.messages.send message
+    Mandrill::API.new.messages.send message
   end
 
   def process_payment(token)
     # Create the charge on Stripe's servers - this will charge the user's card
     begin
-      Stripe::Charge.create(
-        amount: Package.find(self.package_id.to_i).price * 100, # amount in cents
+      charge = Stripe::Charge.create(
+        amount: self.package.price * 100, # amount in cents
         currency: 'cad',
         card: token,
         description: self.email,
       )
+
+      self.charge_id = charge["id"]
 
       :success
     rescue Stripe::CardError => e
@@ -120,5 +121,35 @@ class User < ActiveRecord::Base
       { cc_token: [e.message] }
     end
   end
+
+  def get_shirt_size_abbr
+    case self.shirt_size
+    when 'Small'
+      'S'
+    when 'Medium'
+      'M'
+    when 'Large'
+      'L'
+    when 'Extra Large'
+      'XL'
+    end
+  end
+
+  def get_symbol_utf
+    self.group.symbol.gsub(/\\u([\da-fA-F]{4})/) {|m| [$1].pack("H*").unpack("n*").pack("U*")}
+  end
+
+  def get_billing_last4
+    Stripe::Charge.retrieve(self.charge_id)["card"]["last4"]
+  end
+
+  def get_billing_name
+    Stripe::Charge.retrieve(self.charge_id)["card"]["name"]
+  end
+
+  def get_billing_type
+    Stripe::Charge.retrieve(self.charge_id)["card"]["type"]
+  end
+
 end
 

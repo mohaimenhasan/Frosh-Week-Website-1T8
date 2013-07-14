@@ -9,7 +9,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :shirt_size
       t.string :phone
       t.string :residence
-      t.integer :package_id
       t.boolean :bursary_requested
       t.boolean :bursary_chosen
       t.boolean :bursary_paid
@@ -26,7 +25,9 @@ class CreateUsers < ActiveRecord::Migration
       t.text :restrictions_dietary
       t.text :restrictions_accessibility
       t.text :restrictions_misc
+      t.string :charge_id
       t.belongs_to :group
+      t.belongs_to :package
 
       t.timestamps
     end

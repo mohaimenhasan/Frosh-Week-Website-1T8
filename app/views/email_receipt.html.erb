@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your receipt and event ticket</title>
+</head>
+
+<body>
+<table cellpadding="0" cellspacing="0" border="0" style="background-color:whitesmoke;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#444;margin:0;padding:0;width:100%!important;"><tr><td>
+  <table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td width="600">
+    <div style="font-size:1.5em;background-color:#A2228E;padding:5px;color:white;">
+      <img style="max-width:100%;vertical-align:middle;margin:5px" src="http://content.skule.ca/orientation/969008e7023f2e1b97b311d5f44a6e9e-orientation-logo-email.png" />
+      <span>Your receipt and event ticket</span>
+    </div>
+
+    <div>
+      <p>Hey <%= self.first_name %> <%= self.last_name %>, thanks for registering for F!rosh Week 1T3.<br/>We're stoked to have you coming. It's going to be great!</p>
+
+      <div style="padding:10px;padding-left:20px;background-color:#A2228E;color:white;">
+        <b>TICKET</b> Bring this to F!rosh Week on your first day.
+      </div>
+      <div style="background-color:white;padding:10px;padding-left:20px;padding-right:20px;">
+        <div style="width:50%;float:left;">
+          <div> <b>NAME</b> </div>
+          <div style="font-size:3em;"> <b> <%= self.first_name %> <%= self.last_name %> </b> </div>
+        </div>
+        <div style="width:50%;float:left;">
+          <div style="text-align:right"> <b> September 2 - September 8, 2013 </b> </div>
+          <div style="text-align:right"> 31 King's College Circle, Toronto </div>
+        </div>
+        <div style="clear:both"> </div>
+        <div style="background-color:dimgrey;margin-top:10px;margin-bottom:10px;padding-top:2px;width:100%;"> </div>
+        <div style="width:auto;float:left;margin-right:20px;">
+          <div> <b>T-SHIRT SIZE</b> </div>
+          <div style="font-size:3em;"> <b> <%= get_shirt_size_abbr %> </b> </div>
+        </div>
+        <div style="width:auto;float:left;margin-right:20px;">
+          <div> <b>FROSH GROUP</b> </div>
+          <div style="font-size:3em;"> <b> <%= get_symbol_utf %> <%= self.group.name %> </b> </div>
+        </div>
+        <div style="width:auto;float:left;">
+          <div> <b>Ticket Number</b> </div>
+          <div style="font-size:3em;"> <b> 123456 </b> </div>
+        </div>
+        <div style="clear:both"> </div>
+        <div style="background-color:dimgrey;margin-top:10px;margin-bottom:10px;padding-top:2px;width:100%;"> </div>
+        <div>
+          <div> <b>EMERGENCY CONTACT</b> </div>
+          <div style="font-size:1.5em"> <%= self.emergency_name %> <b> <%= self.emergency_phone %> </b> </div>
+        </div>
+        <div style="margin-top:20px">
+          <div> <b>DIETARY RESTRICTIONS / ALLERGIES</b> </div>
+          <div> <%= self.restrictions_dietary %> </div>
+        </div>
+      </div>
+
+      <div style="background-color:white;padding:10px;margin-top:20px;margin-bottom:20px;">
+        <div style="text-align:center;font-size:1.5em;"> <b> Meet your F!rosh Group! </b> </div>
+        <div style="text-align:center;font-size:5em;"> <b> <%= get_symbol_utf %> <%= self.group.name %> </b> </div>
+
+        <a href="https://www.facebook.com/groups/uoft.froshweek.1t3/" style="text-decoration:none;"><div style="margin-top:10px;padding:10px;padding-left:20px;background-color:#A2228E;color:white;">
+          <b> Join us on Facebook </b>
+        </div></a>
+        <a href="http://blog.orientation.skule.ca/" style="text-decoration:none;"><div style="margin-top:10px;padding:10px;padding-left:20px;background-color:#A2228E;color:white;">
+          <b> Learn more about us on the Blog </b>
+        </div></a>
+      </div>
+
+      <div style="padding:10px;padding-left:20px;background-color:#A2228E;color:white;">
+        <b>RECEIPT</b> Keep for your records.
+      </div>
+      <div style="background-color:white;padding:10px;padding-left:20px;padding-right:20px;">
+        <div> PAID ON: <b> <%= self.created_at %> </b> </div> <br/>
+        <div style="width:50%;float:left;">
+          <div> <b> Billing: </b> </div>
+          <div> <%= self.get_billing_name %> </div>
+          <div> <%= self.get_billing_type %>  - <%= self.get_billing_last4 %> </div> <br/>
+          <div> <b> Registrant: </b> </div>
+          <div> <%= self.first_name %> <%= self.last_name %> </div>
+          <div> <%= self.email %> </div>
+        </div>
+        <div style="width:50%;float:left;">
+          <div> <b> University of Toronto Engineering Society </b> </div>
+          <div> B740 Sanford Fleming Building </div>
+          <div> 10 King's College Road </div>
+          <div> Toronto, Ontario, M5S 3G4 </div> <br/>
+          <div> T: (416) 978-2917 </div>
+          <div> E: <a style="color:#34003e;text-decoration:none;" href="mailto:support@orientation.skule.ca"> support@orientation.skule.ca </a> </div>
+          <div> <a style="color:#34003e;text-decoration:none;" href="http://twitter.com/Skule_FroshWeek"> @Skule_FroshWeek </a> </div>
+        </div>
+        <div style="clear:both"> </div>
+        <div style="font-size:2em;margin-top:20px;"> Purshased Kit </div>
+        <div style="background-color:dimgrey;margin-top:10px;margin-bottom:10px;padding-top:2px;width:100%;"> </div>
+        <div style="width:80%;float:left;font-size:1.2em">
+          <div> <%= self.package.name %> </div>
+        </div>
+        <div style="width:20%;float:left;">
+          <div style="text-align:right;margin-right:20px;"> <b> $<%= self.package.price %> </b> </div>
+        </div>
+        <div style="clear:both"> </div>
+        <div style="background-color:dimgrey;margin-top:10px;margin-bottom:10px;padding-top:2px;width:100%;"> </div>
+        <div style="width:80%;float:left;">
+          <div style="text-align:right"> Total </div>
+        </div>
+        <div style="width:20%;float:left;">
+          <div style="text-align:right;margin-right:20px;"> <b> $<%= self.package.price %> </b> </div>
+        </div>
+        <div style="clear:both"> </div>
+      </div>
+
+    </div>
+  </td></tr></table>
+</td></tr></table></body>
+</html>

@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20130628053938) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
+    t.string   "symbol"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -41,7 +42,6 @@ ActiveRecord::Schema.define(:version => 20130628053938) do
     t.string   "shirt_size"
     t.string   "phone"
     t.string   "residence"
-    t.integer  "package_id"
     t.boolean  "bursary_requested"
     t.boolean  "bursary_chosen"
     t.boolean  "bursary_paid"
@@ -58,7 +58,9 @@ ActiveRecord::Schema.define(:version => 20130628053938) do
     t.text     "restrictions_dietary"
     t.text     "restrictions_accessibility"
     t.text     "restrictions_misc"
+    t.string   "charge_id"
     t.integer  "group_id"
+    t.integer  "package_id"
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
   end

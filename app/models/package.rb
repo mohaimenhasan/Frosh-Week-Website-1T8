@@ -4,7 +4,8 @@
 #
 #  id          :integer          not null, primary key
 #  name        :string(255)
-#  description :string(255)
+#  key         :string(255)
+#  description :text
 #  price       :integer
 #  count       :integer
 #  max         :integer
@@ -16,4 +17,6 @@
 
 class Package < ActiveRecord::Base
   attr_accessible :key, :count, :description, :end_date, :max, :name, :price, :start_date
+
+  has_many :users
 end
