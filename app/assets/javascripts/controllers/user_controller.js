@@ -67,8 +67,9 @@ App.UserController = Ember.ObjectController.extend({
         var record = transaction.createRecord(App.User, {
           email: content.get('email'),
           // verified must be set on server.
-          // creation date must be set on server.
-          // ticketId must be set on the server.
+          // createdAt must be set on server.
+          // confirmationToken must be set on server.
+          // ticketNumber must be set on the server.
 
           firstName: content.get('firstName'),
           lastName: content.get('lastName'),
@@ -97,7 +98,11 @@ App.UserController = Ember.ObjectController.extend({
           restrictionsAccessibility: content.get('restrictionsAccessibility'),
           restrictionsMisc: content.get('restrictionsMisc'),
 
-          ccToken: response['id']
+          // chargeId must not be used.
+          ccToken: response.id
+          // ccName must be set on server.
+          // ccLast4 must be set on server.
+          // ccType must be set on server.
         });
         transaction.commit();
 

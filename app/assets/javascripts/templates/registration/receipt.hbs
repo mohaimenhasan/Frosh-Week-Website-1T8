@@ -50,8 +50,8 @@
                     <div class="col half">
                         <p class="small">
                             <strong>Billing:</strong> <br>
-                            {{ccData.name}} <br>
-                            {{ccData.type}} - {{ccData.last4}} <br>
+                            {{model.ccName}} <br>
+                            {{model.ccType}} - {{model.ccLast4}} <br>
                         </p>
 
                         <p class="small">
@@ -63,7 +63,7 @@
 
                 </div>
 
-                <section class="registration-receipt-items">
+                <div class="registration-receipt-items">
                     <h2>Purchased Kit</h2>
                     <hr>
                     <div class="row">
@@ -83,7 +83,7 @@
                             <strong>${{selectedPackage.price}}</strong>
                         </div>
                     </div>
-                </section>
+                </div>
 
                 <div class="row">
                     <div class="col full">
@@ -96,10 +96,10 @@
                 </div>
             </section>
 
-            <div class="content row">
+            <div class="row">
                 <div class="main col float-right">
                     <div class="align-right">
-                        <button class="registration-print-button" {{action print}}>Print Ticket</button>
+                        <button class="registration-print-button" {{action print}}>Print Receipt</button>
                     </div>
                 </div>
             </div>

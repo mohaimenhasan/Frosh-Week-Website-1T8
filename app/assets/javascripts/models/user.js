@@ -38,8 +38,12 @@ App.User = DS.Model.extend({
   bursaryFinancialReasoning: DS.attr('string'),
   bursaryAfterGraduation: DS.attr('string'),
 
-  /* Credit Card Token (not stored server side) */
-  ccToken: DS.attr('string')
+  /* Credit Card Information */
+  chargeId: DS.attr('string'),    // always null (server side usage).
+  ccToken: DS.attr('string'),     // only passed to server
+  ccName: DS.attr('string'),      // passed back from server not stored
+  ccLast4: DS.attr('number'),     // passed back from server not stored
+  ccType: DS.attr('string')       // passed back from server not stored
 });
 
 App.UserFormEngineeringDisciplines = [
