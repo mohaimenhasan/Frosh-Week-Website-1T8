@@ -30,7 +30,7 @@ $gray: #808080;
 $gray-alt: #606060;
 $black: #222222;
 $black-alt: #444444;
-$purple: #34003E;
+$purple: #6C007D;
 $red: #FF0000;
 $green: #4F7A27;
 $green-alt: #6EA634;
@@ -58,10 +58,10 @@ $green-alt: #6EA634;
 }
 
 @mixin link-on-dark {
-    color: $green;
+    color: $gray;
 
     &:hover {
-        color: $green-alt;
+        color: $gray-alt;
     };
 }
 
@@ -159,6 +159,8 @@ $green-alt: #6EA634;
                     $background-color: $gray,
                     $hover-text-color: $white,
                     $hover-background-color: $gray-alt,
+                    $active-text-color: $white,
+                    $active-background-color: $black-alt,
                     $disabled-text-color: $white,
                     $disabled-background-color: $gray) {
     @include border-radius(0.4em);
@@ -180,9 +182,14 @@ $green-alt: #6EA634;
         }
     };
 
+    &:active {
+        background-color: $active-background-color !important;
+        color: $active-text-color !important;
+    }
+
     &:disabled {
-        background-color: $disabled-background-color;
-        color: $disabled-text-color;
+        background-color: $disabled-background-color !important;
+        color: $disabled-text-color !important;
     };
 }
 
@@ -503,5 +510,5 @@ input[type=button], button {
 }
 
 input[type=submit], button[type=submit], button.go {
-    @include button-style($white, $green, $white, $green-alt);
+    @include button-style($white, $green, $white, $green-alt, $white, $black-alt);
 }

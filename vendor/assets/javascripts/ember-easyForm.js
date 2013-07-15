@@ -423,15 +423,18 @@ Ember.EasyForm.Submit = Ember.EasyForm.BaseView.extend({
   attributeBindings: ['type', 'data-style', 'disabled'],
   type: 'submit',
   disabled: null,
+
+  disable: function() {
+    var isValid = this.get('context.isValid');
+    var value = isValid ? null : '';
+    this.set('disabled', value);
+  },
+
   init: function() {
     this._super();
 
-    var that = this;
-    this.addObserver('context.isValid', function() {
-      var isValid = this.get('context.isValid');
-      var value = isValid ? null : '';
-      this.set('disabled', value);
-    });
+    this.disable();
+    this.addObserver('context.isValid', this.disable);
   },
   onClick: function() {
     if (this.get('context').validate()) {
