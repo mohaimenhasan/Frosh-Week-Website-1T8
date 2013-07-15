@@ -294,6 +294,12 @@ body {
     @include screen-large   { width: 65%; };
 }
 
+.third {
+    @include screen-small   { width: 100%; };
+    @include screen-small   { width: 33.33%; };
+    @include screen-small   { width: 33.33%; };
+}
+
 .half {
     @include screen-small   { width: 100%; };
     @include screen-medium  { width: 50%; };
@@ -390,6 +396,14 @@ ul, ol {
 
 .small {
     font-size: 0.8em;
+}
+
+.big {
+    font-size: 1.4em;
+}
+
+.center {
+    text-align: center;
 }
 
 .red {

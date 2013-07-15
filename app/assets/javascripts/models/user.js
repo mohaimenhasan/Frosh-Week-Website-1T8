@@ -3,7 +3,8 @@ App.User = DS.Model.extend({
   email: DS.attr('string'),
   verified: DS.attr('boolean'),
   createdAt: DS.attr('date'),
-  ticketId: DS.attr('number'),
+  confirmationToken: DS.attr('string'),
+  ticketNumber: DS.attr('number'),
 
   /* Basic Information */
   firstName: DS.attr('string'),
@@ -16,7 +17,7 @@ App.User = DS.Model.extend({
   /* Package Information */
   packageId: DS.attr('number'),
   shirtSize: DS.attr('string'),
-  group: DS.attr('string'),
+  groupId: DS.attr('number'),
   bursaryRequested: DS.attr('boolean'),
   bursaryChosen: DS.attr('boolean'),
 
@@ -71,6 +72,13 @@ App.UserFormShirtSize = [
   'Large',
   'Extra Large'
 ];
+
+App.UserFormShirtHash = {
+  'Small': 'S',
+  'Medium': 'M',
+  'Large': 'L',
+  'Extra Large': 'XL'
+};
 
 App.UserForm = Ember.Object.extend(Ember.Validations.Mixin);
 App.UserForm.reopen({

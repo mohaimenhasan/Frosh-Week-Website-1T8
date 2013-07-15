@@ -60,3 +60,25 @@ App.RegistrationBursaryRoute = Ember.Route.extend({
     controller.notifyPropertyChange('model');
   }
 });
+
+App.RegistrationConfirmRoute = Ember.Route.extend({
+  model: function(params) {
+    return App.User.find({ 'id': params.user, 'confirmation_token': params.token });
+  },
+
+  setupController: function(controller, model) {
+    // Due to the model being returned from the server as an array,
+    // and since returning a .get on the array element doesn't get
+    // watched, we must use the following hack.
+    // TODO(johnliu): fix this hack.
+    var hack = model;
+    if (model.get('content')) {
+      hack = model.get('firstObject');
+    }
+    controller.set('model', hack);
+  },
+
+  serialize: function(model) {
+    return { 'id': model.get('id'), 'token': model.get('confirmationToken') };
+  }
+});

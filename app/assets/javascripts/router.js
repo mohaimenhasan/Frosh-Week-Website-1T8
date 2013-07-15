@@ -25,7 +25,17 @@ App.RouteList = [
   }),
   Ember.Object.create({
     route: 'admin',
-    path: '/admin'
+    path: '/admin',
+    routes: [
+      Ember.Object.create({
+        route: 'users',
+        path: '/user',
+        routes: [
+          Ember.Object.create({ route: 'details', path: '/:user'}),
+          Ember.Object.create({ route: 'checkin', path: '/checkin/:ticket' })
+        ]
+      })
+    ]
   })
 ];
 

@@ -36,6 +36,38 @@
     };
 }
 
+@mixin registration-printable {
+    .main {
+        width: 65%;
+
+        &.total {
+            text-align: right;
+        }
+
+        @include print {
+            width: 60%;
+            float: left;
+        }
+    }
+
+    .side {
+        width: 35%;
+    }
+
+    .half {
+        @include print {
+            float: left;
+        }
+    }
+
+    .registration-logo {
+        height: image-height($logo) * 0.5;
+        background-position: top center;
+        margin-bottom: 1em;
+        @include print { display: block; };
+    }
+}
+
 
 /* Core
  * ----
@@ -248,26 +280,14 @@
 }
 
 
-/* Receipt
- * -------
+/* Receipt & Ticket
+ * ----------------
  */
 
 .registration-receipt {
-    .main {
-        width: 65%;
-
-        &.total {
-            text-align: right;
-        }
-
-        @include print {
-            width: 60%;
-            float: left;
-        }
-    }
+    @include registration-printable;
 
     .side {
-        width: 35%;
         text-align: center;
 
         @include print {
@@ -275,21 +295,119 @@
             float: right;
         }
     }
+}
+
+.registration-print-hidden {
+    @include print { display: none; };
+}
+
+// TODO(johnliu): This code needs to be refactored, along with the page.
+.registration-ticket {
+    @include registration-printable;
+
+    h1 {
+        overflow-x: hidden;
+    }
 
     .half {
-        @include print {
-            float: left;
+        width: 50%;
+        @include print { width: 45%; };
+    }
+
+    .main {
+        width: 70%;
+    }
+
+    .side {
+        width: 30%;
+    }
+
+
+    .label {
+        font-size: 0.5em;
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+    }
+
+    .registration-engsoc {
+        text-align: center;
+    }
+
+    .registration-ticket-details {
+        @include screen-small   { text-align: center; };
+        @include screen-medium  { text-align: left; };
+        @include screen-large   { text-align: left; };
+        @include print          { text-align: left; };
+
+        .third {
+            @include screen-small   { width: 33.33%; };
+            @include screen-medium  { width: 50%; };
+            @include screen-large   { width: 50%; };
+            @include print          { width: 50%; };
         }
     }
 
-    .registration-logo {
-        height: image-height($logo) * 0.5;
-        @include print { display: block; };
+    .qr-code-optional {
+        .main {
+            @include screen-small   { width: 100%; };
+            @include screen-medium  { width: 70%; };
+            @include screen-large   { width: 70%; };
+            @include print          { width: 68%; };
+        }
+
+        .full {
+            @include screen-small   { width: 100%; };
+            @include screen-medium  { width: 100%; };
+            @include screen-large   { width: 100%; };
+            @include print          { width: 90%; };
+        }
+    }
+
+    .qr-hidden {
+        @include screen-small   { display: block; };
+        @include screen-medium  { display: none; };
+        @include screen-large   { display: none; };
+        @include print          { display: none; };
+    }
+
+    .qr {
+        padding-left: 0 !important;
+        text-align: center;
+
+        h1 {
+            overflow: hidden;
+        }
+
+        img {
+            margin-top: 1em;
+            max-width: 100%;
+        }
+
+        @include screen-small {
+            display: none;
+            width: 100%;
+        };
+        @include screen-medium {
+            display: block;
+            width: 30%;
+        };
+        @include screen-large {
+            display: block;
+            width: 30%;
+        };
+        @include print {
+            float: right;
+            display: block;
+            width: 25%;
+        };
     }
 }
 
 .registration-print-button {
-    @include print { display: none; };
+    @include screen-small   { display: none; };
+    @include screen-medium  { display: inline; };
+    @include screen-large   { display: inline; };
+    @include print          { display: none; };
 }
 
 .registration-receipt-items {
@@ -313,8 +431,4 @@
     height: image-height($logo);
 
     @include print { display: none; };
-
-    &.top {
-        background-position: top center;
-    }
 }
