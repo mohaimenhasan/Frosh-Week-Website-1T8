@@ -185,9 +185,9 @@ class User < ActiveRecord::Base
   def credit_info
     card = Stripe::Charge.retrieve(self.charge_id)["card"]
     {
-      card_name: card["name"],
-      card_last4: card["last4"],
-      card_type: card["type"],
+      cc_name: card["name"],
+      cc_last4: card["last4"],
+      cc_type: card["type"],
     }
   end
 
