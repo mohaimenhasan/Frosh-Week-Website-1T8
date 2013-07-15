@@ -3,9 +3,11 @@
         <div class="col">
             <ul class="horizontal">
                 {{#each item in controller}}
-                    {{#view App.HeaderItemView contentBinding="this"}}
-                        <a {{action select item}} {{bindAttr href="item.path"}}>{{item.name}}</a>
-                    {{/view}}
+                    {{#if item.name}}
+                        {{#view App.HeaderItemView contentBinding="this"}}
+                            <a {{action select item}} {{bindAttr href="item.path"}}>{{item.name}}</a>
+                        {{/view}}
+                    {{/if}}
                 {{/each}}
             </ul>
         </div>
@@ -16,9 +18,13 @@
     <div class="col">
         <ul class="horizontal">
             {{#each item in controller}}
-                {{#view App.HeaderItemView contentBinding="this"}}
-                    {{item.name}}
-                {{/view}}
+                {{#if item.name}}
+                    {{#if item.name}}
+                        {{#view App.HeaderItemView contentBinding="this"}}
+                            {{item.name}}
+                        {{/view}}
+                    {{/if}}
+                {{/if}}
             {{/each}}
         </ul>
     </div>
