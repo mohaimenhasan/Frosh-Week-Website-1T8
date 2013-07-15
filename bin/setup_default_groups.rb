@@ -14,7 +14,7 @@ Group.new({ symbol: '&theta;', name: 'Theta' }).save
 Group.new({ symbol: '&kappa;', name: 'Kappa' }).save
 Group.new({ symbol: '&lambda;', name: 'Lambda' }).save
 Group.new({ symbol: '&mu;', name: 'Mu' }).save
-Group.new({ symbol: '&Nu;', name: 'Nu' }).save
+Group.new({ symbol: '&Nu;', name: 'Ni' }).save
 Group.new({ symbol: '&Omicron;', name: 'Omicron' }).save
 Group.new({ symbol: '&pi;', name: 'Pi' }).save
 Group.new({ symbol: '&rho;', name: 'Rho' }).save
