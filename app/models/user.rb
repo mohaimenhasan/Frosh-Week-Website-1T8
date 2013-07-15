@@ -166,6 +166,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def get_confirm_url
+    'http://' + Rails.application.config.hostname + '/register/confirm/' + self.id.to_s + '/' + self.confirmation_token
+  end
+
   def get_symbol_utf
     self.group.symbol.gsub(/\\u([\da-fA-F]{4})/) {|m| [$1].pack("H*").unpack("n*").pack("U*")}
   end
@@ -183,6 +187,8 @@ class User < ActiveRecord::Base
   end
 
   def credit_info
+    return {} unless self.charge_id
+
     card = Stripe::Charge.retrieve(self.charge_id)["card"]
     {
       cc_name: card["name"],
