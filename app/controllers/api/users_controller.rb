@@ -62,7 +62,7 @@ class Api::UsersController < ActionController::Base
 
   def update
     u = User.find(params[:id])
-    if u.confirmation_token == params[:confirmation_token]
+    if u.confirmation_token == params["user"]["confirmation_token"]
       u.verified = true
       u.send_receipt
       u.save!
