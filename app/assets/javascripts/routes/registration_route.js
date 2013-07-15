@@ -6,7 +6,7 @@ App.RegistrationIndexRoute = Ember.Route.extend({
 
 App.RegistrationItemRoute = Ember.Route.extend({
   model: function(params) {
-    return App.Package.find({ key: params.key });
+    return App.Package.find({ 'key': params.key });
   },
 
   renderTemplate: function(controller, model) {
@@ -33,7 +33,7 @@ App.RegistrationItemRoute = Ember.Route.extend({
   },
 
   serialize: function(model) {
-    return { key: model.get('key') };
+    return { 'key': model.get('key') };
   }
 });
 
