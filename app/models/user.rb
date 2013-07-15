@@ -174,14 +174,17 @@ class User < ActiveRecord::Base
   end
 
   def get_billing_last4
+    return nil unless self.charge_id
     Stripe::Charge.retrieve(self.charge_id)["card"]["last4"]
   end
 
   def get_billing_name
+    return nil unless self.charge_id
     Stripe::Charge.retrieve(self.charge_id)["card"]["name"]
   end
 
   def get_billing_type
+    return nil unless self.charge_id
     Stripe::Charge.retrieve(self.charge_id)["card"]["type"]
   end
 
