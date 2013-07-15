@@ -85,8 +85,7 @@ class User < ActiveRecord::Base
   end
 
   def create_ticket_number
-    self.ticket_number = (self.id.to_i * 100) + rand(100)
-    self.ticket_number = self.ticket_number.to_s.rjust(6, '0')
+    self.ticket_number = (self.id.to_i * 100) + rand(100) + 100_000
     save!
   end
 
