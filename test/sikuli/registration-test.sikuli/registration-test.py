@@ -1,16 +1,15 @@
 screen = Screen(1)
-bursary = True
+bursary = False
 
 # Settings
 Settings.MoveMouseDelay = 0
 Settings.SlowMotionDelay = 0
 
-
 switchApp('Google Chrome')
 
 # Personal Information
-screen.type("1373701450896.png", 'John\t')
-type('Liu\t')
+screen.type("1373701450896.png", 'ThisIsAReallyLongName\t')
+type('ThisIsAReallyLongLastName\t')
 type('johnliu.dev@gmail.com\t')
 type('\t') # Gender
 type('\t') # Phone number
@@ -24,7 +23,7 @@ type('\t') # T-shirt size
 type('Mama\t')
 type('johnliu.dev+mama@gmail.com\t')
 type('Mother\t')
-type('1231231234\t')
+type('6173541234\t')
 type('\t') # Dietary
 type('\t') # Accessibility
 type('\t') # Misc
