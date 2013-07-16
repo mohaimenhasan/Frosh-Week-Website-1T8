@@ -8,8 +8,8 @@ Settings.SlowMotionDelay = 0
 switchApp('Google Chrome')
 
 # Personal Information
-screen.type("1373701450896.png", 'ThisIsAReallyLongName\t')
-type('ThisIsAReallyLongLastName\t')
+screen.type("1373701450896.png", 'John\t')
+type('Liu\t')
 type('johnliu.dev@gmail.com\t')
 type('\t') # Gender
 type('\t') # Phone number
