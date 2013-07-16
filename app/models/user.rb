@@ -196,10 +196,6 @@ class User < ActiveRecord::Base
     'http://' + Rails.application.config.hostname + '/register/confirm/' + id.to_s + '/' + confirmation_token
   end
 
-  def get_symbol_utf
-    group.symbol.gsub(/\\u([\da-fA-F]{4})/) {|m| [$1].pack("H*").unpack("n*").pack("U*")}
-  end
-
   def get_billing_last4
     return nil unless charge_id
     Stripe::Charge.retrieve(charge_id)["card"]["last4"]
