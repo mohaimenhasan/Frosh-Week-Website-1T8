@@ -71,8 +71,8 @@ class Api::UsersController < ActionController::Base
   def update
     u = User.find(params[:id])
     if u.confirmation_token == params["user"]["confirmation_token"]
+      u.send_receipt if !u.bursary_requested && !u.verified
       u.verified = params["user"]["verified"]
-      u.send_receipt unless u.bursary_requested
       u.save!
       render json: {
         user: u.exposed_data({
