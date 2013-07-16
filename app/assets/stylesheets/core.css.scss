@@ -59,10 +59,10 @@ $green-alt: #6EA634;
 }
 
 @mixin link-on-dark {
-    color: $gray;
+    color: $white;
 
     &:hover {
-        color: $gray-alt;
+        color: $white-alt;
     };
 }
 
