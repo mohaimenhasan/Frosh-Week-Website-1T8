@@ -78,24 +78,24 @@ class User < ActiveRecord::Base
   before_save :normalize_phones
 
   def validate_all_phone_numbers
-    if self.phone && GlobalPhone.validate(self.phone)
+    if phone && GlobalPhone.validate(phone)
       errors.add(:phone, "is invalid")
     end
-    unless GlobalPhone.validate(self.emergency_phone)
+    unless GlobalPhone.validate(emergency_phone)
       errors.add(:emergency_phone, "is invalid")
     end
   end
 
   def exposed_data(opts={})
-    data = self.attributes
+    data = attributes
     data.except!('confirmation_token') if opts[:hide_confirmation_token]
     data.merge! credit_info if opts[:show_credit_info]
 
-    if self.phone
-      number = GlobalPhone.parse self.phone
+    if phone
+      number = GlobalPhone.parse phone
       data['phone'] = number.territory.name == 'US' ? number.national_format : number.international_format
     end
-    number = GlobalPhone.parse self.emergency_phone
+    number = GlobalPhone.parse emergency_phone
     data['emergency_phone'] = number.territory.name == 'US' ? number.national_format : number.international_format
 
     data
@@ -107,7 +107,7 @@ class User < ActiveRecord::Base
   end
 
   def create_ticket_number
-    self.ticket_number = (self.id.to_i * 100) + rand(100) + 100_000
+    self.ticket_number = (id.to_i * 100) + rand(100) + 100_000
     save!
   end
 
@@ -125,8 +125,8 @@ class User < ActiveRecord::Base
      html: ERB.new(File.read(Rails.root.join('app/views/email_confirm.html.erb'))).result(binding),
      to: [
        {
-         email: self.email,
-         name: "#{self.first_name} #{self.last_name}"
+         email: email,
+         name: "#{first_name} #{last_name}"
        }
      ],
      from_email: Rails.application.config.mandrill_from
@@ -141,8 +141,8 @@ class User < ActiveRecord::Base
      html: ERB.new(File.read(Rails.root.join('app/views/email_receipt.html.erb'))).result(binding),
      to: [
        {
-         email: self.email,
-         name: "#{self.first_name} #{self.last_name}"
+         email: email,
+         name: "#{first_name} #{last_name}"
        }
      ],
      from_email: Rails.application.config.mandrill_from
@@ -154,10 +154,10 @@ class User < ActiveRecord::Base
     # Create the charge on Stripe's servers - this will charge the user's card
     begin
       charge = Stripe::Charge.create(
-        amount: self.package.price * 100, # amount in cents
+        amount: package.price * 100, # amount in cents
         currency: 'cad',
         card: token,
-        description: self.email,
+        description: email,
       )
 
       self.charge_id = charge["id"]
@@ -175,12 +175,12 @@ class User < ActiveRecord::Base
   end
 
   def normalize_phones
-    self.phone = GlobalPhone.normalize(self.phone) if self.phone
-    self.emergency_phone = GlobalPhone.normalize(self.emergency_phone)
+    self.phone = GlobalPhone.normalize(phone) if phone
+    self.emergency_phone = GlobalPhone.normalize(emergency_phone)
   end
 
   def get_shirt_size_abbr
-    case self.shirt_size
+    case shirt_size
     when 'Small'
       'S'
     when 'Medium'
@@ -193,32 +193,32 @@ class User < ActiveRecord::Base
   end
 
   def get_confirm_url
-    'http://' + Rails.application.config.hostname + '/register/confirm/' + self.id.to_s + '/' + self.confirmation_token
+    'http://' + Rails.application.config.hostname + '/register/confirm/' + id.to_s + '/' + confirmation_token
   end
 
   def get_symbol_utf
-    self.group.symbol.gsub(/\\u([\da-fA-F]{4})/) {|m| [$1].pack("H*").unpack("n*").pack("U*")}
+    group.symbol.gsub(/\\u([\da-fA-F]{4})/) {|m| [$1].pack("H*").unpack("n*").pack("U*")}
   end
 
   def get_billing_last4
-    return nil unless self.charge_id
-    Stripe::Charge.retrieve(self.charge_id)["card"]["last4"]
+    return nil unless charge_id
+    Stripe::Charge.retrieve(charge_id)["card"]["last4"]
   end
 
   def get_billing_name
-    return nil unless self.charge_id
-    Stripe::Charge.retrieve(self.charge_id)["card"]["name"]
+    return nil unless charge_id
+    Stripe::Charge.retrieve(charge_id)["card"]["name"]
   end
 
   def get_billing_type
-    return nil unless self.charge_id
-    Stripe::Charge.retrieve(self.charge_id)["card"]["type"]
+    return nil unless charge_id
+    Stripe::Charge.retrieve(charge_id)["card"]["type"]
   end
 
   def credit_info
-    return {} unless self.charge_id
+    return {} unless charge_id
 
-    card = Stripe::Charge.retrieve(self.charge_id)["card"]
+    card = Stripe::Charge.retrieve(charge_id)["card"]
     {
       cc_name: card["name"],
       cc_last4: card["last4"],
