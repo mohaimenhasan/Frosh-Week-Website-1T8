@@ -16,7 +16,7 @@
     </div>
 
     <div>
-      <p>Hey <%= self.first_name %> <%= self.last_name %>, thanks for registering for F!rosh Week 1T3.<br/>We're stoked to have you coming. It's going to be great!</p>
+      <p>Hey <%= first_name %> <%= last_name %>, thanks for registering for F!rosh Week 1T3.<br/>We're stoked to have you coming. It's going to be great!</p>
 
       <div style="padding:10px;padding-left:20px;background-color:#A2228E;color:white;">
         <b>TICKET</b> Bring this to F!rosh Week on your first day.
@@ -24,7 +24,7 @@
       <div style="background-color:white;padding:10px;padding-left:20px;padding-right:20px;">
         <div style="width:50%;float:left;">
           <div> <b>NAME</b> </div>
-          <div style="font-size:3em;"> <b> <%= self.first_name %> <%= self.last_name %> </b> </div>
+          <div style="font-size:3em;"> <b> <%= first_name %> <%= last_name %> </b> </div>
         </div>
         <div style="width:50%;float:left;">
           <div style="text-align:right"> <b> September 2 - September 8, 2013 </b> </div>
@@ -38,27 +38,27 @@
         </div>
         <div style="width:auto;float:left;margin-right:20px;">
           <div> <b>FROSH GROUP</b> </div>
-          <div style="font-size:3em;"> <b> <%= self.group.symbol %> <%= self.group.name %> </b> </div>
+          <div style="font-size:3em;"> <b> <%= group.symbol %> <%= group.name %> </b> </div>
         </div>
         <div style="width:auto;float:left;">
           <div> <b>Ticket Number</b> </div>
-          <div style="font-size:3em;"> <b> <%= self.ticket_number %> </b> </div>
+          <div style="font-size:3em;"> <b> <%= ticket_number %> </b> </div>
         </div>
         <div style="clear:both"> </div>
         <div style="background-color:dimgrey;margin-top:10px;margin-bottom:10px;padding-top:2px;width:100%;"> </div>
         <div>
           <div> <b>EMERGENCY CONTACT</b> </div>
-          <div style="font-size:1.5em"> <%= self.emergency_name %> <b> <%= self.emergency_phone %> </b> </div>
+          <div style="font-size:1.5em"> <%= emergency_name %> <b> <%= emergency_phone %> </b> </div>
         </div>
         <div style="margin-top:20px">
           <div> <b>DIETARY RESTRICTIONS / ALLERGIES</b> </div>
-          <div> <%= self.restrictions_dietary %> </div>
+          <div> <%= restrictions_dietary %> </div>
         </div>
       </div>
 
       <div style="background-color:white;padding:10px;margin-top:20px;margin-bottom:20px;">
         <div style="text-align:center;font-size:1.5em;"> <b> Meet your F!rosh Group! </b> </div>
-        <div style="text-align:center;font-size:5em;"> <b> <%= self.group.symbol %> <%= self.group.name %> </b> </div>
+        <div style="text-align:center;font-size:5em;"> <b> <%= group.symbol %> <%= group.name %> </b> </div>
 
         <a href="https://www.facebook.com/groups/uoft.froshweek.1t3/" style="text-decoration:none;"><div style="margin-top:10px;padding:10px;padding-left:20px;background-color:#A2228E;color:white;">
           <b> Join us on Facebook </b>
@@ -72,14 +72,14 @@
         <b>RECEIPT</b> Keep for your records.
       </div>
       <div style="background-color:white;padding:10px;padding-left:20px;padding-right:20px;">
-        <div> PAID ON: <b> <%= self.created_at %> </b> </div> <br/>
+        <div> PAID ON: <b> <%= created_at %> </b> </div> <br/>
         <div style="width:50%;float:left;">
           <div> <b> Billing: </b> </div>
-          <div> <%= self.get_billing_name %> </div>
-          <div> <%= self.get_billing_type %>  - <%= self.get_billing_last4 %> </div> <br/>
+          <div> <%= get_billing_name %> </div>
+          <div> <%= get_billing_type %>  - <%= get_billing_last4 %> </div> <br/>
           <div> <b> Registrant: </b> </div>
-          <div> <%= self.first_name %> <%= self.last_name %> </div>
-          <div> <%= self.email %> </div>
+          <div> <%= first_name %> <%= last_name %> </div>
+          <div> <%= email %> </div>
         </div>
         <div style="width:50%;float:left;">
           <div> <b> University of Toronto Engineering Society </b> </div>
@@ -94,10 +94,10 @@
         <div style="font-size:2em;margin-top:20px;"> Purchased Kit </div>
         <div style="background-color:dimgrey;margin-top:10px;margin-bottom:10px;padding-top:2px;width:100%;"> </div>
         <div style="width:80%;float:left;font-size:1.2em">
-          <div> <%= self.package.name %> </div>
+          <div> <%= package.name %> </div>
         </div>
         <div style="width:20%;float:left;">
-          <div style="text-align:right;margin-right:20px;"> <b> $<%= self.package.price %> </b> </div>
+          <div style="text-align:right;margin-right:20px;"> <b> $<%= package.price %> </b> </div>
         </div>
         <div style="clear:both"> </div>
         <div style="background-color:dimgrey;margin-top:10px;margin-bottom:10px;padding-top:2px;width:100%;"> </div>
@@ -105,7 +105,7 @@
           <div style="text-align:right"> Total </div>
         </div>
         <div style="width:20%;float:left;">
-          <div style="text-align:right;margin-right:20px;"> <b> $<%= self.package.price %> </b> </div>
+          <div style="text-align:right;margin-right:20px;"> <b> $<%= package.price %> </b> </div>
         </div>
         <div style="clear:both"> </div>
       </div>
