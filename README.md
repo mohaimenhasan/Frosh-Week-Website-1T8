@@ -8,8 +8,7 @@ Server and client code for orientation.skule.ca
 1.  Use rvm to get ruby version 1.9.3.
 1.  Download Postgres.app to run Postgres locally.
 1.  Run `bundle` to install gems.
-1.  Run `rake db:create` to create the databases.
-1.  Run `rake db:migrate` to migrate the databases.
+1.  Run `rake db:start_fresh` to create the databases.
 1.  Create `.env` and set all the variables shown in `.env.sample`
 1.  Run `foreman start` to start the server.
 1.  Hack away.
