@@ -2,3 +2,7 @@ development:
   adapter: postgresql
   database: skuleorientation
   host: localhost
+test:
+  adapter: postgresql
+  database: skuleorientation-test
+  host: localhost
