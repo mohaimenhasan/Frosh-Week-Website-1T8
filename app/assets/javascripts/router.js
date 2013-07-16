@@ -1,6 +1,6 @@
 if (window.history && window.history.pushState) {
   App.Router.reopen({
-    location: 'history'
+    location: 'auto'
   });
 }
 
