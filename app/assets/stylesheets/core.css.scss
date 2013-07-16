@@ -22,6 +22,7 @@ $font-weight-bold: 700;
 $box-shadow-args: 0 1px 2px;
 
 $logo: 'logo.png';
+$chevron: 'chevron.svg';
 
 $white: #FFFFFF;
 $white-alt: #DFDFDF;
@@ -442,6 +443,13 @@ textarea {
 select {
     @include input-style;
     height: 2em;
+    background: {
+        origin: content-box;
+        size: auto 1em;
+        image: image-url($chevron);
+        position: center right;
+        repeat: no-repeat;
+    }
 }
 
 input[type=radio] + label {
