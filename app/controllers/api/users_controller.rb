@@ -46,7 +46,12 @@ class Api::UsersController < ActionController::Base
 
       new_user.send_confirmation unless Rails.env.development? and user_data.has_key? :skip_confirm_email
 
-      render json: { user: new_user.attributes.except('confirmation_token').merge(new_user.credit_info) }
+      render json: {
+        user: new_user.exposed_data({
+          hide_confirmation_token: true,
+          show_credit_info: true
+        })
+      }
     else
       render json: { errors: new_user.errors }, status: 422
     end
@@ -54,7 +59,10 @@ class Api::UsersController < ActionController::Base
 
   def index
     if params.has_key? :id and params.has_key? :confirmation_token
-      render json: { users: User.where(params.slice(:id, :confirmation_token)) } and return
+      render json: {
+        users: User.where(params.slice(:id, :confirmation_token)).map { |u| u.exposed_data }
+      }
+      return
     end
 
     render json: { users: [] }
@@ -66,7 +74,13 @@ class Api::UsersController < ActionController::Base
       u.verified = params["user"]["verified"]
       u.send_receipt unless u.bursary_requested
       u.save!
-      render json: { user: u.attributes.except('confirmation_token').merge(u.credit_info) } and return
+      render json: {
+        user: u.exposed_data({
+          hide_confirmation_token: true,
+          show_credit_info: true
+        })
+      }
+      return
     end
 
     render json: { user: nil }

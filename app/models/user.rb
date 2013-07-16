@@ -34,10 +34,10 @@
 #  updated_at                     :datetime         not null
 #
 
-require 'phony'
 require 'mandrill'
 require 'stripe'
 require 'erb'
+require 'global_phone'
 require 'awesome_print' if Rails.env.development?
 
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -60,13 +60,8 @@ class User < ActiveRecord::Base
   belongs_to :group
   belongs_to :package
 
-  phony_normalize :phone, default_country_code: 'US'
-  phony_normalize :emergency_phone, default_country_code: 'US'
-
   validates :first_name, :last_name, :emergency_name, :emergency_relationship, presence: true, length: { maximum: 50 }
   validates :discipline, inclusion: { in: ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral'] }
-  validates_plausible_phone :phone, allow_blank: true
-  validates_plausible_phone :emergency_phone
   validates :email, :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX } 
   validates :shirt_size, inclusion: { in: ['Small', 'Medium', 'Large', 'Extra Large']}
   validates :verified, inclusion: { in: [true, false] }
@@ -78,6 +73,33 @@ class User < ActiveRecord::Base
   validates :residence, length: { maximum: 50 }
   validates :restrictions_dietary, :restrictions_misc, :restrictions_accessibility, length: { maximum: 2000 }
   validates :gender, inclusion: { in: ['Male', 'Female', '-'] }
+  validate  :validate_all_phone_numbers
+
+  before_save :normalize_phones
+
+  def validate_all_phone_numbers
+    if self.phone && GlobalPhone.validate(self.phone)
+      errors.add(:phone, "is invalid")
+    end
+    unless GlobalPhone.validate(self.emergency_phone)
+      errors.add(:emergency_phone, "is invalid")
+    end
+  end
+
+  def exposed_data(opts={})
+    data = self.attributes
+    data.except!('confirmation_token') if opts[:hide_confirmation_token]
+    data.merge! credit_info if opts[:show_credit_info]
+
+    if self.phone
+      number = GlobalPhone.parse self.phone
+      data['phone'] = number.territory.name == 'US' ? number.national_format : number.international_format
+    end
+    number = GlobalPhone.parse self.emergency_phone
+    data['emergency_phone'] = number.territory.name == 'US' ? number.national_format : number.international_format
+
+    data
+  end
 
   def create_token
     self.confirmation_token = Digest::SHA1.hexdigest([Time.now, rand].join)
@@ -150,6 +172,11 @@ class User < ActiveRecord::Base
     rescue Stripe::StripeError => e
       { cc_token: [e.message] }
     end
+  end
+
+  def normalize_phones
+    self.phone = GlobalPhone.normalize(self.phone) if self.phone
+    self.emergency_phone = GlobalPhone.normalize(self.emergency_phone)
   end
 
   def get_shirt_size_abbr
