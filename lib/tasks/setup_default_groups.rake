@@ -3,7 +3,7 @@ namespace :db do
   task add_default_groups: [:environment] do
     Group.new({ symbol: '&alpha;', name: 'Alpha' }).save
 	Group.new({ symbol: '&beta;', name: 'Beta' }).save
-	Group.new({ symbol: '&gamma;', name: 'Gamme' }).save
+	Group.new({ symbol: '&gamma;', name: 'Gamma' }).save
 	Group.new({ symbol: '&Delta;', name: 'Delta' }).save
 	Group.new({ symbol: '&theta;', name: 'Theta' }).save
 	Group.new({ symbol: '&kappa;', name: 'Kappa' }).save
