@@ -4,8 +4,12 @@
             <ul class="horizontal">
                 {{#each item in controller}}
                     {{#if item.name}}
-                        {{#view App.HeaderItemView contentBinding="this"}}
-                            <a {{action select item}} {{bindAttr href="item.path"}}>{{item.name}}</a>
+                        {{#view App.HeaderItemView contentBinding=this}}
+                            {{#unless item.external}}
+                                <a {{action select item}} {{bindAttr href=item.path}}>{{item.name}}</a>
+                            {{else}}
+                                <a {{bindAttr href=item.path}}>{{item.name}}</a>
+                            {{/unless}}
                         {{/view}}
                     {{/if}}
                 {{/each}}
@@ -20,7 +24,7 @@
             {{#each item in controller}}
                 {{#if item.name}}
                     {{#if item.name}}
-                        {{#view App.HeaderItemView contentBinding="this"}}
+                        {{#view App.HeaderItemView contentBinding=this}}
                             {{item.name}}
                         {{/view}}
                     {{/if}}
