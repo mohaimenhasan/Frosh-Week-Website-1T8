@@ -3,6 +3,12 @@ App.UserController = Ember.ObjectController.extend({
 
   showAccessibilityInfo: false,
 
+  serverError: false,
+
+  showError: function() {
+    return this.get('serverError') || !this.get('content.isValid');
+  }.property('serverError', 'content.isValid'),
+
   init: function() {
     this._super.apply(this, arguments);
     this.set('content', App.UserForm.create({ isValid: true }));
@@ -32,16 +38,18 @@ App.UserController = Ember.ObjectController.extend({
 
   stripeError: function(code) {
     var content = this.get('content');
-    console.log(code);
-
     if (code === 'incorrect_number' || code === 'invalid_number' ||
-        code === 'expired_card' || code === 'card_declined') {
+        code === 'expired_card' || code === 'card_declined' || code === 'processing_error') {
       content.set('errors.ccNumber', 'Invalid card number.');
     } else if (code === 'invalid_expiry_month' || code === 'invalid_expiry_year') {
       content.set('errors.ccExpiration', 'Invalid expiration date.');
     } else if (code === 'invalid_cvc' || code === 'incorrect_cvc') {
       content.set('errors.ccCVC', 'Invalid CVC.');
+    } else {
+      return false;
     }
+
+    return true;
   },
 
   submit: function() {
@@ -49,18 +57,20 @@ App.UserController = Ember.ObjectController.extend({
     var content = this.get('content');
 
     // Prepare parts of the user object from form data.
-    var userCCExpirationYear = parseInt(content.get('ccExpirationYear')) + 2000;
-    var userCCExpirationMonth = parseInt(content.get('ccExpirationMonth')) - 1;
+    var userCCExpirationYear = parseInt(content.get('ccExpirationYear'), 10) + 2000 || 0;
+    var userCCExpirationMonth = parseInt(content.get('ccExpirationMonth'), 10) - 1 || 0;
     var submitButton = Ladda.create(document.querySelector('button[type=submit]'));
 
     var that = this;
     var handleTransaction = function(status, response) {
       if (response.error) {
-        // This should never happen since we validate client side.
         if (response.error.hasOwnProperty('code')) {
-          that.stripeError(response.error.code);
+          if (!that.stripeError(response.error.code)) {
+            content.set('serverError', true);
+          } else {
+            content.set('isValid', false);
+          }
         }
-        content.set('isValid', false);
         submitButton.stop();
       } else {
         var transaction = that.get('store').transaction();
@@ -121,23 +131,31 @@ App.UserController = Ember.ObjectController.extend({
         });
 
         record.on('becameError', function() {
-          content.set('isValid', false);
+          that.set('serverError', true);
           submitButton.stop();
         });
 
         record.on('becameInvalid', function() {
           var errors = record.get('errors');
-          console.log(errors);
+          var errorCount = 0;
 
           for (var key in errors) {
             if (key === 'ccToken') {
-              that.stripeError(errors[key][0]);
+              if (that.stripeError(errors[key][0])) {
+                errorCount++;
+              }
+
             } else if (errors.hasOwnProperty(key)) {
               content.set('errors.' + key, errors[key][0]);
+              errorCount++;
             }
           }
 
-          content.set('isValid', false);
+          if (errorCount) {
+            content.set('isValid', false);
+          } else {
+            content.set('serverError', true);
+          }
           submitButton.stop();
         });
       }
@@ -145,6 +163,7 @@ App.UserController = Ember.ObjectController.extend({
 
     submitButton.start();
     content.set('isValid', true);
+    content.set('serverError', false);
 
     var delayedHandleTransaction = function(status, response) {
       window.setTimeout(handleTransaction, 250, status, response);

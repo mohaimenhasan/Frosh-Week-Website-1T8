@@ -235,17 +235,23 @@
         </div>
     </section>
 
-    <section {{bindAttr class=":section-normal :registration-error isValid:hidden:showing"}}>
+    <section {{bindAttr class=":section-normal :registration-error showError:showing:hidden"}}>
         <div class="content row">
             <div class="main col float-right">
                 <section class="box-highlight">
-                    <h2>Oops! Something went wrong!</h2>
-                    Here's what you can do:
-                    <ul>
-                        <li>See if you have any missing information that may be required</li>
-                        <li>Try again later</li>
-                        <li>Contact us at <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b></li>
-                    </ul>
+                    {{#if serverError}}
+                        <h2>Oops! Something is wrong with the server!</h2>
+                        <p>
+                            Try again later, or let us know about this problem at:
+                            <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b></li>.
+                        </p>
+                    {{else}}
+                        <h2>We couldn't process all the form information!</h2>
+                        <p>
+                            Check above to see if any fields have errors (highlighted in red). If you're having
+                            trouble contact <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b>.
+                        </p>
+                    {{/if}}
                 </section>
             </div>
         </div>
