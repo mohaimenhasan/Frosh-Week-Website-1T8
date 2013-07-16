@@ -1,8 +1,0 @@
-#!/bin/bash
-
-rake db:drop
-rake db:create
-rake db:migrate
-
-bin/setup_default_packages.rb
-bin/setup_default_groups.rb
