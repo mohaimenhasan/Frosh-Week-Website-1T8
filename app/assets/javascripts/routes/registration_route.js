@@ -67,6 +67,9 @@ App.RegistrationConfirmRoute = Ember.Route.extend({
   },
 
   setupController: function(controller, model) {
+    // Call for frosh groups to cache them earlier.
+    App.Group.find();
+
     // Due to the model being returned from the server as an array,
     // and since returning a .get on the array element doesn't get
     // watched, we must use the following hack.
