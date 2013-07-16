@@ -28,4 +28,16 @@ Ember.Handlebars.registerBoundHelper('timestamp', function(date, options) {
   return new Ember.String.htmlSafe(formatted);
 });
 
+Ember.Router.reopen({
+  transitionTo: function() {
+    this._super.apply(this, arguments);
+    window.scrollTo(0, 1);
+  },
+
+  replaceWith: function() {
+    this._super.apply(this, arguments);
+    window.scrollTo(0, 1);
+  }
+});
+
 App = Ember.Application.create();
