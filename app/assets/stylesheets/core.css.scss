@@ -284,10 +284,16 @@ body {
     @include screen-large   { width: 65%; };
 }
 
+.seventh {
+    @include screen-small   { width: 100%; };
+    @include screen-medium  { width: (100% / 7); };
+    @include screen-large   { width: (100% / 7); };
+}
+
 .third {
     @include screen-small   { width: 100%; };
-    @include screen-small   { width: 33.33%; };
-    @include screen-small   { width: 33.33%; };
+    @include screen-medium  { width: 33.33%; };
+    @include screen-large   { width: 33.33%; };
 }
 
 .half {
