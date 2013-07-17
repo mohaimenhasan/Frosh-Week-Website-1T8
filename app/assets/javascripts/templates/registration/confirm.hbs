@@ -1,10 +1,10 @@
-<section class="section-normal">
+<section class="section">
     <div class="content row">
         <div class="side col registration-print-hidden">
-            {{#linkTo index}}<div class="registration-logo"></div>{{/linkTo}}
+            {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}
 
             {{#if showReceipt}}
-                <section class="box-highlight">
+                <section class="box highlight">
                     <h2>Your F!rosh group is..</h2>
                     <span class="big"><h2 class="center">{{{group.symbol}}} <strong>{{group.name}}</strong></h2></span>
                     <ul>
@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="full col">
                     {{#if showConfirmed}}
-                        <section class="box-highlight registration-print-hidden">
+                        <section class="box highlight registration-print-hidden">
                             <h1>Confirmed!</h1>
                             <p>
                                 Your email has been verified. Check your inbox for more details about orientation throughout the
@@ -29,7 +29,7 @@
                         </section>
                     {{/if}}
                     {{#if showAlreadyVerified}}
-                        <section class="box-highlight registration-print-hidden">
+                        <section class="box highlight registration-print-hidden">
                             <h1>You've already verified this email!</h1>
                             <p>
                                 Your email has already been verified. Looking for your ticket? If you didn't get your
@@ -39,7 +39,7 @@
                         </section>
                     {{/if}}
                     {{#if showError}}
-                        <section class="box-highlight registration-print-hidden">
+                        <section class="box highlight registration-print-hidden">
                             <h1>Oops! Something went wrong.</h1>
                             <p>
                                 Your email couldn't be confirmed. Is this an error? Send us an email at
@@ -53,7 +53,7 @@
             {{#if showReceipt}}
                 <div class="row">
                     <div class="full col">
-                        <section class="box-normal registration-ticket">
+                        <section class="box normal registration-ticket">
                             <div class="row">
                                 <div class="col half">
                                     <h1>

@@ -1,11 +1,13 @@
 <div class="home">
     <section class="home-banner">
-        <div class="home-logo-wrapper">
-            {{#linkTo registration.index}}<div class="home-logo"></div>{{/linkTo}}
-        </div>
+        {{#linkTo 'registration.index'}}
+            <div class="home-logo-wrapper">
+                <div class="home-logo"></div>
+            </div>
+        {{/linkTo}}
     </section>
 
-    <section class="section-alt">
+    <section class="section normal">
         <div class="content row">
             <div class="side col">
                 <h1>F!rosh Week 1T3 <span class="subtitle">U of T Engineering's Orientation Week</span></h1>
@@ -22,7 +24,7 @@
         </div>
     </section>
 
-    <section class="section-normal">
+    <section class="section">
         <div class="content row">
             <div class="side float-right col">
                 asdf
@@ -33,7 +35,7 @@
         </div>
     </section>
 
-    <section class="section-normal">
+    <section class="normal">
         <div class="content row">
             <div class="side col">
                 <h1>The best week of your life.</h1>
@@ -49,11 +51,11 @@
         </div>
     </section>
 
-    <section class="section-highlight">
+    <section class="section highlight">
         <div class="content row">
             <div class="full col">
                 <h1>Register Your F!rosh Kit Today</h1>
-                {{#linkTo registration.index}}
+                {{#linkTo 'registration.index'}}
                     <button class="go">Sign Up!</button>
                 {{/linkTo}}
             </div>

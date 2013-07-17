@@ -100,19 +100,6 @@ $green-alt: #6EA634;
     h6 { @include heading-style($invert: $invert-color); }
 }
 
-@mixin box {
-    padding: 1em;
-
-    @include screen-small   { margin: { top: 1em; bottom: 1em; }; };
-    @include screen-medium  { margin: { top: 1em; bottom: 1em; }; };
-    @include screen-large   { margin: { top: 1em; bottom: 1em; }; };
-}
-
-@mixin rounded-box {
-    @include border-radius(0.35em);
-    @include box;
-}
-
 @mixin slide($height) {
     @include transition(all 0.5s);
     overflow: hidden;
@@ -234,19 +221,18 @@ body {
     @include print          { max-width: 6in; }
 }
 
-.box-clear {
-    @include box;
+.spaced {
+    margin: { top: 1em; bottom: 1em; };
 }
 
-.box-normal {
-    @include rounded-box;
+.normal {
     @include box-shadow($box-shadow-args $white-alt);
     @include font-on-light;
+
     background-color: $white;
 }
 
-.box-highlight {
-    @include rounded-box;
+.highlight {
     @include box-shadow($box-shadow-args $white-alt);
     @include headings-invert(true);
     @include font-on-dark;
@@ -262,26 +248,22 @@ body {
     background-color: $purple;
 }
 
-.section-normal {
-    @include stylistic-section;
+.box {
+    @include border-radius(0.35em);
+
+    box-sizing: border-box;
+    float: left;
+    width: 100%;
+    padding: 1em;
+
+    @include screen-small   { margin: { top: 1em; bottom: 1em; }; };
+    @include screen-medium  { margin: { top: 1em; bottom: 1em; }; };
+    @include screen-large   { margin: { top: 1em; bottom: 1em; }; };
 }
 
-.section-alt {
-    @include stylistic-section($white);
-}
-
-.section-highlight {
-    @include stylistic-section($purple);
-    @include headings-invert(true);
-    @include font-on-dark;
-
-    p {
-        @include font-on-dark;
-    }
-
-    a {
-        @include link-on-dark;
-    }
+.section {
+    width: 100%;
+    overflow: auto;
 }
 
 .side {

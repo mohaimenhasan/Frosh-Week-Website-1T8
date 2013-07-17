@@ -1,8 +1,8 @@
 {{#formFor content wrapper="orientation"}}
-    <section class="section-normal">
+    <section class="section">
         <div class="content row">
             <div class="main col float-right">
-                <section class="box-normal registration-form-step">
+                <section class="box normal registration-form-step">
                     <span class="number">1</span>
                     <h2>Tell us about yourself</h2>
 
@@ -43,7 +43,7 @@
                         {{/input}}
                         {{#input residence}}
                             {{labelField residence text="Residence"}}
-                            {{inputField residence}}
+                            {{inputField residence placeholder="N/A"}}
                         {{/input}}
                     </section>
                 </section>
@@ -51,10 +51,10 @@
         </div>
     </section>
 
-    <section class="section-normal">
+    <section class="section">
         <div class="content row">
             <div class="main col float-right">
-                <section class="box-normal registration-form-step">
+                <section class="box normal registration-form-step">
                     <span class="number">2</span>
                     <h2>Customize your F!rosh Kit</h2>
 
@@ -74,10 +74,10 @@
         </div>
     </section>
 
-    <section class="section-normal">
+    <section class="section">
         <div class="content row">
             <div class="main col float-right">
-                <section class="box-normal registration-form-step">
+                <section class="box normal registration-form-step">
                     <span class="number">3</span>
                     <h2>Health and safety information</h2>
 
@@ -142,10 +142,10 @@
         </div>
     </section>
 
-    <section class="section-normal">
+    <section class="section">
         <div class="content row">
             <div class="main col float-right">
-                <section class="box-normal registration-form-step">
+                <section class="box normal registration-form-step">
                     <span class="number">4</span>
                     <h2>How will you be paying?</h2>
 
@@ -210,21 +210,28 @@
                         </section>
 
                         <section class="registration-form-group">
-                            <h3>Please describe the motivation and paths for you to select the enrolled engineering program at U of T (300 words).</h3>
+                            <label>
+                                Why did you choose to come to your program at U of T Engineering? Briefly describe
+                                your motivation and how you ultimately chose U of T Engineering over other schools
+                                or programs. (300 words)
+                            </label>
                             {{#input bursaryEngineeringMotivation}}
                                 {{inputField bursaryEngineeringMotivation as=text toggledBinding=bursary reverse="false"}}
                             {{/input}}
                         </section>
 
                         <section class="registration-form-group">
-                            <h3>Please describe in 300 words of why you would need financial support for attending Engineering Orientation 1T3.</h3>
+                            <label>
+                                Please describe in 300 words of why you would need financial support for attending
+                                Engineering Orientation 1T3.
+                            </label>
                             {{#input bursaryFinancialReasoning}}
                                 {{inputField bursaryFinancialReasoning as=text toggledBinding=bursary reverse="false"}}
                             {{/input}}
                         </section>
 
                         <section class="registration-form-group">
-                            <h3>Describe what you would like to do after graduation.</h3>
+                            <label>Describe what you would like to do after graduation.</label>
                             {{#input bursaryAfterGraduation}}
                                 {{inputField bursaryAfterGraduation as=text toggledBinding=bursary reverse="false"}}
                             {{/input}}
@@ -238,7 +245,7 @@
     <section {{bindAttr class=":section-normal :registration-error showError:showing:hidden"}}>
         <div class="content row">
             <div class="main col float-right">
-                <section class="box-highlight">
+                <section class="box highlight">
                     {{#if serverError}}
                         <h2>Oops! Something is wrong with the server!</h2>
                         <p>
@@ -257,7 +264,7 @@
         </div>
     </section>
 
-    <section class="section-normal">
+    <section class="section">
         <div class="content row">
             <div class="main col float-right">
                 <div class="align-right">

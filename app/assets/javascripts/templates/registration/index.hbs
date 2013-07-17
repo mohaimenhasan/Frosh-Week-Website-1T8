@@ -1,37 +1,35 @@
-<section class="section-normal">
-    <div class="content row">
-        <div class="side col">
-            {{#linkTo index}}<div class="registration-logo"></div>{{/linkTo}}
-            <section class="box-clear">
-                <h2>Why register?</h2>
-                <ul class="registration-side">
-                    <li>Access to <strong>ALL</strong> events.</li>
-                    <li>A standard issue F!rosh Kit with tons of cool stuff.</li>
-                    <li>Free lunch and dinner on Monday and Tuesday.</li>
-                    <li>One free Skule yearbook at the end of the year ($20 value).</li>
-                </ul>
-            </section>
-        </div>
+<section class="section content row">
+    <div class="side col">
+        {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}
+        <section class="box">
+            <h2>Why register?</h2>
+            <ul class="registration-side">
+                <li>Access to <strong>ALL</strong> events.</li>
+                <li>A standard issue F!rosh Kit with tons of cool stuff.</li>
+                <li>Free lunch and dinner on Monday and Tuesday.</li>
+                <li>One free Skule yearbook at the end of the year ($20 value).</li>
+            </ul>
+        </section>
+    </div>
 
-        <div class="main col">
-            <section class="box-normal">
-                <h1>
-                    Register online!
-                    <span class="subtitle">Early Bird: <span class="red">20% off</span> until August 15!</span>
-                </h1>
-                {{#each model}}
+    <div class="main col">
+        <section class="box normal">
+            <h1>
+                Register online!
+                <span class="subtitle">Early Bird: <span class="red">20% off</span> until August 15!</span>
+            </h1>
+            {{#each model}}
+                {{#linkTo 'registration.item' this}}
                     <div class="registration-item">
-                        {{#linkTo registration.item this}}
                             <h3>
                                 <strong>${{price}}</strong> {{name}}
                             </h3>
                             <p>
                                 {{description}}
                             </p>
-                        {{/linkTo}}
                     </div>
-                {{/each}}
-            </section>
-        </div>
+                {{/linkTo}}
+            {{/each}}
+        </section>
     </div>
 </section>

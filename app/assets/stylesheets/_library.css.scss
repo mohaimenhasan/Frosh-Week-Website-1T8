@@ -56,15 +56,6 @@
     }
 }
 
-@mixin stylistic-section($background-color: '') {
-    width: 100%;
-    overflow: auto;
-    @if $background-color != '' {
-        background-color: $background-color;
-    }
-}
-
-
 /* Functions
  * ---------
  */
