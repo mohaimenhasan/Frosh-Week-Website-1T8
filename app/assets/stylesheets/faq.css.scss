@@ -1,0 +1,15 @@
+/* Orientation FAQ Styles
+ *
+ * This is the style sheet for the FAQ page.
+ *
+ * author:  John Liu
+ * version: 0.0.1
+ */
+
+@import 'compass';
+@import 'library';
+@import 'core';
+
+.faq {
+    margin: { top: 1em; bottom: 1em };
+}
