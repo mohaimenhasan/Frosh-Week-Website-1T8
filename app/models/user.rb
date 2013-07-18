@@ -91,14 +91,19 @@ class User < ActiveRecord::Base
     data.except!('confirmation_token') if opts[:hide_confirmation_token]
     data.merge! credit_info if opts[:show_credit_info]
 
-    if phone
-      number = GlobalPhone.parse phone
-      data['phone'] = number.territory.name == 'US' ? number.national_format : number.international_format
-    end
-    number = GlobalPhone.parse emergency_phone
-    data['emergency_phone'] = number.territory.name == 'US' ? number.national_format : number.international_format
+    data['phone'] = formatted_phone phone if phone
+    data['emergency_phone'] = formatted_phone emergency_phone if emergency_phone
 
     data
+  end
+
+  def formatted_phone(phone_international)
+      number = GlobalPhone.parse phone_international
+      number.territory.name == 'US' ? number.national_format : number.international_format
+  end
+
+  def formatted_date(date_time)
+    date_time.to_time.in_time_zone('Eastern Time (US & Canada)').strftime('%b %e, %Y')
   end
 
   def create_token

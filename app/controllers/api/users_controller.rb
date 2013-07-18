@@ -2,31 +2,23 @@ require 'awesome_print' if Rails.env.development?
 
 class Api::UsersController < ActionController::Base
 
-  def create
-    # Sample: POST http://0.0.0.0:3000/api/users?discipline=Chemical&email=a@b.com&emergency_phone=4169671111&emergency_name=Fido&emergency_relationship=dog&first_name=bob&last_name=last&shirt_size=Medium&gender=Male&package_id=2&bursary_requested=false&emergency_email=c@d.com&skip_stripe=yes&skip_confirm_email=true&no_json=true
-    
-    user_data = 
-      if params.has_key? :no_json
-        params
-      else
-        params["user"]
-      end
+  def create  
+    user_data = params["user"]
 
     new_user = User.new user_data.slice *User.accessible_attributes
 
     new_user.verified = false
 
-    new_user.bursary_requested = (user_data.has_key?(:bursary_requested) and user_data[:bursary_requested].to_bool_with_default) if params.has_key? :no_json
     new_user.bursary_chosen = nil
     new_user.bursary_paid = false
 
-    new_user.set_random_gender_disc if Rails.env.development? and user_data.has_key? :random_gender_disc
+    new_user.set_random_gender_disc if Rails.env.development? and params.has_key? :random_gender_disc
 
-    new_user.package = Package.find(user_data[:package_id].to_i)
+    new_user.package = Package.find(user_data[:package_id].to_s.to_i)
 
     if new_user.valid?
 
-      empty_group = Group.includes(:users).where(users: {group_id: nil}).first
+      empty_group = Group.includes(:users).where(users: { group_id: nil }).first
       new_user.group =
         if empty_group
           empty_group
@@ -36,7 +28,7 @@ class Api::UsersController < ActionController::Base
 
       #Useful method to check for group stats: Group.all.each {|g| p g.name.to_s << ": " << g.users.count.to_s << ", " << g.users.where(gender: 'Female').count.to_s << ", " << g.users.where(discipline:'Mineral').count.to_s}
 
-      unless (Rails.env.development? and user_data.has_key? :skip_stripe) or new_user.bursary_requested
+      unless (Rails.env.development? and params.has_key? :skip_stripe) or new_user.bursary_requested
         result = new_user.process_payment(user_data[:cc_token])
         render json: { errors: result }, status: 422 and return unless result == :success
       end
@@ -44,7 +36,7 @@ class Api::UsersController < ActionController::Base
       new_user.create_token
       new_user.create_ticket_number
 
-      new_user.send_confirmation unless Rails.env.development? and user_data.has_key? :skip_confirm_email
+      new_user.send_confirmation unless Rails.env.development? and params.has_key? :skip_confirm_email
 
       render json: {
         user: new_user.exposed_data({
