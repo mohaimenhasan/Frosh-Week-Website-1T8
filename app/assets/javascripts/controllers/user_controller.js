@@ -85,7 +85,7 @@ App.UserController = Ember.ObjectController.extend({
           lastName: content.get('lastName'),
           gender: content.get('gender'),
           phone: content.get('phone') || '',
-          residence: content.get('residence'),
+          // residence is no longer set
           discipline: content.get('discipline'),
 
           packageId: selectedPackage.get('id'),
