@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
                   :shirt_size,
                   :phone, :residence,
                   :bursary_requested, :bursary_chosen,
-                  :bursary_paid, :bursary_engineering_motivation, :bursary_financial_reasoning,
+                  :bursary_paid, :bursary_engineering_motivation, :bursary_financial_reasoning, :bursary_osap,
                   :confirmation_token, :verified,
                   :emergency_name, :emergency_phone, :emergency_relationship, :emergency_email,
                   :restrictions_dietary, :restrictions_accessibility, :restrictions_misc,
