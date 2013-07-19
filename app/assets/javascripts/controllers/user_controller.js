@@ -34,10 +34,8 @@ App.UserController = Ember.ObjectController.extend({
         content.validate('ccCVC');
         content.validate('ccExpiration');
       } else {
-        content.validate('bursaryScholarshipAmount');
         content.validate('bursaryEngineeringMotivation');
         content.validate('bursaryFinancialReasoning');
-        content.validate('bursaryAfterGraduation');
       }
     });
   },

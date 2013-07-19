@@ -219,11 +219,32 @@ Ember.EasyForm.BaseView = Ember.View.extend({
 
 (function() {
 Ember.EasyForm.Checkbox = Ember.Checkbox.extend({
+  attributeBindings: ['disabled'],
+  disabled: null,
+  reverse: "false",
+  toggled: true,
+
   init: function() {
     this._super();
+
+    var that = this;
     this.addObserver('checked', function() {
-      this.set('context.content.' + this.property, this.get('checked'));
+      that.set('context.content.' + that.property, that.get('checked'));
     });
+
+    if (this.get('toggledBinding')) {
+      this.addObserver('toggled', function() {
+        var value;
+        if (that.reverse === "true") {
+          value = that.toggled ? '' : null;
+        } else {
+          value = that.toggled ? null : '';
+        }
+        that.set('disabled', value);
+      });
+
+      this.set('toggled', this.reverse === "true");
+    }
   }
 });
 })();
@@ -456,16 +477,21 @@ Ember.EasyForm.TextArea = Ember.TextArea.extend({
   init: function() {
     this._super();
 
-    var that = this;
-    this.addObserver('toggled', function() {
-      var value;
-      if (that.reverse === "true") {
-        value = that.toggled ? '' : null;
-      } else {
-        value = that.toggled ? null : '';
-      }
-      that.set('disabled', value);
-    });
+
+    if (this.get('toggledBinding')) {
+      var that = this;
+      this.addObserver('toggled', function() {
+        var value;
+        if (that.reverse === "true") {
+          value = that.toggled ? '' : null;
+        } else {
+          value = that.toggled ? null : '';
+        }
+        that.set('disabled', value);
+      });
+
+      this.set('toggled', this.reverse === "true");
+    }
   }
 });
 })();
@@ -481,16 +507,20 @@ Ember.EasyForm.TextField = Ember.TextField.extend({
   init: function() {
     this._super();
 
-    var that = this;
-    this.addObserver('toggled', function() {
-      var value;
-      if (that.reverse === "true") {
-        value = that.toggled ? '' : null;
-      } else {
-        value = that.toggled ? null : '';
-      }
-      that.set('disabled', value);
-    });
+    if (this.get('toggledBinding')) {
+      var that = this;
+      this.addObserver('toggled', function() {
+        var value;
+        if (that.reverse === "true") {
+          value = that.toggled ? '' : null;
+        } else {
+          value = that.toggled ? null : '';
+        }
+        that.set('disabled', value);
+      });
+
+      this.set('toggled', this.reverse === "true");
+    }
   }
 });
 })();
