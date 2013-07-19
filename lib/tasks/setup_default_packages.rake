@@ -2,51 +2,53 @@ namespace :db do
   desc "Setup default packages"
   task add_default_packages: [:environment] do
     p1 = Package.new ({
-    key: 'test-standalone',
-    name: 'F!rosh Kit Early Bird Standalone',
-    description: "A standard F!rosh Kit. Includes A, B and C! This kit has tons of awesome stuff
-                  that you'll never throw out! Except at the end of F!rosh Week.",
-    price: 95,
+    key: 'early-bird-standalone',
+    name: 'F!rosh Kit Early Bird Standalone Package',
+    description: 'A standard F!rosh Kit. Includes entrance to all events (like a parade!), a 
+                  collection of cool things (like a hard hat!), and lots more! This kit has tons 
+                  of awesome stuff!',
+    price: 100,
     count: 0,
     max: 1,
     start_date: Date.strptime('05-01-2013', '%m-%d-%Y'),
-    end_date: Date.strptime('09-02-2013', '%m-%d-%Y'),
+    end_date: Date.strptime('08-15-2013', '%m-%d-%Y'),
     })
     p2 = Package.new ({
-      key: 'test-farm',
+      key: 'early-bird-with-farm',
       name: 'F!rosh Kit Early Bird + Hart House Farm Package',
-      description: "A standard F!rosh Kit just like above.. except even better! Enjoy camping out at
-                    Hart House Farm! You'll get so drunk, you won't even remember spending the extra
-                    25 dollars (only if you're over 19 though).",
-      price: 120,
+      description: 'A standard F!rosh Kit just like above... except even better! This package 
+                    includes a ticket to a camping trip at Hart House Farm, located outside of 
+                    Caledon on the scenic Niagra Escarpment. Come join us for some fun camping 
+                    on September 7 and 8 to cap off F!rosh Week!',
+      price: 130,
       count: 0,
       max: 1,
       start_date: Date.strptime('05-01-2013', '%m-%d-%Y'),
-      end_date: Date.strptime('09-02-2013', '%m-%d-%Y'),
+      end_date: Date.strptime('08-15-2013', '%m-%d-%Y'),
     })
     p3 = Package.new ({
-      key: 'test-commuter',
-      name: "F!rosh Kit Early Bird + Commuter Program Package",
-      description: "A standard F!rosh Kit.. with living accomodations! This is super awesome. You get
-                    to experience what it would be like to live downtown before enjoying months of
-                    tiresome commuting.",
-      price: 180,
+      key: 'early-bird-with-commuter',
+      name: 'F!rosh Kit Early Bird + Commuter Program Package',
+      description: "A standard F!rosh Kit... with living accommodations! This offer includes room 
+                    and board at a downtown hostel for four nights so you can fully enjoy 
+                    F!rosh Week's days and nights.",
+      price: 185,
       count: 0,
       max: 1,
       start_date: Date.strptime('05-01-2013', '%m-%d-%Y'),
-      end_date: Date.strptime('09-02-2013', '%m-%d-%Y'),
+      end_date: Date.strptime('08-15-2013', '%m-%d-%Y'),
     })
     p4 = Package.new ({
-      key: 'test-all',
-      name: "F!rosh Kit Early Bird + Hart House Farm + Commuter Program Package",
-      description: "Everything. This is the ultimate kit. You'll get to drink BEvERages, have tons of
-                    useless (I mean useful!) crap AND stay downtown before commuting for 3 hours each
-                    day! Super fun.",
-      price: 205,
+      key: 'early-bird-all',
+      name: 'F!rosh Kit Early Bird + Hart House Farm + Commuter Program Package',
+      description: 'This is for the F!rosh that wants to have the ultimate F!rosh Week experience.
+                    You get a standard F!rosh kit, accommodations throughout the week, and a 
+                    ticket to the weekend Hart House Farm camping trip. Super fun!',
+      price: 215,
       count: 0,
       max: 1,
       start_date: Date.strptime('05-01-2013', '%m-%d-%Y'),
-      end_date: Date.strptime('09-02-2013', '%m-%d-%Y'),
+      end_date: Date.strptime('08-15-2013', '%m-%d-%Y'),
     })
 
     p1.save
