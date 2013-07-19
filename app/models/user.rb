@@ -78,7 +78,7 @@ class User < ActiveRecord::Base
   before_save :normalize_phones
 
   def validate_all_phone_numbers
-    if phone && !GlobalPhone.validate(phone)
+    if !phone.blank? && !GlobalPhone.validate(phone)
       errors.add(:phone, "is invalid")
     end
     unless GlobalPhone.validate(emergency_phone)
@@ -91,8 +91,8 @@ class User < ActiveRecord::Base
     data.except!('confirmation_token') if opts[:hide_confirmation_token]
     data.merge! credit_info if opts[:show_credit_info]
 
-    data['phone'] = formatted_phone phone if phone
-    data['emergency_phone'] = formatted_phone emergency_phone if emergency_phone
+    data['phone'] = formatted_phone phone unless phone.blank?
+    data['emergency_phone'] = formatted_phone emergency_phone if emergency_phone.blank?
 
     data
   end
@@ -180,7 +180,7 @@ class User < ActiveRecord::Base
   end
 
   def normalize_phones
-    self.phone = GlobalPhone.normalize(phone) if phone
+    self.phone = GlobalPhone.normalize(phone) unless phone.blank?
     self.emergency_phone = GlobalPhone.normalize(emergency_phone)
   end
 

@@ -113,7 +113,7 @@ describe User do
 
   describe 'when phone is not present' do
     before { @user.phone = ' ' }
-    it {should_not be_valid }
+    it {should be_valid }
   end
 
   describe 'when shirt_size is not present' do
