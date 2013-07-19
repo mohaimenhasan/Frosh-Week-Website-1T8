@@ -1,5 +1,5 @@
-screen = Screen(0)
-bursary = False
+screen = Screen(1)
+bursary = True
 
 # Settings
 Settings.MoveMouseDelay = 0
@@ -37,8 +37,8 @@ if (not bursary):
     type('13\t')
 else:
     type(' \t') # Bursary
-    type('\t')
-    type('Stuff\t')
+    type(' \t')
+    type('No motification sawry bra.\t')     
     type("I don't need financial support.\t")
 
 type('\n')
