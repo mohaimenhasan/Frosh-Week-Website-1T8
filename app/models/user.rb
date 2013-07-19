@@ -28,6 +28,7 @@
 #  restrictions_accessibility     :text
 #  restrictions_misc              :text
 #  charge_id                      :string(255)
+#  ticket_number                  :string(255)
 #  group_id                       :integer
 #  package_id                     :integer
 #  created_at                     :datetime         not null
@@ -78,7 +79,7 @@ class User < ActiveRecord::Base
   before_save :normalize_phones
 
   def validate_all_phone_numbers
-    if phone && GlobalPhone.validate(phone)
+    if phone && !GlobalPhone.validate(phone)
       errors.add(:phone, "is invalid")
     end
     unless GlobalPhone.validate(emergency_phone)

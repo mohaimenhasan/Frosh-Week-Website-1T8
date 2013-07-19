@@ -2,30 +2,37 @@
 #
 # Table name: users
 #
-#  id                         :integer          not null, primary key
-#  email                      :string(255)
-#  verified                   :boolean
-#  first_name                 :string(255)
-#  last_name                  :string(255)
-#  phone                      :string(255)
-#  shirt_size                 :string(255)
-#  residence                  :string(255)
-#  discipline                 :string(255)
-#  group                      :integer
-#  emergency_name             :string(255)
-#  emergency_relationship     :string(255)
-#  emergency_phone            :string(255)
-#  emergency_email            :string(255)
-#  restrictions_dietary       :string(255)
-#  restrictions_accessibility :string(255)
-#  restrictions_misc          :string(255)
-#  bursary_requested          :boolean
-#  bursary_chosen             :boolean
-#  confirmation_token         :string(255)
-#  gender                     :string(255)
-#  package_id                 :integer
-#  created_at                 :datetime         not null
-#  updated_at                 :datetime         not null
+#  id                             :integer          not null, primary key
+#  first_name                     :string(255)
+#  last_name                      :string(255)
+#  discipline                     :string(255)
+#  email                          :string(255)
+#  gender                         :string(255)
+#  shirt_size                     :string(255)
+#  phone                          :string(255)
+#  residence                      :string(255)
+#  bursary_requested              :boolean
+#  bursary_chosen                 :boolean
+#  bursary_paid                   :boolean
+#  bursary_scholarship_amount     :integer
+#  bursary_engineering_motivation :text
+#  bursary_financial_reasoning    :text
+#  bursary_after_graduation       :text
+#  confirmation_token             :string(255)
+#  verified                       :boolean
+#  emergency_name                 :string(255)
+#  emergency_phone                :string(255)
+#  emergency_relationship         :string(255)
+#  emergency_email                :string(255)
+#  restrictions_dietary           :text
+#  restrictions_accessibility     :text
+#  restrictions_misc              :text
+#  charge_id                      :string(255)
+#  ticket_number                  :string(255)
+#  group_id                       :integer
+#  package_id                     :integer
+#  created_at                     :datetime         not null
+#  updated_at                     :datetime         not null
 #
 
 require 'spec_helper'
@@ -34,19 +41,22 @@ describe User do
 
   before { @user = User.new ({
     email: 'me@amandeep.ca',
-    discipline: 'EngSci',
+    discipline: 'Engineering Science',
     emergency_name: 'Captain Kirk',
     emergency_phone: '416 967 1111',
     emergency_relationship: 'Captain',
+    emergency_email: 'tester@gmail.com',
     first_name: 'Amandeep',
-    group: 1,
     last_name: 'Grewal',
     phone: '416 555 5555',
     residence: 'Home',
     restrictions_dietary: 'I eat ALL the things!',
     restrictions_misc: 'I prefer to meet no new people',
-    shirt_size: 'M',
-    verified: true
+    shirt_size: 'Medium',
+    gender: 'Male',
+    verified: false,
+    bursary_requested: false,
+    ticket_number: '1234546'
   })}
 
   subject { @user }
@@ -101,11 +111,6 @@ describe User do
     it {should_not be_valid }
   end
 
-  describe 'when group is not present' do
-    before { @user.group = ' ' }
-    it {should_not be_valid }
-  end
-
   describe 'when phone is not present' do
     before { @user.phone = ' ' }
     it {should_not be_valid }
@@ -152,12 +157,12 @@ describe User do
   end
 
   describe 'when restrictions_dietary is too long' do
-    before { @user.restrictions_dietary = 'a' * 251 }
+    before { @user.restrictions_dietary = 'a' * 2001 }
     it {should_not be_valid }
   end
 
   describe 'when restrictions_misc is too long' do
-    before { @user.restrictions_misc = 'a' * 251 }
+    before { @user.restrictions_misc = 'a' * 2001 }
     it {should_not be_valid }
   end
 
@@ -203,7 +208,7 @@ describe User do
 
   describe 'when phone/emergency_phone format is valid' do
     it 'should be valid' do
-      addresses = ['416-967-1111', '(416) 967-1111', '(416) 9671111', '(416) 967 1111', '(416) 967.1111', '416.967.1111' ,'4169671111']
+      addresses = ['416-967-1111', '(416) 967-1111', '(416) 9671111', '(416) 967 1111', '(416) 967.1111', '416.967.1111' ,'4169671111', '416 967 1111', '+1 416 967 1111', '1 416 967 1111', '14169671111']
       addresses.each do |valid_address|
         @user.phone = valid_address
         @user.emergency_phone = valid_address
