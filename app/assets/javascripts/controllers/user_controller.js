@@ -1,6 +1,16 @@
 App.UserController = Ember.ObjectController.extend({
   needs: ['registrationItem', 'registrationReceipt', 'registrationBursary'],
 
+  trackError: function(field, type, errorValue) {
+    if (!window._gaq) {
+      return;
+    }
+
+    Ember.run.next(function() {
+      _gaq.push(['_trackEvent', 'Registration Error', field, type + ': ' + errorValue]);
+    });
+  },
+
   showAccessibilityInfo: false,
 
   serverError: false,
@@ -41,11 +51,16 @@ App.UserController = Ember.ObjectController.extend({
     if (code === 'incorrect_number' || code === 'invalid_number' ||
         code === 'expired_card' || code === 'card_declined' || code === 'processing_error') {
       content.set('errors.ccNumber', 'Invalid card number.');
+      this.trackError('ccNumber:' + code, 'client', content.get('ccNumber'));
     } else if (code === 'invalid_expiry_month' || code === 'invalid_expiry_year') {
       content.set('errors.ccExpiration', 'Invalid expiration date.');
+      this.trackError('ccNumber:' + code, 'client',
+        content.get('ccExpirationMonth') + '/' + content.get('ccExpirationYear'));
     } else if (code === 'invalid_cvc' || code === 'incorrect_cvc') {
       content.set('errors.ccCVC', 'Invalid CVC.');
+      this.trackError('ccCVC', 'client', content.get('CVC'));
     } else {
+      this.trackError('ccUnknown', 'client', content.get('Unknown error, email: ' + content.get('email')));
       return false;
     }
 
@@ -131,6 +146,7 @@ App.UserController = Ember.ObjectController.extend({
 
         record.on('becameError', function() {
           that.set('serverError', true);
+          that.trackError('Unknown', 'server', 'Unknown error, email: ' + content.get('email'));
           submitButton.stop();
         });
 
@@ -143,9 +159,9 @@ App.UserController = Ember.ObjectController.extend({
               if (that.stripeError(errors[key][0])) {
                 errorCount++;
               }
-
             } else if (errors.hasOwnProperty(key)) {
               content.set('errors.' + key, errors[key][0]);
+              that.trackError(key, 'client', content.get(key));
               errorCount++;
             }
           }
@@ -154,6 +170,7 @@ App.UserController = Ember.ObjectController.extend({
             content.set('isValid', false);
           } else {
             content.set('serverError', true);
+            that.trackError('Unknown', 'server', 'Unknown error, email: ' + content.get('email'));
           }
           submitButton.stop();
         });
