@@ -1,4 +1,4 @@
-screen = Screen(1)
+screen = Screen(0)
 bursary = False
 
 # Settings
@@ -14,7 +14,6 @@ type('johnliu.dev@gmail.com\t')
 type('\t') # Gender
 type('\t') # Phone number
 type('\t') # Discipline
-type('\t') # Residence
 
 # Kit Information
 type('\t') # T-shirt size
@@ -38,9 +37,8 @@ if (not bursary):
     type('13\t')
 else:
     type(' \t') # Bursary
-    type('10000\t')
-    type('What does this even mean?\t')
+    type('\t')
+    type('Stuff\t')
     type("I don't need financial support.\t")
-    type('I wanna make a lot of money!!!\t')
 
 type('\n')
