@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
     data.merge! credit_info if opts[:show_credit_info]
 
     data['phone'] = formatted_phone phone unless phone.blank?
-    data['emergency_phone'] = formatted_phone emergency_phone if emergency_phone.blank?
+    data['emergency_phone'] = formatted_phone emergency_phone unless emergency_phone.blank?
 
     data
   end
