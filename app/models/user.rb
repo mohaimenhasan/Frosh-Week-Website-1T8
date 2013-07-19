@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
                   :shirt_size,
                   :phone, :residence,
                   :bursary_requested, :bursary_chosen,
-                  :bursary_paid, :bursary_scholarship_amount, :bursary_engineering_motivation, :bursary_financial_reasoning, :bursary_after_graduation,
+                  :bursary_paid, :bursary_engineering_motivation, :bursary_financial_reasoning,
                   :confirmation_token, :verified,
                   :emergency_name, :emergency_phone, :emergency_relationship, :emergency_email,
                   :restrictions_dietary, :restrictions_accessibility, :restrictions_misc,
@@ -68,9 +68,8 @@ class User < ActiveRecord::Base
   validates :verified, inclusion: { in: [true, false] }
   validates :bursary_chosen, inclusion: { in: [nil, true, false] }
   validates :bursary_requested, inclusion: { in: [true, false] }
-  validates :bursary_engineering_motivation, :bursary_financial_reasoning, :bursary_after_graduation, presence: true, length: { maximum: 2000 }, if: :bursary_requested?
-  validates :bursary_scholarship_amount, inclusion: { in: 1..100_0000 }, if: :bursary_requested?
-  validates :bursary_paid, inclusion: { in: [true, false] }, if: :bursary_requested?
+  validates :bursary_engineering_motivation, :bursary_financial_reasoning, presence: true, length: { maximum: 2000 }, if: :bursary_requested?
+  validates :bursary_paid, :bursary_osap, inclusion: { in: [true, false] }, if: :bursary_requested?
   validates :residence, length: { maximum: 50 }
   validates :restrictions_dietary, :restrictions_misc, :restrictions_accessibility, length: { maximum: 2000 }
   validates :gender, inclusion: { in: ['Male', 'Female', '-'] }

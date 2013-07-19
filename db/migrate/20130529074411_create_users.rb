@@ -12,10 +12,9 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :bursary_requested
       t.boolean :bursary_chosen
       t.boolean :bursary_paid
-      t.integer :bursary_scholarship_amount
       t.text :bursary_engineering_motivation
       t.text :bursary_financial_reasoning
-      t.text :bursary_after_graduation
+      t.boolean :bursary_osap
       t.string :confirmation_token
       t.boolean :verified
       t.string :emergency_name
