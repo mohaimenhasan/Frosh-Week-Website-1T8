@@ -198,40 +198,37 @@
                     </div>
 
                     <div {{bindAttr class=":registration-bursary bursary:showing:hidden"}}>
-                        <section class="registration-form-group aligned">
+                        <section class="registration-form-group">
                             <h3>Fill out your bursary application details</h3>
-                            {{#input bursaryScholarshipAmount}}
-                                {{labelField bursaryScholarshipAmount text="Entrance Scholarship"}}
-                                {{inputField bursaryScholarshipAmount placeholder="3000.00" toggledBinding=bursary reverse="false"}}
-                            {{/input}}
-                        </section>
+                            <section class="subsection">
+                                <div class="info">
+                                    Are you eligible for a Ontario Student Assistance Program (OSAP) loan?
+                                </div>
+                                {{#input bursaryOsap}}
+                                    {{inputField bursaryOsap as=checkbox}}{{labelField bursaryOsap text=" "}}
+                                    <label>Yes</label>
+                                {{/input}}
+                            </section>
 
-                        <section class="registration-form-group">
-                            <label>
-                                Why did you choose to come to your program at U of T Engineering? Briefly describe
-                                your motivation and how you ultimately chose U of T Engineering over other schools
-                                or programs. (300 words)
-                            </label>
-                            {{#input bursaryEngineeringMotivation}}
-                                {{inputField bursaryEngineeringMotivation as=text toggledBinding=bursary reverse="false"}}
-                            {{/input}}
-                        </section>
+                            <section class="subsection">
+                                <div class="info">
+                                    Please describe your motivation for attending the Engineering Society's Orientation
+                                    Week. (Up to 300 words)
+                                </div>
+                                {{#input bursaryEngineeringMotivation}}
+                                    {{inputField bursaryEngineeringMotivation as=text toggledBinding=bursary reverse="false"}}
+                                {{/input}}
+                            </section>
 
-                        <section class="registration-form-group">
-                            <label>
-                                Please describe in 300 words of why you would need financial support for attending
-                                Engineering Orientation 1T3.
-                            </label>
-                            {{#input bursaryFinancialReasoning}}
-                                {{inputField bursaryFinancialReasoning as=text toggledBinding=bursary reverse="false"}}
-                            {{/input}}
-                        </section>
-
-                        <section class="registration-form-group">
-                            <label>Describe what you would like to do after graduation.</label>
-                            {{#input bursaryAfterGraduation}}
-                                {{inputField bursaryAfterGraduation as=text toggledBinding=bursary reverse="false"}}
-                            {{/input}}
+                            <section class="subsection">
+                                <div class="info">
+                                    Please describe why you would need financial support in order to attend the Engineering
+                                    Society's Orientation week (up to 300 words).
+                                </div>
+                                {{#input bursaryFinancialReasoning}}
+                                    {{inputField bursaryFinancialReasoning as=text toggledBinding=bursary reverse="false"}}
+                                {{/input}}
+                            </section>
                         </section>
                     </div>
                 </section>

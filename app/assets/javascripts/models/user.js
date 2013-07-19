@@ -34,10 +34,9 @@ App.User = DS.Model.extend({
 
   /* Bursary Information */
   bursaryPaid: DS.attr('boolean'),
-  bursaryScholarshipAmount: DS.attr('number'),
+  bursaryOsap: DS.attr('boolean'),
   bursaryEngineeringMotivation: DS.attr('string'),
   bursaryFinancialReasoning: DS.attr('string'),
-  bursaryAfterGraduation: DS.attr('string'),
 
   /* Credit Card Information */
   chargeId: DS.attr('string'),    // always null (server side usage).
@@ -185,17 +184,6 @@ App.UserForm.reopen({
       }
     },
 
-    bursaryScholarshipAmount: {
-      presence: {
-        if: function(object, validator) {
-          return !!object.get('bursary');
-        }
-      },
-      numericality: {
-        allowBlank: true
-      }
-    },
-
     bursaryEngineeringMotivation: {
       presence: {
         if: function(object, validator) {
@@ -208,17 +196,6 @@ App.UserForm.reopen({
     },
 
     bursaryFinancialReasoning: {
-      presence: {
-        if: function(object, validator) {
-          return !!object.get('bursary');
-        }
-      },
-      length: {
-        maximum: 2000
-      }
-    },
-
-    bursaryAfterGraduation: {
       presence: {
         if: function(object, validator) {
           return !!object.get('bursary');

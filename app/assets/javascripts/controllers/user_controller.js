@@ -94,10 +94,9 @@ App.UserController = Ember.ObjectController.extend({
           bursaryRequested: !!content.get('bursary'),
           // bursaryChosen must be set on the server.
           // bursaryPaid must be set on server.
-          bursaryScholarshipAmount: content.get('bursaryScholarshipAmount') || 0,
+          bursaryOsap: content.get('bursaryOsap') || false,
           bursaryEngineeringMotivation: content.get('bursaryEngineeringMotivation') || '',
           bursaryFinancialReasoning: content.get('bursaryFinancialReasoning') || '',
-          bursaryAfterGraduation: content.get('bursaryAfterGraduation') || '',
 
           emergencyName: content.get('emergencyName'),
           emergencyEmail: content.get('emergencyEmail'),

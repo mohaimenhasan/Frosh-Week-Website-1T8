@@ -139,6 +139,10 @@
         }
     }
 
+    section.subsection {
+        margin: { bottom: 1.5em; };
+    }
+
     &.aligned {
         .input {
             @include screen-small {
