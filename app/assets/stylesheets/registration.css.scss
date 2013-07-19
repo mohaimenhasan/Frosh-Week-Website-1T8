@@ -271,7 +271,7 @@
 }
 
 .registration-bursary {
-    @include slide(80em);
+    @include slide(40em);
 
     // Hack to fix margin's from not collapsing.
     section:first-child {
