@@ -48,15 +48,24 @@ $logo-scaling: 0.7;
 
     @include screen-small {
         text-align: center;
-        li { list-style-type: none; }
+        ul, ol {
+            padding-left: 0;
+            li { list-style-type: none; }
+        }
     };
     @include screen-medium {
         text-align: left;
-        li { list-style-type: disc; }
+        ul, ol {
+            padding-left: 1.5em;
+            li { list-style-type: disc; }
+        }
     };
     @include screen-large {
         text-align: left;
-        li { list-style-type: disc; }
+        ul, ol {
+            padding-left: 1.5em;
+            li { list-style-type: disc; }
+        }
     };
 
     .side, .main, .half, .full {

@@ -226,14 +226,12 @@ body {
 }
 
 .normal {
-    @include box-shadow($box-shadow-args $white-alt);
     @include font-on-light;
 
     background-color: $white;
 }
 
 .highlight {
-    @include box-shadow($box-shadow-args $white-alt);
     @include headings-invert(true);
     @include font-on-dark;
 
@@ -249,6 +247,7 @@ body {
 }
 
 .box {
+    @include box-shadow($box-shadow-args $white-alt);
     @include border-radius(0.35em);
 
     box-sizing: border-box;

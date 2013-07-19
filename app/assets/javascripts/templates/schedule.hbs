@@ -1,0 +1,467 @@
+<div {{action click}} class="spaced schedule">
+    <section class="section">
+        <div class="content row">
+            <div class="side col">
+                {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}
+            </div>
+
+            <div class="main col">
+                <section class="box normal">
+                    <h1>Events & Schedule</h1>
+                    <p>Mark your calendars! <strong>This is your week.</strong></p>
+                    <p>
+                        Admission to F!rosh Week includes all access to the events listed below, and a F!rosh Kit with
+                        tons of awesome swag!
+                    </p>
+                    <p>
+                        We'll have more details on each event (and the Kits) for you as we get closer and closer to
+                        F!rosh. Stay tuned!
+                    </p>
+                </section>
+            </div>
+        </div>
+
+        <div class="content row">
+            <div class="full col">
+                <section class="box normal">
+                    <div class="week row">
+                        <div class="seventh day col">
+                            <h2>Mon <span class="subtitle">Sept 2</span></h2>
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot one-hr half-hr skule-event size-1" data-time="7:30 am">
+                                    Arrival & Registration
+                                    <div class="details">
+                                        <p>
+                                            Your big day begins outside of Front Campus. Grab your F!rosh Kit and get to
+                                            know your F!rosh Group!
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot two-hr skule-event size-2" data-time="9:00 am">
+                                    Matriculation
+                                    <div class="details">
+                                        <p>
+                                            This is your official introduction to U of T Engineering. Find out what
+                                            Skule&trade; has to offer for you and take your first oath toward
+                                            engineeringdom!
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot three-hr skule-event size-3" data-time="11:00 am">
+                                    Campus Tours + Lunch + Dye
+                                    <div class="details">
+                                        <p>
+                                            Here we will give you a whirlwind tour of where you'll be spending your next
+                                            four years of your life, from the best study spots to the coolest places to
+                                            hang out. Participate in the time-honoured tradition of getting dyed
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot one-hr skule-event size-3" data-time="2:00 pm">
+                                    F!rosh Picture
+                                    <div class="details">
+                                        <p>
+                                            Gather around with your fellow Skulemates, frosh and leedurs alike. Here's
+                                            the twist: We'll be arranging you guys into a giant F!rosh Picture and
+                                            taking your photo from above! What's the design? You'll have to wait until
+                                            you get your Skule&trade; Yearbook at the end of the year (free with
+                                            admission to F!rosh!)
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot two-hr half-hr skule-event size-2" data-time="3:00 pm">
+                                    Downtown Walkaround
+                                    <div class="details">
+                                        <p>
+                                            The epic starts here. Imagine about 1100 purple F!rosh and leedurs crashing
+                                            through the streets of downtown Toronto, screaming cheers and just generally
+                                            being, well, epic. That's going to be you. Get excited!
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot one-hr skule-event size-1" data-time="5:30 pm">
+                                    Dinner
+                                    <div class="details">
+                                        <p>
+                                            Food! Yum. Need we say more?
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot one-hr faculty-event size-2" data-time="6:30 pm">
+                                    EEAT Tutorial
+                                    <div class="details">
+                                        <p>
+                                            The Engineering Entrance Aptitude Test (EEAT) will be administered on
+                                            September 3 from 9 - 10:30am. This Tutorial will prepare you with everything
+                                            you need to know about the test on Tuesday.
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot three-hr half-hr skule-event size-3" data-time="7:30 pm">
+                                    Spark Design Club Event <strong>OR</strong> Movie Night
+                                    <div class="details">
+                                        <p>
+                                            The Spark Design presents their first project of the year! What will it be?
+                                            Find out.
+                                        </p>
+                                        <p>
+                                            Not feeling design-y? Happening at the same time is a movie! Relax and enjoy
+                                            with your newfound friends.
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+                        </div>
+
+                        <div class="seventh day col">
+                            <h2>Tue <span class="subtitle">Sept 3</span></h2>
+
+                            <div class="slot one-hr half-hr spacer-event"></div>
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot one-hr half-hr faculty-event size-1" data-time="9:00 am">
+                                    Engineering Entrance Aptitude Test
+                                    <div class="details">
+                                        <p>
+                                            Take the Engineering Entrance Aptitude Test. This is a real test but don't
+                                            worry; it will not affect your grades.
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot three-hr skule-event size-3" data-time="10:30 am">
+                                    F!rosh Olympics + BBQ Lunch
+                                    <div class="details">
+                                        <p>
+                                            F!rosh Olympics is a series of fun physical challenges that will test your
+                                            skills, endurance, and sheer willpower. Compete with other F!rosh Groups and get to know your own group a little bit better! Which group will triumph?
+                                        </p>
+                                        <p>
+                                            After F!rosh Olympics is an awesome BBQ Lunch!
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot one-hr half-hr skule-event size-2" data-time="1:30 pm">
+                                    Engineering Clubs Fair
+                                    <div class="details">
+                                        <p>
+                                            Skule&trade; truly has something to offer to everyone, including a wide
+                                            assortment of undergraduate Engineering Clubs. Feeling high tech? Or are
+                                            you on a mission to make the world better? At Skule&trade; there's a club for
+                                            that.
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot two-hr skule-event size-2" data-time="3:00 pm">
+                                    Charity Buskerfest
+                                    <div class="details">
+                                        <p>
+                                            Take to the streets of Toronto for a good cause. Sing, dance, hula hoop,
+                                            and play instruments to raise money for a charity (to be determined).
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot five-hr skule-event size-4" data-time="5:00 pm">
+                                    Toronto Argonauts Football Game
+                                    <div class="details">
+                                        <p>
+                                            The <a href="http://www.argonauts.ca/">Toronto Argonauts</a> is Toronto's
+                                            own football team ("Football" here refers to
+                                            <a href="http://en.wikipedia.org/wiki/Gridiron_football">North
+                                            American football</a>). Winning their latest championship as recently as
+                                            2012, the Argos are set to face the Montreal Alouettes! Come along with
+                                            your Skulemates, enjoy the game, and cheer on Toronto (or Montreal; we're
+                                            cool with that too). Tickets are included with F!rosh Week admission.
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            <div class="slot one-hr spacer-event"></div>
+                        </div>
+
+                        <div class="seventh day col">
+                            <h2>Wed <span class="subtitle">Sept 4</span></h2>
+
+                            <div class="slot one-hr half-hr spacer-event"></div>
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot three-hr faculty-event size-4" data-time="9:00 am">
+                                    Fun with Faculty!
+                                    <div class="details">
+                                        <p>
+                                            Get ready for classes on Thursday. Meet your professors. And learn if you're
+                                            better than them at Guitar Hero! Wait, what? <strong>Fun with
+                                            Faculty</strong> is an event for every first-year engineering student where
+                                            you'll get to know your profs and the academic side Engineering.
+                                        </p>
+                                        <p>
+                                            <strong>Note:</strong> this event is free for all engineering students. You
+                                            do not need to be signed up for F!rosh Week to attend. All first year
+                                            engineering students are encouraged to attend!
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot two-hr faculty-event size-2" data-time="12:00 pm">
+                                    Department Lunch
+                                    <div class="details">
+                                        <p>
+                                            Get to know your own department. Enjoy free lunch. And get valuable advice
+                                            for your university life here.
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot two-hr skule-event size-4" data-time="2:00 pm">
+                                    World Record Ninja! <strong>OR</strong> Skule Nite 101
+                                    <div class="details">
+                                        <p>
+                                            Feel like breaking a world record? We'd like to tell you about this event.
+                                            We will gather as many people to play the game "Ninja"; more than the
+                                            current Guinness World Record.
+                                        </p>
+                                        <p>
+                                            <a href="http://skulenite.ca">Skule Nite</a>, the Engineering musical and
+                                            sketch comedy revue, invites you to embark on a journey towards ultimate
+                                            F!rosh victory! But beware, the quest is fraught with a variety of
+                                            challenges to test the skills, courage, and creativity of those F!rosh
+                                            brave enough to undertake it. In the end, a lone group shall emerge
+                                            victorious, and to the victors go the spoils!
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot one-hr half-hr external-event size-2" data-time="4:00 pm">
+                                    Discipline Club Activities + Dinner
+                                    <div class="details">
+                                        <p>
+                                            Discipline Clubs represent your engineering program, plan social events for
+                                            your program, and are an opportunity to get involved within Skule Life.
+                                            Meet your Discipline Clubs, get some advice, and grab free dinner!
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot two-hr half-hr external-event size-3" data-time="5:30 pm">
+                                    Suds!
+                                    <div class="details">
+                                        <p>
+                                            Yay! a break in your schedule! Why not go to Suds? It's a social event that
+                                            takes place in the Sanford Flemming atrium. Chill and meet some upper year
+                                            engineers.
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot three-hr skule-event size-3" data-time="8:00 pm">
+                                    F!rosh Nite at Guvernment
+                                    <div class="details">
+                                        <p>
+                                            This all-ages club night is THE hottest event on campus during Orientation.
+                                            Held at the Guvernment nightclub, this is <strong>free</strong> with F!rosh
+                                            Week admission.
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+                        </div>
+
+                        <div class="seventh day col">
+                            <h2>Thur <span class="subtitle">Sept 5</span></h2>
+
+                            <div class="slot one-hr half-hr spacer-event"></div>
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot six-hr faculty-event size-6" data-time="9:00 am">
+                                    Class
+                                    <div class="details">
+                                        <p>
+                                            I can already hear you booing. But class is important! And you don't want
+                                            to miss your first lectures.
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot two-hr skule-event size-3" data-time="3:00 pm">
+                                    Blue & Gold Bed Races
+                                    <div class="details">
+                                        <p>
+                                            Use whatever you have to build a vehicle that resembles something you can
+                                            sleep on. Then race against the other colleges to defend the engineering
+                                            honour!
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot six-hr external-event size-6" data-time="5:00 pm">
+                                    Suds!
+                                </div>
+                            {{/view}}
+                        </div>
+
+                        <div class="seventh day col">
+                            <h2>Fri <span class="subtitle">Sept 6</span></h2>
+
+                            <div class="slot one-hr half-hr spacer-event"></div>
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot five-hr faculty-event size-6" data-time="9:00 am">
+                                    Class
+                                    <div class="details">
+                                        <p>
+                                            I can already hear you booing. But class is important! And you don't want to
+                                            miss your first lectures.
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot three-hr skule-event size-3" data-time="2:00 pm">
+                                    Parade
+                                    <div class="details">
+                                        <p>
+                                            Take to the streets one last time with the other colleges and faculties,
+                                            along with our awesome Engineering parade float!
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot five-hr skule-event size-5" data-time="5:00 pm">
+                                    Havenger Scunt!
+                                    <div class="details">
+                                        <p>
+                                            Nope, you didn't read that wrong. That is what we call our F!rosh Week
+                                            scavenger hunt. But beware! This is not your average scavenger hunt. From
+                                            eating cloves of raw garlic to getting the mayor of Toronto to officially
+                                            endorse the Engineering Havenger Scunt, craziness of all sorts have made
+                                            the list. You won't believe the things that happen at this event!
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+                        </div>
+
+                        <div class="seventh day col">
+                            <h2>Sat <span class="subtitle">Sept 7</span></h2>
+
+                            <div class="slot three-hr half-hr spacer-event"></div>
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot twelve-hr skule-event size-6" data-time="11:00 am">
+                                    Hart House Farm Camping Trip
+                                    <div class="details">
+                                        <p>
+                                            Definitely the coolest way to end F!rosh week, this is an overnight trip to
+                                            the legendary Hart House Farm near Caledon (about two hours away from U of
+                                            T). It's a super-great value; all food, lodging, and awesome times are
+                                            included! Play sports, go swimming, watch a movie, hang out with your
+                                            friends by a camp-fire, or just enjoy the great outdoors, it's all there at
+                                            Hart House Farm! This is a great way to relax before the busy school year
+                                            starts.
+                                        </p>
+                                        <p>
+                                            This will be an optional event requiring additional admission; more
+                                            details soon!
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                        </div>
+
+                        <div class="seventh day col">
+                            <h2>Sun <span class="subtitle">Sept 8</span></h2>
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot six-hr half-hr skule-event size-6" data-time="Continued">
+                                    Hart House Farm Camping Trip
+                                    <div class="details">
+                                        <p>
+                                            Definitely the coolest way to end F!rosh week, this is an overnight trip to
+                                            the legendary Hart House Farm near Caledon (about two hours away from U of
+                                            T). It's a super-great value; all food, lodging, and awesome times are
+                                            included! Play sports, go swimming, watch a movie, hang out with your
+                                            friends by a camp-fire, or just enjoy the great outdoors, it's all there at
+                                            Hart House Farm! This is a great way to relax before the busy school year
+                                            starts.
+                                        </p>
+                                        <p>
+                                            This will be an optional event requiring additional admission; more
+                                            details soon!
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+                        </div>
+                    </div>
+
+                    <div class="row legend">
+                        <div class="third col element">
+                            <div class="element-color skule-event"> </div>
+                            <span class="element-label">Orientation Events</span>
+                        </div>
+                        <div class="third col element">
+                            <div class="element-color faculty-event"> </div>
+                            <span class="element-label">Faculty Events</span>
+                        </div>
+                        <div class="third col element">
+                            <div class="element-color external-event"> </div>
+                            <span class="element-label">External Events</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+</div>

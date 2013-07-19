@@ -1,0 +1,259 @@
+/* Orientation Schedule Styles
+ *
+ * This is the style sheet for the Schedule page.
+ *
+ * author:  John Liu
+ * version: 0.0.1
+ */
+
+@import 'compass';
+@import 'library';
+@import 'core';
+
+$base-margin: 0.5em;
+$base-padding: 0.25em;
+$base-height: 1em;
+
+
+/* Mixins and Functions
+ * --------------------
+ */
+
+@function slot-height($number) {
+    @return $number * ($base-height + $base-margin + 2 * $base-padding) - $base-margin - 2 * $base-padding;
+}
+
+@mixin active-max-heights {
+     .size-1 { max-height: 8em; };
+    &.size-1 { max-height: 8em; };
+
+     .size-2 { max-height: 12em; };
+    &.size-2 { max-height: 12em; };
+
+     .size-3 { max-height: 16em; };
+    &.size-3 { max-height: 16em; };
+
+     .size-4 { max-height: 20em; };
+    &.size-4 { max-height: 20em; };
+
+     .size-5 { max-height: 24em; };
+    &.size-5 { max-height: 24em; };
+
+     .size-6 { max-height: 28em; };
+    &.size-6 { max-height: 28em; };
+}
+
+
+/* Core
+ * ----
+ */
+
+.schedule {
+
+    .week.row {
+        margin: 0;
+    }
+
+    .day.col {
+        text-align: center;
+        padding: { left: 0.25em; right: 0.25em; };
+        margin: { top: 1em; bottom: 1em; };
+    }
+
+    .legend {
+        text-align: center;
+        margin-top: 1em;
+        margin-bottom: 1em;
+
+        .element-color {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            vertical-align: middle;
+        };
+
+        .element-label {
+            line-height: 1em;
+            vertical-align: middle;
+        }
+    }
+
+    .spacer-event {
+        @include screen-small   { display: none; };
+        @include screen-medium  { display: block; };
+        @include screen-large   { display: block; };
+    }
+
+    .faculty-event {
+        @extend .highlight;
+        @include transition(all 0.5s);
+
+        background-color: transparentize($black-alt, 0.25);
+
+        &:hover, .active & {
+            background-color: $black-alt;
+        };
+    };
+    .active .faculty-event {
+        background-color: $black-alt;
+    }
+
+    .skule-event {
+        @extend .highlight;
+        @include transition(all 0.5s);
+
+        background-color: transparentize($purple, 0.25);
+
+        &:hover {
+            background-color: $purple;
+        }
+    };
+    .active .skule-event {
+        background-color: $purple;
+    }
+
+    .external-event {
+        @extend .normal;
+        @include transition(all 0.5s);
+
+        background-color: transparentize($white-alt, 0.25);
+
+        &:hover {
+            background-color: $white-alt;
+        }
+    };
+    .active .external-event {
+        background-color: $white-alt;
+    }
+
+
+    .details {
+        @include transition(all 0.5s, left 0.5s linear, min-width 0.5s linear);
+
+        margin: 0.25em;
+        opacity: 0;
+        max-height: 0;
+        text-align: left;
+        overflow: hidden;
+
+        @include screen-small   { font-size: 1em; };
+        @include screen-medium  { font-size: 0.8em; };
+        @include screen-large   { font-size: 0.8em; };
+    }
+    .active .details {
+        @include active-max-heights;
+
+        opacity: 1;
+        max-height: 30em;
+    }
+
+    .slot {
+        cursor: pointer;
+        border: {
+            width: 0;
+            style: solid;
+            color: $white;
+        };
+        background-clip: border-box;
+        margin: { top: $base-margin; bottom: $base-margin; };
+        padding: $base-padding;
+        position: relative;
+        left: 0;
+
+        &.half-hr { padding-bottom: $base-height + $base-margin + 3 * $base-padding; }
+        &.one-hr {
+            min-height: slot-height(2);
+            max-height: slot-height(2);
+        };
+        &.two-hr {
+            min-height: slot-height(4);
+            max-height: slot-height(4);
+        };
+        &.three-hr {
+            min-height: slot-height(6);
+            max-height: slot-height(6);
+        };
+        &.four-hr {
+            min-height: slot-height(8);
+            max-height: slot-height(8);
+        };
+        &.five-hr {
+            min-height: slot-height(10);
+            max-height: slot-height(10);
+        };
+        &.six-hr {
+            min-height: slot-height(12);
+            max-height: slot-height(12);
+        };
+        &.seven-hr {
+            min-height: slot-height(14);
+            max-height: slot-height(14);
+        };
+        &.eight-hr {
+            min-height: slot-height(16);
+            max-height: slot-height(16);
+        };
+        &.nine-hr {
+            min-height: slot-height(18);
+            max-height: slot-height(18);
+        };
+        &.ten-hr {
+            min-height: slot-height(20);
+            max-height: slot-height(20);
+        };
+        &.eleven-hr {
+            min-height: slot-height(22);
+            max-height: slot-height(22);
+        };
+        &.twelve-hr {
+            min-height: slot-height(24);
+            max-height: slot-height(24);
+        };
+
+        &[data-time]:before {
+            @extend .small;
+
+            content: attr(data-time);
+            display: block;
+            text-transform: uppercase;
+            font-weight: $font-weight-bold;
+        };
+    }
+    .active .slot {
+        z-index: 5;
+
+        @include screen-small {
+            @include active-max-heights;
+
+            left: 0;
+            min-width: auto;
+            padding-bottom: $base-height + $base-margin + 3 * $base-padding;
+        };
+        @include screen-medium {
+            @include box-shadow(0 0 4px $black-alt);
+
+            left: -53%;
+            min-height: 0;
+            max-height: 30em;
+            min-width: 200%;
+
+            padding-bottom: $base-padding;
+            &.half-hr {
+                padding-bottom: $base-padding;
+            }
+        };
+        @include screen-large {
+            @include box-shadow(0 0 4px $black-alt);
+
+            left: -53%;
+            min-height: 0;
+            max-height: 30em;
+            min-width: 200%;
+
+            padding-bottom: $base-padding;
+            &.half-hr {
+                padding-bottom: $base-padding;
+            }
+        };
+    }
+}
