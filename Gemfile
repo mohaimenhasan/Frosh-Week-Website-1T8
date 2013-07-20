@@ -12,6 +12,7 @@ gem 'global_phone',           '1.0.1'
 gem 'stripe',                 '1.8.3'
 gem 'mandrill-api',           '1.0.31'
 gem 'unicorn',                '4.6.3'
+gem 'font-awesome-rails',     '3.2.1.2'
 
 group :development, :test do
   gem 'rspec-rails',          '2.11.0'

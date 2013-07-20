@@ -11,27 +11,10 @@
 @import 'core';
 
 $home-banner-image: 'home-banner.jpg';
-$home-banner-scaling-s: 0.5;
+$home-banner-scaling-s: 0.75;
 $home-banner-scaling-m: 0.75;
 $home-banner-scaling-l: 1.25;
 $logo-scaling: 0.7;
-
-/* Mixins
- * ------
- */
-
-@mixin home-content-padding {
-    @include screen-small {
-        padding: { top: 1em; bottom: 1em; };
-    };
-    @include screen-medium {
-        padding: { top: 3em; bottom: 3em; };
-    };
-    @include screen-large {
-        padding: { top: 5em; bottom: 5em; };
-    };
-}
-
 
 /* Core
  * ----
@@ -68,19 +51,36 @@ $logo-scaling: 0.7;
         }
     };
 
-    .side, .main, .half, .full {
-        @include home-content-padding;
-    };
-
     .full {
         text-align: center;
     }
+
+    .subheader {
+        .third {
+            text-align: center;
+
+            h1, p {
+                margin: 0;
+            }
+
+            &.subheader-text {
+                @include screen-small {
+                    margin: { top: 0.5em;  bottom: 0.5em; };
+                };
+                @include screen-medium {
+                    margin: { top: 2em;    bottom: 2em; };
+                };
+                @include screen-large {
+                    margin: { top: 1.5em;  bottom: 1.5em; };
+                };
+            }
+        }
+    }
+
+    .small-spacer {
+        height: 0.5em;
+    }
 }
-
-
-/* Logo, banner specific styles
- * ----------------------------
- */
 
 .home-banner {
     @include box-shadow($box-shadow-args $white-alt);
@@ -102,34 +102,240 @@ $logo-scaling: 0.7;
     @include screen-large {
         height: image-scaled-height($home-banner-image, $home-banner-scaling-l);
     };
+
+    .home-message {
+        margin: { top: 3em; bottom: 3em; };
+        background-color: transparentize($white, 0.1);
+        text-align: left;
+
+        @include screen-small   { margin: { top: 0.5em; bottom: 0.5em; }; };
+        @include screen-medium  { margin: { top: 2em; bottom: 2em; }; };
+        @include screen-large   { margin: { top: 3em; bottom: 3em; }; };
+
+        h1 {
+            text-align: center;
+            font: {
+                weight: $font-weight-bold;
+                size: 1.6em;
+            };
+        }
+
+        .action-button {
+            text-align: center;
+        }
+    }
 }
 
-.home-logo-wrapper {
-    @extend .box;
-
-    background-color: $white-translucent;
-
-    cursor: pointer;
-    float: none;
-    margin: 0 auto;
-    padding: 0.75em;
-    max-width: image-scaled-width($logo, $logo-scaling);
+.home-misc {
     position: relative;
 
-    @include transition(background-color 0.5s);
-
     @include screen-small {
-        top: 2em;
+        height: 10em;
+        line-height: 2.25em;
     };
     @include screen-medium {
-        top: 4em;
+        height: 4em;
+        line-height: 4em;
     };
     @include screen-large {
-        top: 4em;
+        height: 4em;
+        line-height: 4em;
     };
 
-    &:hover {
-        background-color: $white;
+    .side {
+        @include screen-small {
+            margin-top: 5em;
+        };
+        @include screen-medium {
+            margin-top: 0;
+        };
+        @include screen-large {
+            margin-top: 0;
+        };
+    }
+
+    .main {
+        @include screen-small {
+            text-align: center;
+        };
+        @include screen-medium {
+            text-align: right;
+        };
+        @include screen-large {
+            text-align: right;
+        };
+
+        .icon {
+            margin: { left: 0.5em; right: 0.5em; };
+        }
+
+        .follow-text {
+            @include screen-small   { display: none; };
+            @include screen-medium  { display: inline; };
+            @include screen-large   { display: inline; };
+        }
+    }
+
+    .days-remaining-text {
+        @include screen-small {
+            margin-left: 0;
+        };
+        @include screen-medium {
+            margin-left: 7em;
+        };
+        @include screen-large {
+            margin-left: 7em;
+        };
+    }
+
+    .number {
+        @include box-shadow($box-shadow-args $gray);
+
+        display: inline-block;
+        position: absolute;
+        background-color: $white-alt;
+        text-align: center;
+        border-radius: 50%;
+        font-weight: $font-weight-bold;
+        color: $purple;
+        height: 2em;
+        line-height: 2em;
+        width: 2em;
+
+        @include screen-small {
+            font-size: 2em;
+            top: 0.5em;
+            left: 50%;
+            margin-left: -1em;
+        };
+        @include screen-medium {
+            font-size: 3em;
+            top: -0.333em;
+            left: auto;
+            margin-left: 0;
+        };
+        @include screen-large {
+            font-size: 3em;
+            top: -0.333em;
+            left: auto;
+            margin-left: 0;
+        };
+    }
+}
+
+.home-reasons {
+    padding: { top: 3em; bottom: 3em; };
+
+    .step {
+        text-align: left;
+        margin-top: 2em;
+
+
+        @include screen-small {
+            padding: 2em;
+        };
+        @include screen-medium {
+            padding: 3.5em;
+        };
+        @include screen-large {
+            padding: 3.5em;
+        };
+
+        h2 {
+            text-align: left;
+            margin-left: 0;
+        };
+
+        &:before {
+            @include screen-small {
+                font-size: 1.5em;
+            };
+            @include screen-medium {
+                font-size: 2em;
+                top: 1.5em;
+            };
+            @include screen-large {
+                font-size: 2em;
+                top: 1.5em;
+            };
+        };
+
+        &.top-half {
+            margin-bottom: 0;
+            padding-bottom: 2em;
+            border-bottom: { left-radius: 0; right-radius:  0 };
+        };
+
+        &.bottom-half {
+            cursor: pointer;
+            margin-top: 0;
+            padding: { top: 1em; bottom: 1em; };
+            border-top: { left-radius: 0; right-radius:  0 };
+            background-color: $white-alt;
+            text-align: center;
+
+            &:before {
+                display: none;
+            };
+        };
+    };
+}
+
+.home-video {
+    @include transition(all 0.5s);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: transparentize($black, 0.1);
+
+    iframe {
+        @include transition(all 0.5s);
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 20;
+
+        @include screen-small {
+            height: 225px;
+            width: 400px;
+            margin-top: (-225px / 2);
+            margin-left: (-400px / 2);
+        };
+        @include screen-medium {
+            height: 337px;
+            width: 600px;
+            margin-top: (-337px / 2);
+            margin-left: (-600px / 2);
+        };
+        @include screen-large {
+            height: 450px;
+            width: 800px;
+            margin-top: (-450px / 2);
+            margin-left: (-800px / 2);
+        };
+    };
+
+    &.hidden {
+        @include transition(all 0.5s, z-index 0s ease 0.5s);
+        opacity: 0;
+        z-index: -1;
+
+        iframe {
+            @include transform(scale(0, 0));
+        }
+    };
+
+    &.showing {
+        @include transition(all 0.5s, z-index 0s);
+        opacity: 1;
+        z-index: 20;
+
+        iframe {
+            @include transform(scale(1, 1));
+        }
     };
 }
 
@@ -141,10 +347,6 @@ $logo-scaling: 0.7;
         repeat: no-repeat;
     };
 
-    width: 100%;
     height: image-scaled-height($logo, $logo-scaling);
-}
-
-.home-signup-button {
-    display: block;
+    margin: 0;
 }

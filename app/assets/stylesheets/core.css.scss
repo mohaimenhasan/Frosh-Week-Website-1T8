@@ -25,13 +25,15 @@ $logo: 'logo.png';
 $chevron: 'chevron.svg';
 
 $white: #FFFFFF;
-$white-alt: #DFDFDF;
+$white-light: #EFEFEF;
+$white-alt: #E5E5E5;
 $white-translucent: transparentize($white, 0.1);
 $gray: #808080;
 $gray-alt: #606060;
 $black: #222222;
 $black-alt: #444444;
-$purple: #6C007D;
+$purple: #890068;
+$purple-alt: #804089;
 $red: #FF0000;
 $green: #4F7A27;
 $green-alt: #6EA634;
@@ -192,7 +194,7 @@ body {
     @include font-on-light;
 
     margin: 0;
-    background-color: $white-alt;
+    background-color: $white-light;
     font: {
         family: 'proxima-nova-alt', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         weight: $font-weight-normal;
@@ -219,6 +221,11 @@ body {
     @include screen-medium  { margin: { top: 0em; bottom: 0em; }; }
     @include screen-large   { margin: { top: 0em; bottom: 0em; }; }
     @include print          { max-width: 6in; }
+}
+
+.mini-content {
+    @extend .content;
+    max-width: 35em;
 }
 
 .spaced {
@@ -258,6 +265,66 @@ body {
     @include screen-small   { margin: { top: 1em; bottom: 1em; }; };
     @include screen-medium  { margin: { top: 1em; bottom: 1em; }; };
     @include screen-large   { margin: { top: 1em; bottom: 1em; }; };
+}
+
+.step {
+    position: relative;
+
+    h2 {
+        @include screen-small {
+            text-align: center;
+            margin-top: 0.25em;
+            margin-left: 0;
+        };
+        @include screen-medium {
+            text-align: left;
+            margin-top: 0;
+            margin-left: 0.5em;
+        };
+        @include screen-large {
+            text-align: left;
+            margin-top: 0;
+            margin-left: 0.5em;
+        };
+    }
+
+    section {
+        margin-bottom: 1.5em;
+    }
+
+    &:before {
+        @include box-shadow($box-shadow-args $white-alt);
+        @include headings-invert(true);
+        @include font-on-dark;
+        @include border-radius(50%);
+
+        content: attr(data-step);
+        font-weight: $font-weight-bold;
+        background-color: $purple;
+        width: 2.25em;
+        height: 2.25em;
+        line-height: 2.25em;
+        text-align: center;
+
+        @include screen-small {
+            position: absolute;
+            top: -1em;
+            left: -1.125em;
+            margin-left: 50%;
+        };
+        @include screen-medium {
+            position: absolute;
+            top: 1em;
+            left: -1.125em;
+            margin-left: 0;
+        };
+        @include screen-large {
+            position: absolute;
+            top: 1em;
+            left: -1.125em;
+            margin-left: 0;
+        };
+    }
 }
 
 .section {
@@ -505,4 +572,8 @@ input[type=button], button {
 
 input[type=submit], button[type=submit], button.go {
     @include button-style($white, $green, $white, $green-alt, $white, $black-alt);
+}
+
+button.highlight {
+    @include button-style($white, $purple, $white, $purple-alt, $white, $black-alt);
 }

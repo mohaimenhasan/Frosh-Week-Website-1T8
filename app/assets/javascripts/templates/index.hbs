@@ -1,64 +1,145 @@
 <div class="home">
-    <section class="home-banner">
-        {{#linkTo 'registration.index'}}
-            <div class="home-logo-wrapper">
-                <div class="home-logo"></div>
+    <section class="section normal subheader">
+        <div class="content row">
+            <div class="third col home-logo"></div>
+            <div class="third col subheader-text">
+                <p>
+                    U of T Engineering's Week of Welcome <br>
+                    <strong>September 2 - 8</strong>
+                </p>
             </div>
-        {{/linkTo}}
+            <div class="third col subheader-text">
+                <h1><strong>#fweek</strong></h1>
+            </div>
+        </div>
     </section>
 
-    <section class="section normal">
+    <section class="section highlight small-spacer">
+    </section>
+
+    <section class="section home-banner">
+        <div class="mini-content row">
+            <div class="full col">
+                <div class="box normal home-message">
+                    <h1>What will your F!rosh Week moment be?</h1>
+                    <p>
+                        Welcome to U of T Engineering! F!rosh Week 1T3 is your official orientation week, run for
+                        students by students! Join us to experience the unique events, traditions, and Skule™ spirit
+                        that define student life at U of T Engineering.
+                    </p>
+                    <div class="action-button">
+                        {{#linkTo 'registration.index'}}
+                            <button class="highlight">
+                                <strong>Register Now</strong> <br>
+                                $20 OFF - EARLY BIRD DISCOUNT
+                            </button>
+                        {{/linkTo}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section highlight home-misc">
         <div class="content row">
             <div class="side col">
-                <h1>F!rosh Week 1T3 <span class="subtitle">U of T Engineering's Orientation Week</span></h1>
-                <ul>
-                    <li><strong>WHEN:</strong> September 2 - 8, 2013</li>
-                    <li><strong>WHERE:</strong> St. George Campus</li>
-                    <li><strong>WHO:</strong> Over 1000 F!rosh</li>
-                    <li><strong>WHY:</strong> Because it's awesome.</li>
-                </ul>
+                <div class="number">{{daysRemaining}}</div>
+                <span class="days-remaining-text">{{pluralize daysRemaining string="day"}} until F!rosh.</span>
             </div>
             <div class="main col">
-                Image/Video here.
+                <span class="follow-text">Follow us:</span>
+                <a href="http://blog.orientation.skule.ca/" target="_blank"><i class="icon icon-large icon-tumblr"></i></a>
+                <a href="http://www.twitter.com/Skule_FroshWeek" target="_blank"><i class="icon icon-large icon-twitter"></i></a>
+                <a href="http://www.facebook.com/groups/uoft.froshweek.1t3/" target="_blank"><i class="icon icon-large icon-facebook"></i></a>
             </div>
         </div>
     </section>
-
-    <section class="section">
-        <div class="content row">
-            <div class="side float-right col">
-                asdf
-            </div>
-            <div class="main col">
-                <h1>This is <strong>not</strong> just your first week of engineering.</h1>
-            </div>
-        </div>
-    </section>
-
-    <section class="normal">
-        <div class="content row">
-            <div class="side col">
-                <h1>The best week of your life.</h1>
-                <ul>
-                    <li>Join us for a week of fun.</li>
-                    <li>Meet your fellow friends in engineering.</li>
-                    <li>Have unforgettable stories after.</li>
-                </ul>
-            </div>
-            <div class="main col">
-                <h1><strong>This is your epic introduction to university life.</strong></h1>
-            </div>
-        </div>
-    </section>
-
-    <section class="section highlight">
+    <section class="section home-reasons">
         <div class="content row">
             <div class="full col">
-                <h1>Register Your F!rosh Kit Today</h1>
-                {{#linkTo 'registration.index'}}
-                    <button class="go">Sign Up!</button>
+                <h1><strong>5</strong> reasons should join us for <strong>F!rosh.</strong></h1>
+            </div>
+        </div>
+        <div class="mini-content row">
+            <div class="full col">
+                <div class="box normal step top-half" data-step="1">
+                    <h2>
+                        It’s not just your first week of school. It’s your <strong>epic, unforgettable introduction to
+                        university life.</strong>
+                    </h2>
+                    <p>
+                        F!rosh Week is truly an experience unlike any other; you will step out of your comfort zone,
+                        do things you never imagined doing–and maybe even dye yourself purple!
+                    </p>
+                </div>
+                <div {{action showVideo bubbles=false}} class="box normal step bottom-half">
+                    <h3>Watch the video.</h3>
+                </div>
+            </div>
+        </div>
+        <div class="mini-content row">
+            <div class="full col">
+                <div class="box normal step top-half" data-step="2">
+                    <h2>
+                        More than 18 events over 7 days. <strong>There’s an event for everyone.</strong>
+                    </h2>
+                    <p>
+                        In your first week of university, what do you want to do? Do you want to march downtown with a
+                        thousand other f!rosh? Or maybe join us for an epic scavenger hunt across the city of Toronto?
+                        In F!rosh Week, we’ve got it all.
+                    </p>
+                </div>
+                {{#linkTo 'schedule'}}
+                    <div class="box normal step bottom-half">
+                        <h3>See the schedule.</h3>
+                    </div>
                 {{/linkTo}}
+            </div>
+        </div>
+        <div class="mini-content row">
+            <div class="full col">
+                <div class="box normal step" data-step="3">
+                    <h2>
+                        <strong>Meet your Skule&trade; community.</strong>
+                    </h2>
+                    <p>
+                        Every F!rosh Week attendee is placed into F!rosh Groups of around 20 to 30 people. Over three
+                        days, you and your group will share unforgettable F!rosh experiences, and forge lasting
+                        friendships. But it doesn’t stop there; clubs fairs, discipline-specific events, and faculty
+                        events give you additional opportunities to familiarize yourself with Skule&trade;!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="mini-content row">
+            <div class="full col">
+                <div class="box normal step" data-step="4">
+                    <h2>
+                        <strong>Get a F!rosh Kit with cool stuff.</strong>
+                    </h2>
+                    <p>
+                        Start your week off right! Every F!rosh Week registration includes two t-shirts, a laundry bag,
+                        a towel, water bottle, flip flops, and many other fun and/or useful things!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="mini-content row">
+            <div class="full col">
+                <div class="box normal step" data-step="5">
+                    <h2>
+                        <strong>Participate in a century-old tradition.</strong>
+                    </h2>
+                    <p>
+                        U of T Engineering is Canada’s oldest engineering school, and we proudly celebrate that in
+                        many ways with our unique traditions; it’s why we dye ourselves purple and cherish our mascot,
+                        Ye Olde Mightly Skule Cannon. And when you look back years from now, these will be some of the
+                        things you will remember about U of T Engineering.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 </div>
+
+{{view App.IndexVideoView viewName="videoView"}}

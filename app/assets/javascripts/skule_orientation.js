@@ -28,6 +28,12 @@ Ember.Handlebars.registerBoundHelper('timestamp', function(date, options) {
   return new Ember.String.htmlSafe(formatted);
 });
 
+Ember.Handlebars.registerBoundHelper('pluralize', function(count, options) {
+  var singular = options.hash.string;
+  var plural = singular + 's';
+  return count === 1 ? singular : plural;
+});
+
 Ember.Router.reopen({
   transitionTo: function() {
     this._super.apply(this, arguments);
