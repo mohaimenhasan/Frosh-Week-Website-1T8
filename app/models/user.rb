@@ -64,7 +64,6 @@ class User < ActiveRecord::Base
   validates :discipline, inclusion: { in: ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral'] }
   validates :email, :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX } 
   validates :shirt_size, inclusion: { in: ['Small', 'Medium', 'Large', 'Extra Large']}
-  validates :verified, inclusion: { in: [true, false] }
   validates :bursary_chosen, inclusion: { in: [nil, true, false] }
   validates :bursary_requested, inclusion: { in: [true, false] }
   validates :bursary_engineering_motivation, :bursary_financial_reasoning, presence: true, length: { maximum: 2000 }, if: :bursary_requested?
@@ -75,6 +74,11 @@ class User < ActiveRecord::Base
   validates :emergency_phone, presence: true, length: { maximum: 25 }
   validates :phone, :emergency_phone, length: { maximum: 25 }
   validates :emergency_phone, presence: true
+
+  before_create :create_ticket_number
+  before_create :create_token
+  before_create :assign_group
+  before_create :set_default_data
 
   def exposed_data(opts={})
     data = attributes
@@ -89,21 +93,28 @@ class User < ActiveRecord::Base
 
   def formatted_phone(phone_international)
       number = GlobalPhone.parse phone_international
-      (number && number.territory.name == 'US') ? number.national_format : phone_international
+      (number and number.territory.name == 'US') ? number.national_format : phone_international
   end
 
   def formatted_date(date_time)
     date_time.to_time.in_time_zone('Eastern Time (US & Canada)').strftime('%b %e, %Y')
   end
 
+  def set_default_data
+    self.verified = false
+
+    self.bursary_chosen = nil
+    self.bursary_paid = false
+
+    true
+  end
+
   def create_token
     self.confirmation_token = Digest::SHA1.hexdigest([Time.now, rand].join)
-    save!
   end
 
   def create_ticket_number
     self.ticket_number = (id.to_i * 100) + rand(100) + 100_000
-    save!
   end
 
   def set_random_gender_disc
@@ -111,6 +122,18 @@ class User < ActiveRecord::Base
     genders = ['Male', 'Female']
     self.gender = genders[rand genders.count]
     self.discipline = disps[rand disps.count]
+  end
+
+  def assign_group
+    empty_group = Group.includes(:users).where(users: { group_id: nil }).first
+    self.group =
+      if empty_group
+        empty_group
+      else
+        Group.select("groups.name, groups.id, count(nullif(users.gender='" + gender + "', false)) AS gender_count, count(nullif(users.discipline='" + discipline + "', false)) AS disc_count, count(users.id) AS users_count").joins(:users).group('groups.name, groups.id').order('users_count ASC').order('gender_count ASC').order("disc_count ASC").first
+      end
+
+    #Useful method to check for group stats: Group.all.each {|g| p g.name.to_s << ": " << g.users.count.to_s << ", " << g.users.where(gender: 'Female').count.to_s << ", " << g.users.where(discipline:'Mineral').count.to_s}
   end
 
   def send_confirmation
