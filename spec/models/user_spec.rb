@@ -14,10 +14,9 @@
 #  bursary_requested              :boolean
 #  bursary_chosen                 :boolean
 #  bursary_paid                   :boolean
-#  bursary_scholarship_amount     :integer
 #  bursary_engineering_motivation :text
 #  bursary_financial_reasoning    :text
-#  bursary_after_graduation       :text
+#  bursary_osap                   :boolean
 #  confirmation_token             :string(255)
 #  verified                       :boolean
 #  emergency_name                 :string(255)
@@ -181,37 +180,6 @@ describe User do
       addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
       addresses.each do |valid_address|
         @user.email = valid_address
-        @user.should be_valid
-      end
-    end
-  end
-
-  describe 'when phone format is invalid' do
-    it 'should be invalid' do
-      addresses = ['416967111', '41696711111', '416-967-11x11', '(4416) 967-1111', '(4x16) 967-1111']
-      addresses.each do |invalid_address|
-        @user.phone = invalid_address
-        @user.should_not be_valid
-      end
-    end
-  end
-
-  describe 'when emergency_phone format is invalid' do
-    it 'should be invalid' do
-      addresses = ['416967111', '41696711111', '416-967-11x11', '(4416) 967-1111', '(4x16) 967-1111']
-      addresses.each do |invalid_address|
-        @user.emergency_phone = invalid_address
-        @user.should_not be_valid
-      end
-    end
-  end
-
-  describe 'when phone/emergency_phone format is valid' do
-    it 'should be valid' do
-      addresses = ['416-967-1111', '(416) 967-1111', '(416) 9671111', '(416) 967 1111', '(416) 967.1111', '416.967.1111' ,'4169671111', '416 967 1111', '+1 416 967 1111', '1 416 967 1111', '14169671111']
-      addresses.each do |valid_address|
-        @user.phone = valid_address
-        @user.emergency_phone = valid_address
         @user.should be_valid
       end
     end

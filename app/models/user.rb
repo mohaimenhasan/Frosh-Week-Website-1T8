@@ -14,10 +14,9 @@
 #  bursary_requested              :boolean
 #  bursary_chosen                 :boolean
 #  bursary_paid                   :boolean
-#  bursary_scholarship_amount     :integer
 #  bursary_engineering_motivation :text
 #  bursary_financial_reasoning    :text
-#  bursary_after_graduation       :text
+#  bursary_osap                   :boolean
 #  confirmation_token             :string(255)
 #  verified                       :boolean
 #  emergency_name                 :string(255)
@@ -73,18 +72,9 @@ class User < ActiveRecord::Base
   validates :residence, length: { maximum: 50 }
   validates :restrictions_dietary, :restrictions_misc, :restrictions_accessibility, length: { maximum: 2000 }
   validates :gender, inclusion: { in: ['Male', 'Female', '-'] }
-  validate  :validate_all_phone_numbers
-
-  before_save :normalize_phones
-
-  def validate_all_phone_numbers
-    if !phone.blank? && !GlobalPhone.validate(phone)
-      errors.add(:phone, "is invalid")
-    end
-    unless GlobalPhone.validate(emergency_phone)
-      errors.add(:emergency_phone, "is invalid")
-    end
-  end
+  validates :emergency_phone, presence: true, length: { maximum: 25 }
+  validates :phone, :emergency_phone, length: { maximum: 25 }
+  validates :emergency_phone, presence: true
 
   def exposed_data(opts={})
     data = attributes
@@ -99,7 +89,7 @@ class User < ActiveRecord::Base
 
   def formatted_phone(phone_international)
       number = GlobalPhone.parse phone_international
-      number.territory.name == 'US' ? number.national_format : number.international_format
+      (number && number.territory.name == 'US') ? number.national_format : phone_international
   end
 
   def formatted_date(date_time)
@@ -177,11 +167,6 @@ class User < ActiveRecord::Base
     rescue Stripe::StripeError => e
       { cc_token: [e.message] }
     end
-  end
-
-  def normalize_phones
-    self.phone = GlobalPhone.normalize(phone) unless phone.blank?
-    self.emergency_phone = GlobalPhone.normalize(emergency_phone)
   end
 
   def get_shirt_size_abbr
