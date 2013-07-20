@@ -218,38 +218,6 @@ Ember.EasyForm.BaseView = Ember.View.extend({
 
 
 (function() {
-Ember.EasyForm.Checkbox = Ember.Checkbox.extend({
-  attributeBindings: ['disabled'],
-  disabled: null,
-  reverse: "false",
-  toggled: true,
-
-  init: function() {
-    this._super();
-
-    var that = this;
-    this.addObserver('checked', function() {
-      that.set('context.content.' + that.property, that.get('checked'));
-    });
-
-    if (this.get('toggledBinding')) {
-      this.addObserver('toggled', function() {
-        var value;
-        if (that.reverse === "true") {
-          value = that.toggled ? '' : null;
-        } else {
-          value = that.toggled ? null : '';
-        }
-        that.set('disabled', value);
-      });
-
-      this.set('toggled', this.reverse === "true");
-    }
-  }
-});
-})();
-
-(function() {
 Ember.EasyForm.Error = Ember.EasyForm.BaseView.extend({
   tagName: 'span',
   init: function() {
@@ -471,28 +439,18 @@ Ember.EasyForm.Submit = Ember.EasyForm.BaseView.extend({
 (function() {
 Ember.EasyForm.TextArea = Ember.TextArea.extend({
   attributeBindings: ['disabled'],
-  disabled: null,
-  reverse: "false",
-  toggled: true,
-  init: function() {
-    this._super();
 
-
-    if (this.get('toggledBinding')) {
-      var that = this;
-      this.addObserver('toggled', function() {
-        var value;
-        if (that.reverse === "true") {
-          value = that.toggled ? '' : null;
-        } else {
-          value = that.toggled ? null : '';
-        }
-        that.set('disabled', value);
-      });
-
-      this.set('toggled', this.reverse === "true");
+  disabled: function() {
+    if (Ember.isNone(this.get('toggled'))) {
+      return null;
     }
-  }
+
+    var reverse = this.get('reverse') === 'true';
+    var on = reverse ? '' : null;
+    var off = reverse ? null : '';
+
+    return this.get('toggled') ? on : off;
+  }.property('toggled')
 });
 })();
 
@@ -501,28 +459,48 @@ Ember.EasyForm.TextArea = Ember.TextArea.extend({
 (function() {
 Ember.EasyForm.TextField = Ember.TextField.extend({
   attributeBindings: ['disabled'],
-  disabled: null,
-  reverse: "false",
-  toggled: true,
-  init: function() {
-    this._super();
 
-    if (this.get('toggledBinding')) {
-      var that = this;
-      this.addObserver('toggled', function() {
-        var value;
-        if (that.reverse === "true") {
-          value = that.toggled ? '' : null;
-        } else {
-          value = that.toggled ? null : '';
-        }
-        that.set('disabled', value);
-      });
-
-      this.set('toggled', this.reverse === "true");
+  disabled: function() {
+    if (Ember.isNone(this.get('toggled'))) {
+      return null;
     }
-  }
+
+    var reverse = this.get('reverse') === 'true';
+    var on = reverse ? '' : null;
+    var off = reverse ? null : '';
+
+    return this.get('toggled') ? on : off;
+  }.property('toggled')
 });
+})();
+
+
+
+(function() {
+  Ember.EasyForm.Checkbox = Ember.Checkbox.extend({
+    attributeBindings: ['disabled'],
+
+    disabled: function() {
+      if (Ember.isNone(this.get('toggled'))) {
+        return null;
+      }
+
+      var reverse = this.get('reverse') === 'true';
+      var on = reverse ? '' : null;
+      var off = reverse ? null : '';
+
+      return this.get('toggled') ? on : off;
+    }.property('toggled'),
+
+    init: function() {
+      this._super();
+
+      var that = this;
+      this.addObserver('checked', function() {
+        that.set('context.content.' + that.property, that.get('checked'));
+      });
+    }
+  });
 })();
 
 

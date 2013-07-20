@@ -21,7 +21,7 @@ App.UserController = Ember.ObjectController.extend({
 
   init: function() {
     this._super.apply(this, arguments);
-    this.set('content', App.UserForm.create({ isValid: true }));
+    this.set('content', App.UserForm.create({ isValid: true, bursary: false }));
 
     var that = this;
     this.addObserver('content.bursary', function() {
