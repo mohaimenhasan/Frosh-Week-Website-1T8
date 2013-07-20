@@ -125,8 +125,8 @@ class User < ActiveRecord::Base
 
   def send_confirmation
     message = {
-     subject: '[Orientation] Required registration step - Confirm your email',
-     from_name: 'University of Toronto Engineering Orientation',
+     subject: 'Please confirm your email',
+     from_name: 'F!rosh Week 1T3',
      html: ERB.new(File.read(Rails.root.join('app/views/email_confirm.html.erb'))).result(binding),
      to: [
        {
@@ -141,8 +141,8 @@ class User < ActiveRecord::Base
 
   def send_receipt
     message = {
-     subject: '[Orientation] Required registration step - Confirm your email',
-     from_name: 'University of Toronto Engineering Orientation',
+     subject: 'Your receipt and ticket',
+     from_name: 'F!rosh Week 1T3',
      html: ERB.new(File.read(Rails.root.join('app/views/email_receipt.html.erb'))).result(binding),
      to: [
        {
