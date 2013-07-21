@@ -63,6 +63,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :emergency_name, :emergency_relationship, presence: true, length: { maximum: 50 }
   validates :discipline, inclusion: { in: ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral'] }
   validates :email, :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX } 
+  validates :email, uniqueness: { case_sensitive: false }
   validates :shirt_size, inclusion: { in: ['Small', 'Medium', 'Large', 'Extra Large']}
   validates :bursary_chosen, inclusion: { in: [nil, true, false] }
   validates :bursary_requested, inclusion: { in: [true, false] }
@@ -79,6 +80,8 @@ class User < ActiveRecord::Base
   before_create :create_token
   before_create :assign_group
   before_create :set_default_data
+
+  before_save { self.email = email.downcase }
 
   def exposed_data(opts={})
     data = attributes

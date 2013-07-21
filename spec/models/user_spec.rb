@@ -77,92 +77,87 @@ describe User do
 
   describe 'when discipline is not present' do
     before { @user.discipline = ' ' }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when first_name is not present' do
     before { @user.first_name = ' ' }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when emergency_name is not present' do
     before { @user.emergency_name = ' ' }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when emergency_relationship is not present' do
     before { @user.emergency_relationship = ' ' }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when emergency_phone is not present' do
     before { @user.emergency_phone = ' ' }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when last_name is not present' do
     before { @user.last_name = ' ' }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when email is not present' do
     before { @user.email = ' ' }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when phone is not present' do
     before { @user.phone = ' ' }
-    it {should be_valid }
+    it { should be_valid }
   end
 
   describe 'when shirt_size is not present' do
     before { @user.shirt_size = ' ' }
-    it {should_not be_valid }
-  end
-
-  describe 'when verified is not present' do
-    before { @user.verified = ' ' }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when discipline is too long' do
     before { @user.discipline = 'a' * 51 }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when first_name is too long' do
     before { @user.first_name = 'a' * 51 }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when emergency_name is too long' do
     before { @user.emergency_name = 'a' * 51 }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when emergency_relationship is too long' do
     before { @user.emergency_relationship = 'a' * 51 }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when last_name is too long' do
     before { @user.last_name = 'a' * 51 }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when residence is too long' do
     before { @user.residence = 'a' * 51 }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when restrictions_dietary is too long' do
     before { @user.restrictions_dietary = 'a' * 2001 }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when restrictions_misc is too long' do
     before { @user.restrictions_misc = 'a' * 2001 }
-    it {should_not be_valid }
+    it { should_not be_valid }
   end
 
   describe 'when email format is invalid' do
@@ -183,6 +178,25 @@ describe User do
         @user.should be_valid
       end
     end
+  end
+
+  describe "when email address is already taken" do
+    before do
+      user_with_same_email = @user.dup
+      user_with_same_email.save
+    end
+
+    it { should_not be_valid }
+  end
+
+  describe "when email address (upcase) is already taken" do
+    before do
+      user_with_same_email = @user.dup
+      user_with_same_email.email = @user.email.upcase
+      user_with_same_email.save
+    end
+
+    it { should_not be_valid }
   end
 
 end
