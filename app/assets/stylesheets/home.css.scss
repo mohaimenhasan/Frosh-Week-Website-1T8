@@ -299,10 +299,10 @@ $logo-scaling: 0.7;
         z-index: 20;
 
         @include screen-small {
-            height: 225px;
-            width: 400px;
-            margin-top: (-225px / 2);
-            margin-left: (-400px / 2);
+            height: 180px;
+            width: 320px;
+            margin-top: (-180px / 2);
+            margin-left: (-320px / 2);
         };
         @include screen-medium {
             height: 337px;

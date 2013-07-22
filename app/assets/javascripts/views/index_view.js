@@ -5,6 +5,11 @@ App.IndexVideoView = Ember.View.extend({
 
   classNameBindings: ['videoShowing:showing:hidden'],
 
+  canPlay: function() {
+    // We need this because iOS doesn't support autoplaying.
+    return navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? false : true;
+  },
+
   didInsertElement: function() {
     this._super.apply(this, arguments);
     var that = this;
@@ -19,9 +24,6 @@ App.IndexVideoView = Ember.View.extend({
 
     window.onYouTubeIframeAPIReady = function() {
       that.set('videoPlayer', new YT.Player('video-player', {
-        height: '450',
-        width: '800',
-        videoId: 'S5VsfvfPdx4',
         events: {
           'onReady': loadedWrapper,
           'onStateChange': stateChangeWrapper
@@ -40,7 +42,7 @@ App.IndexVideoView = Ember.View.extend({
   }.property('controller.videoShowing'),
 
   onPlayerLoaded: function() {
-    if (this.get('videoShowing')) {
+    if (this.canPlay() && this.get('videoShowing')) {
       var player = this.get('videoPlayer');
       player.setPlaybackQuality('hd720');
       player.playVideo();
@@ -59,17 +61,13 @@ App.IndexVideoView = Ember.View.extend({
       this.$().attr({ tabIndex: 1 });
       this.$().focus();
 
-      if (!Ember.isNone(player)) {
-        try {
-          player.seekTo(0, true);
-        } catch (ignore) {
-        }
-
+      if (this.canPlay() && !Ember.isNone(player)) {
         player.playVideo();
       }
     } else {
       if (!Ember.isNone(player)) {
         player.pauseVideo();
+        player.seekTo(0, true);
       }
     }
 
