@@ -44,7 +44,6 @@ App.RouteList = [
   })
 ];
 
-// TODO(johnliu): Handle hash routes.
 App.Router.map(function() {
   var outerContext = this;
   App.RouteList.forEach(function(outer) {
