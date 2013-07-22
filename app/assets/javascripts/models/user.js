@@ -47,6 +47,7 @@ App.User = DS.Model.extend({
 });
 
 App.UserFormEngineeringDisciplines = [
+  '-',
   'Engineering Science',
   'Track One',
   'Chemical',
@@ -66,6 +67,7 @@ App.UserFormGender = [
 ];
 
 App.UserFormShirtSize = [
+  '-',
   'Small',
   'Medium',
   'Large',
@@ -129,12 +131,18 @@ App.UserForm.reopen({
       presence: true,
       inclusion: {
         in: App.UserFormEngineeringDisciplines
+      },
+      exclusion: {
+        in: ['-']
       }
     },
 
     shirtSize: {
       inclusion: {
         in: App.UserFormShirtSize
+      },
+      exclusion: {
+        in: ['-']
       }
     },
 
