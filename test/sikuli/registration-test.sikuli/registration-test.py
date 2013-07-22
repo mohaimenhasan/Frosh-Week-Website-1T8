@@ -1,5 +1,5 @@
 screen = Screen(1)
-bursary = True
+bursary = False
 
 # Settings
 Settings.MoveMouseDelay = 0
@@ -8,15 +8,15 @@ Settings.SlowMotionDelay = 0
 switchApp('Google Chrome')
 
 # Personal Information
-screen.type("1373701450896.png", 'John\t')
-type('Liu\t')
-type('johnliu.dev@gmail.com\t')
-type('\t') # Gender
+screen.type("1373701450896.png", 'Amandeep\t')
+type('Grewal\t')
+type('toronto.xtreame@gmail.com\t')
+type('M\t') # Gender
 type('\t') # Phone number
-type('\t') # Discipline
+type('C\t') # Discipline
 
 # Kit Information
-type('\t') # T-shirt size
+type('E\t') # T-shirt size
 
 # Health and Safety Information
 type('Mama\t')
