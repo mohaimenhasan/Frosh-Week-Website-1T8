@@ -88,6 +88,7 @@ $base-height: 1em;
         @extend .highlight;
         @include transition(all 0.5s);
 
+        background-color: $black-alt;
         background-color: transparentize($black-alt, 0.25);
 
         &:hover, .active & {
@@ -102,6 +103,7 @@ $base-height: 1em;
         @extend .highlight;
         @include transition(all 0.5s);
 
+        background-color: $purple;
         background-color: transparentize($purple, 0.25);
 
         &:hover {
@@ -116,6 +118,7 @@ $base-height: 1em;
         @extend .normal;
         @include transition(all 0.5s);
 
+        background-color: $white-alt;
         background-color: transparentize($white-alt, 0.25);
 
         &:hover {
