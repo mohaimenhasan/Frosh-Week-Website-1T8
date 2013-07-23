@@ -221,9 +221,26 @@ $base-height: 1em;
             text-transform: uppercase;
             font-weight: $font-weight-bold;
         };
+
+        &[data-location]:after {
+            @extend .small;
+            @include transition(all 0.25s ease 0s);
+
+            opacity: 0;
+            white-space: pre-wrap;
+            content: attr(data-location);
+            display: block;
+            text-transform: uppercase;
+            font-weight: $font-weight-bold;
+        }
     }
     .active .slot {
         z-index: 5;
+
+        &[data-location]:after {
+            @include transition(all 0.25s ease 0.25s);
+            opacity: 1;
+        }
 
         @include screen-small {
             @include active-max-heights;
