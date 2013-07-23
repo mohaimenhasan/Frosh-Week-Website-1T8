@@ -32,6 +32,7 @@ App.IndexVideoView = Ember.View.extend({
     };
 
     window.onYouTubeIframeAPIReady = function() {
+      that.set('controller.apiLoaded', true);
       that.set('videoPlayer', new YT.Player('video-player', {
         events: {
           'onReady': loadedWrapper,
@@ -39,6 +40,15 @@ App.IndexVideoView = Ember.View.extend({
         }
       }));
     };
+
+    if (this.get('controller.apiLoaded')) {
+      window.onYouTubeIframeAPIReady();
+    }
+  },
+
+  willDestroyElement: function() {
+    window.onYouTubeIframeAPIReady = null;
+    this._super.apply(this, arguments);
   },
 
   onPlayerLoaded: function() {
@@ -71,8 +81,8 @@ App.IndexVideoView = Ember.View.extend({
     } else {
       if (!Ember.isNone(player)) {
         try {
-          player.pauseVideo();
           player.seekTo(0, true);
+          player.pauseVideo();
         } catch (ignore) { }
       }
     }
