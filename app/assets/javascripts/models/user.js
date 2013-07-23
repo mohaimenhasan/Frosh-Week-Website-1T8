@@ -88,7 +88,7 @@ App.UserForm.reopen({
       presence: true,
       length: { maximum: 50 },
       format: {
-        with: /.+@.+\..+/i,
+        'with': /.+@.+\..+/i,
         allowBlank: true
       }
     },
@@ -105,7 +105,7 @@ App.UserForm.reopen({
 
     gender: {
       inclusion: {
-        in: App.UserFormGender
+        'in': App.UserFormGender
       }
     },
 
@@ -116,7 +116,7 @@ App.UserForm.reopen({
       },
       format: {
         allowBlank: true,
-        with: /^[^a-zA-Z]+$/
+        'with': /^[^a-zA-Z]+$/
       }
     },
 
@@ -130,19 +130,19 @@ App.UserForm.reopen({
     discipline: {
       presence: true,
       inclusion: {
-        in: App.UserFormEngineeringDisciplines
+        'in': App.UserFormEngineeringDisciplines
       },
       exclusion: {
-        in: ['-']
+        'in': ['-']
       }
     },
 
     shirtSize: {
       inclusion: {
-        in: App.UserFormShirtSize
+        'in': App.UserFormShirtSize
       },
       exclusion: {
-        in: ['-']
+        'in': ['-']
       }
     },
 
@@ -155,7 +155,7 @@ App.UserForm.reopen({
       presence: true,
       length: { maximum: 50 },
       format: {
-        with: /.+@.+\..+/i,
+        'with': /.+@.+\..+/i,
         allowBlank: true
       }
     },
@@ -168,7 +168,7 @@ App.UserForm.reopen({
     emergencyPhone: {
       presence: true,
       length: { maximum: 50 },
-      format: { with: /^[^a-zA-Z]+$/ }
+      format: { 'with': /^[^a-zA-Z]+$/ }
     },
 
     restrictionsAccessibility: {
@@ -194,7 +194,7 @@ App.UserForm.reopen({
 
     bursaryEngineeringMotivation: {
       presence: {
-        if: function(object, validator) {
+        'if': function(object, validator) {
           return !!object.get('bursary');
         }
       },
@@ -205,7 +205,7 @@ App.UserForm.reopen({
 
     bursaryFinancialReasoning: {
       presence: {
-        if: function(object, validator) {
+        'if': function(object, validator) {
           return !!object.get('bursary');
         }
       },

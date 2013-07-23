@@ -5,6 +5,15 @@ App.IndexVideoView = Ember.View.extend({
 
   classNameBindings: ['videoShowing:showing:hidden'],
 
+  videoShowing: function(key, value) {
+    if (arguments.length === 1) {
+      return this.get('controller.videoShowing');
+    } else {
+      this.set('controller.videoShowing', value);
+      return value;
+    }
+  }.property('controller.videoShowing'),
+
   canPlay: function() {
     // We need this because iOS doesn't support autoplaying.
     return navigator.userAgent.match(/(iPad|iPhone|iPod)/g) ? false : true;
@@ -32,20 +41,13 @@ App.IndexVideoView = Ember.View.extend({
     };
   },
 
-  videoShowing: function(key, value) {
-    if (arguments.length === 1) {
-      return this.get('controller.videoShowing');
-    } else {
-      this.set('controller.videoShowing', value);
-      return value;
-    }
-  }.property('controller.videoShowing'),
-
   onPlayerLoaded: function() {
     if (this.canPlay() && this.get('videoShowing')) {
       var player = this.get('videoPlayer');
-      player.setPlaybackQuality('hd720');
-      player.playVideo();
+      try {
+        player.setPlaybackQuality('hd720');
+        player.playVideo();
+      } catch (ignore) { }
     }
   },
 
@@ -62,12 +64,16 @@ App.IndexVideoView = Ember.View.extend({
       this.$().focus();
 
       if (this.canPlay() && !Ember.isNone(player)) {
-        player.playVideo();
+        try {
+          player.playVideo();
+        } catch (ignore) { }
       }
     } else {
       if (!Ember.isNone(player)) {
-        player.pauseVideo();
-        player.seekTo(0, true);
+        try {
+          player.pauseVideo();
+          player.seekTo(0, true);
+        } catch (ignore) { }
       }
     }
 

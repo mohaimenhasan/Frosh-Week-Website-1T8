@@ -325,6 +325,7 @@ $logo-scaling: 0.7;
 
         iframe {
             @include transform(scale(0, 0));
+            @include opacity(0);
         }
     };
 
@@ -335,6 +336,7 @@ $logo-scaling: 0.7;
 
         iframe {
             @include transform(scale(1, 1));
+            @include opacity(1);
         }
     };
 }
