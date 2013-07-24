@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
   validates :phone, :emergency_phone, length: { maximum: 25 }
   validates :emergency_phone, presence: true
 
-  before_create :create_ticket_number
+  after_create :create_ticket_number
   before_create :create_token
   before_create :assign_group
   before_create :set_default_data

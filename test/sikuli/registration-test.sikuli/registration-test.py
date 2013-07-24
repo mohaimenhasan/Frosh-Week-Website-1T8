@@ -10,7 +10,7 @@ switchApp('Google Chrome')
 # Personal Information
 screen.type("1373701450896.png", 'Amandeep\t')
 type('Grewal\t')
-type('toronto.xtreame@gmail.com\t')
+type('johnliu.dev@gmail.com\t')
 type('M\t') # Gender
 type('\t') # Phone number
 type('C\t') # Discipline
