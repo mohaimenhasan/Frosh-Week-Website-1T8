@@ -1,4 +1,4 @@
-screen = Screen(1)
+screen = Screen(0)
 bursary = False
 
 # Settings

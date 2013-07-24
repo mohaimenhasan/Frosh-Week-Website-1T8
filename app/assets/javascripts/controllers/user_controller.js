@@ -56,7 +56,7 @@ App.UserController = Ember.ObjectController.extend({
         content.get('ccExpirationMonth') + '/' + content.get('ccExpirationYear'));
     } else if (code === 'invalid_cvc' || code === 'incorrect_cvc') {
       content.set('errors.ccCVC', 'Invalid CVC.');
-      this.trackError('ccCVC', 'client', content.get('CVC'));
+      this.trackError('ccCVC', 'client', content.get('ccCVC'));
     } else {
       this.trackError('ccUnknown', 'client', content.get('Unknown error, email: ' + content.get('email')));
       return false;
@@ -189,7 +189,7 @@ App.UserController = Ember.ObjectController.extend({
       Stripe.card.createToken({
         name: content.get('ccName'),
         number: content.get('ccNumber'),
-        cvc: content.get('ccCVC'),
+//        cvc: parseInt(content.get('ccCVC'), 10),
         exp_month: userCCExpirationMonth,
         exp_year: userCCExpirationYear
       }, delayedHandleTransaction);
