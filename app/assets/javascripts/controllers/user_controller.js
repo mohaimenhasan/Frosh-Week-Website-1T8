@@ -49,14 +49,13 @@ App.UserController = Ember.ObjectController.extend({
     if (code === 'incorrect_number' || code === 'invalid_number' ||
         code === 'expired_card' || code === 'card_declined' || code === 'processing_error') {
       content.set('errors.ccNumber', 'Invalid card number.');
-      this.trackError('ccNumber:' + code, 'client', content.get('ccNumber'));
+      this.trackError('ccNumber:' + code, 'client', 'cc number failure');
     } else if (code === 'invalid_expiry_month' || code === 'invalid_expiry_year') {
       content.set('errors.ccExpiration', 'Invalid expiration date.');
-      this.trackError('ccNumber:' + code, 'client',
-        content.get('ccExpirationMonth') + '/' + content.get('ccExpirationYear'));
+      this.trackError('ccNumber:' + code, 'client', 'cc expiration failure');
     } else if (code === 'invalid_cvc' || code === 'incorrect_cvc') {
       content.set('errors.ccCVC', 'Invalid CVC.');
-      this.trackError('ccCVC', 'client', content.get('ccCVC'));
+      this.trackError('ccCVC', 'client', 'cvc failure');
     } else {
       this.trackError('ccUnknown', 'client', content.get('Unknown error, email: ' + content.get('email')));
       return false;
