@@ -16,6 +16,8 @@ $home-banner-scaling-m: 0.75;
 $home-banner-scaling-l: 1.25;
 $logo-scaling: 0.7;
 
+$engsoc-image: 'engsoc.png';
+
 /* Core
  * ----
  */
@@ -85,6 +87,33 @@ $logo-scaling: 0.7;
 .home-banner {
     @include box-shadow($box-shadow-args $white-alt);
     @extend .section; // TODO(johnliu): get rid of this.
+
+    .box {
+      padding: 1.5em; // it just looks better. pbt
+
+      .skule-link {
+      
+        margin-top: 0.5em;
+
+        a {
+          @include hide-text;
+
+          display: block;
+          font-size: 0.75em;
+          box-sizing: border-box;
+          width: 100%;          
+          height: image-height($engsoc-image);
+
+          background: {
+            image: image-url($engsoc-image);
+            position: center;
+            repeat: no-repeat;
+          }
+        }
+
+      }
+
+    }
 
     background: {
         image: image-url($home-banner-image);
