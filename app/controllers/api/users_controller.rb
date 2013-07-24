@@ -17,6 +17,8 @@ class Api::UsersController < ActionController::Base
     end
 
     u.save!
+    u.create_ticket_number
+    u.save!
 
     u.send_confirmation unless check_skip :skip_confirm_email
 
