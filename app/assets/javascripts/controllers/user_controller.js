@@ -70,8 +70,6 @@ App.UserController = Ember.ObjectController.extend({
     var content = this.get('content');
 
     // Prepare parts of the user object from form data.
-    var userCCExpirationYear = parseInt(content.get('ccExpirationYear'), 10) + 2000 || 0;
-    var userCCExpirationMonth = parseInt(content.get('ccExpirationMonth'), 10) - 1 || 0;
     var submitButton = Ladda.create(document.querySelector('button[type=submit]'));
 
     var that = this;
@@ -189,9 +187,9 @@ App.UserController = Ember.ObjectController.extend({
       Stripe.card.createToken({
         name: content.get('ccName'),
         number: content.get('ccNumber'),
-//        cvc: parseInt(content.get('ccCVC'), 10),
-        exp_month: userCCExpirationMonth,
-        exp_year: userCCExpirationYear
+        cvc: content.get('ccCVC'),
+        exp_month: content.get('ccExpirationMonth'),
+        exp_year: content.get('ccExpirationYear')
       }, delayedHandleTransaction);
     }
   }
