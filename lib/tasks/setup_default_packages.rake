@@ -18,7 +18,7 @@ namespace :db do
       name: 'F!rosh Kit Early Bird + Hart House Farm Package',
       description: 'A standard F!rosh Kit just like above... except even better! This package 
                     includes a ticket to a camping trip at Hart House Farm, located outside of 
-                    Caledon on the scenic Niagra Escarpment. Come join us for some fun camping 
+                    Caledon on the scenic Niagara Escarpment. Come join us for some fun camping 
                     on September 7 and 8 to cap off F!rosh Week!',
       price: 130,
       count: 0,
