@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails'
+gem 'rails',                '~> 3.0'
 gem 'bcrypt-ruby'
 gem 'jquery-rails'
 gem 'ember-rails'
