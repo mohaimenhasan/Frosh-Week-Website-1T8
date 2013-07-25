@@ -7,22 +7,44 @@
  */
 
 @import 'library';
+@import 'core';
+
+$organization-image: 'engsoc.png';
 
 .footer {
     @include screen-small {
-        padding: 1.5em;
+        text-align: center;
+        padding: { top: 1.5em; bottom: 1.5em; }
     }
     @include screen-medium {
-        padding: 2.0em;
+        text-align: left;
+        padding: { top: 2.0em; bottom: 2.0em; }
     }
     @include screen-large {
-        padding: 2.5em;
+        text-align: left;
+        padding: { top: 2.5em; bottom: 2.5em; }
     }
     @include print {
         display: none;
     }
 
-  background: #fff;
-  color: #666;
-  
+    background: $white;
+    color: $black;
+
+    .organization-logo {
+        @include box-sizing(border-box);
+
+        background: {
+            image: image-url($organization-image);
+            size: contain;
+            repeat: no-repeat;
+        }
+
+        margin: { top: 0.5em; bottom: 0.5em; }
+        height: image-height($organization-image);
+
+        @include screen-small   { background-position: center; }
+        @include screen-medium  { background-position: left; }
+        @include screen-large   { background-position: left; }
+    }
 }

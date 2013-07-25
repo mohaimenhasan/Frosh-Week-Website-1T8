@@ -236,11 +236,21 @@ body {
     @include font-on-light;
 
     background-color: $white;
+
+    .box & {
+        @include box-shadow($box-shadow-args $white-alt);
+    }
 }
 
 .highlight {
     @include headings-invert(true);
     @include font-on-dark;
+
+    background-color: $purple;
+
+    .box & {
+        @include box-shadow($box-shadow-args $white-alt);
+    }
 
     p {
         @include font-on-dark;
@@ -249,12 +259,9 @@ body {
     a {
         @include link-on-dark;
     }
-
-    background-color: $purple;
 }
 
 .box {
-    @include box-shadow($box-shadow-args $white-alt);
     @include border-radius(0.35em);
 
     box-sizing: border-box;

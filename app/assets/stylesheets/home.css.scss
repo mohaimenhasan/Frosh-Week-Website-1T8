@@ -11,12 +11,10 @@
 @import 'core';
 
 $home-banner-image: 'home-banner.jpg';
-$home-banner-scaling-s: 1;
-$home-banner-scaling-m: 0.9;
+$home-banner-scaling-s: 0.75;
+$home-banner-scaling-m: 0.75;
 $home-banner-scaling-l: 1.25;
 $logo-scaling: 0.7;
-
-$engsoc-image: 'engsoc.png';
 
 /* Core
  * ----
@@ -85,36 +83,6 @@ $engsoc-image: 'engsoc.png';
 }
 
 .home-banner {
-    @include box-shadow($box-shadow-args $white-alt);
-    @extend .section; // TODO(johnliu): get rid of this.
-
-    .box {
-      padding: 1.5em; // it just looks better. pbt
-
-      .skule-link {
-      
-        margin-top: 0.5em;
-
-        a {
-          @include hide-text;
-
-          display: block;
-          font-size: 0.75em;
-          box-sizing: border-box;
-          width: 100%;          
-          height: image-height($engsoc-image);
-
-          background: {
-            image: image-url($engsoc-image);
-            position: center;
-            repeat: no-repeat;
-          }
-        }
-
-      }
-
-    }
-
     background: {
         image: image-url($home-banner-image);
         size: cover;
@@ -133,11 +101,10 @@ $engsoc-image: 'engsoc.png';
     };
 
     .home-message {
-        margin: { top: 3em; bottom: 3em; };
         background-color: transparentize($white, 0.1);
         text-align: left;
 
-        @include screen-small   { margin: { top: 0.5em; bottom: 0.5em; }; };
+        @include screen-small   { margin: { top: 1em; bottom: 1em; }; };
         @include screen-medium  { margin: { top: 2em; bottom: 2em; }; };
         @include screen-large   { margin: { top: 3em; bottom: 3em; }; };
 
