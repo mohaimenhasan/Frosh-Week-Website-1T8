@@ -80,6 +80,8 @@ class User < ActiveRecord::Base
   before_create :assign_group
   before_create :set_default_data
 
+  after_save :create_ticket_number
+
   before_save { self.email = email.downcase }
 
   def exposed_data(opts={})
@@ -116,7 +118,10 @@ class User < ActiveRecord::Base
   end
 
   def create_ticket_number
-    self.ticket_number = (id.to_i * 100) + rand(100) + 100_000
+    unless ticket_number
+      self.ticket_number = (id.to_i * 100) + rand(100) + 100_000
+      self.save!
+    end
   end
 
   def set_random_gender_disc
@@ -238,4 +243,3 @@ class User < ActiveRecord::Base
   end
 
 end
-
