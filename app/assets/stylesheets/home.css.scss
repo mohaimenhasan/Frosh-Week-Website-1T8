@@ -245,13 +245,16 @@ $logo-scaling: 0.7;
         &:before {
             @include screen-small {
                 font-size: 1.5em;
+                font-size: 1.25rem;
             };
             @include screen-medium {
                 font-size: 2em;
+                font-size: 1.75rem;
                 top: 1.5em;
             };
             @include screen-large {
                 font-size: 2em;
+                font-size: 2.25rem;
                 top: 1.5em;
             };
         };

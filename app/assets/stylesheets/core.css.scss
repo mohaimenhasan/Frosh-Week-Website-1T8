@@ -311,24 +311,20 @@ body {
         width: 2.25em;
         height: 2.25em;
         line-height: 2.25em;
+        left: -1.125em;
         text-align: center;
+        position: absolute;
 
         @include screen-small {
-            position: absolute;
             top: -1em;
-            left: -1.125em;
             margin-left: 50%;
         };
         @include screen-medium {
-            position: absolute;
             top: 1em;
-            left: -1.125em;
             margin-left: 0;
         };
         @include screen-large {
-            position: absolute;
             top: 1em;
-            left: -1.125em;
             margin-left: 0;
         };
     }
