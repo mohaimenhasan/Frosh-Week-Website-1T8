@@ -197,27 +197,27 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate (= 2.5.0)
-  awesome_print (= 1.1.0)
-  bcrypt-ruby (= 3.0.1)
-  capybara (= 1.1.2)
-  coffee-rails (= 3.2.2)
-  compass-rails (= 1.0.3)
-  ember-rails (= 0.12.0)
-  ember-source (= 1.0.0.rc4)
-  factory_girl_rails (= 4.2.1)
-  faker (= 1.1.2)
-  font-awesome-rails (= 3.2.1.2)
-  global_phone (= 1.0.1)
-  jquery-rails (= 2.2.1)
-  mandrill-api (= 1.0.31)
-  mocha (= 0.14.0)
-  modernizr-rails (= 2.6.2.1)
-  normalize-rails (= 2.0.1)
-  pg (= 0.12.2)
-  rails (= 3.2.13)
-  rspec-rails (= 2.14.0)
-  sass-rails (= 3.2.5)
-  stripe (= 1.8.3)
-  uglifier (= 1.0.3)
-  unicorn (= 4.6.3)
+  annotate
+  awesome_print
+  bcrypt-ruby
+  capybara
+  coffee-rails
+  compass-rails
+  ember-rails
+  ember-source
+  factory_girl_rails
+  faker
+  font-awesome-rails
+  global_phone
+  jquery-rails
+  mandrill-api
+  mocha
+  modernizr-rails
+  normalize-rails
+  pg
+  rails
+  rspec-rails
+  sass-rails
+  stripe
+  uglifier
+  unicorn
