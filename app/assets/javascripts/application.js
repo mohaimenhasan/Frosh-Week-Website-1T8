@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require jquery.placeholder
 //= require es5-shim
 //= require handlebars
 //= require fastclick

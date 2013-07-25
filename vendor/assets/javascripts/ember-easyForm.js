@@ -450,7 +450,14 @@ Ember.EasyForm.TextArea = Ember.TextArea.extend({
     var off = reverse ? null : '';
 
     return this.get('toggled') ? on : off;
-  }.property('toggled')
+  }.property('toggled'),
+
+  didInsertElement: function() {
+    this._super.apply(this, arguments);
+    if (typeof $.fn.placeholder === 'function') {
+      this.$().placeholder();
+    }
+  }
 });
 })();
 
@@ -470,7 +477,14 @@ Ember.EasyForm.TextField = Ember.TextField.extend({
     var off = reverse ? null : '';
 
     return this.get('toggled') ? on : off;
-  }.property('toggled')
+  }.property('toggled'),
+
+  didInsertElement: function() {
+    this._super.apply(this, arguments);
+    if (typeof $.fn.placeholder === 'function') {
+      this.$().placeholder();
+    }
+  }
 });
 })();
 
