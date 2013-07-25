@@ -72,7 +72,7 @@
         <b>RECEIPT</b> Keep for your records.
       </div>
       <div style="background-color:white;padding:10px;padding-left:20px;padding-right:20px;">
-        <div> PAID ON: <b> <%= formatted_date created_at %> </b> </div> <br/>
+        <div> PAID ON: <b> <%= User.formatted_date created_at %> </b> </div> <br/>
         <div style="width:50%;float:left;">
           <div> <b> Billing: </b> </div>
           <div> <%= get_billing_name %> </div>

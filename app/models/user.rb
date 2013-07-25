@@ -89,18 +89,18 @@ class User < ActiveRecord::Base
     data.except!('confirmation_token') if opts[:hide_confirmation_token]
     data.merge! credit_info if opts[:show_credit_info]
 
-    data['phone'] = formatted_phone phone unless phone.blank?
-    data['emergency_phone'] = formatted_phone emergency_phone unless emergency_phone.blank?
+    data['phone'] = User.formatted_phone phone unless phone.blank?
+    data['emergency_phone'] = User.formatted_phone emergency_phone unless emergency_phone.blank?
 
     data
   end
 
-  def formatted_phone(phone_international)
+  def self.formatted_phone(phone_international)
       number = GlobalPhone.parse phone_international
       (number and number.territory.name == 'US') ? number.national_format : phone_international
   end
 
-  def formatted_date(date_time)
+  def self.formatted_date(date_time)
     date_time.to_time.in_time_zone('Eastern Time (US & Canada)').strftime('%b %e, %Y')
   end
 
@@ -178,12 +178,7 @@ class User < ActiveRecord::Base
   def process_payment(token)
     # Create the charge on Stripe's servers - this will charge the user's card
     begin
-      charge = Stripe::Charge.create(
-        amount: package.price * 100, # amount in cents
-        currency: 'cad',
-        card: token,
-        description: email,
-      )
+      charge = create_stripe_charge token
 
       self.charge_id = charge["id"]
       save!
@@ -197,6 +192,15 @@ class User < ActiveRecord::Base
     rescue Stripe::StripeError => e
       { cc_token: [e.message] }
     end
+  end
+
+  def create_stripe_charge(token)
+    Stripe::Charge.create(
+      amount: package.price * 100, # amount in cents
+      currency: 'cad',
+      card: token,
+      description: email,
+    )
   end
 
   def get_shirt_size_abbr

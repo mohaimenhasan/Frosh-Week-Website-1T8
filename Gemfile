@@ -15,9 +15,12 @@ gem 'unicorn',                '4.6.3'
 gem 'font-awesome-rails',     '3.2.1.2'
 
 group :development, :test do
-  gem 'rspec-rails',          '2.11.0'
+  gem 'rspec-rails',          '2.14.0'
   gem 'awesome_print',        '1.1.0'
   gem 'annotate',             '2.5.0'
+  gem 'faker',                '1.1.2'
+  gem 'factory_girl_rails',   '4.2.1'
+  gem 'mocha',                '0.14.0', :require => false
 end
 
 group :assets do

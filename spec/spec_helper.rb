@@ -13,7 +13,7 @@ RSpec.configure do |config|
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
   #
-  # config.mock_with :mocha
+  config.mock_with :mocha
   # config.mock_with :flexmock
   # config.mock_with :rr
 
@@ -36,3 +36,5 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+Rails.logger.level = 1

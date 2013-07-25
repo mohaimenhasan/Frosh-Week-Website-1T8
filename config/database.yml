@@ -6,3 +6,4 @@ test:
   adapter: postgresql
   database: skuleorientation-test
   host: localhost
+  min_messages: WARNING
