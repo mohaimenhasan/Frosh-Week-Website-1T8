@@ -6,6 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Group.delete_all
+Package.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence! Group.table_name
+ActiveRecord::Base.connection.reset_pk_sequence! Package.table_name
+
 Group.create(symbol: '&alpha;', name: 'Alpha')
 Group.create(symbol: '&beta;', name: 'Beta')
 Group.create(symbol: '&gamma;', name: 'Gamma')
