@@ -39,9 +39,10 @@ $organization-image: 'engsoc.png';
             size: contain;
             repeat: no-repeat;
         }
-
+        display: inline-block;
         margin: { top: 0.5em; bottom: 0.5em; }
         height: image-height($organization-image);
+        width: image-width($organization-image);
 
         @include screen-small   { background-position: center; }
         @include screen-medium  { background-position: left; }
