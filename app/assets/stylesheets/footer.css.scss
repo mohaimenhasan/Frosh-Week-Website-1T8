@@ -15,14 +15,20 @@ $organization-image: 'engsoc.png';
     @include screen-small {
         text-align: center;
         padding: { top: 1.5em; bottom: 1.5em; }
+
+        .half + .half, .align-right { text-align: center; };
     }
     @include screen-medium {
         text-align: left;
         padding: { top: 2.0em; bottom: 2.0em; }
+
+        .half + .half, .align-right { text-align: right; };
     }
     @include screen-large {
         text-align: left;
         padding: { top: 2.5em; bottom: 2.5em; }
+
+        .half + .half, .align-right { text-align: right; };
     }
     @include print {
         display: none;
@@ -30,6 +36,10 @@ $organization-image: 'engsoc.png';
 
     background: $white;
     color: $black;
+
+    .icon {
+        margin: { right: 0.5em; };
+    }
 
     .organization-logo {
         @include box-sizing(border-box);
@@ -47,5 +57,11 @@ $organization-image: 'engsoc.png';
         @include screen-small   { background-position: center; }
         @include screen-medium  { background-position: left; }
         @include screen-large   { background-position: left; }
+    }
+
+    .hidden-links {
+        a:not(:hover) {
+            color: $white;
+        }
     }
 }
