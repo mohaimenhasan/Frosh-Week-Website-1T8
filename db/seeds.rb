@@ -32,9 +32,7 @@ Group.create(symbol: '&Omega;', name: 'Omega')
 Package.create(
   key: 'early-bird-standalone',
   name: 'F!rosh Kit Early Bird Standalone Package',
-  description: 'A standard F!rosh Kit. Includes entrance to all events (like a parade!), a
-                collection of cool things (like a hard hat!), and lots more! This kit has tons
-                of awesome stuff!',
+  description: 'A standard F!rosh Kit. Includes entrance to all events (like a parade!), a collection of cool things (like a hard hat!), and lots more! This kit has tons of awesome stuff!',
   price: 100,
   count: 0,
   max: 1,
@@ -44,10 +42,7 @@ Package.create(
 Package.create(
   key: 'early-bird-with-farm',
   name: 'F!rosh Kit Early Bird + Hart House Farm Package',
-  description: 'A standard F!rosh Kit just like above... except even better! This package
-                includes a ticket to a camping trip at Hart House Farm, located outside of
-                Caledon on the scenic Niagara Escarpment. Come join us for some fun camping
-                on September 7 and 8 to cap off F!rosh Week!',
+  description: 'A standard F!rosh Kit just like above... except even better! This package includes a ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 7 and 8 to cap off F!rosh Week!',
   price: 130,
   count: 0,
   max: 1,
@@ -57,9 +52,7 @@ Package.create(
 Package.create(
   key: 'early-bird-with-commuter',
   name: 'F!rosh Kit Early Bird + Commuter Program Package',
-  description: "A standard F!rosh Kit... with living accommodations! This offer includes room
-                and board at a downtown hostel for four nights so you can fully enjoy
-                F!rosh Week's days and nights.",
+  description: "A standard F!rosh Kit... with living accommodations! This offer includes room and board at a downtown hostel for four nights so you can fully enjoy F!rosh Week's days and nights.",
   price: 185,
   count: 0,
   max: 1,
@@ -69,9 +62,7 @@ Package.create(
 Package.create(
   key: 'early-bird-all',
   name: 'F!rosh Kit Early Bird + Hart House Farm + Commuter Program Package',
-  description: 'This is for the F!rosh that wants to have the ultimate F!rosh Week experience.
-                You get a standard F!rosh kit, accommodations throughout the week, and a
-                ticket to the weekend Hart House Farm camping trip. Super fun!',
+  description: 'This is for the F!rosh that wants to have the ultimate F!rosh Week experience. You get a standard F!rosh kit, accommodations throughout the week, and a ticket to the weekend Hart House Farm camping trip. Super fun!',
   price: 215,
   count: 0,
   max: 1,
