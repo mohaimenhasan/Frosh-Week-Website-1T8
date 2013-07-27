@@ -116,11 +116,6 @@ describe User do
       it { should_not be_valid }
     end
 
-    describe 'when mandatory bursary_paid is not present' do
-      before { @user.bursary_paid = ' ' }
-      it { should_not be_valid }
-    end
-
     describe 'when mandatory bursary_osap is not present' do
       before { @user.bursary_osap = ' ' }
       it { should_not be_valid }
@@ -311,6 +306,7 @@ describe User do
 
       result = @user.process_payment('tok_1')
       expect(result).to eq :success
+      expect(@user.reload.charge_id).to eq "charge_tok_1"
     end
   end
 

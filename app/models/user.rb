@@ -68,7 +68,7 @@ class User < ActiveRecord::Base
   validates :bursary_chosen, inclusion: { in: [nil, true, false] }
   validates :bursary_requested, inclusion: { in: [true, false] }
   validates :bursary_engineering_motivation, :bursary_financial_reasoning, presence: true, length: { maximum: 2000 }, if: :bursary_requested?
-  validates :bursary_paid, :bursary_osap, inclusion: { in: [true, false] }, if: :bursary_requested?
+  validates :bursary_osap, inclusion: { in: [true, false] }, if: :bursary_requested?
   validates :residence, length: { maximum: 50 }
   validates :restrictions_dietary, :restrictions_misc, :restrictions_accessibility, length: { maximum: 2000 }
   validates :gender, inclusion: { in: ['Male', 'Female', '-'] }
