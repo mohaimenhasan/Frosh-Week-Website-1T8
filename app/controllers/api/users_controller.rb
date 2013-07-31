@@ -1,6 +1,6 @@
 require 'awesome_print' if Rails.env.development?
 
-class Api::UsersController < ActionController::Base
+class Api::UsersController < ApplicationController
 
   def create
     user_data = params[:user]

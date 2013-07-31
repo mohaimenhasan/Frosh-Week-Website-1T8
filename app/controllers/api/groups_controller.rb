@@ -1,6 +1,6 @@
 require 'awesome_print' if Rails.env.development?
 
-class Api::GroupsController < ActionController::Base
+class Api::GroupsController < ApplicationController
 
   def show
     render json: { group: Group.find(params[:id]) }

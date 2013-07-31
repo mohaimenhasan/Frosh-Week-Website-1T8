@@ -1,6 +1,6 @@
 require 'admin_authorization'
 
-class Api::PackagesController < ActionController::Base
+class Api::PackagesController < ApplicationController
 
   def show
     render json: { package: Package.find(params[:id]) }

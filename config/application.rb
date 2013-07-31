@@ -68,6 +68,8 @@ module SkuleOrientation
 
     config.assets.initialize_on_precompile = false
 
+    config.autoload_paths += %W(#{config.root}/lib)
+
     config.stripe_publishable_key = ENV['STRIPE_PUBLISHABLE_KEY']
     config.mandrill_from = ENV['MANDRILL_FROM']
 
