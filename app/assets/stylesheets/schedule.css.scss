@@ -41,6 +41,9 @@ $base-height: 1em;
 
      .size-6 { max-height: 28em; };
     &.size-6 { max-height: 28em; };
+
+     .size-7 { max-height: 32em; };
+    &.size-7 { max-height: 32em; };
 }
 
 
@@ -162,6 +165,7 @@ $base-height: 1em;
         padding: $base-padding;
         position: relative;
         left: 0;
+        overflow: hidden;
 
         &.half-hr { padding-bottom: $base-height + $base-margin + 3 * $base-padding; }
         &.one-hr {
