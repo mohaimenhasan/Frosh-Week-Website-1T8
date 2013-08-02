@@ -11,7 +11,7 @@ class OauthController < ApplicationController
 
     Rails.application.config.oauth_discovered_api = Rails.application.config.google_api_client.discovered_api('oauth2', 'v2')
 
-    redirect_to ((Rails.env.development ? 'http://' : 'https://') + Rails.application.config.hostname + '/admin')
+    redirect_to ((Rails.env.development? ? 'http://' : 'https://') + Rails.application.config.hostname + '/admin')
   end
 
 end
