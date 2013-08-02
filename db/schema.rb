@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130628053938) do
+ActiveRecord::Schema.define(:version => 20130802084259) do
+
+  create_table "admins", :force => true do |t|
+    t.string   "email"
+    t.text     "authorized_routes"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "groups", :force => true do |t|
     t.string   "name"

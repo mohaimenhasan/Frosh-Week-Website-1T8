@@ -23,4 +23,17 @@ module AdminAuthorization
     session[:issued_at] = user_credentials.issued_at
   end
 
+  def get_admin
+    result = Rails.application.config.google_api_client.execute({
+      :api_method => Rails.application.config.oauth_discovered_api.userinfo.get,
+      :authorization => user_credentials
+    })
+    data = result.data
+    if data.verified_email
+      ::Admin.where(email: data.email)
+    else
+      nil
+    end
+  end
+
 end

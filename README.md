@@ -9,6 +9,7 @@ Server and client code for orientation.skule.ca
 1.  Download Postgres.app to run Postgres locally.
 1.  Run `bundle` to install gems.
 1.  Run `rake db:reset` to create the databases.
+1.  Run `rake db:seed_admins` to create the original admins.
 1.  Create `.env` and set all the variables shown in `.env.sample`
 1.  Run `foreman start` to start the server.
 1.  Hack away.

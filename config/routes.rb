@@ -8,6 +8,7 @@ SkuleOrientation::Application.routes.draw do
         resources :users
         resources :packages
         resources :groups
+        resources :admins
       end
     end
 
