@@ -7,6 +7,7 @@ require "action_mailer/railtie"
 require "active_resource/railtie"
 require "sprockets/railtie"
 require 'stripe'
+require 'google/api_client'
 # require "rails/test_unit/railtie"
 
 if defined?(Bundler)
@@ -76,6 +77,11 @@ module SkuleOrientation
     Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
     config.hostname = ENV['HOSTNAME']
+
+    config.google_api_client = Google::APIClient.new
+    config.google_api_client.authorization.client_id = ENV['GOOGLE_API_CLIENT_ID']
+    config.google_api_client.authorization.client_secret = ENV['GOOGLE_API_CLIENT_SECRET']
+    config.google_api_client.authorization.scope = 'https://www.googleapis.com/auth/userinfo.email'
 
   end
 end

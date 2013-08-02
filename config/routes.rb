@@ -2,20 +2,21 @@ SkuleOrientation::Application.routes.draw do
   root to: 'client#home'
 
   namespace :api do
+
+    scope constraints: lambda{|req| !req.session[:access_token].blank? } do
+      scope module: 'admin' do
+        resources :users
+        resources :packages
+        resources :groups
+      end
+    end
+
     resources :users
     resources :packages
     resources :groups
-
-    namespace :admin do
-      resources :users
-      resources :packages do
-        resources :users
-      end
-      resources :groups do
-        resources :users
-      end
-    end
   end
+
+  match '/auth', to: 'oauth#callback'
 
   # Forward other routing to be done on client-side.
   match '*path', to: 'client#home'

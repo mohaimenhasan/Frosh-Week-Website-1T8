@@ -13,6 +13,7 @@ gem 'stripe'
 gem 'mandrill-api'
 gem 'unicorn'
 gem 'font-awesome-rails'
+gem 'google-api-client'
 
 group :development, :test do
   gem 'rspec-rails'
