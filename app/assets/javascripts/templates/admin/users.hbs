@@ -1,0 +1,10 @@
+<div class="box normal">
+    <h1>User Overview</h1>
+    {{view App.ReactionTextField action="filter" onEvent="keyUp" placeholder="Filter"}}
+
+    <p>
+        {{#each user in users}}
+            {{user.id}} - {{user.firstName}} {{user.lastName}} <br>
+        {{/each}}
+    </p>
+</div>

@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require jquery.placeholder
 //= require es5-shim
+//= require d3.v3
 //= require handlebars
 //= require fastclick
 //= require spin

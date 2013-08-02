@@ -32,14 +32,13 @@ App.RouteList = [
     route: 'admin',
     path: '/admin',
     routes: [
-      Ember.Object.create({
-        route: 'users',
-        path: '/user',
-        routes: [
-          Ember.Object.create({ route: 'details', path: '/:user'}),
-          Ember.Object.create({ route: 'checkin', path: '/checkin/:ticket' })
-        ]
-      })
+      Ember.Object.create({ route: 'users',             path: '/users' }),
+      Ember.Object.create({ route: 'usersRegister',     path: '/users/register' }),
+      Ember.Object.create({ route: 'usersBursary',      path: '/users/bursary' }),
+      Ember.Object.create({ route: 'usersCheckin',      path: '/users/checkin' }),
+      Ember.Object.create({ route: 'usersCheckinUser',  path: '/users/checkin/:ticket' }),
+      Ember.Object.create({ route: 'usersDetails',      path: '/users/:user' }),
+      Ember.Object.create({ route: 'packages',          path: '/packages' })
     ]
   })
 ];
