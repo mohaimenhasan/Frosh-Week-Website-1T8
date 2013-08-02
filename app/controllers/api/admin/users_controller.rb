@@ -1,6 +1,9 @@
 require 'awesome_print' if Rails.env.development?
 
-class Api::Admin::UsersController < Api::Admin::ApplicationController
+class Api::Admin::UsersController < Api::UsersController
+
+  include AdminAuthorization
+  before_filter :authorize_admin
 
   def index
   	selector = params.slice *User.accessible_attributes

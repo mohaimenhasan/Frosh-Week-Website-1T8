@@ -9,6 +9,16 @@
 #  updated_at        :datetime         not null
 #
 
-class Admin < ActiveRecord::Base
-  attr_accessible :authorized_routes, :email
+require 'spec_helper'
+
+describe Admin do
+
+  before { @user = FactoryGirl.build :user }
+
+  subject { @user }
+
+  describe 'when everything present' do
+    it { should be_valid }
+  end
+
 end

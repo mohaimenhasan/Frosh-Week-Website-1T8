@@ -1,7 +1,7 @@
 module AdminAuthorization
 
   def authorize_admin
-    render json: { status: :denied } and return unless Rails.env.development?
+    render json: { status: :denied } and return unless (Rails.env.development? and !get_admin.blank?)
   end
 
   def user_credentials
@@ -24,9 +24,9 @@ module AdminAuthorization
   end
 
   def get_admin
-    result = Rails.application.config.google_api_client.execute({
-      :api_method => Rails.application.config.oauth_discovered_api.userinfo.get,
-      :authorization => user_credentials
+    result = google_api_client.execute({
+      api_method: oauth2_api.userinfo.get,
+      authorization: user_credentials
     })
     data = result.data
     if data.verified_email
@@ -34,6 +34,14 @@ module AdminAuthorization
     else
       nil
     end
+  end
+
+  def google_api_client
+    Rails.application.config.google_api_client
+  end
+
+  def oauth2_api
+    Rails.application.config.oauth2_api
   end
 
 end
