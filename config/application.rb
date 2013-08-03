@@ -83,5 +83,7 @@ module SkuleOrientation
     config.google_api_client.authorization.client_secret = ENV['GOOGLE_API_CLIENT_SECRET']
     config.google_api_client.authorization.scope = 'https://www.googleapis.com/auth/userinfo.email'
 
+    config.oauth2_api = config.google_api_client.discovered_api('oauth2', 'v2')
+
   end
 end
