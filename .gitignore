@@ -19,5 +19,4 @@
 
 # Sensitive data
 .env
-/config/initializers/secret_token.rb
 
