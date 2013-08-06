@@ -29,6 +29,12 @@ Group.create(symbol: '&phi;', name: 'Phi')
 Group.create(symbol: '&Psi;', name: 'Psi')
 Group.create(symbol: '&Omega;', name: 'Omega')
 
+Group.find_each do |g|
+  g.facebook_link = "http://facebook.com/groups/#{g.name.downcase}.1t3"
+  g.facebook_link = "http://facebook.com/groups/1t3.#{g.name.downcase}" if g.name == 'Delta'
+  g.save!
+end
+
 Package.create(
   key: 'early-bird-standalone',
   name: 'F!rosh Kit Early Bird Standalone Package',

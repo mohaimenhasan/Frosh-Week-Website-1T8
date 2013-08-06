@@ -10,7 +10,7 @@
 #
 
 class Group < ActiveRecord::Base
-  attr_accessible :name, :symbol
+  attr_accessible :name, :symbol, :facebook_link
 
   has_many :users
 end
