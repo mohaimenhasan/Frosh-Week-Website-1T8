@@ -11,6 +11,7 @@ module AdminAuthorization
       auth = Rails.application.config.google_api_client.authorization.dup
       auth.redirect_uri = (Rails.env.development? ? 'http://' : 'https://') + Rails.application.config.hostname + '/auth'
       auth.update_token!(session)
+      auth.fetch_access_token! if auth.refresh_token && auth.expired?
       auth
     )
   end
