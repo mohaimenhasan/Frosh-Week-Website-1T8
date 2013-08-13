@@ -75,6 +75,7 @@ class User < ActiveRecord::Base
   validates :emergency_phone, presence: true, length: { maximum: 25 }
   validates :phone, :emergency_phone, length: { maximum: 25 }
   validates :emergency_phone, presence: true
+  validate  :package_is_available
 
   before_create :create_token
   before_create :assign_group
@@ -201,6 +202,12 @@ class User < ActiveRecord::Base
       card: token,
       description: email,
     )
+  end
+
+  def package_is_available
+    unless package.available?
+      errors.add(:package, "must be available")
+    end
   end
 
   def get_shirt_size_abbr

@@ -163,6 +163,20 @@ describe User do
     it { should_not be_valid }
   end
 
+  context 'when package is expired' do
+
+    describe 'when start date is tomorrow' do
+      before { @user.package.start_date = Date.tomorrow }
+      it { should_not be_valid }
+    end
+
+    describe 'when end date was yesterday' do
+      before { @user.package.end_date = Date.yesterday }
+      it { should_not be_valid }
+    end
+
+  end
+
   describe 'when email format is invalid' do
     it 'should be invalid' do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo. foo@bar_baz.com foo@bar+baz.com]

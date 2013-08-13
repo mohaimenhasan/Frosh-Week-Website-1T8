@@ -3,7 +3,9 @@ require 'admin_authorization'
 class Api::PackagesController < ApplicationController
 
   def show
-    render json: { package: Package.find(params[:id]) }
+    package = Package.find(params[:id])
+    package = nil unless package.available?
+    render json: { package: package }
   end
 
   def index
@@ -12,7 +14,7 @@ class Api::PackagesController < ApplicationController
     else
       packages = Package.all
     end
-    render json: { packages: packages }
+    render json: { packages: packages.keep_if { |p| p.available? } }
   end
 
 end

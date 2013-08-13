@@ -6,10 +6,10 @@ class Api::UsersController < ApplicationController
     user_data = params[:user]
 
     u = User.new user_data.slice *User.accessible_attributes
+    u.package = Package.find(user_data[:package_id].to_s.to_i)
     render json: { errors: u.errors }, status: 422 and return unless u.valid?
 
     u.set_random_gender_disc if check_skip :random_gender_disc
-    u.package = Package.find(user_data[:package_id].to_s.to_i)
 
     unless u.bursary_requested or check_skip :skip_stripe
       result = u.process_payment(user_data[:cc_token])
