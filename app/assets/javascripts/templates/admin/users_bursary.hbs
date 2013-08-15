@@ -1,0 +1,50 @@
+<div class="box normal">
+    <h1>Bursary Management</h1>
+    <p>
+        General Notes: This is a basic version of this page. If you approve/deny bursary, <strong>please bcc:
+        <a href="mailto:technology@orientation.skule.ca">technology@orientation.skule.ca</a></strong> so that I can
+        update the status of each bursary.
+    </p>
+    <p>
+        Other useful information:
+        <ul>
+            <li>Selected packages: 1 = normal, 2 = commuter, 3 = hhf, 4 = all</li>
+        </ul>
+    </p>
+
+    {{#each user in filteredUsers}}
+        <div class="user spaced">
+            <h2 class="center">
+                {{user.firstName}} {{user.lastName}}
+                <div class="subtitle">Email: <a {{bindAttr href="user.email"}}>{{user.email}}</a></div>
+            </h2>
+
+            <section class="spaced">
+                <h3>Basic Information</h3>
+                <ul>
+                    <li><strong>Ticket Number: </strong> {{user.ticketNumber}}</li>
+                    <li><strong>Email Verified:</strong> {{user.verified}}</li>
+                    <li><strong>Registered on:</strong> {{timestamp user.createdAt format="dddd, MMMM Do YYYY"}}</li>
+                    <li><strong>Selected Package:</strong> {{user.packageId}}</li>
+                    <li><strong>Discipline:</strong> {{user.discipline}}</li>
+                    <li><strong>Phone #:</strong> {{user.phone}}</li>
+                </ul>
+            </section>
+
+            <section class="spaced">
+                <h3>Bursary Information</h3>
+                <ul>
+                    <li><strong>OSAP eligible?</strong> {{user.bursaryOsap}}</li>
+                    <li>
+                        <strong>Motivation for attending F!rosh week: </strong><br>
+                        {{user.bursaryEngineeringMotivation}}
+                    </li>
+                    <li>
+                        <strong>Why financial support is necessary: </strong><br>
+                        {{user.bursaryFinancialReasoning}}
+                    </li>
+                </ul>
+            </section>
+        </div>
+    {{/each}}
+</div>

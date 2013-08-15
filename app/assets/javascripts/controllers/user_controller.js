@@ -87,7 +87,7 @@ App.UserController = Ember.ObjectController.extend({
         var record = transaction.createRecord(App.User, {
           email: content.get('email'),
           // verified must be set on server.
-          // createdAt must be set on server.
+          createdAt: new Date(), // only accurate on server, temporarily set.
           // confirmationToken must be set on server.
           // ticketNumber must be set on the server.
 

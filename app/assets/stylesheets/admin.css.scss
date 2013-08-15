@@ -1,0 +1,30 @@
+/* Orientation Admin Styles
+ *
+ * This is the core stylesheet for the admin component of the website.
+ *
+ * author:  John Liu
+ * version: 0.0.1
+ */
+
+@import 'compass';
+@import 'library';
+@import 'core';
+
+.nav-group {
+    margin: { top: 1em; bottom: 1em; };
+}
+
+.icon-big-loader {
+    font-size: 12em;
+}
+
+.admin-loader {
+    @include slide(15em);
+}
+
+.admin-data {
+    @include slide(60em);
+
+    opacity: 0;
+    max-height: 0;
+}

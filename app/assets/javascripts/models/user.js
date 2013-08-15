@@ -46,6 +46,15 @@ App.User = DS.Model.extend({
   ccType: DS.attr('string')       // passed back from server not stored
 });
 
+App.User.attributes = [
+  'email', 'verified', 'createdAt', 'confirmationToken', 'ticketNumber',
+  'firstName', 'lastName', 'gender', 'phone', 'residence', 'discipline',
+  'packageId', 'shirtSize', 'bursaryRequested', 'bursaryChosen',
+  'emergencyName', 'emergencyEmail', 'emergencyRelationship', 'emergencyPhone',
+  'restrictionsDietary', 'restrictionsAccessibility', 'restrictionsMisc',
+  'bursaryPaid', 'bursaryOsap', 'bursaryEngineeringMotivation', 'bursaryFinancialReasoning'
+];
+
 App.UserFormEngineeringDisciplines = [
   '-',
   'Engineering Science',

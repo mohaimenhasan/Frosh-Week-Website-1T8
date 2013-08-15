@@ -1,0 +1,57 @@
+{{#unless isLoggedIn}}
+    <div class="spaced">
+        <section class="section mini-content row">
+            <div class="full col">
+                <div class="box normal center">
+                    <i class="icon-big-loader icon-spin icon-gear"></i>
+                </div>
+            </div>
+        </section>
+    </div>
+{{else}}
+    <div class="spaced">
+        <section class="section content row">
+            <div class="side col">
+                <div class="box normal">
+                    <h2>{{#linkTo "admin.index"}}Administration{{/linkTo}}</h2>
+
+                    <div class="nav-group">
+                        <h3>Users</h3>
+                        <ul>
+                            <li>{{#linkTo "admin.users"}}Overview{{/linkTo}}</li>
+                            <li>{{#linkTo "admin.usersRegister"}}Manual Registration{{/linkTo}}</li>
+                            <li>{{#linkTo "admin.usersBursary"}}Bursary Management{{/linkTo}}</li>
+                            <li>{{#linkTo "admin.usersCheckin"}}User Checkin{{/linkTo}}</li>
+                        </ul>
+                    </div>
+
+                    <!--
+                    <div class="nav-group">
+                        <h3>Frosh Groups</h3>
+                        <ul>
+                            <li>Overview</li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-group">
+                        <h3>Frosh Kits</h3>
+                        <ul>
+                            <li>Overview</li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-group">
+                        <h3>Manage Admins</h3>
+                        <ul>
+                            <li>Overview</li>
+                        </ul>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <div class="main col">
+                {{outlet}}
+            </div>
+        </section>
+    </div>
+{{/unless}}

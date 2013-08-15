@@ -1,112 +1,97 @@
 {{#formFor content wrapper="orientation"}}
-    <section class="section">
-        <div class="content row">
-            <div class="main col float-right">
-                <section class="box normal registration-form-step">
-                    <span class="number">1</span>
-                    <h2>Tell us about yourself</h2>
+    <section class="box normal registration-form-step">
+        <span class="number">1</span>
+        <h2>Tell us about yourself</h2>
 
-                    <section class="registration-form-group aligned">
-                        {{#input firstName}}
-                            {{labelField firstName text="First name"}}
-                            {{inputField firstName placeholder="Jane"}}
-                        {{/input}}
-                        {{#input lastName}}
-                            {{labelField lastName text="Last name"}}
-                            {{inputField lastName placeholder="Smith"}}
-                        {{/input}}
-                        {{#input email}}
-                            {{labelField email text="Your email address"}}
-                            {{inputField email as=email placeholder="jane@example.com"}}
-                        {{/input}}
-                        {{#input gender}}
-                            {{labelField gender text="Gender"}}
-                            {{inputField gender
-                            as=select
-                            collection=App.UserFormGender
-                            selection=gender
-                            optionValuePath=content
-                            optionLabelPath=content}}
-                        {{/input}}
-                        {{#input phone}}
-                            {{labelField phone text="Phone number"}}
-                            {{inputField phone as=tel placeholder="647 765 4321"}}
-                        {{/input}}
-                        {{#input discipline}}
-                            {{labelField discipline text="Engineering discipline"}}
-                            {{inputField discipline
-                            as=select
-                            collection=App.UserFormEngineeringDisciplines
-                            selection=discipline
-                            optionValuePath=content
-                            optionLabelPath=content}}
-                        {{/input}}
-                    </section>
-                </section>
-            </div>
-        </div>
+        <section class="registration-form-group aligned">
+            {{#input firstName}}
+                {{labelField firstName text="First name"}}
+                {{inputField firstName placeholder="Jane"}}
+            {{/input}}
+            {{#input lastName}}
+                {{labelField lastName text="Last name"}}
+                {{inputField lastName placeholder="Smith"}}
+            {{/input}}
+            {{#input email}}
+                {{labelField email text="Your email address"}}
+                {{inputField email as=email placeholder="jane@example.com"}}
+            {{/input}}
+            {{#input gender}}
+                {{labelField gender text="Gender"}}
+                {{inputField gender
+                as=select
+                collection=App.UserFormGender
+                selection=gender
+                optionValuePath=content
+                optionLabelPath=content}}
+            {{/input}}
+            {{#input phone}}
+                {{labelField phone text="Phone number"}}
+                {{inputField phone as=tel placeholder="647 765 4321"}}
+            {{/input}}
+            {{#input discipline}}
+                {{labelField discipline text="Engineering discipline"}}
+                {{inputField discipline
+                as=select
+                collection=App.UserFormEngineeringDisciplines
+                selection=discipline
+                optionValuePath=content
+                optionLabelPath=content}}
+            {{/input}}
+        </section>
     </section>
 
-    <section class="section">
-        <div class="content row">
-            <div class="main col float-right">
-                <section class="box normal registration-form-step">
-                    <span class="number">2</span>
-                    <h2>Customize your F!rosh Kit</h2>
+    <section class="box normal registration-form-step">
+        <span class="number">2</span>
+        <h2>Customize your F!rosh Kit</h2>
 
-                    <section class="registration-form-group aligned">
-                        {{#input shirtSize}}
-                            {{labelField shirtSize text="What's your t-shirt size?"}}
-                            {{inputField shirtSize
-                            as=select
-                            collection=App.UserFormShirtSize
-                            selection=shirtSize
-                            optionValuePath=content
-                            optionLabelPath=content}}
-                        {{/input}}
-                    </section>
-                </section>
-            </div>
-        </div>
+        <section class="registration-form-group aligned">
+            {{#input shirtSize}}
+                {{labelField shirtSize text="What's your t-shirt size?"}}
+                {{inputField shirtSize
+                as=select
+                collection=App.UserFormShirtSize
+                selection=shirtSize
+                optionValuePath=content
+                optionLabelPath=content}}
+            {{/input}}
+        </section>
     </section>
 
-    <section class="section">
-        <div class="content row">
-            <div class="main col float-right">
-                <section class="box normal registration-form-step">
-                    <span class="number">3</span>
-                    <h2>Health and safety information</h2>
+    <section class="box normal registration-form-step">
+        <span class="number">3</span>
+        <h2>Health and safety information</h2>
 
-                    <section class="registration-form-group aligned">
-                        <h3>Emergency contact</h3>
-                        {{#input emergencyName}}
-                            {{labelField emergencyName text="Name"}}
-                            {{inputField emergencyName placeholder="John Smith"}}
-                        {{/input}}
-                        {{#input emergencyEmail}}
-                            {{labelField emergencyEmail text="Email address"}}
-                            {{inputField emergencyEmail as=email placeholder="john@example.com"}}
-                        {{/input}}
-                        {{#input emergencyRelationship}}
-                            {{labelField emergencyRelationship text="Relationship"}}
-                            {{inputField emergencyRelationship placeholder="Father"}}
-                        {{/input}}
-                        {{#input emergencyPhone}}
-                            {{labelField emergencyPhone text="Phone number"}}
-                            {{inputField emergencyPhone as=tel placeholder="647 123 5678"}}
-                        {{/input}}
-                    </section>
+        <section class="registration-form-group aligned">
+            <h3>Emergency contact</h3>
+            {{#input emergencyName}}
+                {{labelField emergencyName text="Name"}}
+                {{inputField emergencyName placeholder="John Smith"}}
+            {{/input}}
+            {{#input emergencyEmail}}
+                {{labelField emergencyEmail text="Email address"}}
+                {{inputField emergencyEmail as=email placeholder="john@example.com"}}
+            {{/input}}
+            {{#input emergencyRelationship}}
+                {{labelField emergencyRelationship text="Relationship"}}
+                {{inputField emergencyRelationship placeholder="Father"}}
+            {{/input}}
+            {{#input emergencyPhone}}
+                {{labelField emergencyPhone text="Phone number"}}
+                {{inputField emergencyPhone as=tel placeholder="647 123 5678"}}
+            {{/input}}
+        </section>
 
-                    <section class="registration-form-group">
-                        <h3>List any dietary restrictions you may have.</h3>
-                        {{#input restrictionsDietary}}
-                            {{inputField restrictionsDietary as=text placeholder="Examples include: Halal, Kosher, vegetarian, peanut allergies"}}
-                        {{/input}}
-                    </section>
+        <section class="registration-form-group">
+            <h3>List any dietary restrictions you may have.</h3>
+            {{#input restrictionsDietary}}
+                {{inputField restrictionsDietary as=text placeholder="Examples include: Halal, Kosher, vegetarian, peanut allergies"}}
+            {{/input}}
+        </section>
 
-                    <section class="registration-form-group">
-                        <h3>
-                            List any accessibility requirements you may need.
+        <section class="registration-form-group">
+            <h3>
+                List any accessibility requirements you may need.
                             <span class="toggle-block" {{action toggleAccessibilityInfo}}>
                                 {{#unless showAccessibilityInfo}}
                                     Learn more.
@@ -114,162 +99,143 @@
                                     Hide extra info.
                                 {{/unless}}
                             </span>
-                        </h3>
-                        <p {{bindAttr class=":info showAccessibilityInfo:showing:hidden"}}>
-                            The Engineering Society is striving to create an accessible and inclusive Orientation.
-                            If you require accommodations for a disability and/or religious accommodations, please
-                            provide details in the box below. We ask that you provide this information by
-                            <strong>August 12th, 2013</strong>. If you would prefer to speak to someone directly,
-                            please contact us at <a href="mailto:orientation@skule.ca" tabindex="-1">orientation@skule.ca</a>.
-                        </p>
-                        {{#input restrictionsAccessibility}}
-                            {{inputField restrictionsAccessibility as=text}}
-                        {{/input}}
-                    </section>
+            </h3>
+            <p {{bindAttr class=":info showAccessibilityInfo:showing:hidden"}}>
+                The Engineering Society is striving to create an accessible and inclusive Orientation.
+                If you require accommodations for a disability and/or religious accommodations, please
+                provide details in the box below. We ask that you provide this information by
+                <strong>August 12th, 2013</strong>. If you would prefer to speak to someone directly,
+                please contact us at <a href="mailto:orientation@skule.ca" tabindex="-1">orientation@skule.ca</a>.
+            </p>
+            {{#input restrictionsAccessibility}}
+                {{inputField restrictionsAccessibility as=text}}
+            {{/input}}
+        </section>
 
-                    <section class="registration-form-group">
-                        <h3>Anything else we should know?</h3>
-                        {{#input restrictionsMisc}}
-                            {{inputField restrictionsMisc as=text}}
-                        {{/input}}
-                    </section>
-                </section>
-            </div>
-        </div>
+        <section class="registration-form-group">
+            <h3>Anything else we should know?</h3>
+            {{#input restrictionsMisc}}
+                {{inputField restrictionsMisc as=text}}
+            {{/input}}
+        </section>
     </section>
 
-    <section class="section">
-        <div class="content row">
-            <div class="main col float-right">
-                <section class="box normal registration-form-step">
-                    <span class="number">4</span>
-                    <h2>How will you be paying?</h2>
+    <section class="box normal registration-form-step">
+        <span class="number">4</span>
+        <h2>How will you be paying?</h2>
 
-                    <section class="registration-form-group">
-                        <h3>Would you like to apply for the F!rosh Week bursary?</h3>
-                        <div class="info">
-                            Please only apply if your financial situation prevents you from participating in F!rosh
-                            Week. The bursary covers the $100 standalone F!rosh kit package. The Commuter program and
-                            the Hart House Farm camping trip are not covered by the bursary. Bursaries are limited and
-                            will be awarded based on greatest need. You will need to fill out an additional short
-                            application.
-                        </div>
-                        {{#input bursary}}
-                            {{inputField bursary as=checkbox}}{{labelField bursary text=" "}}
-                            <label>Yes</label>
+        <section class="registration-form-group">
+            <h3>Would you like to apply for the F!rosh Week bursary?</h3>
+            <div class="info">
+                Please only apply if your financial situation prevents you from participating in F!rosh
+                Week. The bursary covers the $100 standalone F!rosh kit package. The Commuter program and
+                the Hart House Farm camping trip are not covered by the bursary. Bursaries are limited and
+                will be awarded based on greatest need. You will need to fill out an additional short
+                application.
+            </div>
+            {{#input bursary}}
+                {{inputField bursary as=checkbox}}{{labelField bursary text=" "}}
+                <label>Yes</label>
+            {{/input}}
+        </section>
+
+        <div {{bindAttr class=":registration-payment bursary:hidden:showing"}}>
+            <section class="registration-form-group aligned">
+                <h3>
+                    Pay by credit card
+                    <span class="subtitle green"><strong>Secure connection</strong></span>
+                </h3>
+                <p>We accept Visa, Mastercard, and American Express.</p>
+                {{#input ccName}}
+                    {{labelField ccName text="Name on card"}}
+                    {{inputField ccName placeholder="Jane Smith" toggledBinding=bursary reverse="true"}}
+                {{/input}}
+
+                <div class="input">
+                    <label>Card number</label>
+                    <div class="inline">
+                        {{#input ccNumber}}
+                            {{inputField ccNumber as=tel placeholder="1234 1234 1234 1234" inputConfig="class:cc cc-number" toggledBinding=bursary reverse="true"}}
                         {{/input}}
-                    </section>
-
-                    <div {{bindAttr class=":registration-payment bursary:hidden:showing"}}>
-                        <section class="registration-form-group aligned">
-                            <h3>
-                                Pay by credit card
-                                <span class="subtitle green"><strong>Secure connection</strong></span>
-                            </h3>
-                            <p>We accept Visa, Mastercard, and American Express.</p>
-                            {{#input ccName}}
-                                {{labelField ccName text="Name on card"}}
-                                {{inputField ccName placeholder="Jane Smith" toggledBinding=bursary reverse="true"}}
-                            {{/input}}
-
-                            <div class="input">
-                                <label>Card number</label>
-                                <div class="inline">
-                                    {{#input ccNumber}}
-                                        {{inputField ccNumber as=tel placeholder="1234 1234 1234 1234" inputConfig="class:cc cc-number" toggledBinding=bursary reverse="true"}}
-                                    {{/input}}
-                                    {{#input ccCVC}}
-                                        {{inputField ccCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc" toggledBinding=bursary reverse="true"}}
-                                    {{/input}}
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="input">
-                                <label>Expires</label>
-                                <div class="inline">
-                                    {{#input ccExpiration}}
-                                        {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month" toggledBinding=bursary reverse="true"}}
-                                    {{/input}}
-                                    {{#input ccExpiration}}
-                                        {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year" toggledBinding=bursary reverse="true"}}
-                                    {{/input}}
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                        </section>
+                        {{#input ccCVC}}
+                            {{inputField ccCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc" toggledBinding=bursary reverse="true"}}
+                        {{/input}}
                     </div>
-
-                    <div {{bindAttr class=":registration-bursary bursary:showing:hidden"}}>
-                        <section class="registration-form-group">
-                            <h3>Fill out your bursary application details</h3>
-                            <section class="subsection">
-                                <div class="info">
-                                    Are you eligible for a Ontario Student Assistance Program (OSAP) loan?
-                                </div>
-                                {{#input bursaryOsap}}
-                                    {{inputField bursaryOsap as=checkbox toggledBinding=bursary reverse="false"}}{{labelField bursaryOsap text=" "}}
-                                    <label>Yes</label>
-                                {{/input}}
-                            </section>
-
-                            <section class="subsection">
-                                <div class="info">
-                                    Please describe your motivation for attending the Engineering Society's Orientation
-                                    Week. (Up to 300 words)
-                                </div>
-                                {{#input bursaryEngineeringMotivation}}
-                                    {{inputField bursaryEngineeringMotivation as=text toggledBinding=bursary reverse="false"}}
-                                {{/input}}
-                            </section>
-
-                            <section class="subsection">
-                                <div class="info">
-                                    Please describe why you would need financial support in order to attend the Engineering
-                                    Society's Orientation week (up to 300 words).
-                                </div>
-                                {{#input bursaryFinancialReasoning}}
-                                    {{inputField bursaryFinancialReasoning as=text toggledBinding=bursary reverse="false"}}
-                                {{/input}}
-                            </section>
-                        </section>
-                    </div>
-                </section>
-            </div>
-        </div>
-    </section>
-
-    <section {{bindAttr class=":section-normal :registration-error showError:showing:hidden"}}>
-        <div class="content row">
-            <div class="main col float-right">
-                <section class="box highlight">
-                    {{#if serverError}}
-                        <h2>Oops! Something is wrong with the server!</h2>
-                        <p>
-                            Try again later, or let us know about this problem at:
-                            <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b></li>.
-                        </p>
-                    {{else}}
-                        <h2>We couldn't process all the form information!</h2>
-                        <p>
-                            There are errors above, highlighted in red. Please review all information and try again.
-                            If you are having trouble contact <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b>.
-                        </p>
-                    {{/if}}
-                </section>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="content row">
-            <div class="main col float-right">
-                <div class="align-right">
-                    {{#submit class="ladda-button" data-style="zoom-out"}}
-                        <span class="ladda-label">Register</span>
-                    {{/submit}}
+                    <div class="clear"></div>
                 </div>
-            </div>
+
+                <div class="input">
+                    <label>Expires</label>
+                    <div class="inline">
+                        {{#input ccExpiration}}
+                            {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month" toggledBinding=bursary reverse="true"}}
+                        {{/input}}
+                        {{#input ccExpiration}}
+                            {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year" toggledBinding=bursary reverse="true"}}
+                        {{/input}}
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </section>
+        </div>
+
+        <div {{bindAttr class=":registration-bursary bursary:showing:hidden"}}>
+            <section class="registration-form-group">
+                <h3>Fill out your bursary application details</h3>
+                <section class="subsection">
+                    <div class="info">
+                        Are you eligible for a Ontario Student Assistance Program (OSAP) loan?
+                    </div>
+                    {{#input bursaryOsap}}
+                        {{inputField bursaryOsap as=checkbox toggledBinding=bursary reverse="false"}}{{labelField bursaryOsap text=" "}}
+                        <label>Yes</label>
+                    {{/input}}
+                </section>
+
+                <section class="subsection">
+                    <div class="info">
+                        Please describe your motivation for attending the Engineering Society's Orientation
+                        Week. (Up to 300 words)
+                    </div>
+                    {{#input bursaryEngineeringMotivation}}
+                        {{inputField bursaryEngineeringMotivation as=text toggledBinding=bursary reverse="false"}}
+                    {{/input}}
+                </section>
+
+                <section class="subsection">
+                    <div class="info">
+                        Please describe why you would need financial support in order to attend the Engineering
+                        Society's Orientation week (up to 300 words).
+                    </div>
+                    {{#input bursaryFinancialReasoning}}
+                        {{inputField bursaryFinancialReasoning as=text toggledBinding=bursary reverse="false"}}
+                    {{/input}}
+                </section>
+            </section>
         </div>
     </section>
+
+    <div {{bindAttr class=":registration-error showError:showing:hidden"}}>
+        <section class="box highlight">
+            {{#if serverError}}
+                <h2>Oops! Something is wrong with the server!</h2>
+                <p>
+                    Try again later, or let us know about this problem at:
+                    <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b></li>.
+                </p>
+            {{else}}
+                <h2>We couldn't process all the form information!</h2>
+                <p>
+                    There are errors above, highlighted in red. Please review all information and try again.
+                    If you are having trouble contact <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b>.
+                </p>
+            {{/if}}
+        </section>
+    </div>
+
+    <div class="align-right">
+        {{#submit class="ladda-button" data-style="zoom-out"}}
+            <span class="ladda-label">Register</span>
+        {{/submit}}
+    </div>
 {{/formFor}}

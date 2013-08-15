@@ -1,0 +1,17 @@
+<div class="box normal">
+    <h1>User Overview</h1>
+
+    <div {{bindAttr class=":admin-loader :center isLoading:showing:hidden"}}>
+        <i class="icon-big-loader icon-spin icon-gear"></i>
+    </div>
+
+    <div {{bindAttr class=":admin-data isLoading:hidden:showing"}}>
+        {{view App.ReactiveTextField action="filter" onEvent="keyUp" placeholder="Filter"}}
+
+        <p>
+            {{#each user in filteredUsers}}
+                {{user.ticketNumber}} - {{user.firstName}} {{user.lastName}} <br>
+            {{/each}}
+        </p>
+    </div>
+</div>

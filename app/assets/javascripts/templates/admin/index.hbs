@@ -1,0 +1,81 @@
+<div class="box normal">
+    <h1><i class="icon-bar-chart"></i> Dashboard</h1>
+
+    <div {{bindAttr class=":admin-loader :center isLoading:showing:hidden"}}>
+        <i class="icon-big-loader icon-spin icon-gear"></i>
+    </div>
+
+    <div {{bindAttr class=":admin-data isLoading:hidden:showing"}}>
+        <p>
+            Today is {{timestamp today format="dddd, MMMM Do YYYY"}}.
+            There {{pluralize registrationsToday string="is" plural="are"}} {{registrationsToday}} new
+            {{pluralize registrationsToday string="registration"}} today.
+        </p>
+        <p>
+            This page is a work in progress.
+        </p>
+
+        {{!--
+        <section>
+            <h2>Users</h2>
+            <div class="row">
+                <div class="half col">
+                    <h3 class="center">Registrants By Day</h3>
+                    {{#view Ember.CanvasView containerWidth="100%"
+                                             containerHeight="10em"}}
+                        {{view Ember.HistogramView width="100"
+                                                   height="100"
+                                                   viewBox="0 0 100 100"
+                                                   contentBinding="users"}}
+                    {{/view}}
+                </div>
+                <div class="half col">
+                    <h3 class="center">Bursary / No-Bursary</h3>
+                    {{view App.PieChart}}
+                </div>
+            </div>
+
+            <p>
+                Display user overview information:
+            </p>
+            <ul>
+                <li>total registrants by day (graph)</li>
+                <li>pie chart - bursary (stacked line graph instead of pie chart)</li>
+            </ul>
+            <p>
+                space
+            </p>
+        </section>
+
+        <section>
+            <h2>Frosh Groups</h2>
+            <p>
+                Display groups overview information:
+            </p>
+            <ul>
+                <li>pie chart of frosh groups</li>
+                <li>average girls/guy ratio per frosh group</li>
+                <li>average discipline ratio per frosh group</li>
+            </ul>
+            <p>
+                space
+            </p>
+        </section>
+
+        <section>
+            <h2>Frosh Kits</h2>
+            <p>
+                Display packages overview information:
+            </p>
+            <ul>
+                <li>pie chart of packages</li>
+                <li>earnings graph</li>
+                <li>owed by bursary amount</li>
+            </ul>
+            <p>
+                space
+            </p>
+        </section>
+        --}}
+    </div>
+</div>
