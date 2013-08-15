@@ -15,8 +15,7 @@ App.AdminController = Ember.Controller.extend({
           '&client_id=',
           window._authCid,
           '&redirect_uri=',
-          window._authRedir.indexOf('localhost') >= 0 ? 'http://' : 'https://',
-          window._authRedir,
+          window.location.protocol, '//', window.location.host,
           '/auth',
           '&scope=https://www.googleapis.com/auth/userinfo.email'
         );
