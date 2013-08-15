@@ -13,8 +13,10 @@ App.AdminController = Ember.Controller.extend({
           'https://accounts.google.com/o/oauth2/auth',
           '?response_type=code',
           '&client_id=',
-          window._gc,
-          '&redirect_uri=http://localhost:3000/auth',
+          window._authCid,
+          '&redirect_uri=',
+          window._authRedir,
+          '/auth',
           '&scope=https://www.googleapis.com/auth/userinfo.email'
         );
         url = url.join('');
