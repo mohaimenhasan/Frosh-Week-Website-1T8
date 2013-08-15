@@ -1,7 +1,7 @@
 module AdminAuthorization
 
   def authorize_admin
-    render json: { status: :denied } and return unless (Rails.env.development? and !get_admin.blank?)
+    render json: { status: :denied } and return unless !get_admin.blank?
   end
 
   def user_credentials
