@@ -73,9 +73,6 @@ App.UserController = Ember.ObjectController.extend({
 
     var that = this;
     var handleTransaction = function(status, response) {
-      console.log('post-delayed');
-      console.log(status);
-      console.log(response);
       if (response.error) {
         if (response.error.hasOwnProperty('code')) {
           if (!that.stripeError(response.error.code)) {
@@ -180,9 +177,6 @@ App.UserController = Ember.ObjectController.extend({
     content.set('serverError', false);
 
     var delayedHandleTransaction = function(status, response) {
-      console.log('pre-delayed');
-      console.log(status);
-      console.log(response);
       window.setTimeout(function() {
         handleTransaction(status, response);
       }, 250);
