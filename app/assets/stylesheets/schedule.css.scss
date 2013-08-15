@@ -44,6 +44,12 @@ $base-height: 1em;
 
      .size-7 { max-height: 32em; };
     &.size-7 { max-height: 32em; };
+
+     .size-8 { max-height: 36em; };
+    &.size-8 { max-height: 36em; };
+
+     .size-max { max-height: 50em; };
+    &.size-max { max-height: 50em; };
 }
 
 
@@ -150,7 +156,7 @@ $base-height: 1em;
         @include active-max-heights;
 
         opacity: 1;
-        max-height: 30em;
+        max-height: 50em;
     }
 
     .slot {
@@ -258,7 +264,7 @@ $base-height: 1em;
 
             left: -53%;
             min-height: 0;
-            max-height: 30em;
+            max-height: 50em;
             min-width: 200%;
 
             padding-bottom: $base-padding;
@@ -271,7 +277,7 @@ $base-height: 1em;
 
             left: -53%;
             min-height: 0;
-            max-height: 30em;
+            max-height: 50em;
             min-width: 200%;
 
             padding-bottom: $base-padding;
