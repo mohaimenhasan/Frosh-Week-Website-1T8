@@ -96,12 +96,6 @@
         padding: { left: 1em; right: 1em; };
     }
 
-    .toggle-block {
-        @extend a;
-        cursor: pointer;
-        display: inline-block;
-    }
-
     .info {
         @include slide(10em);
     }

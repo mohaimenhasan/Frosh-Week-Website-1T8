@@ -46,14 +46,153 @@ App.User = DS.Model.extend({
   ccType: DS.attr('string')       // passed back from server not stored
 });
 
-App.User.attributes = [
-  'email', 'verified', 'createdAt', 'confirmationToken', 'ticketNumber',
-  'firstName', 'lastName', 'gender', 'phone', 'residence', 'discipline',
-  'packageId', 'shirtSize', 'bursaryRequested', 'bursaryChosen',
-  'emergencyName', 'emergencyEmail', 'emergencyRelationship', 'emergencyPhone',
-  'restrictionsDietary', 'restrictionsAccessibility', 'restrictionsMisc',
-  'bursaryPaid', 'bursaryOsap', 'bursaryEngineeringMotivation', 'bursaryFinancialReasoning'
-];
+App.User.Filter = Ember.Object.create({
+  attributes: [
+    'email',                  // string
+    'verified',               // boolean
+    'date',                   // date
+    'ticket',                 // number
+    'name',                   // string
+    'gender',                 // string
+    'phone',                  // string
+    'discipline',             // string
+    'package',                // string
+    'shirt',                  // string
+    'bursary',                // boolean
+    'bursary_accepted',       // boolean
+    'bursary_osap',           // boolean
+    'bursary_paid',           // boolean
+    'emergency_contact',      // string
+    'emergency_email',        // string
+    'emergency_relationship', // string
+    'emergency_phone',        // string
+    'restrictions'            // boolean
+  ],
+
+  'email': function(model, query) {
+    var email = model.get('email') || '';
+    return email.toLowerCase().match(new RegExp(query.toLowerCase()));
+  },
+
+  'verified': function(model, query) {
+    var verified = model.get('verified');
+    var queryTrue = query.toLowerCase() === 'true';
+    var queryFalse = query.toLowerCase() === 'false';
+
+    return (verified && queryTrue) || (!verified && queryFalse);
+  },
+
+  'date': function(model, query) {
+    // TODO(johnliu): implement
+    return false;
+  },
+
+  'ticket': function(model, query) {
+    var ticket = model.get('ticketNumber');
+    var queryTicket = parseInt(query, 10);
+    return ticket === queryTicket;
+  },
+
+  'name': function(model, query) {
+    var fullName = (model.get('firstName') || '') + ' ' + (model.get('lastName') || '');
+    return fullName.toLowerCase().match(new RegExp(query.toLowerCase()));
+  },
+
+  'gender': function(model, query) {
+    var gender = model.get('gender') || '-';
+    gender = gender.toLowerCase();
+
+    var queryMale = query.toLowerCase() === 'male';
+    var queryFemale = query.toLowerCase() === 'female';
+
+    return (queryMale && gender === 'male') || (queryFemale && gender === 'female');
+  },
+
+  'phone': function(model, query) {
+    var phone = model.get('phone') || '';
+    return phone.toLowerCase().match(new RegExp(query.toLowerCase()));
+  },
+
+  'discipline': function(model, query) {
+    var discipline = model.get('discipline') || '';
+    return discipline.toLowerCase().match(new RegExp(query.toLowerCase()));
+  },
+
+  'package': function(model, query) {
+    var pkg = App.Package.find(model.get('packageId'));
+    var searchable = (pkg.get('key') || '') + ' ' + (pkg.get('name') || '' ) + ' ' + (pkg.get('id') || '');
+    return searchable.toLowerCase().match(new RegExp(query.toLowerCase()));
+  },
+
+  'shirt': function(model, query) {
+    var shirt = model.get('shirtSize') || '';
+    return shirt.toLowerCase().match(new RegExp(query.toLowerCase()));
+  },
+
+  'bursary': function(model, query) {
+    var bursary = model.get('bursaryRequested');
+    var queryTrue = query.toLowerCase() === 'true';
+    var queryFalse = query.toLowerCase() === 'false';
+
+    return (bursary && queryTrue) || (!bursary && queryFalse);
+  },
+
+  'bursary_accepted': function(model, query) {
+    var bursary = model.get('bursaryChosen');
+    var queryTrue = query.toLowerCase() === 'true';
+    var queryFalse = query.toLowerCase() === 'false';
+
+    return (bursary && queryTrue) || (!bursary && queryFalse);
+  },
+
+  'bursary_osap': function(model, query) {
+    var bursary = model.get('bursaryOsap');
+    var queryTrue = query.toLowerCase() === 'true';
+    var queryFalse = query.toLowerCase() === 'false';
+
+    return (bursary && queryTrue) || (!bursary && queryFalse);
+  },
+
+  'bursary_paid': function(model, query) {
+    var bursary = model.get('bursaryPaid');
+    var queryTrue = query.toLowerCase() === 'true';
+    var queryFalse = query.toLowerCase() === 'false';
+
+    return (bursary && queryTrue) || (!bursary && queryFalse);
+  },
+
+  'emergency_contact': function(model, query) {
+    var emergency = model.get('emergencyName') || '';
+    return emergency.toLowerCase().match(new RegExp(query.toLowerCase()));
+  },
+
+  'emergency_email': function(model, query) {
+    var emergency = model.get('emergencyEmail') || '';
+    return emergency.toLowerCase().match(new RegExp(query.toLowerCase()));
+  },
+
+  'emergency_relationship': function(model, query) {
+    var emergency = model.get('emergencyRelationship') || '';
+    return emergency.toLowerCase().match(new RegExp(query.toLowerCase()));
+  },
+
+  'emergency_phone': function(model, query) {
+    var emergency = model.get('emergencyPhone') || '';
+    return emergency.toLowerCase().match(new RegExp(query.toLowerCase()));
+  },
+
+  'restrictions': function(model, query) {
+    var hasRestrictions = false;
+    hasRestrictions = hasRestrictions || (model.get('restrictionsDietary') || '').length > 0;
+    hasRestrictions = hasRestrictions || (model.get('restrictionsAccessibility') || '').length > 0;
+    hasRestrictions = hasRestrictions || (model.get('restrictionsMisc') || '').length > 0;
+
+    var queryTrue = query.toLowerCase() === 'true';
+    var queryFalse = query.toLowerCase() === 'false';
+
+    return (hasRestrictions && queryTrue) || (!hasRestrictions && queryFalse);
+  }
+});
 
 App.UserFormEngineeringDisciplines = [
   '-',

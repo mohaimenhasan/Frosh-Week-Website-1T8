@@ -1,9 +1,13 @@
 App.AdminController = Ember.Controller.extend({
   users: [],
+  packages: [],
+  groups: [],
 
   init: function() {
     this._super.apply(this, arguments);
     this.set('users', App.User.find());
+    this.set('packages', App.Package.find());
+    this.set('groups', App.Group.find());
 
     var that = this;
     window.setTimeout(function() {
@@ -61,24 +65,48 @@ App.AdminIndexController = App.AdminSubController.extend({
 });
 
 App.AdminUsersController = App.AdminSubController.extend({
+  showExamples: false,
+
   filteredUsers: function() {
     var all = this.get('users');
-    var filtered = all.filter(function(item) {
-      var query = this.get('query') || null;
-      var values = [];
+    var attributes = App.User.Filter.attributes;
 
-      // Combine all the values
-      App.User.attributes.forEach(function(attribute) {
-        var value = item.get(attribute) || '';
-        values.push(value);
-      }, this);
-      values = values.join(' ');
+    // Parse the query.
+    var query = this.get('query') || '';
+    var parsedQuery = query.match(/\w+:(\w+|"[\w\s]+")/g);
 
-      return values.match(new RegExp(query)) || query === null;
+    var filtered = all.filter(function(user) {
+      if (query === null) {
+        return true;
+      }
+
+      if (Ember.isNone(parsedQuery)) {
+        return attributes.some(function(attribute) {
+          return App.User.Filter[attribute](user, query);
+        }, this);
+      } else {
+        return parsedQuery.some(function(elem) {
+          elem = elem.split(':');
+          var filter = elem[0];
+          var search = elem[1];
+
+          if (search.charAt(0) === '"') {
+            search = search.slice(1, search.length - 1);
+          }
+
+          return attributes.contains(filter.toLowerCase()) && App.User.Filter[filter](user, search);
+        }, this);
+      }
+
+      return true;
     }, this);
 
     return filtered;
   }.property('users.firstObject', 'query'),
+
+  toggleExamples: function() {
+    this.toggleProperty('showExamples');
+  },
 
   filter: function(text) {
     this.set('query', text);

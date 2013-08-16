@@ -16,7 +16,6 @@
     <script>
         Stripe.setPublishableKey('<%= Rails.application.config.stripe_publishable_key %>');
         var _authCid = '<%= Rails.application.config.google_api_client.authorization.client_id %>';
-        var _authRedir = '<%= Rails.application.config.hostname %>';
     </script>
     <%= javascript_include_tag "application" %>
     <script type="text/javascript">

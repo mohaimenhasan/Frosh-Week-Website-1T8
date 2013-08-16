@@ -1,17 +1,82 @@
 <div class="box normal">
     <h1>User Overview</h1>
+    <p>
+        This page is an overview of all users. Use filters to refine your search.
+        <span class="toggle-link" {{action toggleExamples}}>
+            {{#if showExamples}}
+                Hide instructions.
+            {{else}}
+                Show instructions.
+            {{/if}}
+        </span>
+    </p>
+    <div {{bindAttr class=":admin-examples showExamples:showing:hidden"}}>
+        <ul>
+            <li><code>Any term</code> - searches for "Any term" in all attributes.</li>
+            <li><code>name:Joe</code> - searches for "Joe" in name field.</li>
+            <li><code>name:"Joe Smith"</code> - searches for "Joe Smith" in name field.</li>
+            <li>Case is insensitive -- <code>emily</code> is the same as <code>EMILY</code>.</li>
+            <li>Do not put a space between the filter and the query, i.e. <code>name:Joe</code> not <code>name: Joe</code></li>
+            <li>
+                Simple filters (takes in a string query):
+                <ul>
+                    <li><code>email</code></li>
+                    <li><code>name</code></li>
+                    <li><code>phone</code></li>
+                    <li><code>ticket</code> - The ticket number (must exactly match).</li>
+                    <li><code>shirt</code></li>
+                    <li><code>discipline</code> - "Engineering Science" or engsci both work, it does a partial match.</li>
+                    <li><code>emergency_contact</code> - This is their emergency contact name.</li>
+                    <li><code>emergency_email</code></li>
+                    <li><code>emergency_relationship</code> - Mother, father, etc.</li>
+                    <li><code>emergency_phone</code></li>
+                </ul>
+            </li>
+            <li>
+                Boolean filters (takes true or false):
+                <ul>
+                    <li><code>verified</code> - Email address is verified.</li>
+                    <li><code>bursary</code> - Person has requested a bursary.</li>
+                    <li><code>bursary_osap</code> - Person says they are eligible for OSAP.</li>
+                    <li><code>restrictions</code> - Person has dietary, assessibility or other restrictions.</li>
+                </ul>
+            </li>
+            <li>
+                Advanced filters:
+                <ul>
+                    <li><code>package</code> - Either specify a package id (1, 2, 3, 4), or a package key (early-bird-with-farm) or part of the name ("Commuter").</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    {{view App.ReactiveTextField class="spaced" action="filter" onEvent="keyUp" placeholder="Filter"}}
 
     <div {{bindAttr class=":admin-loader :center isLoading:showing:hidden"}}>
         <i class="icon-big-loader icon-spin icon-gear"></i>
     </div>
 
-    <div {{bindAttr class=":admin-data isLoading:hidden:showing"}}>
-        {{view App.ReactiveTextField action="filter" onEvent="keyUp" placeholder="Filter"}}
-
-        <p>
-            {{#each user in filteredUsers}}
-                {{user.ticketNumber}} - {{user.firstName}} {{user.lastName}} <br>
-            {{/each}}
-        </p>
-    </div>
+    {{#each user in filteredUsers}}
+        <div {{bindAttr class=":admin-data :spaced isLoading:hidden:showing"}}>
+            <h2>
+                {{user.firstName}} {{user.lastName}}
+                <span class="subtitle">{{user.ticketNumber}} | {{user.email}}</span>
+            </h2>
+            <div>
+                <ul>
+                    <li>Email verified: <strong>{{user.verified}}</strong></li>
+                    <li>Registered on: <strong>{{timestamp user.createdAt format="MM/DD/YY"}}</strong></li>
+                    <li>Gender: <strong>{{user.gender}}</strong></li>
+                    <li>Phone: <strong>{{#if user.phone}}{{user.phone}}{{else}}-{{/if}}</strong></li>
+                    <li>Discipline: <strong>{{user.discipline}}</strong></li>
+                    <li>T-shirt size: <strong>{{user.shirtSize}}</strong></li>
+                    <li>Package: <strong>{{user.packageId}}</strong></li>
+                    <li>Group: <strong>{{user.groupId}}</strong></li>
+                    <li>Requested Bursary: <strong>{{user.bursaryRequested}}</strong></li>
+                </ul>
+            </div>
+        </div>
+    {{else}}
+            No users found.
+    {{/each}}
 </div>

@@ -8,12 +8,17 @@
     <p>
         Other useful information:
         <ul>
-            <li>Selected packages: 1 = normal, 2 = commuter, 3 = hhf, 4 = all</li>
+            <li>Selected packages: 1 = normal, 2 = hhf, 3 = commuter, 4 = all</li>
         </ul>
     </p>
 
+
+    <div {{bindAttr class=":admin-loader :center isLoading:showing:hidden"}}>
+        <i class="icon-big-loader icon-spin icon-gear"></i>
+    </div>
+
     {{#each user in filteredUsers}}
-        <div class="user spaced">
+        <div {{bindAttr class=":admin-bursary-unit :spaced isLoading:hidden:showing"}}>
             <h2 class="center">
                 {{user.firstName}} {{user.lastName}}
                 <div class="subtitle">Email: <a {{bindAttr href="user.email"}}>{{user.email}}</a></div>

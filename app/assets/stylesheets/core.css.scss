@@ -437,6 +437,12 @@ a {
     -webkit-user-select: none;
 }
 
+.toggle-link {
+    @extend a;
+    cursor: pointer;
+    display: inline-block;
+}
+
 ul, ol {
     padding-left: 1.5em;
 

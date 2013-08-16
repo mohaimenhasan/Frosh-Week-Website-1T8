@@ -28,3 +28,18 @@
     opacity: 0;
     max-height: 0;
 }
+
+.admin-examples {
+    @include slide(45em);
+
+    code {
+        font-weight: $font-weight-bold;
+    }
+}
+
+.admin-bursary-unit {
+    @include slide(30em);
+
+    opacity: 0;
+    max-height: 0;
+}
