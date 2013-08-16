@@ -20,4 +20,11 @@ class Api::Admin::UsersController < Api::UsersController
     }
   end
 
+  def update
+    u = User.find(params[:id])
+    u.update_attributes params[:user]
+
+    render json: { user: u }
+  end
+
 end
