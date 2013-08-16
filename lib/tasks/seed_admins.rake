@@ -10,6 +10,7 @@ namespace :db do
     Admin.create(email: 'chair@orientation.skule.ca')
     Admin.create(email: 'orientation@skule.ca')
     Admin.create(email: 'promotions@orientation.skule.ca')
+    Admin.create(email: 'operations@orientation.skule.ca')
   end
 
 end
