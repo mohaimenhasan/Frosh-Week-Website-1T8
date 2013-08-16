@@ -27,4 +27,11 @@ class Api::Admin::UsersController < Api::UsersController
     render json: { user: u }
   end
 
+  def destroy
+    u = User.find(params[:id])
+    u.delete
+
+    render json: { user: u }
+  end
+
 end
