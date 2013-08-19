@@ -41,6 +41,14 @@ App.AdminSubController = Ember.Controller.extend({
     return this.get('controllers.admin.users');
   }.property('controllers.admin.users'),
 
+  packages: function() {
+    return this.get('controllers.admin.packages');
+  }.property('controllers.admin.packages'),
+
+  groups: function() {
+    return this.get('controllers.admin.groups');
+  }.property('controllers.admin.groups'),
+
   isLoading: function() {
     return Ember.isNone(this.get('users.firstObject'));
   }.property('users.firstObject')
@@ -66,6 +74,7 @@ App.AdminIndexController = App.AdminSubController.extend({
 
 App.AdminUsersController = App.AdminSubController.extend({
   showExamples: false,
+  expandAll: false,
 
   filteredUsers: function() {
     var all = this.get('users');
@@ -85,7 +94,7 @@ App.AdminUsersController = App.AdminSubController.extend({
           return App.User.Filter[attribute](user, query);
         }, this);
       } else {
-        return parsedQuery.some(function(elem) {
+        return parsedQuery.every(function(elem) {
           elem = elem.split(':');
           var filter = elem[0];
           var search = elem[1];
@@ -108,12 +117,17 @@ App.AdminUsersController = App.AdminSubController.extend({
     this.toggleProperty('showExamples');
   },
 
+  toggleExpandAll: function() {
+    this.toggleProperty('expandAll');
+  },
+
   filter: function(text) {
     this.set('query', text);
   }
 });
 
 App.AdminUsersBursaryController = App.AdminSubController.extend({
+  expandAll: false,
   filteredUsers: function() {
     var all = this.get('users');
     var filtered = all.filter(function(item) {
@@ -121,5 +135,9 @@ App.AdminUsersBursaryController = App.AdminSubController.extend({
     }, this);
 
     return filtered;
-  }.property('users.firstObject')
+  }.property('users.firstObject'),
+
+  toggleExpandAll: function() {
+    this.toggleProperty('expandAll');
+  }
 });

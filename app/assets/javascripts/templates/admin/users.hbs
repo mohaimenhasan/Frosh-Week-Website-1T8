@@ -45,6 +45,7 @@
                 Advanced filters:
                 <ul>
                     <li><code>package</code> - Either specify a package id (1, 2, 3, 4), or a package key (early-bird-with-farm) or part of the name ("Commuter").</li>
+                    <li><code>group</code> - Either specific a group id (1 - 17), or a group name (Alpha).</li>
                 </ul>
             </li>
         </ul>
@@ -56,27 +57,20 @@
         <i class="icon-big-loader icon-spin icon-gear"></i>
     </div>
 
+    <div {{bindAttr class=":admin-data :align-right isLoading:hidden:showing"}}>
+        {{filteredUsers.length}} {{pluralize filteredUsers.length string="result"}}. |
+        <span class="toggle-link" {{action toggleExpandAll}}>
+            {{#if expandAll}}
+                Collapse All
+            {{else}}
+                Expand All
+            {{/if}}
+        </span>
+    </div>
+
     {{#each user in filteredUsers}}
-        <div {{bindAttr class=":admin-data :spaced isLoading:hidden:showing"}}>
-            <h2>
-                {{user.firstName}} {{user.lastName}}
-                <span class="subtitle">{{user.ticketNumber}} | {{user.email}}</span>
-            </h2>
-            <div>
-                <ul>
-                    <li>Email verified: <strong>{{user.verified}}</strong></li>
-                    <li>Registered on: <strong>{{timestamp user.createdAt format="MM/DD/YY"}}</strong></li>
-                    <li>Gender: <strong>{{user.gender}}</strong></li>
-                    <li>Phone: <strong>{{#if user.phone}}{{user.phone}}{{else}}-{{/if}}</strong></li>
-                    <li>Discipline: <strong>{{user.discipline}}</strong></li>
-                    <li>T-shirt size: <strong>{{user.shirtSize}}</strong></li>
-                    <li>Package: <strong>{{user.packageId}}</strong></li>
-                    <li>Group: <strong>{{user.groupId}}</strong></li>
-                    <li>Requested Bursary: <strong>{{user.bursaryRequested}}</strong></li>
-                </ul>
-            </div>
+        <div {{bindAttr class=":admin-data :row :col :spaced isLoading:hidden:showing"}}>
+            {{view App.UserElementView userBinding=user}}
         </div>
-    {{else}}
-            No users found.
     {{/each}}
 </div>

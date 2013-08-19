@@ -5,51 +5,25 @@
         <a href="mailto:technology@orientation.skule.ca">technology@orientation.skule.ca</a></strong> so that I can
         update the status of each bursary.
     </p>
-    <p>
-        Other useful information:
-        <ul>
-            <li>Selected packages: 1 = normal, 2 = hhf, 3 = commuter, 4 = all</li>
-        </ul>
-    </p>
-
 
     <div {{bindAttr class=":admin-loader :center isLoading:showing:hidden"}}>
         <i class="icon-big-loader icon-spin icon-gear"></i>
     </div>
 
+    <div {{bindAttr class=":admin-data :align-right isLoading:hidden:showing"}}>
+        {{filteredUsers.length}} {{pluralize filteredUsers.length string="result"}}. |
+        <span class="toggle-link" {{action toggleExpandAll}}>
+            {{#if expandAll}}
+                Collapse All
+            {{else}}
+                Expand All
+            {{/if}}
+        </span>
+    </div>
+
     {{#each user in filteredUsers}}
-        <div {{bindAttr class=":admin-bursary-unit :spaced isLoading:hidden:showing"}}>
-            <h2 class="center">
-                {{user.firstName}} {{user.lastName}}
-                <div class="subtitle">Email: <a {{bindAttr href="user.email"}}>{{user.email}}</a></div>
-            </h2>
-
-            <section class="spaced">
-                <h3>Basic Information</h3>
-                <ul>
-                    <li><strong>Ticket Number: </strong> {{user.ticketNumber}}</li>
-                    <li><strong>Email Verified:</strong> {{user.verified}}</li>
-                    <li><strong>Registered on:</strong> {{timestamp user.createdAt format="dddd, MMMM Do YYYY"}}</li>
-                    <li><strong>Selected Package:</strong> {{user.packageId}}</li>
-                    <li><strong>Discipline:</strong> {{user.discipline}}</li>
-                    <li><strong>Phone #:</strong> {{user.phone}}</li>
-                </ul>
-            </section>
-
-            <section class="spaced">
-                <h3>Bursary Information</h3>
-                <ul>
-                    <li><strong>OSAP eligible?</strong> {{user.bursaryOsap}}</li>
-                    <li>
-                        <strong>Motivation for attending F!rosh week: </strong><br>
-                        {{user.bursaryEngineeringMotivation}}
-                    </li>
-                    <li>
-                        <strong>Why financial support is necessary: </strong><br>
-                        {{user.bursaryFinancialReasoning}}
-                    </li>
-                </ul>
-            </section>
+        <div {{bindAttr class=":admin-data :row :col :spaced isLoading:hidden:showing"}}>
+            {{view App.UserElementView userBinding=user}}
         </div>
     {{/each}}
 </div>

@@ -1,0 +1,67 @@
+{{#with view}}
+    <h2>
+        <i {{bindAttr class="genderIcon"}}></i>
+        <span class="toggle-link" {{action toggleExpand target=view}}>{{user.firstName}} {{user.lastName}}</span>
+        <span class="subtitle">
+            {{user.ticketNumber}} |
+            {{user.email}} <i {{bindAttr class="user.verified:icon-check-sign:icon-question-sign"}}></i>
+        </span>
+    </h2>
+    <div {{bindAttr class=":admin-data view.expanded:showing:hidden"}}>
+        <div class="row">
+            <div class="half col">
+                <ul class="icons-ul">
+                    <li>
+                        <i class="icon-li icon-ticket"></i> {{user.ticketNumber}}
+                    </li>
+                    <li>
+                        <i class="icon-li icon-envelope"></i> {{user.email}}<sup><i {{bindAttr class="user.verified:icon-check:icon-question :icon-small"}}></i></sup>
+                    </li>
+                    <li>
+                        <i class="icon-li icon-calendar"></i> {{timestamp user.createdAt format="MMMM DD, YYYY"}}
+                    </li>
+                    <li>
+                        <i class="icon-li icon-phone"></i> {{#if user.phone}}{{user.phone}}{{else}}N/A{{/if}}
+                    </li>
+                    <li>
+                        <i class="icon-li icon-book"></i> {{user.discipline}}
+                    </li>
+                </ul>
+            </div>
+            <div class="half col">
+                <ul class="icons-ul">
+                    <li>
+                        <i class="icon-li icon-tag"></i> {{user.shirtSize}}
+                    </li>
+                    <li>
+                        <i class="icon-li icon-gift"></i> {{pkg}}
+                    </li>
+                    <li>
+                        <i class="icon-li icon-group"></i> {{{group}}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        {{#if user.bursaryRequested}}
+            <div class="row">
+                <div class="full col">
+                    <h3>
+                        Bursary
+                        <span class="subtitle">
+                            OSAP: <i {{bindAttr class="user.bursaryOsap:icon-ok:icon-remove"}}></i>
+                        </span>
+                    </h3>
+                    <p>
+                        <strong>Motivation for attending F!rosh Week:</strong><br>
+                        {{user.bursaryEngineeringMotivation}}
+                    </p>
+                    <p>
+                        <strong>Why financial support is required:</strong><br>
+                        {{user.bursaryFinancialReasoning}}
+                    </p>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+{{/with}}

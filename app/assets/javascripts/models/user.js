@@ -57,6 +57,7 @@ App.User.Filter = Ember.Object.create({
     'phone',                  // string
     'discipline',             // string
     'package',                // string
+    'group',                  // string
     'shirt',                  // string
     'bursary',                // boolean
     'bursary_accepted',       // boolean
@@ -121,6 +122,12 @@ App.User.Filter = Ember.Object.create({
   'package': function(model, query) {
     var pkg = App.Package.find(model.get('packageId'));
     var searchable = (pkg.get('key') || '') + ' ' + (pkg.get('name') || '' ) + ' ' + (pkg.get('id') || '');
+    return searchable.toLowerCase().match(new RegExp(query.toLowerCase()));
+  },
+
+  'group': function(model, query) {
+    var group = App.Group.find(model.get('groupId'));
+    var searchable = (group.get('name') || '') + ' ' + (group.get('id') || '');
     return searchable.toLowerCase().match(new RegExp(query.toLowerCase()));
   },
 
