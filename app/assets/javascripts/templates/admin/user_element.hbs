@@ -4,10 +4,10 @@
         <span class="toggle-link" {{action toggleExpand target=view}}>{{user.firstName}} {{user.lastName}}</span>
         <span class="subtitle">
             {{user.ticketNumber}} |
-            {{user.email}} <i {{bindAttr class="user.verified:icon-check-sign:icon-question-sign"}}></i>
+            {{user.email}} <i {{bindAttr class="user.verified:icon-ok:icon-question"}}></i>
         </span>
     </h2>
-    <div {{bindAttr class=":admin-data view.expanded:showing:hidden"}}>
+    <div {{bindAttr class=":admin-user-element view.expanded:showing:hidden"}}>
         <div class="row">
             <div class="half col">
                 <ul class="icons-ul">
@@ -15,7 +15,7 @@
                         <i class="icon-li icon-ticket"></i> {{user.ticketNumber}}
                     </li>
                     <li>
-                        <i class="icon-li icon-envelope"></i> {{user.email}}<sup><i {{bindAttr class="user.verified:icon-check:icon-question :icon-small"}}></i></sup>
+                        <i class="icon-li icon-envelope"></i> {{user.email}}<sup><i {{bindAttr class="user.verified:icon-ok:icon-question :icon-small"}}></i></sup>
                     </li>
                     <li>
                         <i class="icon-li icon-calendar"></i> {{timestamp user.createdAt format="MMMM DD, YYYY"}}

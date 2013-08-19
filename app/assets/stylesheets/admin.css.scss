@@ -36,6 +36,13 @@
             margin: 0;
         }
     }
+}
+
+.admin-user-element {
+    @include slide(45em);
+
+    opacity: 0;
+    max-height: 0;
 
     .row {
         margin: { top: 0.5em; left: 0; bottom: 0.5em; right: 0 };

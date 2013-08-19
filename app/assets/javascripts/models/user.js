@@ -106,7 +106,9 @@ App.User.Filter = Ember.Object.create({
     var queryMale = query.toLowerCase() === 'male';
     var queryFemale = query.toLowerCase() === 'female';
 
-    return (queryMale && gender === 'male') || (queryFemale && gender === 'female');
+    return (queryMale && gender === 'male') ||
+      (queryFemale && gender === 'female') ||
+      (!queryMale && !queryFemale && gender === '-');
   },
 
   'phone': function(model, query) {
