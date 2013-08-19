@@ -75,26 +75,32 @@ App.AdminIndexController = App.AdminSubController.extend({
 App.AdminUsersController = App.AdminSubController.extend({
   showExamples: false,
   expandAll: false,
+  count: 0,
 
-  filteredUsers: function() {
+  filterUsers: function() {
+    var loading = this.get('isLoading');
     var all = this.get('users');
     var attributes = App.User.Filter.attributes;
+    this.set('count', 0);
 
     // Parse the query.
     var query = this.get('query') || '';
     var parsedQuery = query.match(/\w+:(\w+|"[\w\s]+")/g);
 
-    var filtered = all.filter(function(user) {
+    all.forEach(function(user) {
       if (query === null) {
-        return true;
+        this.incrementProperty('count');
+        user.set('hidden', false);
+        return;
       }
 
+      var showing;
       if (Ember.isNone(parsedQuery)) {
-        return attributes.some(function(attribute) {
+        showing = attributes.some(function(attribute) {
           return App.User.Filter[attribute](user, query);
         }, this);
       } else {
-        return parsedQuery.every(function(elem) {
+        showing = parsedQuery.every(function(elem) {
           elem = elem.split(':');
           var filter = elem[0];
           var search = elem[1];
@@ -107,11 +113,12 @@ App.AdminUsersController = App.AdminSubController.extend({
         }, this);
       }
 
-      return true;
+      user.set('hidden', !showing);
+      if (showing) {
+        this.incrementProperty('count');
+      }
     }, this);
-
-    return filtered;
-  }.property('users.firstObject', 'query'),
+  }.observes('users.length', 'query'),
 
   toggleExamples: function() {
     this.toggleProperty('showExamples');
