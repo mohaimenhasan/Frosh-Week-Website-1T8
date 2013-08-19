@@ -39,7 +39,7 @@
 }
 
 .admin-user-element {
-    @include slide(45em);
+    @include slide(70em);
 
     opacity: 0;
     max-height: 0;
@@ -67,11 +67,4 @@
     code {
         font-weight: $font-weight-bold;
     }
-}
-
-.admin-bursary-unit {
-    @include slide(30em);
-
-    opacity: 0;
-    max-height: 0;
 }
