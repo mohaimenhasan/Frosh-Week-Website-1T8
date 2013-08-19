@@ -10,12 +10,12 @@ App.UserElementView = Ember.View.extend({
     if (gender) {
       if (gender === 'Male') {
         return 'icon-male';
-      } else {
+      } else if (gender === 'Female') {
         return 'icon-female';
       }
     }
 
-    return '';
+    return 'icon-lemon';
   }.property('user.gender'),
 
   group: function() {
