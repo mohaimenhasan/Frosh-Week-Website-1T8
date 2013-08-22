@@ -11,6 +11,8 @@ App.UserController = Ember.ObjectController.extend({
     });
   },
 
+  showBursary: false,
+
   showAccessibilityInfo: false,
 
   serverError: false,
