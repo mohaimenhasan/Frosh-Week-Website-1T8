@@ -59,6 +59,19 @@
     .emergency {
         color: $purple-alt;
     }
+
+    .expanded {
+        line-height: 2.5em;
+    }
+}
+
+.toggle-icon {
+    cursor: pointer;
+    color: $white;
+
+    &:hover {
+        color: $purple;
+    }
 }
 
 .admin-examples {

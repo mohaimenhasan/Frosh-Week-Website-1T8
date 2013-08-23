@@ -4,6 +4,7 @@ App.UserElementView = Ember.View.extend({
 
   user: null,
   expanded: false,
+  editMode: false,
 
   genderIcon: function() {
     var gender = this.get('user.gender');
@@ -19,26 +20,44 @@ App.UserElementView = Ember.View.extend({
   }.property('user.gender'),
 
   group: function() {
-    var groupId = this.get('user.groupId');
-    var group = App.Group.find(groupId);
+    var groupId = this.get('user.groupId').toString();
+    var groups = this.get('controller.groups');
 
-    if (!Ember.isNone(group)) {
-      return group.get('name') + ' ' + group.get('symbol');
+    if (!Ember.isNone(groups)) {
+      var group = groups.findProperty('id', groupId);
+      return !Ember.isNone(group) ? group.get('name') + ' ' + group.get('symbol') : '-';
     }
 
     return '-';
   }.property('user.groupId', 'controller.groups.firstObject'),
 
-  pkg: function() {
-    var packageId = this.get('user.packageId').toString();
-    var pkg = App.Package.find(packageId);
+  pkg: function(key, value) {
+    var packages = this.get('controller.packages');
+    var pkg;
 
-    if (!Ember.isNone(pkg)) {
-      return pkg.get('key');
+    if (arguments.length === 1) {
+      var packageId = this.get('user.packageId').toString();
+
+      if (!Ember.isNone(packages)) {
+        pkg = packages.findProperty('id', packageId);
+        return !Ember.isNone(pkg) ? pkg.get('key') : '-';
+      }
+
+      return '-';
+    } else {
+      if (!Ember.isNone(packages)) {
+        pkg = packages.findProperty('key', value);
+        this.set('user.packageId', pkg.get('id'));
+      }
     }
-
-    return '-';
   }.property('user.packageId', 'controller.packages.firstObject'),
+
+  packagesSelect: function() {
+    var packages = this.get('controller.packages');
+    return packages.map(function(item) {
+      return item.get('key');
+    });
+  }.property('controller.packages.firstObject'),
 
   init: function() {
     this._super.apply(this, arguments);
@@ -48,7 +67,44 @@ App.UserElementView = Ember.View.extend({
     });
   },
 
+  stopEdit: function() {
+    if (!this.get('expanded')) {
+      this.set('editMode', false);
+    }
+  }.observes('expanded'),
+
   toggleExpand: function() {
     this.toggleProperty('expanded');
+  },
+
+  toggleEdit: function() {
+    this.set('expanded', true);
+    this.toggleProperty('editMode');
+
+    if (!this.get('editMode')) {
+      this.get('controller').send('saveUser', this.get('user'));
+    }
+  }
+});
+
+
+App.LoaderView = Ember.View.extend({
+  tagName: 'div',
+  viewed: false,
+
+  didInsertElement: function() {
+    var self = this;
+    this.$().bind('inview', function(event, isInView) {
+      var viewed = self.get('viewed');
+
+      if (isInView) {
+        if (!viewed) {
+          self.set('viewed', true);
+          self.get('controller').send('pageIfNeeded');
+        }
+      } else {
+        self.set('viewed', false);
+      }
+    });
   }
 });

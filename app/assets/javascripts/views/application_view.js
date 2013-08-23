@@ -13,7 +13,7 @@ App.ReactiveTextField = Ember.TextField.extend({
       var that = this;
       this.set('timeoutId', window.setTimeout(function() {
         that.get('controller').send(action, that.get('value'), that);
-      }, 150));
+      }, 350));
 
       if (!this.get('bubbles')) {
         event.stopPropagation();

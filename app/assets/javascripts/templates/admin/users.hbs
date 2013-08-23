@@ -59,7 +59,7 @@
     </div>
 
     <div {{bindAttr class=":admin-data :align-right isLoading:hidden:showing"}}>
-        {{count}} {{pluralize count string="result"}}. |
+        {{filteredUsers.length}} {{pluralize filteredUsers.length string="result"}} of {{users.length}} ({{percentage}}%). |
         <span class="toggle-link" {{action toggleExpandAll}}>
             {{#if expandAll}}
                 Collapse All
@@ -69,9 +69,10 @@
         </span>
     </div>
 
-    {{#each user in users}}
-        <div {{bindAttr class=":admin-data :row :col :spaced user.hidden:hidden:showing"}}>
+    {{#each user in displayableUsers}}
+        <div {{bindAttr class=":admin-data :row :col :spaced isLoading:hidden:showing"}}>
             {{view App.UserElementView userBinding=user}}
         </div>
     {{/each}}
+    {{view App.LoaderView class="row col"}}
 </div>

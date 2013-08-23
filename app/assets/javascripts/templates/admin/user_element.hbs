@@ -2,46 +2,104 @@
     <h2>
         <i {{bindAttr class="genderIcon"}}></i>
         <span class="toggle-link" {{action toggleExpand target=view}}>{{user.firstName}} {{user.lastName}}</span>
+        <span class="toggle-icon" {{action toggleEdit target=view}}><i class="icon-edit-sign"></i></span>
+        <span class="toggle-icon" {{action deleteUser user}}><i class="icon-remove-sign"></i></span>
         <span class="subtitle">
             {{user.ticketNumber}} |
             {{user.email}} <i {{bindAttr class="user.verified:icon-ok:icon-question"}}></i>
         </span>
     </h2>
     <div {{bindAttr class=":admin-user-element view.expanded:showing:hidden"}}>
+        {{#if editMode}}
+            <div class="row">
+                <div class="full col">
+                    <ul>
+                        {{#unless user.verified}}
+                            <li>
+                                <span class="toggle-link" {{action sendConfirmation user}}>
+                                    <i class="icon-envelope"></i> Send Confirmation
+                                </span>
+                            </li>
+                        {{else}}
+                            <li>
+                                <span class="toggle-link" {{action sendTicket user}}>
+                                    <i class="icon-ticket"></i> Send Ticket
+                                </span>
+                            </li>
+                        {{/unless}}
+                        {{#if user.bursaryRequested}}
+                            {{#unless user.bursaryChosen}}
+                                <li>
+                                    <span class="toggle-link" {{action acceptBursary user}}>
+                                        <i class="icon-ok"></i> Accept Bursary
+                                    </span>
+                                </li>
+                            {{/unless}}
+                        {{/if}}
+                    </ul>
+                </div>
+            </div>
+        {{/if}}
+
         <div class="row">
             <div class="half col">
-                <ul class="icons-ul">
+                <ul {{bindAttr class=":icons-ul editMode:expanded"}}>
                     <li>
                         <i class="icon-li icon-ticket"></i> {{user.ticketNumber}}
                     </li>
                     <li>
-                        <i class="icon-li icon-envelope"></i> {{user.email}}<sup><i {{bindAttr class="user.verified:icon-ok:icon-question :icon-small"}}></i></sup>
+                        <i class="icon-li icon-envelope"></i>
+                        {{#if editMode}}
+                            {{view Ember.TextField valueBinding=user.email}}
+                        {{else}}
+                            {{user.email}}<sup><i {{bindAttr class="user.verified:icon-ok:icon-question :icon-small"}}></i></sup>
+                        {{/if}}
                     </li>
                     <li>
                         <i class="icon-li icon-calendar"></i> {{timestamp user.createdAt format="MMMM DD, YYYY"}}
                     </li>
                     <li>
-                        <i class="icon-li icon-phone"></i> {{#if user.phone}}{{user.phone}}{{else}}N/A{{/if}}
+                        <i class="icon-li icon-phone"></i>
+                        {{#if editMode}}
+                            {{view Ember.TextField valueBinding=user.phone}}
+                        {{else}}
+                            {{#if user.phone}}{{user.phone}}{{else}}N/A{{/if}}
+                        {{/if}}
                     </li>
                     <li>
-                        <i class="icon-li icon-book"></i> {{user.discipline}}
+                        <i class="icon-li icon-book"></i>
+                        {{#if editMode}}
+                            {{view Ember.Select contentBinding=App.UserFormEngineeringDisciplines valueBinding=user.discipline}}
+                        {{else}}
+                            {{user.discipline}}
+                        {{/if}}
                     </li>
                 </ul>
             </div>
             <div class="half col">
-                <ul class="icons-ul">
+                <ul {{bindAttr class=":icons-ul editMode:expanded"}}>
                     <li>
-                        <i class="icon-li icon-tag"></i> {{user.shirtSize}}
+                        <i class="icon-li icon-tag"></i>
+                        {{#if editMode}}
+                            {{view Ember.Select contentBinding=App.UserFormShirtSize valueBinding=user.shirtSize}}
+                        {{else}}
+                            {{user.shirtSize}}
+                        {{/if}}
                     </li>
                     <li>
-                        <i class="icon-li icon-gift"></i> {{pkg}}
+                        <i class="icon-li icon-gift"></i>
+                        {{#if editMode}}
+                            {{view Ember.Select contentBinding=packagesSelect valueBinding=pkg}}
+                        {{else}}
+                            {{pkg}}
+                        {{/if}}
                     </li>
                     <li>
                         <i class="icon-li icon-group"></i> {{{group}}}
                     </li>
                 </ul>
 
-                <ul class="icons-ul">
+                <ul {{bindAttr class=":icons-ul editMode:expanded"}}>
                     <li>
                         <i class="icon-li emergency icon-user"></i> {{user.emergencyName}}
                     </li>

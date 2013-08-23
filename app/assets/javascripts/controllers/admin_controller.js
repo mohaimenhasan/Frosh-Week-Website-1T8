@@ -75,32 +75,35 @@ App.AdminIndexController = App.AdminSubController.extend({
 App.AdminUsersController = App.AdminSubController.extend({
   showExamples: false,
   expandAll: false,
-  count: 0,
+  page: 1,
 
-  filterUsers: function() {
-    var loading = this.get('isLoading');
+  percentage: function() {
+    return (100 * this.get('filteredUsers.length') / this.get('users.length')).toFixed(1);
+  }.property('filteredUsers.length', 'users.length'),
+
+  displayableUsers: function() {
+    return this.get('filteredUsers').slice(0, 20 * this.get('page'));
+  }.property('filteredUsers', 'page'),
+
+  filteredUsers: function() {
     var all = this.get('users');
     var attributes = App.User.Filter.attributes;
-    this.set('count', 0);
+    this.set('page', 1);
 
     // Parse the query.
     var query = this.get('query') || '';
+    if (query === '') {
+      return all;
+    }
+
     var parsedQuery = query.match(/\w+:(\w+|"[\w\s]+")/g);
-
-    all.forEach(function(user) {
-      if (query === null) {
-        this.incrementProperty('count');
-        user.set('hidden', false);
-        return;
-      }
-
-      var showing;
+    var filtered = all.filter(function(user) {
       if (Ember.isNone(parsedQuery)) {
-        showing = attributes.some(function(attribute) {
+        return attributes.some(function(attribute) {
           return App.User.Filter[attribute](user, query);
         }, this);
       } else {
-        showing = parsedQuery.every(function(elem) {
+        return parsedQuery.every(function(elem) {
           elem = elem.split(':');
           var filter = elem[0];
           var search = elem[1];
@@ -112,13 +115,16 @@ App.AdminUsersController = App.AdminSubController.extend({
           return attributes.contains(filter.toLowerCase()) && App.User.Filter[filter](user, search);
         }, this);
       }
-
-      user.set('hidden', !showing);
-      if (showing) {
-        this.incrementProperty('count');
-      }
     }, this);
-  }.observes('users.length', 'query'),
+
+    return filtered;
+  }.property('users.firstObject', 'query'),
+
+  pageIfNeeded: function() {
+    if (this.get('filteredUsers.length') > 20 * this.get('page')) {
+      this.incrementProperty('page');
+    }
+  },
 
   toggleExamples: function() {
     this.toggleProperty('showExamples');
@@ -130,6 +136,33 @@ App.AdminUsersController = App.AdminSubController.extend({
 
   filter: function(text) {
     this.set('query', text);
+  },
+
+  deleteUser: function(user) {
+    var result = window.confirm('Are you sure you want to delete the user?');
+    if (result === true) {
+      user.deleteRecord();
+      user.save();
+    }
+  },
+
+  sendTicket: function(user) {
+    this.$.post('/api/users/' + user.get('id') + '/send_receipt_email')
+      .fail(function() { window.alert('Could not send confirmation email.'); });
+  },
+
+  sendConfirmation: function(user) {
+    this.$.post('/api/users/' + user.get('id') + '/send_confirmation_email')
+      .fail(function() { window.alert('Could not send confirmation email.'); });
+  },
+
+  acceptBursary: function(user) {
+    user.set('bursaryChosen', true);
+    user.save();
+  },
+
+  saveUser: function(user) {
+    user.save();
   }
 });
 

@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.placeholder
+//= require jquery.inview
 //= require es5-shim
 //= require d3.v3
 //= require handlebars
