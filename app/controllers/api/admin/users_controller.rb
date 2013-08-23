@@ -34,4 +34,25 @@ class Api::Admin::UsersController < Api::UsersController
     render json: { user: u }
   end
 
+  def send_confirmation_email
+    u = User.find(params[:id])
+    if u.verified
+      render nothing: true, status: :bad_request and return
+    else
+      u.send_confirmation
+      render nothing: true, status: :ok and return
+    end
+
+  end
+
+  def send_receipt_email
+    u = User.find(params[:id])
+    if u.verified
+      u.send_receipt
+      render nothing: true, status: :ok and return
+    else
+      render nothing: true, status: :bad_request and return
+    end
+  end
+
 end
