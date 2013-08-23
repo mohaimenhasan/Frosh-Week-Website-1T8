@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
 
-  default_scope order('created_at ASC')
+  default_scope order('created_at DESC')
 
   def exposed_data(opts={})
     data = attributes
