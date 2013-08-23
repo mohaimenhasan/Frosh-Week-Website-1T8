@@ -20,8 +20,11 @@ App.UserElementView = Ember.View.extend({
   }.property('user.gender'),
 
   group: function() {
-    var groupId = this.get('user.groupId').toString();
     var groups = this.get('controller.groups');
+    var groupId = this.get('user.groupId');
+    if (!Ember.isNone(groupId)) {
+      groupId = groupId.toString();
+    }
 
     if (!Ember.isNone(groups)) {
       var group = groups.findProperty('id', groupId);
@@ -36,7 +39,10 @@ App.UserElementView = Ember.View.extend({
     var pkg;
 
     if (arguments.length === 1) {
-      var packageId = this.get('user.packageId').toString();
+      var packageId = this.get('user.packageId');
+      if (!Ember.isNone(packageId)) {
+        packageId = packageId.toString();
+      }
 
       if (!Ember.isNone(packages)) {
         pkg = packages.findProperty('id', packageId);
