@@ -13,7 +13,7 @@ FactoryGirl.define do
     shirt_size 'Medium'
     gender 'Male'
     bursary_requested false
-    package_id 1
+    package_id { Package.all.keep_if{|p| p.available?}.first.id }
 
     factory :bursary_requested_user do
       bursary_requested true
