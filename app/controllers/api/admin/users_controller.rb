@@ -25,7 +25,7 @@ class Api::Admin::UsersController < Api::UsersController
     u.update_attributes params[:user].slice(:email, :phone, :discipline, :shirt_size, :bursary_chosen)
     if params[:user].has_key?(:package_id)
       u.package = Package.find(params[:user][:package_id])
-      u.save!
+      u.save! validate: false
     end
 
     render json: { user: u }
