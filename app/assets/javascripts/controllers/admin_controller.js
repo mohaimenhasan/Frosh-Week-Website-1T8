@@ -118,7 +118,7 @@ App.AdminUsersController = App.AdminSubController.extend({
     }, this);
 
     return filtered;
-  }.property('users.firstObject', 'query'),
+  }.property('users.@each', 'query'),
 
   pageIfNeeded: function() {
     if (this.get('filteredUsers.length') > 20 * this.get('page')) {
@@ -142,7 +142,7 @@ App.AdminUsersController = App.AdminSubController.extend({
     var result = window.confirm('Are you sure you want to delete the user?');
     if (result === true) {
       user.deleteRecord();
-      user.save();
+      user.get('transaction').commit();
     }
   },
 
@@ -160,11 +160,11 @@ App.AdminUsersController = App.AdminSubController.extend({
 
   acceptBursary: function(user) {
     user.set('bursaryChosen', true);
-    user.save();
+    user.get('transaction').commit();
   },
 
   saveUser: function(user) {
-    user.save();
+    user.get('transaction').commit();
   }
 });
 
@@ -187,7 +187,7 @@ App.AdminUsersBursaryController = App.AdminSubController.extend({
     var result = window.confirm('Are you sure you want to delete the user?');
     if (result === true) {
       user.deleteRecord();
-      user.save();
+      user.get('transaction').commit();
     }
   },
 
@@ -205,10 +205,10 @@ App.AdminUsersBursaryController = App.AdminSubController.extend({
 
   acceptBursary: function(user) {
     user.set('bursaryChosen', true);
-    user.save();
+    user.get('transaction').commit();
   },
 
   saveUser: function(user) {
-    user.save();
+    user.get('transaction').commit();
   }
 });
