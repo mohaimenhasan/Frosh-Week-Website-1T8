@@ -173,13 +173,42 @@ App.AdminUsersBursaryController = App.AdminSubController.extend({
   filteredUsers: function() {
     var all = this.get('users');
     var filtered = all.filter(function(item) {
-      return item.get('bursaryRequested');
+      return item.get('bursaryRequested') && !item.get('bursaryChosen');
     }, this);
 
     return filtered;
-  }.property('users.firstObject'),
+  }.property('users.@each.bursaryRequested', 'users.@each.bursaryChosen'),
 
   toggleExpandAll: function() {
     this.toggleProperty('expandAll');
+  },
+
+  deleteUser: function(user) {
+    var result = window.confirm('Are you sure you want to delete the user?');
+    if (result === true) {
+      user.deleteRecord();
+      user.save();
+    }
+  },
+
+  sendTicket: function(user) {
+    Ember.$.post('/api/users/' + user.get('id') + '/send_receipt_email')
+      .done(function() { window.alert('Sent!'); })
+      .fail(function() { window.alert('Could not send confirmation email.'); });
+  },
+
+  sendConfirmation: function(user) {
+    Ember.$.post('/api/users/' + user.get('id') + '/send_confirmation_email')
+      .done(function() { window.alert('Sent!'); })
+      .fail(function() { window.alert('Could not send confirmation email.'); });
+  },
+
+  acceptBursary: function(user) {
+    user.set('bursaryChosen', true);
+    user.save();
+  },
+
+  saveUser: function(user) {
+    user.save();
   }
 });
