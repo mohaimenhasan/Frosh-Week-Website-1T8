@@ -85,6 +85,8 @@ class User < ActiveRecord::Base
 
   before_save { self.email = email.downcase }
 
+  default_scope order('created_at ASC')
+
   def exposed_data(opts={})
     data = attributes
     data.except!('confirmation_token') if opts[:hide_confirmation_token]
