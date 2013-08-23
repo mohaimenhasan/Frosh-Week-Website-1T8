@@ -58,7 +58,7 @@ Package.create(
 Package.create(
   key: 'early-bird-with-commuter',
   name: 'F!rosh Kit Early Bird + Commuter Program Package',
-  description: "A standard F!rosh Kit... with living accommodations! This offer includes room and board at a downtown hostel for four nights so you can fully enjoy F!rosh Week's days and nights.",
+  description: "A standard F!rosh Kit... with living accommodations! This offer includes room and board at a downtown hostel for five nights so you can fully enjoy F!rosh Week's days and nights.",
   price: 185,
   count: 0,
   max: 1,
@@ -99,7 +99,7 @@ Package.create(
 Package.create(
   key: 'commuter',
   name: 'F!rosh Kit + Commuter Program Package',
-  description: "A standard F!rosh Kit... with living accommodations! This offer includes room and board at a downtown hostel for four nights so you can fully enjoy F!rosh Week's days and nights.",
+  description: "A standard F!rosh Kit... with living accommodations! This offer includes room and board at a downtown hostel for five nights so you can fully enjoy F!rosh Week's days and nights.",
   price: 205,
   count: 0,
   max: 1,
