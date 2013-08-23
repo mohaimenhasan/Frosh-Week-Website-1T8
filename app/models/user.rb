@@ -102,7 +102,7 @@ class User < ActiveRecord::Base
   end
 
   def self.formatted_date(date_time)
-    date_time.to_time.in_time_zone('Eastern Time (US & Canada)').strftime('%b %e, %Y')
+    date_time.to_time.in_time_zone(Rails.application.config.time_zone).strftime('%b %e, %Y')
   end
 
   def set_default_data

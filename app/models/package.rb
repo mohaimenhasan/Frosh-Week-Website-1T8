@@ -21,7 +21,9 @@ class Package < ActiveRecord::Base
   has_many :users
 
   def available?
-    Time.now.in_time_zone('Eastern Time (US & Canada)').between? start_date.to_time.beginning_of_day, end_date.to_time.end_of_day
+    start_time = start_date.to_time_in_current_zone.beginning_of_day
+    end_time = end_date.to_time_in_current_zone.end_of_day
+    Time.now.in_time_zone(Rails.application.config.time_zone).between? start_time, end_time
   end
 
 end

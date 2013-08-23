@@ -71,6 +71,9 @@ module SkuleOrientation
 
     config.autoload_paths += %W(#{config.root}/lib)
 
+    config.time_zone = 'Eastern Time (US & Canada)'
+    Time.zone = config.time_zone
+
     config.stripe_publishable_key = ENV['STRIPE_PUBLISHABLE_KEY']
     config.mandrill_from = ENV['MANDRILL_FROM']
 
