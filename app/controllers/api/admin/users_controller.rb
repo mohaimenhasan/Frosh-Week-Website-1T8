@@ -59,4 +59,10 @@ class Api::Admin::UsersController < Api::UsersController
     end
   end
 
+  protected
+
+  def add_details_from_admin(user)
+    user.created_by_admin = get_admin.email
+  end
+
 end

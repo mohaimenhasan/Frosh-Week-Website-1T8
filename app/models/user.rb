@@ -57,6 +57,8 @@ class User < ActiveRecord::Base
                   :restrictions_dietary, :restrictions_accessibility, :restrictions_misc,
                   :charge_id, :ticket_number
 
+  attr_protected :created_by_admin
+
   belongs_to :group
   belongs_to :package
 
@@ -207,9 +209,13 @@ class User < ActiveRecord::Base
   end
 
   def package_is_available
-    unless package.available?
+    unless package.available? || is_created_by_admin?
       errors.add(:package, "must be available")
     end
+  end
+
+  def is_created_by_admin?
+    !created_by_admin.blank?
   end
 
   def get_shirt_size_abbr

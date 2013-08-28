@@ -6,12 +6,13 @@ class Api::UsersController < ApplicationController
     user_data = params[:user]
 
     u = User.new user_data.slice *User.accessible_attributes
+    add_details_from_admin(u)
     u.package = Package.find(user_data[:package_id].to_s.to_i)
     render json: { errors: u.errors }, status: 422 and return unless u.valid?
 
     u.set_random_gender_disc if check_skip :random_gender_disc
 
-    unless u.bursary_requested or check_skip :skip_stripe
+    unless u.bursary_requested || check_skip(:skip_stripe) || u.is_created_by_admin?
       result = u.process_payment(user_data[:cc_token])
       render json: { errors: result }, status: 422 and return unless result == :success
     end
@@ -59,6 +60,11 @@ class Api::UsersController < ApplicationController
 
   def check_skip(skip_flag)
     Rails.env.development? and params.has_key? skip_flag
+  end
+
+  protected
+
+  def add_details_from_admin(user)
   end
 
 end
