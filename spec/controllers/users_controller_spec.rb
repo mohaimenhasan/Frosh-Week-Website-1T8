@@ -32,7 +32,7 @@ describe Api::UsersController do
         User.any_instance.expects(:credit_info).returns fake_credit_info
 
         expect_valid_new_user FactoryGirl.attributes_for :paying_user
-        expect(User.last.reload.charge_id).to eq "charge_tok_1"
+        expect(User.first.reload.charge_id).to eq "charge_tok_1"
       end
 
       context "creates multiple users" do
@@ -45,8 +45,8 @@ describe Api::UsersController do
           user_attr2 = FactoryGirl.attributes_for :paying_user
 
           except_incrementing_ticket_numbers user_attr1, user_attr2
-          expect(User.last.reload.charge_id).to eq "charge_tok_2"
-          expect(User.last(2).first.reload.charge_id).to eq "charge_tok_1"
+          expect(User.first.reload.charge_id).to eq "charge_tok_2"
+          expect(User.first(2).last.reload.charge_id).to eq "charge_tok_1"
         end
       end
     end
@@ -68,14 +68,14 @@ describe Api::UsersController do
         User.any_instance.expects(:credit_info).twice.returns fake_credit_info
 
         post :create, { user: FactoryGirl.attributes_for(:bursary_requested_user) }
-        expect_verification User.last.reload
+        expect_verification User.first.reload
       end
 
       it "fail to confirm user" do
         User.any_instance.expects(:credit_info).returns fake_credit_info
 
         post :create, { user: FactoryGirl.attributes_for(:bursary_requested_user) }
-        expect_no_verification User.last.reload
+        expect_no_verification User.first.reload
       end
     end
 
@@ -90,14 +90,14 @@ describe Api::UsersController do
         User.any_instance.expects(:credit_info).twice.returns fake_credit_info
 
         post :create, { user: FactoryGirl.attributes_for(:paying_user) }
-        expect_verification User.last.reload
+        expect_verification User.first.reload
       end
 
       it "fail to confirm user" do
         User.any_instance.expects(:credit_info).returns fake_credit_info
 
         post :create, { user: FactoryGirl.attributes_for(:paying_user) }
-        expect_no_verification User.last.reload
+        expect_no_verification User.first.reload
       end
     end
   end
@@ -118,7 +118,7 @@ def expect_valid_new_user(user_attr)
   post :create, { user: user_attr }
   expect(User.count).to eq(user_count + 1)
 
-  expect_valid_user user_attr, User.last.reload
+  expect_valid_user user_attr, User.first.reload
 end
 
 def expect_valid_user(user_attr, user)
@@ -136,10 +136,10 @@ def except_incrementing_ticket_numbers(user_attr1, user_attr2)
   User.any_instance.expects(:send_confirmation).twice
 
   post :create, { user: user_attr1 }
-  user1 = User.last.reload
+  user1 = User.first.reload
   expect_valid_user user_attr1, user1
   post :create, { user: user_attr2 }
-  user2 = User.last.reload
+  user2 = User.first.reload
   expect_valid_user user_attr2, user2
 
   first_ticket_number = (user1.ticket_number.to_i - 100_000) / 100;
@@ -149,13 +149,13 @@ def except_incrementing_ticket_numbers(user_attr1, user_attr2)
 end
 
 def expect_verification(user)
-  expect(User.last.reload.verified).to be false
+  expect(User.first.reload.verified).to be false
   put :update, { id: user.id, user: user.attributes.merge({ verified:true }) }
-  expect(User.last.reload.verified).to be true
+  expect(User.first.reload.verified).to be true
 end
 
 def expect_no_verification(user)
-  expect(User.last.reload.verified).to be false
+  expect(User.first.reload.verified).to be false
   put :update, { id: user.id, user: user.attributes.merge({ verified:true, confirmation_token: 'blahblahblah' }) }
-  expect(User.last.reload.verified).to be false
+  expect(User.first.reload.verified).to be false
 end
