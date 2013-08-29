@@ -31,7 +31,12 @@ module AdminAuthorization
     })
     data = result.data
     if data.verified_email
-      ::Admin.where(email: data.email)
+      admins = ::Admin.where(email: data.email)
+      if !admins.blank? && admins.count == 1
+        admins.first
+      else
+        nil
+      end
     else
       nil
     end
