@@ -7,7 +7,7 @@ class Api::Admin::AdminsController < Api::AdminsController
 
   def index
     render json: {
-      admins: get_admin
+      admins: [get_admin]
     }
   end
 
