@@ -55,7 +55,8 @@ class User < ActiveRecord::Base
                   :confirmation_token, :verified,
                   :emergency_name, :emergency_phone, :emergency_relationship, :emergency_email,
                   :restrictions_dietary, :restrictions_accessibility, :restrictions_misc,
-                  :charge_id, :ticket_number
+                  :charge_id, :ticket_number,
+                  :checked_in
 
   attr_protected :created_by_admin
 
@@ -111,6 +112,7 @@ class User < ActiveRecord::Base
 
   def set_default_data
     self.verified = false
+    self.checked_in = false
 
     self.bursary_chosen = nil
     self.bursary_paid = false

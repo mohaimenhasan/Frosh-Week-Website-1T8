@@ -130,6 +130,7 @@ def expect_valid_user(user_attr, user)
   expect(user.verified).to eq false
   expect(user.bursary_chosen).to eq nil
   expect(user.bursary_paid).to eq false
+  expect(user.checked_in).to eq false
 end
 
 def except_incrementing_ticket_numbers(user_attr1, user_attr2)

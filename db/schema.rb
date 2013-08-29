@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828063116) do
+ActiveRecord::Schema.define(:version => 20130829070232) do
 
   create_table "admins", :force => true do |t|
     t.string   "email"
@@ -69,9 +69,10 @@ ActiveRecord::Schema.define(:version => 20130828063116) do
     t.string   "ticket_number"
     t.integer  "group_id"
     t.integer  "package_id"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.string   "created_by_admin"
+    t.boolean  "checked_in",                     :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
