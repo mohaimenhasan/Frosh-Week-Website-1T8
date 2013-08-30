@@ -65,6 +65,13 @@ App.UserElementView = Ember.View.extend({
     });
   }.property('controller.packages.firstObject'),
 
+  restrictions: function() {
+    var diet = (this.get('user.restrictionsDietary') || '').length > 0;
+    var access = (this.get('user.restrictionsAccessibility') || '').length > 0;
+    var misc = (this.get('user.restrictionsMisc') || '').length > 0;
+    return diet || misc || access;
+  }.property('user.restrictionsDietary', 'user.restrictionsAccessibility', 'user.restrictionsMisc'),
+
   init: function() {
     this._super.apply(this, arguments);
     this.addObserver('controller.expandAll', function() {

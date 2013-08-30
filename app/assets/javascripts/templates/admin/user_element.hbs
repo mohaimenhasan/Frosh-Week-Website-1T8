@@ -1,5 +1,12 @@
 {{#with view}}
     <h2>
+        <span class="toggle-link" {{action toggleCheckIn user}}>
+            {{#if user.checkedIn}}
+                <i class="icon-check-sign"></i>
+            {{else}}
+                <i class="icon-check-empty"></i>
+            {{/if}}
+        </span>
         <i {{bindAttr class="genderIcon"}}></i>
         <span class="toggle-link" {{action toggleExpand target=view}}>{{user.firstName}} {{user.lastName}}</span>
         <span class="toggle-icon" {{action toggleEdit target=view}}><i class="icon-edit-sign"></i></span>
@@ -114,6 +121,44 @@
                 </ul>
             </div>
         </div>
+
+        {{#if restrictions}}
+            <div class="row">
+                <div class="full col">
+                    <h3>Restrictions</h3>
+                    {{#if user.restrictionsDietary}}
+                        <p>
+                            <strong>Dietary Restrictions:</strong><br>
+                            {{#if editMode}}
+                                {{view Ember.TextArea valueBinding=user.restrictionsDietary}}
+                            {{else}}
+                                {{user.restrictionsDietary}}
+                            {{/if}}
+                        </p>
+                    {{/if}}
+                    {{#if user.restrictionsAccessibility}}
+                        <p>
+                            <strong>Accessibility Restrictions:</strong><br>
+                            {{#if editMode}}
+                                {{view Ember.TextArea valueBinding=user.restrictionsAccessibility}}
+                            {{else}}
+                                {{user.restrictionsAccessibility}}
+                            {{/if}}
+                        </p>
+                    {{/if}}
+                    {{#if user.restrictionsMisc}}
+                        <p>
+                            <strong>Others Restrictions:</strong><br>
+                            {{#if editMode}}
+                                {{view Ember.TextArea valueBinding=user.restrictionsMisc}}
+                            {{else}}
+                                {{user.restrictionsMisc}}
+                            {{/if}}
+                        </p>
+                    {{/if}}
+                </div>
+            </div>
+        {{/if}}
 
         {{#if user.bursaryRequested}}
             <div class="row">

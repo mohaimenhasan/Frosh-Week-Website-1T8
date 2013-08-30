@@ -76,9 +76,50 @@ App.AdminIndexController = App.AdminSubController.extend({
   }.property('users.firstObject')
 });
 
-App.AdminUsersController = App.AdminSubController.extend({
-  showExamples: false,
+App.AdminUsersSubController = App.AdminSubController.extend({
   expandAll: false,
+
+  toggleExpandAll: function() {
+    this.toggleProperty('expandAll');
+  },
+
+  deleteUser: function(user) {
+    var result = window.confirm('Are you sure you want to delete the user?');
+    if (result === true) {
+      user.deleteRecord();
+      user.get('transaction').commit();
+    }
+  },
+
+  toggleCheckIn: function(user) {
+    user.toggleProperty('checkedIn');
+    user.get('transaction').commit();
+  },
+
+  sendTicket: function(user) {
+    Ember.$.post('/api/users/' + user.get('id') + '/send_receipt_email')
+      .done(function() { window.alert('Sent!'); })
+      .fail(function() { window.alert('Could not send ticket.'); });
+  },
+
+  sendConfirmation: function(user) {
+    Ember.$.post('/api/users/' + user.get('id') + '/send_confirmation_email')
+      .done(function() { window.alert('Sent!'); })
+      .fail(function() { window.alert('Could not send confirmation email.'); });
+  },
+
+  acceptBursary: function(user) {
+    user.set('bursaryChosen', true);
+    user.get('transaction').commit();
+  },
+
+  saveUser: function(user) {
+    user.get('transaction').commit();
+  }
+});
+
+App.AdminUsersController = App.AdminUsersSubController.extend({
+  showExamples: false,
   page: 1,
 
   percentage: function() {
@@ -134,46 +175,12 @@ App.AdminUsersController = App.AdminSubController.extend({
     this.toggleProperty('showExamples');
   },
 
-  toggleExpandAll: function() {
-    this.toggleProperty('expandAll');
-  },
-
   filter: function(text) {
     this.set('query', text);
-  },
-
-  deleteUser: function(user) {
-    var result = window.confirm('Are you sure you want to delete the user?');
-    if (result === true) {
-      user.deleteRecord();
-      user.get('transaction').commit();
-    }
-  },
-
-  sendTicket: function(user) {
-    Ember.$.post('/api/users/' + user.get('id') + '/send_receipt_email')
-      .done(function() { window.alert('Sent!'); })
-      .fail(function() { window.alert('Could not send confirmation email.'); });
-  },
-
-  sendConfirmation: function(user) {
-    Ember.$.post('/api/users/' + user.get('id') + '/send_confirmation_email')
-      .done(function() { window.alert('Sent!'); })
-      .fail(function() { window.alert('Could not send confirmation email.'); });
-  },
-
-  acceptBursary: function(user) {
-    user.set('bursaryChosen', true);
-    user.get('transaction').commit();
-  },
-
-  saveUser: function(user) {
-    user.get('transaction').commit();
   }
 });
 
-App.AdminUsersBursaryController = App.AdminSubController.extend({
-  expandAll: false,
+App.AdminUsersBursaryController = App.AdminUsersSubController.extend({
   filteredUsers: function() {
     var all = this.get('users');
     var filtered = all.filter(function(item) {
@@ -181,39 +188,79 @@ App.AdminUsersBursaryController = App.AdminSubController.extend({
     }, this);
 
     return filtered;
-  }.property('users.@each.bursaryRequested', 'users.@each.bursaryChosen'),
+  }.property('users.@each.bursaryRequested', 'users.@each.bursaryChosen')
+});
 
-  toggleExpandAll: function() {
-    this.toggleProperty('expandAll');
-  },
+App.AdminUsersCheckinController = App.AdminUsersSubController.extend({
+  page: 1,
 
-  deleteUser: function(user) {
-    var result = window.confirm('Are you sure you want to delete the user?');
-    if (result === true) {
-      user.deleteRecord();
-      user.get('transaction').commit();
+  isCheckin: true,
+
+  remaining: function() {
+    return this.get('controllers.admin.users.length') - this.get('users.length');
+  }.property('users.length', 'controllers.admin.users.length'),
+
+  checkedInPercentage: function() {
+    return (100 * (this.get('remaining') / this.get('controllers.admin.users.length'))).toFixed(1);
+  }.property('remaining', 'controllers.admin.users.length'),
+
+  totalPercentage: function() {
+    return (100 * this.get('filteredUsers.length') / this.get('users.length')).toFixed(1);
+  }.property('filteredUsers.length', 'users.length'),
+
+  users: function() {
+    return this.get('controllers.admin.users').filter(function(user) {
+      return !user.get('checkedIn');
+    }, this);
+  }.property('controllers.admin.users.@each', 'controllers.admin.users.@each.checkedIn'),
+
+  displayableUsers: function() {
+    return this.get('filteredUsers').slice(0, 20 * this.get('page'));
+  }.property('filteredUsers', 'page'),
+
+  filteredUsers: function() {
+    var all = this.get('users');
+    var attributes = App.User.Filter.attributes;
+    this.set('page', 1);
+
+    // Parse the query.
+    var query = this.get('query') || '';
+    if (query === '') {
+      return all;
+    }
+
+    var parsedQuery = query.match(/\w+:(\w+|"[\w\s]+")/g);
+    var filtered = all.filter(function(user) {
+      if (Ember.isNone(parsedQuery)) {
+        return attributes.some(function(attribute) {
+          return App.User.Filter[attribute](user, query);
+        }, this);
+      } else {
+        return parsedQuery.every(function(elem) {
+          elem = elem.split(':');
+          var filter = elem[0];
+          var search = elem[1];
+
+          if (search.charAt(0) === '"') {
+            search = search.slice(1, search.length - 1);
+          }
+
+          return attributes.contains(filter.toLowerCase()) && App.User.Filter[filter](user, search);
+        }, this);
+      }
+    }, this);
+
+    return filtered;
+  }.property('users.@each', 'query'),
+
+  pageIfNeeded: function() {
+    if (this.get('filteredUsers.length') > 20 * this.get('page')) {
+      this.incrementProperty('page');
     }
   },
 
-  sendTicket: function(user) {
-    Ember.$.post('/api/users/' + user.get('id') + '/send_receipt_email')
-      .done(function() { window.alert('Sent!'); })
-      .fail(function() { window.alert('Could not send confirmation email.'); });
-  },
-
-  sendConfirmation: function(user) {
-    Ember.$.post('/api/users/' + user.get('id') + '/send_confirmation_email')
-      .done(function() { window.alert('Sent!'); })
-      .fail(function() { window.alert('Could not send confirmation email.'); });
-  },
-
-  acceptBursary: function(user) {
-    user.set('bursaryChosen', true);
-    user.get('transaction').commit();
-  },
-
-  saveUser: function(user) {
-    user.get('transaction').commit();
+  filter: function(text) {
+    this.set('query', text);
   }
 });
 

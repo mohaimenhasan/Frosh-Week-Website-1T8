@@ -5,6 +5,7 @@ App.User = DS.Model.extend({
   createdAt: DS.attr('date'),
   confirmationToken: DS.attr('string'),
   ticketNumber: DS.attr('number'),
+  checkedIn: DS.attr('boolean'),
 
   /* Basic Information */
   firstName: DS.attr('string'),
@@ -67,7 +68,8 @@ App.User.Filter = Ember.Object.create({
     'emergency_email',        // string
     'emergency_relationship', // string
     'emergency_phone',        // string
-    'restrictions'            // boolean
+    'restrictions',           // boolean
+    'checked_in'              // boolean
   ],
 
   'email': function(model, query) {
@@ -200,6 +202,14 @@ App.User.Filter = Ember.Object.create({
     var queryFalse = query.toLowerCase() === 'false';
 
     return (hasRestrictions && queryTrue) || (!hasRestrictions && queryFalse);
+  },
+
+  'checked_in': function(model, query) {
+    var checkedIn = model.get('checkedIn');
+    var queryTrue = query.toLowerCase() === 'true';
+    var queryFalse = query.toLowerCase() === 'false';
+
+    return (checkedIn && queryTrue) || (!checkedIn && queryFalse);
   }
 });
 

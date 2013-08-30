@@ -13,7 +13,16 @@
             There are a total of {{users.length}} registrants.
         </p>
         <p>
-            This page is a work in progress.
+            <ul>
+                {{#each group in groups}}
+                    <li>
+                        <h3>
+                            {{{group.symbol}}} {{group.name}}<br>
+                            T: {{subset users group}}, M: {{subset users group gender="Male"}}, F: {{subset users group gender="Female"}}
+                        </h3>
+                    </li>
+                {{/each}}
+            </ul>
         </p>
 
         {{!--

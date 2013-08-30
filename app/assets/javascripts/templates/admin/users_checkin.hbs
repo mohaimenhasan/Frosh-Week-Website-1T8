@@ -1,6 +1,42 @@
 <div class="box normal">
     <h1>User Checkin</h1>
     <p>
-        This page is currently disabled.
+        This page lists all F!rosh who aren't checked in. Once you check them in, they will no longer be shown here.
     </p>
+    <p>
+        Some basic statistics:
+        <ul>
+            <li>
+                {{users.length}} frosh have been checked in of a total of
+                {{controllers.admin.users.length}}. That's {{checkedInPercentage}}%!.
+            </li>
+        </ul>
+    </p>
+    <p>
+        Note: these stats aren't accurate until the page is refreshed.
+    </p>
+
+    {{view App.ReactiveTextField class="spaced" action="filter" onEvent="keyUp" placeholder="Filter"}}
+
+    <div {{bindAttr class=":admin-loader :center isLoading:showing:hidden"}}>
+        <i class="icon-big-loader icon-spin icon-gear"></i>
+    </div>
+
+    <div {{bindAttr class=":admin-data :align-right isLoading:hidden:showing"}}>
+        {{filteredUsers.length}} {{pluralize filteredUsers.length string="result"}} of {{users.length}} ({{totalPercentage}}%). |
+        <span class="toggle-link" {{action toggleExpandAll}}>
+            {{#if expandAll}}
+                Collapse All
+            {{else}}
+                Expand All
+            {{/if}}
+        </span>
+    </div>
+
+    {{#each user in displayableUsers}}
+        <div {{bindAttr class=":admin-data :row :col :spaced isLoading:hidden:showing"}}>
+            {{view App.UserElementView userBinding=user}}
+        </div>
+    {{/each}}
+    {{view App.LoaderView class="row col"}}
 </div>
