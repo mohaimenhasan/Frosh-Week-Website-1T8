@@ -23,6 +23,8 @@ App.AdminController = Ember.Controller.extend({
             window.location.protocol, '//', window.location.host,
             '/auth',
             '&scope=https://www.googleapis.com/auth/userinfo.email'
+            '&access_type=offline',
+            '&approval_prompt=force'
           );
           url = url.join('');
           window.location = url;
