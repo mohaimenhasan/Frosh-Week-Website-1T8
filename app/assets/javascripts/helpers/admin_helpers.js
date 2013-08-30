@@ -9,10 +9,27 @@ Ember.Handlebars.registerBoundHelper('subset', function(users, group, options) {
     gender = null;
   }
 
+  var discipline = options.hash.discipline;
+  if (typeof discipline === 'string') {
+    var matches = App.UserFormEngineeringDisciplines.some(function(item) {
+      return item === discipline;
+    });
+
+    if (!matches) {
+      discipline = null;
+    }
+  } else {
+    discipline = null;
+  }
+
   var filtered = users.filter(function(user) {
     var condition = true;
     if (condition && !Ember.isNone(gender)) {
       condition = user.get('gender') === gender;
+    }
+
+    if (condition && !Ember.isNone(discipline)) {
+      condition = user.get('discipline') === discipline;
     }
 
     if (condition && !Ember.isNone(group)) {

@@ -12,18 +12,27 @@
             {{pluralize registrationsToday string="registration"}} today.
             There are a total of {{users.length}} registrants.
         </p>
-        <p>
-            <ul>
-                {{#each group in groups}}
-                    <li>
-                        <h3>
-                            {{{group.symbol}}} {{group.name}}<br>
-                            T: {{subset users group}}, M: {{subset users group gender="Male"}}, F: {{subset users group gender="Female"}}
-                        </h3>
-                    </li>
-                {{/each}}
-            </ul>
-        </p>
+    </div>
+    <ul>
+        {{#each group in groups}}
+            <li {{bindAttr class=":admin-data isLoading:hidden:showing"}}>
+                <strong>{{{group.symbol}}} {{group.name}}</strong> - {{subset users group}}<br>
+                Male: {{subset users group gender="Male"}}<br>
+                Female: {{subset users group gender="Female"}}<br>
+                Engineering Science: {{subset users group discipline="Engineering Science"}}<br>
+                Track One: {{subset users group discipline="Track One"}}<br>
+                Chemical: {{subset users group discipline="Chemical"}}<br>
+                Civil: {{subset users group discipline="Civil"}}<br>
+                Computer: {{subset users group discipline="Computer"}}<br>
+                Electrical: {{subset users group discipline="Electrical"}}<br>
+                Industrial: {{subset users group discipline="Industrial"}}<br>
+                Material Science: {{subset users group discipline="Material Science"}}<br>
+                Mechanical: {{subset users group discipline="Mechanical"}}<br>
+                Mineral: {{subset users group discipline="Mineral"}}<br>
+                <br>
+            </li>
+        {{/each}}
+    </ul>
 
         {{!--
         <section>
