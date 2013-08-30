@@ -20,13 +20,12 @@
                                     <i class="icon-envelope"></i> Send Confirmation
                                 </span>
                             </li>
-                        {{else}}
-                            <li>
-                                <span class="toggle-link" {{action sendTicket user}}>
-                                    <i class="icon-ticket"></i> Send Ticket
-                                </span>
-                            </li>
                         {{/unless}}
+                        <li>
+                            <span class="toggle-link" {{action sendTicket user}}>
+                                <i class="icon-ticket"></i> Send Ticket
+                            </span>
+                        </li>
                         {{#if user.bursaryRequested}}
                             {{#unless user.bursaryChosen}}
                                 <li>
