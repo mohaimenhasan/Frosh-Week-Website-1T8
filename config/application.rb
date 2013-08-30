@@ -71,6 +71,8 @@ module SkuleOrientation
 
     config.autoload_paths += %W(#{config.root}/lib)
 
+    config.offline_mode = ENV['OFFLINE_MODE'] == 'true' ? true : false
+
     config.time_zone = 'Eastern Time (US & Canada)'
     Time.zone = config.time_zone
 
@@ -81,12 +83,14 @@ module SkuleOrientation
 
     config.hostname = ENV['HOSTNAME']
 
-    config.google_api_client = Google::APIClient.new
-    config.google_api_client.authorization.client_id = ENV['GOOGLE_API_CLIENT_ID']
-    config.google_api_client.authorization.client_secret = ENV['GOOGLE_API_CLIENT_SECRET']
-    config.google_api_client.authorization.scope = 'https://www.googleapis.com/auth/userinfo.email'
+    unless config.offline_mode
+      config.google_api_client = Google::APIClient.new
+      config.google_api_client.authorization.client_id = ENV['GOOGLE_API_CLIENT_ID']
+      config.google_api_client.authorization.client_secret = ENV['GOOGLE_API_CLIENT_SECRET']
+      config.google_api_client.authorization.scope = 'https://www.googleapis.com/auth/userinfo.email'
 
-    config.oauth2_api = config.google_api_client.discovered_api('oauth2', 'v2')
+      config.oauth2_api = config.google_api_client.discovered_api('oauth2', 'v2')
+    end
 
   end
 end

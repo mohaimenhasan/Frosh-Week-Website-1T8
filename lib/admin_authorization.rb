@@ -25,13 +25,20 @@ module AdminAuthorization
   end
 
   def get_admin
-    result = google_api_client.execute({
-      api_method: oauth2_api.userinfo.get,
-      authorization: user_credentials
-    })
-    data = result.data
-    if data.verified_email
-      admins = ::Admin.where(email: data.email)
+    if Rails.application.config.offline_mode
+      verified_email = true
+      email = "offline_admin"
+    else
+      result = google_api_client.execute({
+        api_method: oauth2_api.userinfo.get,
+        authorization: user_credentials
+      })
+      data = result.data
+      verified_email = data.verified_email
+      email = data.email
+    end
+    if verified_email
+      admins = ::Admin.where(email: email)
       if !admins.blank? && admins.count == 1
         admins.first
       else
