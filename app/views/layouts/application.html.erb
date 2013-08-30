@@ -11,12 +11,19 @@
     <%= stylesheet_link_tag "application", media: "all" %>
 
     <%= javascript_include_tag "modernizr" %>
+    <% unless Rails.application.config.offline_mode %>
     <script type="text/javascript" src="//use.typekit.net/llg4dti.js"></script>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
     <script>
         Stripe.setPublishableKey('<%= Rails.application.config.stripe_publishable_key %>');
         var _authCid = '<%= Rails.application.config.google_api_client.authorization.client_id %>';
     </script>
+    <% else %>
+    <%= javascript_include_tag "stripe-debug" %>
+    <script>
+        var _offline = true;
+    </script>
+    <% end %>
     <%= javascript_include_tag "application" %>
     <script type="text/javascript">
         var _gaq = _gaq || [];

@@ -10,23 +10,25 @@ App.AdminController = Ember.Controller.extend({
     this.set('groups', App.Group.find());
 
     var that = this;
-    window.setTimeout(function() {
-      if (Ember.isNone(that.get('model.firstObject'))) {
-        var url = [];
-        url.push(
-          'https://accounts.google.com/o/oauth2/auth',
-          '?response_type=code',
-          '&client_id=',
-          window._authCid,
-          '&redirect_uri=',
-          window.location.protocol, '//', window.location.host,
-          '/auth',
-          '&scope=https://www.googleapis.com/auth/userinfo.email'
-        );
-        url = url.join('');
-        window.location = url;
-      }
-    }, 3000);
+    if (Ember.isNone(window._offline)) {
+      window.setTimeout(function() {
+        if (Ember.isNone(that.get('model.firstObject'))) {
+          var url = [];
+          url.push(
+            'https://accounts.google.com/o/oauth2/auth',
+            '?response_type=code',
+            '&client_id=',
+            window._authCid,
+            '&redirect_uri=',
+            window.location.protocol, '//', window.location.host,
+            '/auth',
+            '&scope=https://www.googleapis.com/auth/userinfo.email'
+          );
+          url = url.join('');
+          window.location = url;
+        }
+      }, 3000);
+    }
   },
 
   isLoggedIn: function() {
