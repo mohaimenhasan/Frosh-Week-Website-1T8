@@ -51,12 +51,8 @@ class Api::Admin::UsersController < Api::UsersController
 
   def send_receipt_email
     u = User.find(params[:id])
-    if u.verified
-      u.send_receipt
-      render nothing: true, status: :ok and return
-    else
-      render nothing: true, status: :bad_request and return
-    end
+    u.send_receipt
+    render nothing: true, status: :ok
   end
 
   protected
