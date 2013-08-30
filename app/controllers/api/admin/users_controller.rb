@@ -22,7 +22,7 @@ class Api::Admin::UsersController < Api::UsersController
 
   def update
     u = User.find(params[:id])
-    u.update_attributes params[:user].slice(:email, :phone, :discipline, :shirt_size, :bursary_chosen, :checked_in)
+    u.update_attributes params[:user].slice(:email, :phone, :discipline, :shirt_size, :bursary_chosen, :checked_in, :restrictions_dietary, :restrictions_accessibility, :restrictions_misc)
     if params[:user].has_key?(:package_id)
       u.package = Package.find(params[:user][:package_id])
       u.save! validate: false
