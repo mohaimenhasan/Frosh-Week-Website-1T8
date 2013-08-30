@@ -150,36 +150,36 @@ class User < ActiveRecord::Base
     #Useful method to check for group stats: Group.all.each {|g| p g.name.to_s << ": " << g.users.count.to_s << ", " << g.users.where(gender: 'Female').count.to_s << ", " << g.users.where(discipline:'Mineral').count.to_s}
   end
 
-  def send_confirmation
+  def send_email(opts)
     message = {
-     subject: 'Please confirm your email',
+     subject: opts[:subject],
      from_name: 'F!rosh Week 1T3',
-     html: ERB.new(File.read(Rails.root.join('app/views/email_confirm.html.erb'))).result(binding),
+     html: ERB.new(File.read(Rails.root.join(opts[:html_body]))).result(binding),
      to: [
        {
          email: email,
          name: "#{first_name} #{last_name}"
        }
      ],
-     from_email: Rails.application.config.mandrill_from
+     from_email: opts[:from_email]
     }
     Mandrill::API.new.messages.send message
   end
 
+  def send_confirmation
+    send_email({
+      subject: 'Please confirm your email',
+      html_body: 'app/views/email_confirm.html.erb',
+      from_email: Rails.application.config.mandrill_from
+    })
+  end
+
   def send_receipt
-    message = {
-     subject: 'Your receipt and ticket',
-     from_name: 'F!rosh Week 1T3',
-     html: ERB.new(File.read(Rails.root.join('app/views/email_receipt.html.erb'))).result(binding),
-     to: [
-       {
-         email: email,
-         name: "#{first_name} #{last_name}"
-       }
-     ],
-     from_email: Rails.application.config.mandrill_from
-    }
-    Mandrill::API.new.messages.send message
+    send_email({
+      subject: 'Your receipt and ticket',
+      html_body: 'app/views/email_receipt.html.erb',
+      from_email: Rails.application.config.mandrill_from
+    })
   end
 
   def process_payment(token)
