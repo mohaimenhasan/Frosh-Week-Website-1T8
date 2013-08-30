@@ -1,5 +1,5 @@
 App.UserController = Ember.ObjectController.extend({
-  needs: ['registrationItem', 'registrationReceipt', 'registrationBursary'],
+  needs: ['registrationItem', 'registrationReceipt', 'registrationBursary', 'adminUsersRegister'],
 
   trackError: function(field, type, errorValue) {
     if (!window._gaq) {
@@ -20,6 +20,14 @@ App.UserController = Ember.ObjectController.extend({
   showError: function() {
     return this.get('serverError') || !this.get('content.isValid');
   }.property('serverError', 'content.isValid'),
+
+  isManual: function() {
+    var selectedPackage = this.get('controllers.registrationItem.model');
+    var isManual = Ember.isNone(selectedPackage);
+    this.set('content.isManual', isManual);
+
+    return isManual;
+  }.property('controllers.adminUsersRegister.packageId', 'controllers.registrationItem.model'),
 
   init: function() {
     this._super.apply(this, arguments);
@@ -67,8 +75,13 @@ App.UserController = Ember.ObjectController.extend({
   },
 
   submit: function() {
-    var selectedPackage = this.get('controllers.registrationItem').get('model');
     var content = this.get('content');
+    var selectedPackage = this.get('controllers.registrationItem').get('model');
+    if (Ember.isNone(selectedPackage)) {
+      var packages = this.get('controllers.adminUsersRegister.packages');
+      var packageId = this.get('controllers.adminUsersRegister.packageId');
+      selectedPackage = packages.findProperty('id', packageId.toString());
+    }
 
     // Prepare parts of the user object from form data.
     var submitButton = Ladda.create(document.querySelector('button[type=submit]'));
@@ -184,15 +197,15 @@ App.UserController = Ember.ObjectController.extend({
       }, 250);
     };
 
-    if (content.get('bursary')) {
+    if (content.get('bursary') || content.get('isManual')) {
       delayedHandleTransaction(null, { id: 0 });
     } else {
       Stripe.card.createToken({
-        name: content.get('ccName'),
-        number: content.get('ccNumber'),
-        cvc: content.get('ccCVC'),
-        exp_month: content.get('ccExpirationMonth'),
-        exp_year: content.get('ccExpirationYear')
+        'name': content.get('ccName'),
+        'number': content.get('ccNumber'),
+        'cvc': content.get('ccCVC'),
+        'exp_month': content.get('ccExpirationMonth'),
+        'exp_year': content.get('ccExpirationYear')
       }, delayedHandleTransaction);
     }
   }

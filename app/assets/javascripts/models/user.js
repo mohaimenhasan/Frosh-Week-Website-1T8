@@ -352,7 +352,7 @@ App.UserForm.reopen({
     bursaryEngineeringMotivation: {
       presence: {
         'if': function(object, validator) {
-          return !!object.get('bursary');
+          return !!object.get('bursary') && !object.get('isManual');
         }
       },
       length: {
@@ -363,7 +363,7 @@ App.UserForm.reopen({
     bursaryFinancialReasoning: {
       presence: {
         'if': function(object, validator) {
-          return !!object.get('bursary');
+          return !!object.get('bursary') && !object.get('isManual');
         }
       },
       length: {
@@ -379,7 +379,7 @@ App.UserForm.reopen({
       },
       presence: {
         unless: function(object, validator) {
-          if (object.get('bursary')) {
+          if (object.get('bursary') || object.get('isManual')) {
             return true;
           }
           return Stripe.card.validateCardNumber(object.get('ccNumber'));
@@ -408,7 +408,7 @@ App.UserForm.reopen({
       },
       presence: {
         unless: function(object, validator) {
-          if (object.get('bursary')) {
+          if (object.get('bursary') || object.get('isManual')) {
             return true;
           }
 
@@ -433,7 +433,7 @@ App.UserForm.reopen({
     ccName: {
       presence: {
         unless: function(object, validator) {
-          return !!object.get('bursary');
+          return !!object.get('bursary') || object.get('isManual');
         }
       },
       length: { maximum: 50 }
@@ -448,7 +448,7 @@ App.UserForm.reopen({
       },
       presence: {
         unless: function(object, validator) {
-          if (object.get('bursary')) {
+          if (object.get('bursary') || object.get('isManual')) {
             return true;
           }
 

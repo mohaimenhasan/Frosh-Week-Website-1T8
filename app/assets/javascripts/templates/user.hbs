@@ -120,102 +120,104 @@
         </section>
     </section>
 
-    <section class="box normal registration-form-step">
-        <span class="number">4</span>
-        <h2>How will you be paying?</h2>
+    {{#unless isManual}}
+        <section class="box normal registration-form-step">
+            <span class="number">4</span>
+            <h2>How will you be paying?</h2>
 
-        {{#if showBursary}}
-            <section class="registration-form-group">
-                <h3>Would you like to apply for the F!rosh Week bursary?</h3>
-                <div class="info">
-                    Please only apply if your financial situation prevents you from participating in F!rosh
-                    Week. The bursary covers the $100 standalone F!rosh kit package. The Commuter program and
-                    the Hart House Farm camping trip are not covered by the bursary. Bursaries are limited and
-                    will be awarded based on greatest need. You will need to fill out an additional short
-                    application.
-                </div>
-                {{#input bursary}}
-                    {{inputField bursary as=checkbox}}{{labelField bursary text=" "}}
-                    <label>Yes</label>
-                {{/input}}
-            </section>
-        {{/if}}
-
-        <div {{bindAttr class=":registration-payment bursary:hidden:showing"}}>
-            <section class="registration-form-group aligned">
-                <h3>
-                    Pay by credit card
-                    <span class="subtitle green"><strong>Secure connection</strong></span>
-                </h3>
-                <p>We accept Visa, Mastercard, and American Express.</p>
-                {{#input ccName}}
-                    {{labelField ccName text="Name on card"}}
-                    {{inputField ccName placeholder="Jane Smith" toggledBinding=bursary reverse="true"}}
-                {{/input}}
-
-                <div class="input">
-                    <label>Card number</label>
-                    <div class="inline">
-                        {{#input ccNumber}}
-                            {{inputField ccNumber as=tel placeholder="1234 1234 1234 1234" inputConfig="class:cc cc-number" toggledBinding=bursary reverse="true"}}
-                        {{/input}}
-                        {{#input ccCVC}}
-                            {{inputField ccCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc" toggledBinding=bursary reverse="true"}}
-                        {{/input}}
-                    </div>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="input">
-                    <label>Expires</label>
-                    <div class="inline">
-                        {{#input ccExpiration}}
-                            {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month" toggledBinding=bursary reverse="true"}}
-                        {{/input}}
-                        {{#input ccExpiration}}
-                            {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year" toggledBinding=bursary reverse="true"}}
-                        {{/input}}
-                    </div>
-                    <div class="clear"></div>
-                </div>
-            </section>
-        </div>
-
-        <div {{bindAttr class=":registration-bursary bursary:showing:hidden"}}>
-            <section class="registration-form-group">
-                <h3>Fill out your bursary application details</h3>
-                <section class="subsection">
+            {{#if showBursary}}
+                <section class="registration-form-group">
+                    <h3>Would you like to apply for the F!rosh Week bursary?</h3>
                     <div class="info">
-                        Are you eligible for a Ontario Student Assistance Program (OSAP) loan?
+                        Please only apply if your financial situation prevents you from participating in F!rosh
+                        Week. The bursary covers the $100 standalone F!rosh kit package. The Commuter program and
+                        the Hart House Farm camping trip are not covered by the bursary. Bursaries are limited and
+                        will be awarded based on greatest need. You will need to fill out an additional short
+                        application.
                     </div>
-                    {{#input bursaryOsap}}
-                        {{inputField bursaryOsap as=checkbox toggledBinding=bursary reverse="false"}}{{labelField bursaryOsap text=" "}}
+                    {{#input bursary}}
+                        {{inputField bursary as=checkbox}}{{labelField bursary text=" "}}
                         <label>Yes</label>
                     {{/input}}
                 </section>
+            {{/if}}
 
-                <section class="subsection">
-                    <div class="info">
-                        Please describe your motivation for attending the Engineering Society's Orientation
-                        Week. (Up to 300 words)
-                    </div>
-                    {{#input bursaryEngineeringMotivation}}
-                        {{inputField bursaryEngineeringMotivation as=text toggledBinding=bursary reverse="false"}}
+            <div {{bindAttr class=":registration-payment bursary:hidden:showing"}}>
+                <section class="registration-form-group aligned">
+                    <h3>
+                        Pay by credit card
+                        <span class="subtitle green"><strong>Secure connection</strong></span>
+                    </h3>
+                    <p>We accept Visa, Mastercard, and American Express.</p>
+                    {{#input ccName}}
+                        {{labelField ccName text="Name on card"}}
+                        {{inputField ccName placeholder="Jane Smith" toggledBinding=bursary reverse="true"}}
                     {{/input}}
-                </section>
 
-                <section class="subsection">
-                    <div class="info">
-                        Please describe why you would need financial support in order to attend the Engineering
-                        Society's Orientation week (up to 300 words).
+                    <div class="input">
+                        <label>Card number</label>
+                        <div class="inline">
+                            {{#input ccNumber}}
+                                {{inputField ccNumber as=tel placeholder="1234 1234 1234 1234" inputConfig="class:cc cc-number" toggledBinding=bursary reverse="true"}}
+                            {{/input}}
+                            {{#input ccCVC}}
+                                {{inputField ccCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc" toggledBinding=bursary reverse="true"}}
+                            {{/input}}
+                        </div>
+                        <div class="clear"></div>
                     </div>
-                    {{#input bursaryFinancialReasoning}}
-                        {{inputField bursaryFinancialReasoning as=text toggledBinding=bursary reverse="false"}}
-                    {{/input}}
+
+                    <div class="input">
+                        <label>Expires</label>
+                        <div class="inline">
+                            {{#input ccExpiration}}
+                                {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month" toggledBinding=bursary reverse="true"}}
+                            {{/input}}
+                            {{#input ccExpiration}}
+                                {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year" toggledBinding=bursary reverse="true"}}
+                            {{/input}}
+                        </div>
+                        <div class="clear"></div>
+                    </div>
                 </section>
-            </section>
-        </div>
-    </section>
+            </div>
+
+            <div {{bindAttr class=":registration-bursary bursary:showing:hidden"}}>
+                <section class="registration-form-group">
+                    <h3>Fill out your bursary application details</h3>
+                    <section class="subsection">
+                        <div class="info">
+                            Are you eligible for a Ontario Student Assistance Program (OSAP) loan?
+                        </div>
+                        {{#input bursaryOsap}}
+                            {{inputField bursaryOsap as=checkbox toggledBinding=bursary reverse="false"}}{{labelField bursaryOsap text=" "}}
+                            <label>Yes</label>
+                        {{/input}}
+                    </section>
+
+                    <section class="subsection">
+                        <div class="info">
+                            Please describe your motivation for attending the Engineering Society's Orientation
+                            Week. (Up to 300 words)
+                        </div>
+                        {{#input bursaryEngineeringMotivation}}
+                            {{inputField bursaryEngineeringMotivation as=text toggledBinding=bursary reverse="false"}}
+                        {{/input}}
+                    </section>
+
+                    <section class="subsection">
+                        <div class="info">
+                            Please describe why you would need financial support in order to attend the Engineering
+                            Society's Orientation week (up to 300 words).
+                        </div>
+                        {{#input bursaryFinancialReasoning}}
+                            {{inputField bursaryFinancialReasoning as=text toggledBinding=bursary reverse="false"}}
+                        {{/input}}
+                    </section>
+                </section>
+            </div>
+        </section>
+    {{/unless}}
 
     <div {{bindAttr class=":registration-error showError:showing:hidden"}}>
         <section class="box highlight">

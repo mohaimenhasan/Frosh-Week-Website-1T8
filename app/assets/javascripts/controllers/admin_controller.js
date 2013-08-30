@@ -212,3 +212,46 @@ App.AdminUsersBursaryController = App.AdminSubController.extend({
     user.get('transaction').commit();
   }
 });
+
+App.AdminUsersRegisterController = Ember.Controller.extend({
+  needs: ['admin'],
+
+  packages: function() {
+    return this.get('controllers.admin.packages');
+  }.property('controllers.admin.packages'),
+
+  formPackages: function() {
+    var packages = this.get('packages') || [];
+    return packages.map(function(item) {
+      return item.get('key');
+    });
+  }.property('packages.firstObject'),
+
+  packageId: 1,
+
+  pkg: function(key, value) {
+    var packages = this.get('packages');
+    var pkg;
+
+    if (arguments.length === 1) {
+      var packageId = this.get('packageId');
+      if (!Ember.isNone(packageId)) {
+        packageId = packageId.toString();
+      }
+
+      if (!Ember.isNone(packages)) {
+        pkg = packages.findProperty('id', packageId);
+        return !Ember.isNone(pkg) ? pkg.get('key') : '-';
+      }
+
+      return '-';
+    } else {
+      if (!Ember.isNone(packages)) {
+        pkg = packages.findProperty('key', value);
+        if (!Ember.isNone(pkg)) {
+          this.set('packageId', pkg.get('id'));
+        }
+      }
+    }
+  }.property('packageId')
+});

@@ -4,11 +4,11 @@
         Manually register a user. Select a F!rosh kit below.
     </p>
     <p>
-        This page is currently disabled.
+        After registering the user, go to {{#linkTo "admin.users"}}overview{{/linkTo}} and refresh the page to
+        see the new registrant.
     </p>
+    {{view Ember.Select contentBinding=formPackages valueBinding=pkg}}
 </div>
 <div class="registration">
-    {{!--
     {{render user}}
-    --}}
 </div>
