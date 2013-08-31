@@ -19,7 +19,7 @@ class Api::UsersController < ApplicationController
 
     u.save!
 
-    u.send_confirmation unless check_skip :skip_confirm_email
+    u.send_confirmation unless (check_skip(:skip_confirm_email) || Rails.application.config.offline_mode)
 
     render json: {
       user: u.exposed_data({

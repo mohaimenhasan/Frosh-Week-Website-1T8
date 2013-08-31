@@ -4,6 +4,7 @@ class Api::Admin::UsersController < Api::UsersController
 
   include AdminAuthorization
   before_filter :authorize_admin
+  before_filter :check_offline_mode, only: [:send_confirmation_email, :send_receipt_email]
 
   def index
   	selector = params.slice *User.accessible_attributes
@@ -59,6 +60,12 @@ class Api::Admin::UsersController < Api::UsersController
 
   def add_details_from_admin(user)
     user.created_by_admin = get_admin.email
+  end
+
+  def check_offline_mode
+    if Rails.application.config.offline_mode
+      render nothing: true, status: :bad_request and return
+    end
   end
 
 end
