@@ -11,17 +11,20 @@ module AdminAuthorization
       auth = Rails.application.config.google_api_client.authorization.dup
       auth.redirect_uri = (Rails.env.development? ? 'http://' : 'https://') + Rails.application.config.hostname + '/auth'
       auth.update_token!(session)
-      auth.fetch_access_token! if auth.refresh_token && auth.expired?
+      if auth.refresh_token && auth.expired?
+        auth.fetch_access_token!
+        save_session auth
+      end
       auth
     )
   end
 
-  def save_session
+  def save_session(creds=user_credentials)
     # Serialize the access/refresh token to the session
-    session[:access_token] = user_credentials.access_token
-    session[:refresh_token] = user_credentials.refresh_token
-    session[:expires_in] = user_credentials.expires_in
-    session[:issued_at] = user_credentials.issued_at
+    session[:access_token] = creds.access_token
+    session[:refresh_token] = creds.refresh_token
+    session[:expires_in] = creds.expires_in
+    session[:issued_at] = creds.issued_at
   end
 
   def get_admin
