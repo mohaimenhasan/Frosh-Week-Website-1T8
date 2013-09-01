@@ -15,7 +15,8 @@
     <div class="main col">
         <section class="box normal">
             <h1>
-                <i class="icon-ticket"></i> Register online!
+                <i class="icon-ticket"></i> Register online
+                <span class="subtitle">Online registration closes at noon today!</span>
             </h1>
             {{#each model}}
                 {{#linkTo 'registration.item' this}}
@@ -28,6 +29,32 @@
                             </p>
                     </div>
                 {{/linkTo}}
+            {{else}}
+                <h3>Missed online registration?</h3>
+                <p>
+                    <strong>You can still join us!</strong> Bring cash or credit on Monday between 7:30am and 9:00am
+                    to register at the door! Find us in front of Convocation Hall!
+                </p>
+                <p>
+                    There will be two available packages at the door:
+                </p>
+                <ul>
+                    <li>
+                        <strong>$120</strong> F!rosh Kit Standalone Package.
+                    </li>
+                    <li>
+                        <strong>$150</strong> F!rosh Kit + Hart House Farm Package.
+                    </li>
+                </ul>
+                <p></p>
+                <iframe width="100%"
+                        height="400"
+                        frameborder="0"
+                        scrolling="no"
+                        marginheight="0"
+                        marginwidth="0"
+                        src="https://maps.google.ca/maps?source=embed&amp;f=q&amp;hl=en&amp;geocode=&amp;q=Convocation+Hall,+Kings+College+Circle,+Toronto,+Ontario&amp;aq=0&amp;sll=49.891235,-97.15369&amp;sspn=46.422473,114.169922&amp;ie=UTF8&amp;hq=Convocation+Hall,+Kings+College+Circle,+Toronto,+Ontario&amp;t=m&amp;cid=13013795246944744418&amp;hnear=&amp;ll=43.668679,-79.390039&amp;spn=0.031043,0.042915&amp;output=embed">
+                </iframe>
             {{/each}}
         </section>
     </div>
