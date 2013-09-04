@@ -30,8 +30,12 @@
                     <div class="action-button">
                         {{#linkTo 'registration.index'}}
                             <button class="highlight">
-                                <strong>Register Now</strong> <br>
-                                {{daysRemaining}} {{pluralize daysRemaining string="day"}} until F!rosh!
+                                {{#unless hasStarted}}
+                                    <strong>Register Now</strong> <br>
+                                    {{daysRemaining}} {{pluralize daysRemaining string="day"}} until F!rosh!
+                                {{else}}
+                                    F!rosh Week has started!<br>
+                                {{/unless}}
                             </button>
                         {{/linkTo}}
                     </div>
@@ -43,7 +47,7 @@
     <section class="section highlight home-misc">
         <div class="content row">
             <div class="side col">
-                <div class="number">{{daysRemaining}}</div>
+                <div class="number">0</div>
                 <span class="days-remaining-text">{{pluralize daysRemaining string="day"}} until F!rosh.</span>
             </div>
             <div class="main col">

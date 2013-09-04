@@ -7,6 +7,10 @@ App.IndexController = Ember.Controller.extend({
     return parseInt(days, 10);
   }.property(),
 
+  hasStarted: function() {
+    return this.get('daysRemaining') <= 0;
+  }.property('daysRemaining'),
+
   showVideo: function(event) {
     this.set('videoShowing', true);
     return false;
