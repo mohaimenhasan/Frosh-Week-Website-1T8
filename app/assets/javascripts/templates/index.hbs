@@ -5,7 +5,7 @@
             <div class="third col subheader-text">
                 <p>
                     U of T Engineering's Orientation Week <br>
-                    <strong>September 2 - 8</strong>
+                    <strong>September 1 - 7</strong>
                 </p>
             </div>
             <div class="third col subheader-text">
@@ -23,7 +23,7 @@
                 <div class="box normal home-message">
                     <h1>What will your F!rosh Week moment be?</h1>
                     <p>
-                        Welcome to U of T Engineering. F!rosh Week 1T3 is your official student-run orientation week!
+                        Welcome to U of T Engineering. F!rosh Week 1T4 is your official student-run orientation week!
                         Join us to experience the unique events, traditions, and Skule&trade; spirit that define
                         student life at U of T Engineering.
                     </p>
@@ -47,7 +47,9 @@
     <section class="section highlight home-misc">
         <div class="content row">
             <div class="side col">
-                <div class="number">0</div>
+                <div class="number">{{daysRemaining}}</div>
+                <!--span class="days-remaining-text">{{pluralize daysRemaining
+                string="day"}} until F!rosh.</span-->
                 <span class="days-remaining-text">{{pluralize daysRemaining string="day"}} until F!rosh.</span>
             </div>
             <div class="main col">
@@ -93,11 +95,13 @@
                         In F!rosh Week, we’ve got it all.
                     </p>
                 </div>
+                <!-- TODO(rshareef): uncomment schedule link when ready
                 {{#linkTo 'schedule'}}
                     <div class="box normal step bottom-half">
                         <h3>See the schedule.</h3>
                     </div>
                 {{/linkTo}}
+                -->
             </div>
         </div>
         <div class="mini-content row">
