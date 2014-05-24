@@ -14,7 +14,7 @@ $home-banner-image: 'home-banner.jpg';
 $home-banner-scaling-s: 0.75;
 $home-banner-scaling-m: 0.75;
 $home-banner-scaling-l: 1.25;
-$logo-scaling: 0.7;
+$logo-scaling: 0.275;
 
 /* Core
  * ----
@@ -68,10 +68,10 @@ $logo-scaling: 0.7;
                     margin: { top: 0.5em;  bottom: 0.5em; };
                 };
                 @include screen-medium {
-                    margin: { top: 2em;    bottom: 2em; };
+                    margin: { top: 4em;    bottom: 4em; };
                 };
                 @include screen-large {
-                    margin: { top: 1.5em;  bottom: 1.5em; };
+                    margin: { top: 3.5em;  bottom: 3.5em; };
                 };
             }
         }

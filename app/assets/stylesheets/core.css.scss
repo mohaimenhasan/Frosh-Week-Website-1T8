@@ -21,7 +21,7 @@ $font-weight-normal: 400;
 $font-weight-bold: 700;
 $box-shadow-args: 0 1px 2px;
 
-$logo: 'logo.png';
+$logo: 'logo-large.png';
 $chevron: 'chevron.svg';
 
 $white: #FFFFFF;
@@ -215,6 +215,7 @@ body {
 
 .content {
     margin: 0 auto;
+    vertical-align: middle;
     max-width: 60em;
 
     @include screen-small   { margin: { top: 0em; bottom: 0em; }; }
