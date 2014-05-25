@@ -351,3 +351,14 @@ $logo-scaling: 0.275;
     height: image-scaled-height($logo, $logo-scaling);
     margin: 0;
 }
+.home-logo-large {
+    background: {
+        image: image-url($logo);
+        size: contain;
+        position: center;
+        repeat: no-repeat;
+    };
+
+    height: image-scaled-height($logo, .5);
+    margin: 0;
+}
