@@ -426,8 +426,8 @@
         position: center;
     };
 
-    width: 100%;
-    height: image-height($logo);
+    height: image-scaled-height($logo, 0.5);
+    margin: 0;
 
     @include print { display: none; };
 }
