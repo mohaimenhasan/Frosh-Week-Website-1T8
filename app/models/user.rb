@@ -128,6 +128,7 @@ class User < ActiveRecord::Base
     unless ticket_number
       self.ticket_number = (id.to_i * 100) + rand(100) + 100_000
       self.save!
+      package.increase_count
     end
   end
 
@@ -153,7 +154,7 @@ class User < ActiveRecord::Base
   def send_email(opts)
     message = {
      subject: opts[:subject],
-     from_name: 'F!rosh Week 1T3',
+     from_name: 'F!rosh Week 1T4',
      html: ERB.new(File.read(Rails.root.join(opts[:html_body]))).result(binding),
      to: [
        {
