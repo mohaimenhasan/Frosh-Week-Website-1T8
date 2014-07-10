@@ -134,7 +134,7 @@ Package.create(
   count: 0,
   max: 0,
   start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2014', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
 )
 Package.create(
   key: 'farm',
@@ -144,7 +144,7 @@ Package.create(
   count: 0,
   max: 0,
   start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2014', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
 )
 Package.create(
   key: 'commuter',
@@ -154,7 +154,7 @@ Package.create(
   count: 0,
   max: 0,
   start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2014', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
 )
 Package.create(
   key: 'all',
@@ -164,5 +164,5 @@ Package.create(
   count: 0,
   max: 0,
   start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2014', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
 )
