@@ -30,9 +30,8 @@
                     <div class="action-button">
                             <button class="highlight" onClick="parent.location='http://eepurl.com/VrpFv'">
                                 {{#unless hasStarted}}
-                                    <strong>Sign up now!</strong> <br>
-                                    Be the first to know when registration opens!<br>
-                                    <!--{{daysRemaining}} {{pluralize daysRemaining string="day"}} until F!rosh!-->
+                                    <strong>Register Now</strong> <br>
+                                    {{daysRemaining}} {{pluralize daysRemaining string="day"}} until F!rosh!
                                 {{else}}
                                     F!rosh Week has started!<br>
                                 {{/unless}}
@@ -94,6 +93,11 @@
                         In F!rosh Week, we’ve got it all.
                     </p>
                 </div>
+                {{#linkTo 'schedule'}}
+                <div class="box normal step bottom-half">
+                    <h3>See the schedule.</h3>
+                </div>
+                {{/linkTo}}
             </div>
         </div>
         <div class="mini-content row">
