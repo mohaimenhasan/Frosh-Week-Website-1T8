@@ -28,7 +28,8 @@
                         student life at U of T Engineering.
                     </p>
                     <div class="action-button">
-                            <button class="highlight" onClick="parent.location='http://eepurl.com/VrpFv'">
+                        {{#linkTo 'registration.index'}}
+                            <button class="highlight">
                                 {{#unless hasStarted}}
                                     <strong>Register Now</strong> <br>
                                     {{daysRemaining}} {{pluralize daysRemaining string="day"}} until F!rosh!
@@ -36,6 +37,7 @@
                                     F!rosh Week has started!<br>
                                 {{/unless}}
                             </button>
+                        {{/linkTo}}
                     </div>
                 </div>
             </div>
