@@ -20,7 +20,6 @@ Group.create(symbol: '&kappa;', name: 'Kappa')
 Group.create(symbol: '&lambda;', name: 'Lambda')
 Group.create(symbol: '&mu;', name: 'Mu')
 Group.create(symbol: '&Nu;', name: 'Ni')
-Group.create(symbol: '&Omicron;', name: 'Omicron')
 Group.create(symbol: '&pi;', name: 'Pi')
 Group.create(symbol: '&rho;', name: 'Rho')
 Group.create(symbol: '&Sigma;', name: 'Sigma')
@@ -57,7 +56,7 @@ Package.create(
 Package.create(
   key: 'early-bird-with-farm',
   name: 'F!rosh Kit Early Bird + Hart House Farm Package',
-  description: 'A standard F!rosh Kit just like above... except even better! This package includes a ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 7 and 8 to cap off F!rosh Week!',
+  description: 'A standard F!rosh Kit... except even better! This package includes a ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 13 and 14 to cap off F!rosh Week!',
   price: round_one + hhf_addon,
   count: 0,
   max: early_bird_max,
@@ -139,7 +138,7 @@ Package.create(
 Package.create(
   key: 'farm',
   name: 'F!rosh Kit + Hart House Farm Package',
-  description: 'A standard F!rosh Kit just like above... except even better! This package includes a ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 7 and 8 to cap off F!rosh Week!',
+  description: 'A standard F!rosh Kit just like above... except even better! This package includes a ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 13 and 14 to cap off F!rosh Week!',
   price: round_three + hhf_addon ,
   count: 0,
   max: 0,
