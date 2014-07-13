@@ -223,6 +223,21 @@ $base-height: 1em;
             max-height: slot-height(24);
         };
 
+        &.thirteen-hr {
+            min-height: slot-height(26);
+            max-height: slot-height(26);
+        };
+
+        &.fourteen-hr {
+            min-height: slot-height(28);
+            max-height: slot-height(28);
+        };
+
+        &.fifteen-hr {
+            min-height: slot-height(30);
+            max-height: slot-height(30);
+        };
+
         &[data-time]:before {
             @extend .small;
 
