@@ -22,24 +22,33 @@ class Package < ActiveRecord::Base
 
   def available?
     if (self.key == 'early-bird-standalone' \
-      or self.key == 'early-bird-with-farm' \
-      or self.key == 'early-bird-with-commuter' \
-      or self.key == 'early-bird-all')
+      or self.key == 'early-bird-with-farm')
+      #or self.key == 'early-bird-with-farm' \
+      #or self.key == 'early-bird-with-commuter' \
+      #or self.key == 'early-bird-all')
       available = available_early_bird?
     elsif (self.key == 'middle-bird-standalone' \
-       or self.key == 'middle-bird-with-farm' \
-       or self.key == 'middle-bird-with-commuter' \
-       or self.key == 'middle-bird-all')
+       or self.key == 'middle-bird-with-farm')
+       #or self.key == 'middle-bird-with-farm' \
+       #or self.key == 'middle-bird-with-commuter' \
+       #or self.key == 'middle-bird-all')
       available = available_middle_bird?
     elsif (self.key == 'standalone' \
-       or self.key == 'farm' \
-       or self.key == 'commuter' \
-       or self.key == 'all')
+       or self.key == 'farm')
+       #or self.key == 'farm' \
+       #or self.key == 'commuter' \
+       #or self.key == 'all')
       available = available_normal?
     else
       available = false
     end
     return (available_by_time? and available)
+  end
+
+  def available_early_bird?
+    early_count = Package.select("sum(count)").where("key IN ('early-bird-standalone', 'early-bird-with-farm', 'early-bird-width-commuter', 'early-bird-all')").sum(:count)
+    return true if early_count < 150
+    return false
   end
 
   def available_early_bird?
