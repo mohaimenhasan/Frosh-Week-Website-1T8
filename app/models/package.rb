@@ -59,7 +59,7 @@ class Package < ActiveRecord::Base
 
   def available_middle_bird?
     if !available_early_bird?
-      middle_count = Package.select("sum(count)").where("key IN ('middle-bird-standalone', 'middle-bird-with-farm', 'middle-bird-width-commuter', 'middle-bird-all')").sum(:count)
+      middle_count = Package.select("sum(count)").where("key IN ('middle-bird-standalone', 'middle-bird-with-farm', 'middle-bird-with-commuter', 'middle-bird-all')").sum(:count)
       return true if middle_count < 500
     end
     return false
