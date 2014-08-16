@@ -21,20 +21,17 @@ class Package < ActiveRecord::Base
   has_many :users
 
   def available?
-    if (self.key == 'early-bird-standalone' \
-      or self.key == 'early-bird-with-farm')
+    if (self.key == 'early-bird-standalone')
       #or self.key == 'early-bird-with-farm' \
       #or self.key == 'early-bird-with-commuter' \
       #or self.key == 'early-bird-all')
       available = available_early_bird?
-    elsif (self.key == 'middle-bird-standalone' \
-       or self.key == 'middle-bird-with-farm')
+    elsif (self.key == 'middle-bird-standalone')
        #or self.key == 'middle-bird-with-farm' \
        #or self.key == 'middle-bird-with-commuter' \
        #or self.key == 'middle-bird-all')
       available = available_middle_bird?
-    elsif (self.key == 'standalone' \
-       or self.key == 'farm')
+    elsif (self.key == 'standalone')
        #or self.key == 'farm' \
        #or self.key == 'commuter' \
        #or self.key == 'all')
