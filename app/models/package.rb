@@ -36,6 +36,11 @@ class Package < ActiveRecord::Base
        #or self.key == 'commuter' \
        #or self.key == 'all')
       available = available_normal?
+    elsif (self.key == 'standalone-day-of')
+       #or self.key == 'farm' \
+       #or self.key == 'commuter' \
+       #or self.key == 'all')
+      available = true
     else
       available = false
     end
