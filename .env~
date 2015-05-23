@@ -1,0 +1,12 @@
+# Copy this file to .env and set environment variables here.
+RACK_ENV=development
+PORT=3000
+STRIPE_SECRET_KEY=
+STRIPE_PUBLISHABLE_KEY=
+MANDRILL_APIKEY=
+MANDRILL_FROM=
+GOOGLE_API_CLIENT_ID=
+GOOGLE_API_CLIENT_SECRET=
+HOSTNAME=localhost:3000
+SECRET_TOKEN=rake secret
+OFFLINE_MODE=true|false
