@@ -27,7 +27,7 @@
                         Join us to experience the unique events, traditions, and Skule&trade; spirit that define
                         student life at U of T Engineering.
                     </p>
-                    <div class="action-button">
+                    <!--div class="action-button">
                     	
                             <button class="highlight" onClick="parent.location='https://docs.google.com/a/orientation.skule.ca/forms/d/1M7xl6MNA6Aq2mE4kHcgk3QfDOCpkzMz_UQKBQmYcnKo/viewform'" >
                                 {{#unless hasStarted}}
@@ -39,7 +39,7 @@
                     </div>
 		    <p style="text-align: center">
 			<strong> Be the first to know when registration opens! </strong>
-		    </p>
+		    </p-->
                 </div>
             </div>
         </div>
