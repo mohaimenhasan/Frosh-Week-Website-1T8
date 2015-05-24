@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="description" content="F!rosh Week 1T5">
+    <meta name="description" content="F!rosh Week 1T4">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> <%= csrf_meta_tags %>
 
-    <title>F!rosh Week 1T5</title>
+    <title>F!rosh Week 1T4</title>
 
     <%= stylesheet_link_tag "application", media: "all" %>
 
