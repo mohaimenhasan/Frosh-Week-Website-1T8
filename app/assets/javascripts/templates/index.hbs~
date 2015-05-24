@@ -28,7 +28,7 @@
                         student life at U of T Engineering.
                     </p>
                     <!--div class="action-button">
-                    	{{#linkTo 'registration.index'}}
+                    	
                             <button class="highlight" disable>
                                 {{#unless hasStarted}}
                                     <strong>Sign Up Now!</strong> <br>
@@ -37,7 +37,7 @@
                                     F!rosh Week has started!<br>
                                 {{/unless}}
                             </button>
-                        {{/linkTo}} 
+                       
                     </div-->
                 </div>
             </div>
@@ -95,11 +95,11 @@
                         In F!rosh Week, we’ve got it all.
                     </p>
                 </div>
-                {{#linkTo 'schedule'}}
+                <!-- {{#linkTo 'schedule'}}
                 <div class="box normal step bottom-half">
                     <h3>See the schedule.</h3>
                 </div>
-                {{/linkTo}}
+                {{/linkTo}} -->
             </div>
         </div>
         <div class="mini-content row">
