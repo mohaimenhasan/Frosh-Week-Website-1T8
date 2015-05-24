@@ -1,0 +1,17 @@
+connection: &connection
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: jason
+  password: 1116208
+development:
+  <<: *connection
+  adapter: postgresql
+  database: skuleorientation
+  host: localhost
+test:
+  <<: *connection
+  adapter: postgresql
+  database: skuleorientation-test
+  host: localhost
+  min_messages: WARNING
