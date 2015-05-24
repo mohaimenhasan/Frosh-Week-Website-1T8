@@ -95,11 +95,6 @@
                         In F!rosh Week, we’ve got it all.
                     </p>
                 </div>
-                <!-- {{#linkTo 'schedule'}}
-                <div class="box normal step bottom-half">
-                    <h3>See the schedule.</h3>
-                </div>
-                {{/linkTo}} -->
             </div>
         </div>
         <div class="mini-content row">
