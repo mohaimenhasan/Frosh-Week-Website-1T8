@@ -229,10 +229,7 @@ body {
     max-width: 35em;
 }
 
-.messageBox-content {
-    @extend .content;
-    max-width: 15em;
-}
+
 .spaced {
     margin: { top: 1em; bottom: 1em; };
 }
@@ -284,7 +281,7 @@ body {
     box-sizing: border-box;
     padding: 1em;
     float: right;
-    padding: 1em;
+    max-width: 20em;
 		/* height adjustments */
     @include screen-small { 
             height: 2em;
@@ -292,14 +289,14 @@ body {
             margin: { top: 0em; bottom: 0em; }; 
     };
     @include screen-medium { 
-        height: 2em;
+        height: 3em;
         line-height: 2em;
-        margin: { top: 0.5em; bottom: 0em; }; 
+        margin: { top: 0.5em; bottom: 0.5em; }; 
     };
     @include screen-large { 
-        height: 2em;
+        height: 3em;
         line-height: 2em;
-        margin: { top: 0.5em; bottom: 0em; }; 
+        margin: { top: 0.5em; bottom: 0.5em; }; 
     };
 }
 .step {
