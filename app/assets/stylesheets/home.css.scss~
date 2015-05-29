@@ -125,21 +125,7 @@ $logo-scaling: 0.275;
         
         position: relative;
 				/* height adjustments */
-        @include screen-small { 
-            height: 4em;
-            line-height: 2.25em;
-            margin: { top: 0em; bottom: 0em; }; 
-        };
-        @include screen-medium { 
-            height: 4em;
-            line-height: 4em;
-            margin: { top: 0.5em; bottom: 0em; }; 
-        };
-        @include screen-large { 
-            height: 4em;
-            line-height: 4em;
-            margin: { top: 1em; bottom: 0em; }; 
-        };
+        
         /* message box adjustment */
         .home-snapchat-message{
 					  background-color: transparentize($white, 0.1);

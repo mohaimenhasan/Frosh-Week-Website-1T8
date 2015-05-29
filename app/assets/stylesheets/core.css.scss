@@ -232,9 +232,7 @@ body {
 .messageBox-content {
     @extend .content;
     max-width: 15em;
-		float: left;
 }
-
 .spaced {
     margin: { top: 1em; bottom: 1em; };
 }
@@ -270,7 +268,7 @@ body {
 
 .box {
     @include border-radius(0.35em);
-
+		
     box-sizing: border-box;
     float: left;
     width: 100%;
@@ -281,6 +279,29 @@ body {
     @include screen-large   { margin: { top: 1em; bottom: 1em; }; };
 }
 
+.snapchat-box {
+    @include border-radius(0.35em);
+    box-sizing: border-box;
+    padding: 1em;
+    float: right;
+    padding: 1em;
+		/* height adjustments */
+    @include screen-small { 
+            height: 2em;
+            line-height: 1.25em;
+            margin: { top: 0em; bottom: 0em; }; 
+    };
+    @include screen-medium { 
+        height: 2em;
+        line-height: 2em;
+        margin: { top: 0.5em; bottom: 0em; }; 
+    };
+    @include screen-large { 
+        height: 2em;
+        line-height: 2em;
+        margin: { top: 0.5em; bottom: 0em; }; 
+    };
+}
 .step {
     position: relative;
 

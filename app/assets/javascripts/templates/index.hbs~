@@ -43,9 +43,9 @@
                 </div>
             </div>
         </div>
-        <div class="mini-content row">
+        <div class="messageBox-content row">
         		<div class="main-messageBox col">
-   		      		<div class="box normal home-snapchat-message">
+   		      		<div class="snapchat-box normal home-snapchat-message">
 										<p> TEST BOX </p>
 								</div>
             </div>
