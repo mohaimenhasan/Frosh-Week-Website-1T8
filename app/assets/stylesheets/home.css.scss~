@@ -121,8 +121,8 @@ $logo-scaling: 0.275;
         }
     }
     /* for displaying snapchat addme message in banner */
-    .home-snapchat-message {
-        background-color: transparentize($white, 0.1);
+    .main-messageBox {
+        
         position: relative;
 				/* height adjustments */
         @include screen-small { 
@@ -141,7 +141,8 @@ $logo-scaling: 0.275;
             margin: { top: 1em; bottom: 0em; }; 
         };
         /* message box adjust ment */
-        .messageBox {
+        .home-snapchat-message{
+					  background-color: transparentize($white, 0.1);
             @include screen-small {
                 text-align: center;
 				    };
@@ -151,13 +152,9 @@ $logo-scaling: 0.275;
 				    @include screen-large {
 				        text-align: right;
 				    };
+						
         }
-        h1 {
-            font: {
-                weight: $font-weight-bold;
-                size: 1.0em;
-            };
-        }
+        
     }
 }
 
