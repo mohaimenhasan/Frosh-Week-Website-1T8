@@ -15,4 +15,5 @@ App.IndexController = Ember.Controller.extend({
     this.set('videoShowing', true);
     return false;
   }
+
 });

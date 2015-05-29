@@ -104,9 +104,9 @@ $logo-scaling: 0.275;
         background-color: transparentize($white, 0.1);
         text-align: left;
 
-        @include screen-small   { margin: { top: 1em; bottom: 1em; }; };
-        @include screen-medium  { margin: { top: 2em; bottom: 2em; }; };
-        @include screen-large   { margin: { top: 3em; bottom: 3em; }; };
+        @include screen-small   { margin: { top: 0em; bottom: 0em; }; };
+        @include screen-medium  { margin: { top: 1em; bottom: 1em; }; };
+        @include screen-large   { margin: { top: 2em; bottom: 2em; }; };
 
         h1 {
             text-align: center;
@@ -120,7 +120,47 @@ $logo-scaling: 0.275;
             text-align: center;
         }
     }
+    /* for displaying snapchat addme message in banner */
+    .home-snapchat-message {
+        background-color: transparentize($white, 0.1);
+        position: relative;
+				/* height adjustments */
+        @include screen-small { 
+            height: 10em;
+            line-height: 2.25em;
+            margin: { top: 0em; bottom: 0em; }; 
+        };
+        @include screen-medium { 
+            height: 4em;
+            line-height: 4em;
+            margin: { top: 0.5em; bottom: 0em; }; 
+        };
+        @include screen-large { 
+            height: 4em;
+            line-height: 4em;
+            margin: { top: 1em; bottom: 0em; }; 
+        };
+        /* message box adjust ment */
+        .messageBox {
+            @include screen-small {
+                text-align: center;
+				    };
+				    @include screen-medium {
+				        text-align: right;
+				    };
+				    @include screen-large {
+				        text-align: right;
+				    };
+        }
+        h1 {
+            font: {
+                weight: $font-weight-bold;
+                size: 1.0em;
+            };
+        }
+    }
 }
+
 
 .home-misc {
     position: relative;

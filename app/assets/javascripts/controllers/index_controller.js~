@@ -15,4 +15,9 @@ App.IndexController = Ember.Controller.extend({
     this.set('videoShowing', true);
     return false;
   }
+  //Snapchat-icon action  
+  actions: {
+    snapchat_message_appear: function() {
+        $("#snapchat_message		
+
 });

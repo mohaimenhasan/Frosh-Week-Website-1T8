@@ -28,7 +28,6 @@
                         student life at U of T Engineering.
                     </p>
                     <div class="action-button">
-                    	
                             <button class="highlight" onClick="parent.location='https://docs.google.com/a/orientation.skule.ca/forms/d/1M7xl6MNA6Aq2mE4kHcgk3QfDOCpkzMz_UQKBQmYcnKo/viewform'" >
                                 {{#unless hasStarted}}
                                     <strong>Sign Up Now!</strong> <br>
@@ -37,13 +36,22 @@
                                 {{/unless}}
                             </button>
                     </div>
-		    <br>
-		    <p style="text-align: center">
-			<strong> Be the first to know when registration opens! </strong>
-		    </p>
+		                <br>
+		                <p style="text-align: center">
+			                  <strong> Be the first to know when registration opens! </strong>
+		                </p>
                 </div>
             </div>
         </div>
+        <div class="home-snapchat-message">
+        		<div class="mini-content row">
+            		<div class="main-messageBox col">
+                		<div class="box normal">
+												<p> TEST BOX </p>
+                    </div>
+								</div>
+            </div>
+				</div>
     </section>
 
     <section class="section highlight home-misc">

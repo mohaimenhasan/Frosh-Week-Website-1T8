@@ -1,6 +1,6 @@
 
 //General Index: snapchat message appear
-/*App.IndexView = Ember.View.extend({
+App.IndexView = Ember.View.extend({
   toggleMessage:function(){
     this.$("#snapchat").click(function(e){
       Ember.Logger.log("toggled");
@@ -15,7 +15,7 @@
       
     });
   }.on('didInsertElement')
-});*/
+});
 
 
 //Video View
