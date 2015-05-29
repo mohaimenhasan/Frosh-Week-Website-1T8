@@ -232,7 +232,6 @@ body {
 .messageBox-content {
     @extend .content;
     max-width: 15em;
-		float: left;
 }
 
 .spaced {
