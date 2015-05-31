@@ -145,22 +145,22 @@ $logo-scaling: 0.275;
 
 .snapchat-banner-icon {
     display = inline-block;
-    background: blue;
+    background: $white;
     @include screen-small {
         height: 19px;
         width: 19px;
         top: 0.4em;        
-	  };
+	  }
 		@include screen-medium {
         height: 19px;
         width: 19px;
         top: 0.4em; 
-		};
+		}
 		@include screen-large {
         height: 22px;
         width: 22px;
         top: 0.25em;
-		};
+		}
 }
 
 .home-misc {

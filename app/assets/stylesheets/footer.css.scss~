@@ -66,6 +66,7 @@ $organization-image: 'engsoc.png';
         }
     }
 }
+/*
 .snapchat-footer-icon {
     background: $purple;
     @include screen-small {
@@ -83,6 +84,6 @@ $organization-image: 'engsoc.png';
         width: 31px;
         top: 0.15em;
 		};
-}
+}*/
 
 
