@@ -286,7 +286,6 @@ body {
     @include screen-small { 
    		 	height: 3em;
         line-height: 1em;
-        
         max-width: 16em;
         margin: { top: 1em; bottom: 0em; }; 
     };

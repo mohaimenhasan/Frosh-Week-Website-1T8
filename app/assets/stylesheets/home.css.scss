@@ -140,6 +140,18 @@ $logo-scaling: 0.275;
 				    };
 						
         }
+        .footer-snapchat-message{
+            background-color: $grey;
+            @include screen-small {
+                text-align: right;
+				    };
+				    @include screen-medium {
+				        text-align: right;
+				    };
+				    @include screen-large {
+				        text-align: right;
+				    };
+        }
         
     }
 }

@@ -69,7 +69,7 @@ $snapchat-grey-image: 'snapchat-grey.png';
 .snapchat-footer-icon {
     display: inline-block;
     background: {
-        image: image-url($snapchat-grey-image);
+        image: image-url($snapchat-image);
         size: contain;
         position: center;
         repeat: no-repeat;
@@ -99,5 +99,31 @@ $snapchat-grey-image: 'snapchat-grey.png';
         size: contain;
         position: center;
         repeat: no-repeat;
+    };
+}
+.snapchat-footer-box {
+    @include border-radius(0.35em);
+    box-sizing: border-box;
+    padding: 0.8em;
+    float: right;
+    display: none;
+		/* height adjustments */
+    @include screen-small { 
+   		 	height: 2.5em;
+        line-height: 1em;
+        max-width: 16em;
+        margin: { top: 0.2em; bottom: 0em; }; 
+    };
+    @include screen-medium { 
+        height: 3em;
+        line-height: 2em;
+				max-width: 28em;
+        margin: { top: 0.5em; bottom: 0.5em; }; 
+    };
+    @include screen-large { 
+        height: 3em;
+        line-height: 2em;
+				max-width: 28em;
+        margin: { top: 0.5em; bottom: 0.5em; }; 
     };
 }

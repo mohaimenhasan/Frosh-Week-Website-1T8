@@ -19,7 +19,9 @@
                 <a>
 		                <span id="snapchat-footer-icon" class="icon snapchat-footer-icon"></span>
                 </a>
-                <div class="snapchat-footer-messagebox"></div
+                <div id="snapchat-footer-message" class="main-message footer-snapchat-message snapchat-footer-box">
+                    <p> Add @<strong>froshweek</strong> on SnapChat!</p> 
+                </div>
                 <!--a href="http://facebook.com/groups/FroshWeek1T4/" target="_blank">
                     <i class="icon icon-2x icon-facebook-sign"></i>
                 </a-->

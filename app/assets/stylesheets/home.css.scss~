@@ -140,6 +140,17 @@ $logo-scaling: 0.275;
 				    };
 						
         }
+        .footer-snapchat-message{
+            background-color: $grey;
+            @include screen-small {
+                text-align: right;
+				    };
+				    @include screen-medium {
+				        text-align: right;
+				    };
+				    @include screen-large {
+				        text-align: right;
+				    };
         
     }
 }
@@ -167,9 +178,9 @@ $logo-scaling: 0.275;
         top: 0.5em; 
 		}
 		@include screen-large {
-        height: 22px;
-        width: 22px;
-        top: 0.25em;
+        height: 29px;
+        width: 29px;
+        top: 0.45em;
 		}
 }
 
