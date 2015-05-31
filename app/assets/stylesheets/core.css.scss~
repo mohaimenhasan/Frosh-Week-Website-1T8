@@ -32,7 +32,7 @@ $gray: #808080;
 $gray-alt: #606060;
 $black: #222222;
 $black-alt: #444444;
-$purple: #890068;
+$purple: #6C198F;
 $purple-alt: #804089;
 $red: #FF0000;
 $green: #4F7A27;
@@ -280,7 +280,7 @@ body {
     @include border-radius(0.35em);
     box-sizing: border-box;
     padding: 1em;
-    display: inline-block;
+    
 		/* height adjustments */
     @include screen-small { 
    		 	height: 3em;
