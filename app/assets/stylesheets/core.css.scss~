@@ -24,7 +24,6 @@ $box-shadow-args: 0 1px 2px;
 $logo: 'logo-large.png';
 $chevron: 'chevron.svg';
 $snapchat-image: 'snapchat.png';
-
 $white: #FFFFFF;
 $white-light: #EFEFEF;
 $white-alt: #E5E5E5;
@@ -282,6 +281,7 @@ body {
     box-sizing: border-box;
     padding: 1em;
     float: right;
+    display: none;
 		/* height adjustments */
     @include screen-small { 
    		 	height: 4em;

@@ -10,7 +10,7 @@
 @import 'core';
 
 $organization-image: 'engsoc.png';
-
+$snapchat-grey-image: 'snapchat-grey.png';
 .footer {
     @include screen-small {
         text-align: center;
@@ -94,5 +94,10 @@ $organization-image: 'engsoc.png';
 }
 
 .snapchat-footer-icon:hover {
-    background: white;
+    background: {
+        image: image-url($snapchat-grey-image);
+        size: contain;
+        position: center;
+        repeat: no-repeat;
+    };
 }
