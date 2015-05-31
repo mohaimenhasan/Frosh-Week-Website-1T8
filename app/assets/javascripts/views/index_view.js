@@ -9,7 +9,7 @@ App.IndexView = Ember.View.extend({
     this.$(document).click(function(e){
       if($("#snapchat-banner-icon").is(":visible") && 
         !$("#snapchat-banner-icon").is(e.target) && 
-        !$("#snapchat-message").is(e.target){
+        !$("#snapchat-message").is(e.target)){
         $("#snapchat-message").fadeOut("slow");
       }
       
