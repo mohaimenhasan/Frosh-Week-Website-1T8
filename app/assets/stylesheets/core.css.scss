@@ -280,23 +280,26 @@ body {
     @include border-radius(0.35em);
     box-sizing: border-box;
     padding: 1em;
-    max-width: 28em;
+    
 		/* height adjustments */
     @include screen-small { 
    		 	height: 3em;
         line-height: 2em;
+        max-width: 15em;
         margin: { top: 0.5em; bottom: 0.5em; }; 
     };
     @include screen-medium { 
         height: 3em;
         line-height: 2em;
 				float: right;
+				max-width: 28em;
         margin: { top: 0.5em; bottom: 0.5em; }; 
     };
     @include screen-large { 
         height: 3em;
         line-height: 2em;
 				float: right;
+				max-width: 28em;
         margin: { top: 0.5em; bottom: 0.5em; }; 
     };
 }

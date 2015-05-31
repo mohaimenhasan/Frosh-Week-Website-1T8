@@ -143,6 +143,25 @@ $logo-scaling: 0.275;
     }
 }
 
+.snapchat-banner-icon {
+    display = inline-block;
+    background: blue;
+    @include screen-small {
+        height: 19px;
+        width: 19px;
+        top: 0.4em;        
+	  };
+		@include screen-medium {
+        height: 19px;
+        width: 19px;
+        top: 0.4em; 
+		};
+		@include screen-large {
+        height: 22px;
+        width: 22px;
+        top: 0.25em;
+		};
+}
 
 .home-misc {
     position: relative;
@@ -385,14 +404,4 @@ $logo-scaling: 0.275;
     margin: 0;
 }
 
-.snapchat {
-    background: {
-	image: image-url($snapchat-image);
-	size: contain;
-	position: center;
-	repeat: no-repeat;
-    };
-    
-    height: 24px;
-    width: 24px;
-}
+
