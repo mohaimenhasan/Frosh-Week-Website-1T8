@@ -2,13 +2,20 @@
 //General Index: snapchat message appear
 App.IndexView = Ember.View.extend({
   didInsertElement: function(){
+    this.$("#snapchat-footer-icon").click(function(e){
+      Ember.Logger.log("toggled");
+      $("#snapchat-message").fadeIn("slow");
+      window.location.hash = "#snapchat-message";
+    });
     this.$("#snapchat-banner-icon").click(function(e){
       Ember.Logger.log("toggled");
-      $("#snapchat-message").fadeToggle("slow");
+      $("#snapchat-message").fadeIn("slow");
     });
     this.$(document).click(function(e){
+      Ember.Logger.log("document");
       if($("#snapchat-banner-icon").is(":visible") && 
         !$("#snapchat-banner-icon").is(e.target) && 
+        !$("#snapchat-footer-icon").is(e.target) && 
         !$("#snapchat-message").is(e.target)){
         $("#snapchat-message").fadeOut("slow");
       }
