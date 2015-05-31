@@ -9,7 +9,7 @@ App.FooterView = Ember.View.extend({
         $("#snapchat-message").fadeIn("slow");
         window.location.hash = "#snapchat-message";
         e.stopImmediatePropagation();
-      }
-    }
+      };
+    };
   }
 });
