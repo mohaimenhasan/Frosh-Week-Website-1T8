@@ -124,11 +124,10 @@ $logo-scaling: 0.275;
     .main-messageBox {
         
         position: relative;
-				/* height adjustments */
-        
+				
         /* message box adjustment */
         .home-snapchat-message{
-					  background-color: transparentize($white, 0.1);
+					  background-color: $white;
             @include screen-small {
                 text-align: center;
 				    };
