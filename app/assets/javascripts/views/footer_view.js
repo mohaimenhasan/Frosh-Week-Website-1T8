@@ -5,5 +5,13 @@ App.FooterView = Ember.View.extend({
       $("#snapchat-footer-message").fadeToggle("slow");
       e.stopImmediatePropagation();
     });
+    this.$(document).click(function(e){
+      Ember.Logger.log("document");
+      if($("#snapchat-footer-icon").is(":visible") && 
+        !$("#snapchat-footer-message").is(e.target)){
+        $("#snapchat-footer-message").fadeOut("slow");
+      }
+      
+    });
   }
 });

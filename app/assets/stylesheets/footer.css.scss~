@@ -104,8 +104,7 @@ $snapchat-gray-image: 'snapchat-gray.png';
 .snapchat-footer-box {
     @include border-radius(0.35em);
     box-sizing: border-box;
-    padding: 0.8em;
-    float: right;
+    padding: 0em;
     display: none;
 		/* height adjustments */
     @include screen-small { 
@@ -118,12 +117,14 @@ $snapchat-gray-image: 'snapchat-gray.png';
         height: 3em;
         line-height: 2em;
 				max-width: 28em;
+        float: left;
         margin: { top: 0.5em; bottom: 0.5em; }; 
     };
     @include screen-large { 
         height: 3em;
         line-height: 2em;
 				max-width: 28em;
+        float: right;
         margin: { top: 0.5em; bottom: 0.5em; }; 
     };
 }

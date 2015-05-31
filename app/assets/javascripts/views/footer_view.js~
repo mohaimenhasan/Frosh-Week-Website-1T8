@@ -2,8 +2,16 @@ App.FooterView = Ember.View.extend({
   didInsertElement: function(){
     this.$("#snapchat-footer-icon").click(function(e){
       Ember.Logger.log("toggled");
-      $("#snapchat-message").fadeToggle("slow");
+      $("#snapchat-footer-message").fadeToggle("slow");
       e.stopImmediatePropagation();
+    });
+    this.$(document).click(function(e){
+      Ember.Logger.log("document");
+      if($("#snapchat-footer-icon").is(":visible") && 
+        !$("#snapchat-message").is(e.target)){
+        $("#snapchat-message").fadeOut("slow");
+      }
+      
     });
   }
 });
