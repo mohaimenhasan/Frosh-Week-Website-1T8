@@ -145,7 +145,7 @@ $logo-scaling: 0.275;
 
 .snapchat-banner-icon {
 
-    display = inline-block;
+    display: inline-block;
     background: $white;
     @include screen-small {
         height: 19px;
