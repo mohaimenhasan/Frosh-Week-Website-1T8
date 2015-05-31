@@ -67,7 +67,6 @@ $organization-image: 'engsoc.png';
     }
 }
 .snapchat-footer-icon {
-    display = inline-block;
     background: $purple;
     @include screen-small {
         height: 25px;
