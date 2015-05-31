@@ -15,6 +15,13 @@ App.IndexView = Ember.View.extend({
     });
     this.$(document).click(function(e){
       Ember.Logger.log("document");
+      Ember.Logger.log(e.target.id);
+      if(e.target.id == "snapchat-footer-icon"){
+        Ember.Logger.log("toggled_index_footer");
+        $("#snapchat-message").fadeIn("slow");
+        window.location.hash = "#snapchat-message";
+      
+      });
       if($("#snapchat-banner-icon").is(":visible") && 
         !$("#snapchat-banner-icon").is(e.target) && 
         !$("#snapchat-footer-icon").is(e.target) && 
