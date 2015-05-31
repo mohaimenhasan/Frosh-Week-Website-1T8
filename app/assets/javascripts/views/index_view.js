@@ -1,7 +1,7 @@
 
 //General Index: snapchat message appear
 App.IndexView = Ember.View.extend({
-  toggleMessage:function(){
+  didInsertElement: function(){
     this.$("#snapchat-banner-icon").click(function(e){
       Ember.Logger.log("toggled");
       $("#snapchat-message").fadeToggle("slow");
@@ -14,7 +14,7 @@ App.IndexView = Ember.View.extend({
       }
       
     });
-  }.on('didInsertElement')
+  }
 });
 
 

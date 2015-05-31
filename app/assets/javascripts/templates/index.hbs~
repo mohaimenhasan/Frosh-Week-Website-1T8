@@ -45,7 +45,7 @@
         </div>
         <div class="content row">
         		<div class="main-messageBox col">
-   		      		<div class="snapchat-box normal home-snapchat-message">
+   		      		<div id="snapchat-message" class="snapchat-box normal home-snapchat-message">
 										<p> Add @froshweek on SnapChat!</p>
 								</div>
             </div>
