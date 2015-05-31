@@ -120,7 +120,7 @@ $logo-scaling: 0.275;
             text-align: center;
         }
     }
-    /* for displaying snapchat addme message in banner */
+    /* for displaying snapchat addme message in banner+footer */
     .main-messageBox {
         
         position: relative;
@@ -142,15 +142,6 @@ $logo-scaling: 0.275;
         }
         .footer-snapchat-message{
             background-color: $gray;
-            @include screen-small {
-                text-align: right;
-				    };
-				    @include screen-medium {
-				        text-align: right;
-				    };
-				    @include screen-large {
-				        text-align: right;
-				    };
         }
         
     }

@@ -110,7 +110,6 @@ $snapchat-gray-image: 'snapchat-gray.png';
     @include screen-small { 
    		 	height: 2.5em;
         line-height: 1em;
-        max-width: 16em;
         margin: { top: 0.2em; bottom: 0em; }; 
     };
     @include screen-medium { 
