@@ -17,7 +17,7 @@
 		                <i class="icon icon-2x icon-instagram"></i>
 		            </a>
                 <a>
-		                <span class="icon snapchat-footer-icon"></span>
+		                <span id="snapchat-footer-icon" class="icon snapchat-footer-icon"></span>
                 </a>
                 <!--a href="http://facebook.com/groups/FroshWeek1T4/" target="_blank">
                     <i class="icon icon-2x icon-facebook-sign"></i>

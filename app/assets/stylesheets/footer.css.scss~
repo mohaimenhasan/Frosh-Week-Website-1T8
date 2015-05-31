@@ -68,9 +68,14 @@ $organization-image: 'engsoc.png';
 }
 .snapchat-footer-icon {
     display: inline-block;
-    background: $purple;
+     background: {
+        image: image-url($logo);
+        size: contain;
+        position: center;
+        repeat: no-repeat;
+    };
     position: relative;
-        cursor: pointer;
+    cursor: pointer;
     @include screen-small {
         height: 25px;
         width: 25px;

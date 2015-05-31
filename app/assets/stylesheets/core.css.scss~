@@ -280,12 +280,13 @@ body {
     @include border-radius(0.35em);
     box-sizing: border-box;
     padding: 1em;
-    
+    float: right;
 		/* height adjustments */
     @include screen-small { 
-   		 	height: 3em;
+   		 	height: 4em;
         line-height: 2em;
-        max-width: 15em;
+        
+        max-width: 10em;
         margin: { top: 0.5em; bottom: 0.5em; }; 
     };
     @include screen-medium { 

@@ -127,9 +127,10 @@ $logo-scaling: 0.275;
 				
         /* message box adjustment */
         .home-snapchat-message{
+            
 					  background-color: $white;
             @include screen-small {
-                text-align: center;
+                text-align: right;
 				    };
 				    @include screen-medium {
 				        text-align: right;
@@ -146,7 +147,12 @@ $logo-scaling: 0.275;
 .snapchat-banner-icon {
 
     display: inline-block;
-    background: $white;
+    background: {
+        image: image-url($snapchat);
+        size: contain;
+        position: center;
+        repeat: no-repeat;
+    };
     position: relative;
     cursor: pointer;
     @include screen-small {
