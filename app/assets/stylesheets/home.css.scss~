@@ -151,6 +151,7 @@ $logo-scaling: 0.275;
 				    @include screen-large {
 				        text-align: right;
 				    };
+        }
         
     }
 }
