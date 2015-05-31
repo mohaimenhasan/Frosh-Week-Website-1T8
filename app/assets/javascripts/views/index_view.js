@@ -3,13 +3,15 @@
 App.IndexView = Ember.View.extend({
   didInsertElement: function(){
     this.$("#snapchat-footer-icon").click(function(e){
-      Ember.Logger.log("toggled");
+      Ember.Logger.log("toggled_index");
       $("#snapchat-message").fadeIn("slow");
       window.location.hash = "#snapchat-message";
+      e.stopImmediatePropagation();
     });
     this.$("#snapchat-banner-icon").click(function(e){
       Ember.Logger.log("toggled");
       $("#snapchat-message").fadeIn("slow");
+      e.stopImmediatePropagation();
     });
     this.$(document).click(function(e){
       Ember.Logger.log("document");

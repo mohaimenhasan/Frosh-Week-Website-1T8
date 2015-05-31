@@ -69,7 +69,7 @@ $organization-image: 'engsoc.png';
 .snapchat-footer-icon {
     display: inline-block;
     background: {
-        image: image-url($snapchat);
+        image: image-url($snapchat-image);
         size: contain;
         position: center;
         repeat: no-repeat;

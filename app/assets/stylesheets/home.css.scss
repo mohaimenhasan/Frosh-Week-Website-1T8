@@ -147,6 +147,7 @@ $logo-scaling: 0.275;
 .snapchat-banner-icon {
 
     display: inline-block;
+    left: 0.25em;
     background: {
         image: image-url($snapchat-image);
         size: contain;
@@ -156,19 +157,19 @@ $logo-scaling: 0.275;
     position: relative;
     cursor: pointer;
     @include screen-small {
-        height: 19px;
-        width: 19px;
-        top: 0.4em;        
+        height: 23px;
+        width: 23px;
+        top: 0.5em;        
 	  }
 		@include screen-medium {
-        height: 19px;
-        width: 19px;
-        top: 0.4em; 
+        height: 23px;
+        width: 23px;
+        top: 0.5em; 
 		}
 		@include screen-large {
-        height: 22px;
-        width: 22px;
-        top: 0.25em;
+        height: 29px;
+        width: 29px;
+        top: 0.45em;
 		}
 }
 

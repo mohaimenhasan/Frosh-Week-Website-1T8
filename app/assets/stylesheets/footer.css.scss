@@ -77,8 +77,8 @@ $organization-image: 'engsoc.png';
     position: relative;
     cursor: pointer;
     @include screen-small {
-        height: 25px;
-        width: 25px;
+        height: 24px;
+        width: 24px;
         top: 0.15em;        
 	  };
 		@include screen-medium {
