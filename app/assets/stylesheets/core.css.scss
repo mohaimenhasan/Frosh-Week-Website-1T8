@@ -284,11 +284,11 @@ body {
     display: none;
 		/* height adjustments */
     @include screen-small { 
-   		 	height: 4em;
-        line-height: 2em;
+   		 	height: 3em;
+        line-height: 1em;
         
-        max-width: 10em;
-        margin: { top: 0.5em; bottom: 0.5em; }; 
+        max-width: 16em;
+        margin: { top: 1em; bottom: 0em; }; 
     };
     @include screen-medium { 
         height: 3em;

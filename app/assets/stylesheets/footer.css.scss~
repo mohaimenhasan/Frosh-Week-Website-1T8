@@ -69,7 +69,7 @@ $snapchat-grey-image: 'snapchat-grey.png';
 .snapchat-footer-icon {
     display: inline-block;
     background: {
-        image: image-url($snapchat-image);
+        image: image-url($snapchat-grey-image);
         size: contain;
         position: center;
         repeat: no-repeat;
