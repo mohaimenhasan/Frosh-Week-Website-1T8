@@ -5,12 +5,12 @@ App.IndexView = Ember.View.extend({
     this.$("#snapchat-banner-icon").click(function(e){
       Ember.Logger.log("toggled");
       $("#snapchat-message").fadeToggle("slow");
-      e.stopImmediatePropagation();
     });
     this.$(document).click(function(e){
-      Ember.Logger.log("document");
-      if($("#snapchat-banner-icon").is(":visible") && !$("#snapchat-banner-icon").is(e.target)){
-        $("#snapchat-message").fadeOut("fast");
+      if($("#snapchat-banner-icon").is(":visible") && 
+        !$("#snapchat-banner-icon").is(e.target) && 
+        !$("#snapchat-message").is(e.target){
+        $("#snapchat-message").fadeOut("slow");
       }
       
     });

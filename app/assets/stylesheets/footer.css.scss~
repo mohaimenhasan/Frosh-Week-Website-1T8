@@ -66,25 +66,26 @@ $organization-image: 'engsoc.png';
         }
     }
 }
-
 .snapchat-footer-icon {
     display: inline-block;
     background: $purple;
+    position: relative;
+        cursor: pointer;
     @include screen-small {
         height: 25px;
         width: 25px;
         top: 0.15em;        
-	  }
+	  };
 		@include screen-medium {
         height: 25px;
         width: 25px;
         top: 0.15em; 
-		}
+		};
 		@include screen-large {
         height: 31px;
         width: 31px;
         top: 0.15em;
-		}
+		};
 }
 
 
