@@ -23,6 +23,7 @@ $box-shadow-args: 0 1px 2px;
 
 $logo: 'logo-large.png';
 $chevron: 'chevron.svg';
+$snapchat-image: 'snapchat.png';
 
 $white: #FFFFFF;
 $white-light: #EFEFEF;
@@ -292,14 +293,12 @@ body {
     @include screen-medium { 
         height: 3em;
         line-height: 2em;
-				float: right;
 				max-width: 28em;
         margin: { top: 0.5em; bottom: 0.5em; }; 
     };
     @include screen-large { 
         height: 3em;
         line-height: 2em;
-				float: right;
 				max-width: 28em;
         margin: { top: 0.5em; bottom: 0.5em; }; 
     };

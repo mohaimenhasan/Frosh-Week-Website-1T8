@@ -9,7 +9,7 @@
 @import 'compass';
 @import 'library';
 @import 'core';
-$snapchat-image: 'snapchat.png';
+
 $home-banner-image: 'home-banner.jpg';
 $home-banner-scaling-s: 0.85;
 $home-banner-scaling-m: 0.85;
@@ -130,12 +130,7 @@ $logo-scaling: 0.275;
             
 					  background-color: $white;
             @include screen-small {
-                margin: 0;
-                position: absolute;
-                left: 50%
-                margin-right: -50%;
-                transform: translate(-50%,-50%) 
-                text-align: center;
+                text-align: right;
 				    };
 				    @include screen-medium {
 				        text-align: right;
@@ -153,7 +148,7 @@ $logo-scaling: 0.275;
 
     display: inline-block;
     background: {
-        image: image-url($snapchat);
+        image: image-url($snapchat-image);
         size: contain;
         position: center;
         repeat: no-repeat;
@@ -176,6 +171,7 @@ $logo-scaling: 0.275;
         top: 0.25em;
 		}
 }
+
 
 .home-misc {
     position: relative;

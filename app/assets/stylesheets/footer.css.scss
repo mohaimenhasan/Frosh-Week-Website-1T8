@@ -68,8 +68,8 @@ $organization-image: 'engsoc.png';
 }
 .snapchat-footer-icon {
     display: inline-block;
-     background: {
-        image: image-url($logo);
+    background: {
+        image: image-url($snapchat-image);
         size: contain;
         position: center;
         repeat: no-repeat;
@@ -93,4 +93,6 @@ $organization-image: 'engsoc.png';
 		};
 }
 
-
+.snapchat-footer-icon:hover {
+    background: white;
+}
