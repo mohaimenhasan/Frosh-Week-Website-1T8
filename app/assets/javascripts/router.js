@@ -25,7 +25,7 @@ App.RouteList = [
       Ember.Object.create({ route: 'receipt', path: '/receipt' }),
       Ember.Object.create({ route: 'bursary', path: '/bursary' }),
       Ember.Object.create({ route: 'confirm', path: '/confirm/:user/:token'})
-      Ember.Object.create({ route: 'payment', path: '/payment' }),
+//      Ember.Object.create({ route: 'payment', path: '/payment' }),
     ]
   }),
   Ember.Object.create({
