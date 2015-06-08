@@ -1,0 +1,57 @@
+<section class="section content row">
+    <div class="side col">
+        {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}
+        <section class="box">
+            <h2>Why register?</h2>
+            <ul class="registration-side">
+                <li>Access to <strong>ALL</strong> events except Hart House Farm.</li>
+                <li>An incredible F!rosh Kit with tons of cool stuff.</li>
+                <li>Free lunch and dinner on Monday, Tuesday, and Wednesday.</li>
+                <li>One free Skule&trade; yearbook at the end of the year ($20 value).</li>
+            </ul>
+        </section>
+    </div>
+
+    <div class="main col">
+        <section class="box normal">
+            <h1>
+                <i class="icon-ticket"></i> Register online
+            </h1>
+            {{#each model}}
+                {{#linkTo 'registration.item' this}}
+                    <div class="registration-item">
+                            <h3>
+                                <strong>${{price}}</strong> {{name}}
+                            </h3>
+                            <p>
+                                {{description}}
+                            </p>
+                    </div>
+                {{/linkTo}}
+            {{else}}
+                <h3>Missed online registration?</h3>
+                <p>
+                    <strong>You can still join us!</strong> Bring cash or credit on Monday between 7:30am and 8:30am
+                    to register at the door! Find us in front of Convocation Hall!
+                </p>
+                <p>
+                    There will be the standard package available at the door:
+                </p>
+                <ul>
+                    <li>
+                        <strong>$120</strong> F!rosh Kit Standalone Package.
+                    </li>
+                </ul>
+                <p></p>
+                <iframe width="100%"
+                        height="400"
+                        frameborder="0"
+                        scrolling="no"
+                        marginheight="0"
+                        marginwidth="0"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1443.1913050577593!2d-79.39503309999999!3d43.66101189999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34b8934c4e83%3A0x45955c6d09fba54b!2s31+King&#39;s+College+Cir%2C+University+of+Toronto+-+St.+George+Campus%2C+Toronto%2C+ON+M5S!5e0!3m2!1sen!2sca!4v1409289306842">
+                </iframe>
+            {{/each}}
+        </section>
+    </div>
+</section>
