@@ -122,6 +122,7 @@ GEM
     kgio (2.9.3)
     launchy (2.3.0)
       addressable (~> 2.3)
+    libv8 (3.16.14.7)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -167,6 +168,7 @@ GEM
     rake (10.4.2)
     rdoc (3.12.2)
       json (~> 1.4)
+    ref (1.0.5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec-core (2.14.4)
@@ -204,6 +206,9 @@ GEM
     stripe (1.8.4)
       multi_json (>= 1.0.4, < 2)
       rest-client (~> 1.4)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.18.1)
     tilt (1.4.1)
     treetop (1.4.14)
@@ -249,5 +254,9 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   stripe
+  therubyracer
   uglifier
   unicorn
+
+BUNDLED WITH
+   1.10.3
