@@ -18,19 +18,19 @@ Group.create(symbol: '&Delta;', name: 'Delta')
 Group.create(symbol: '&theta;', name: 'Theta')
 Group.create(symbol: '&kappa;', name: 'Kappa')
 Group.create(symbol: '&lambda;', name: 'Lambda')
-Group.create(symbol: '&mu;', name: 'Mu')
 Group.create(symbol: '&Nu;', name: 'Ni')
 Group.create(symbol: '&pi;', name: 'Pi')
 Group.create(symbol: '&rho;', name: 'Rho')
 Group.create(symbol: '&Sigma;', name: 'Sigma')
 Group.create(symbol: '&tau;', name: 'Tau')
 Group.create(symbol: '&phi;', name: 'Phi')
+Group.create(symbol: '&chi;', name: 'Chi')
 Group.create(symbol: '&Psi;', name: 'Psi')
 Group.create(symbol: '&Omega;', name: 'Omega')
 
 Group.find_each do |g|
-  g.facebook_link = "http://facebook.com/groups/#{g.name.downcase}.1t4"
-  g.facebook_link = "http://facebook.com/groups/1t4.#{g.name.downcase}" if g.name == 'Phi'
+  g.facebook_link = "http://facebook.com/groups/#{g.name.downcase}.1t5"
+  g.facebook_link = "http://facebook.com/groups/1t5.#{g.name.downcase}" if g.name == 'Phi'
   g.save!
 end
 
@@ -50,18 +50,18 @@ Package.create(
   price: round_one,
   count: 0,
   max: early_bird_max,
-  start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
 Package.create(
   key: 'early-bird-with-farm',
   name: 'F!rosh Kit Early Bird + Hart House Farm Package',
-  description: 'A standard F!rosh Kit... except even better! This package includes a ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 13 and 14 to cap off F!rosh Week!',
+  description: 'A standard F!rosh Kit... except even better! This package includes a ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 12 and 13 to cap off F!rosh Week!',
   price: round_one + hhf_addon,
   count: 0,
   max: early_bird_max,
-  start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
 Package.create(
   key: 'early-bird-with-commuter',
@@ -70,8 +70,8 @@ Package.create(
   price: round_one + commuter_addon,
   count: 0,
   max: early_bird_max,
-  start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
 Package.create(
   key: 'early-bird-all',
@@ -80,8 +80,8 @@ Package.create(
   price: round_one + hhf_commuter_addon,
   count: 0,
   max: early_bird_max,
-  start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -91,8 +91,8 @@ Package.create(
   price: round_two,
   count: 0,
   max: middle_bird_max,
-  start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
 Package.create(
   key: 'middle-bird-with-farm',
@@ -101,8 +101,8 @@ Package.create(
   price: round_two + hhf_addon,
   count: 0,
   max: middle_bird_max,
-  start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
 Package.create(
   key: 'middle-bird-with-commuter',
@@ -111,8 +111,8 @@ Package.create(
   price: round_two + commuter_addon,
   count: 0,
   max: middle_bird_max,
-  start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
 Package.create(
   key: 'middle-bird-all',
@@ -121,8 +121,8 @@ Package.create(
   price: round_one + hhf_commuter_addon,
   count: 0,
   max: middle_bird_max,
-  start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -132,18 +132,18 @@ Package.create(
   price: round_three,
   count: 0,
   max: 0,
-  start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
 Package.create(
   key: 'farm',
   name: 'F!rosh Kit + Hart House Farm Package',
-  description: 'A standard F!rosh Kit just like above... except even better! This package includes a ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 13 and 14 to cap off F!rosh Week!',
+  description: 'A standard F!rosh Kit just like above... except even better! This package includes a ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 12 and 13 to cap off F!rosh Week!',
   price: round_three + hhf_addon ,
   count: 0,
   max: 0,
-  start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
 Package.create(
   key: 'commuter',
@@ -152,8 +152,8 @@ Package.create(
   price: round_three + commuter_addon,
   count: 0,
   max: 0,
-  start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
 Package.create(
   key: 'all',
@@ -162,6 +162,6 @@ Package.create(
   price: round_three + hhf_commuter_addon,
   count: 0,
   max: 0,
-  start_date: Date.strptime('05-01-2014', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2014', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
