@@ -1,5 +1,5 @@
 App.RegistrationItemController = Ember.Controller.extend({
-  //Invoked by "Change kit" button, refer to item.hbs in registration
+  //Invoked by "Change kit" button
   cancel: function() {
     this.transitionToRoute('registration.index');
   }

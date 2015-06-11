@@ -7,8 +7,8 @@ App.FooterView = Ember.View.extend({
     });
     //On document ready: preload-image
     this.$(document).ready(function(){
-      var snap_grey = new Image()
-      snap_grey.src = "snapchat-gray.png"
+      var snap_grey = new Image();
+      snap_grey.src = "/assets/snapchat-gray.png";
     });
     //On document click: message should disappear
     this.$(document).click(function(e){

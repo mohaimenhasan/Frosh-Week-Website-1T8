@@ -54,7 +54,7 @@ class Package < ActiveRecord::Base
 #Duplicate?
   def available_early_bird?
     early_count = Package.select("sum(count)").where("key IN ('early-bird-standalone', 'early-bird-with-farm', 'early-bird-width-commuter', 'early-bird-all')").sum(:count)
-    print "Early Count: " + early_count.to_s() + "\n"
+    print "Early Count: " + early_count + "\n"
     return true if early_count < 150
     return false
   end

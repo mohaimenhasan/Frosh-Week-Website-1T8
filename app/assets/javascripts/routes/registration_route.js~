@@ -6,7 +6,7 @@ App.RegistrationIndexRoute = Ember.Route.extend({
 });
 
 App.RegistrationItemRoute = Ember.Route.extend({
-  //Call from index template and invoke def index in packages.rb with specific params
+  //Call from index template and invoke def index in packages.rb
   model: function(params) {
     return App.Package.find({ 'key': params.key });
   },
