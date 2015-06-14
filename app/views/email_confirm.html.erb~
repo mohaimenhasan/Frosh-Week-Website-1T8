@@ -10,7 +10,7 @@
 <table cellpadding="0" cellspacing="0" border="0" style="background-color:whitesmoke;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#444;margin:0;padding:0;width:100%!important;"><tr><td>
   <table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td width="600">
     <div style="font-size:1.5em;background-color:#6C198F;padding:5px;color:white;">
-      <img style="width:250px; height:250px; max-width:100%;vertical-align:middle;margin:7px" src="https://www.orientation.skule.ca/assets/1T5Logo_greyver.png" />
+      <img style="width:250px; height:250px; max-width:100%;vertical-align:middle;margin:7px" src="http://localhost:3000/assets/1T5Logo_greyver.png" />
       <span style="margin-left:2em;">Confirm your email</span>
     </div>
 
