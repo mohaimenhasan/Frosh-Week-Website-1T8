@@ -10,7 +10,7 @@
 @import 'core';
 
 $organization-image: 'engsoc.png';
-$snapchat-gray-image: 'snapchat-gray.png';
+$snapchat-gray-image: 'icons/snapchat-gray.png';
 .footer {
     @include screen-small {
         text-align: center;
