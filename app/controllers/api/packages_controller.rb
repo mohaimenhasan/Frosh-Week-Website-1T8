@@ -18,16 +18,17 @@ class Api::PackagesController < ApplicationController
       #Get all packages from database and check if they are available
       #Then render all available into json
       packages = Package.all
+      packages.keep_if {|p| p.available?}
     end
     #Re-sort packages by price
-    #sorted_packages = packages.sort_by { |k| k.price }
-   # print "********************************PRINT SORTED ***\n"
-    packages.each do |package|
+    sorted_packages = packages.sort_by { |k| k.price }
+    print "********************************PRINT SORTED ***\n"
+    sorted_packages.each do |package|
       print package.key + "\n";
     end
-    #print "*******************DONE****\n"
+    print "*******************DONE****\n"
 
-    render json: { packages: packages.keep_if { |p| p.available? } }
+    render json: { packages: sorted_packages}
     
   end
 
