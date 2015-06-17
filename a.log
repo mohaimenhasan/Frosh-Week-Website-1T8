@@ -1,37 +1,50 @@
-2015-06-17T00:00:53.913071+00:00 app[web.1]: Started GET "/api/packages" for 138.51.122.175 at 2015-06-17 00:00:53 +0000
-2015-06-17T00:00:53.917079+00:00 app[web.1]: Processing by Api::Admin::PackagesController#index as JSON
-2015-06-17T00:00:54.263581+00:00 app[web.1]: Completed 200 OK in 346ms (Views: 21.2ms | ActiveRecord: 29.0ms)
-2015-06-17T00:03:58.287579+00:00 app[web.1]: Started GET "/register" for 138.51.122.175 at 2015-06-17 00:03:58 +0000
-2015-06-17T00:03:58.294574+00:00 app[web.1]: Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
-2015-06-17T00:03:58.292464+00:00 app[web.1]: Processing by ClientController#home as HTML
-2015-06-17T00:03:58.293178+00:00 app[web.1]:   Rendered client/home.html.erb within layouts/application (0.0ms)
-2015-06-17T00:03:58.292489+00:00 app[web.1]:   Parameters: {"path"=>"register"}
-2015-06-17T00:03:59.105463+00:00 app[web.1]: Started GET "/api/packages" for 138.51.122.175 at 2015-06-17 00:03:59 +0000
-2015-06-17T00:03:59.224617+00:00 app[web.1]: Completed 200 OK in 116ms (Views: 7.7ms | ActiveRecord: 3.1ms)
-2015-06-17T00:03:59.108647+00:00 app[web.1]: Processing by Api::Admin::PackagesController#index as JSON
+2015-06-17T00:03:59.332867+00:00 heroku[router]: at=info method=GET path="/assets/icons/snapchat-f4fad71ac781e4bc5c2384a3d9b6e9b4.png" host=froshweek-staging.herokuapp.com request_id=569e48c7-26a8-48b2-aed4-283693324e14 fwd="138.51.122.175" dyno=web.1 connect=0ms service=2ms status=304 bytes=200
+2015-06-17T00:04:00.154657+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=froshweek-staging.herokuapp.com request_id=099403b3-d490-46d5-b1d2-4c6fac2ee215 fwd="138.51.122.175" dyno=web.1 connect=1ms service=2ms status=200 bytes=1694
+2015-06-17T00:11:03.235700+00:00 heroku[router]: at=info method=GET path="/register" host=froshweek-staging.herokuapp.com request_id=5bc697f7-dd16-4f1c-a534-aaceffa0bbc0 fwd="138.51.122.175" dyno=web.1 connect=0ms service=8ms status=304 bytes=378
 2015-06-17T00:11:03.227498+00:00 app[web.1]: Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
 2015-06-17T00:11:03.223065+00:00 app[web.1]: Started GET "/register" for 138.51.122.175 at 2015-06-17 00:11:03 +0000
 2015-06-17T00:11:03.225623+00:00 app[web.1]:   Parameters: {"path"=>"register"}
 2015-06-17T00:11:03.225599+00:00 app[web.1]: Processing by ClientController#home as HTML
 2015-06-17T00:11:03.226244+00:00 app[web.1]:   Rendered client/home.html.erb within layouts/application (0.0ms)
+2015-06-17T00:11:04.013377+00:00 heroku[router]: at=info method=GET path="/api/packages" host=froshweek-staging.herokuapp.com request_id=59432851-2f08-4a6d-a24a-f1a1fdc84279 fwd="138.51.122.175" dyno=web.1 connect=0ms service=139ms status=304 bytes=378
 2015-06-17T00:11:03.869161+00:00 app[web.1]: Started GET "/api/packages" for 138.51.122.175 at 2015-06-17 00:11:03 +0000
 2015-06-17T00:11:04.006192+00:00 app[web.1]: Completed 200 OK in 134ms (Views: 8.2ms | ActiveRecord: 4.5ms)
 2015-06-17T00:11:03.871659+00:00 app[web.1]: Processing by Api::Admin::PackagesController#index as JSON
+2015-06-17T00:13:22.209117+00:00 heroku[router]: at=info method=GET path="/assets/modernizr-2c0ab0add9bb75e4293a038f4c515031.js" host=froshweek-staging.herokuapp.com request_id=b48e71d8-c8ac-4df7-8163-2c46c235032c fwd="138.51.122.175" dyno=web.1 connect=2ms service=2ms status=304 bytes=200
+2015-06-17T00:13:22.152826+00:00 heroku[router]: at=info method=GET path="/register" host=froshweek-staging.herokuapp.com request_id=b87d51e2-9afe-492d-ae63-4ce7fb0707c9 fwd="138.51.122.175" dyno=web.1 connect=2ms service=8ms status=304 bytes=378
 2015-06-17T00:13:22.137303+00:00 app[web.1]: Started GET "/register" for 138.51.122.175 at 2015-06-17 00:13:22 +0000
 2015-06-17T00:13:22.141806+00:00 app[web.1]: Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.0ms)
 2015-06-17T00:13:22.139746+00:00 app[web.1]: Processing by ClientController#home as HTML
 2015-06-17T00:13:22.139781+00:00 app[web.1]:   Parameters: {"path"=>"register"}
 2015-06-17T00:13:22.140370+00:00 app[web.1]:   Rendered client/home.html.erb within layouts/application (0.0ms)
+2015-06-17T00:13:22.248849+00:00 heroku[router]: at=info method=GET path="/assets/application-81f0e9829f08f8699da4e75e954fbad9.css" host=froshweek-staging.herokuapp.com request_id=4555a8d3-c6f1-47a7-b908-e7ab736ac7d3 fwd="138.51.122.175" dyno=web.1 connect=1ms service=36ms status=304 bytes=200
+2015-06-17T00:13:22.245240+00:00 heroku[router]: at=info method=GET path="/assets/application-dce5d6c46dab0310eb610d486154933b.js" host=froshweek-staging.herokuapp.com request_id=11e2508c-981a-4764-9bfd-f6809185626e fwd="138.51.122.175" dyno=web.1 connect=2ms service=31ms status=304 bytes=200
 2015-06-17T00:13:23.268056+00:00 app[web.1]: Completed 200 OK in 144ms (Views: 7.6ms | ActiveRecord: 3.1ms)
 2015-06-17T00:13:23.117672+00:00 app[web.1]: Started GET "/api/packages" for 138.51.122.175 at 2015-06-17 00:13:23 +0000
 2015-06-17T00:13:23.124247+00:00 app[web.1]: Processing by Api::Admin::PackagesController#index as JSON
+2015-06-17T00:13:23.376422+00:00 heroku[router]: at=info method=GET path="/assets/logo-large-ebca803bf34a6db9e6e58364a36a0765.png" host=froshweek-staging.herokuapp.com request_id=8f7d6eb6-547c-4532-9d67-7330dec02e01 fwd="138.51.122.175" dyno=web.1 connect=2ms service=2ms status=304 bytes=200
+2015-06-17T00:13:23.273873+00:00 heroku[router]: at=info method=GET path="/api/packages" host=froshweek-staging.herokuapp.com request_id=6f82ffb2-66c0-43d7-8e15-3e2576025db6 fwd="138.51.122.175" dyno=web.1 connect=2ms service=154ms status=304 bytes=378
+2015-06-17T00:13:23.386466+00:00 heroku[router]: at=info method=GET path="/assets/engsoc-24707e7aaf2ce04726323da4a9a6af5c.png" host=froshweek-staging.herokuapp.com request_id=c45b014e-fd24-4ee8-8bef-b4b229fdf745 fwd="138.51.122.175" dyno=web.1 connect=2ms service=2ms status=304 bytes=200
+2015-06-17T00:13:23.382574+00:00 heroku[router]: at=info method=GET path="/assets/fontawesome-webfont-b4d67f1e5651506c3e80d842ee67d6ba.woff" host=froshweek-staging.herokuapp.com request_id=e444ca21-2f6d-4d3b-87eb-c9dc7b998dbd fwd="138.51.122.175" dyno=web.1 connect=1ms service=2ms status=304 bytes=200
+2015-06-17T00:13:23.370388+00:00 heroku[router]: at=info method=GET path="/assets/icons/snapchat-gray.png" host=froshweek-staging.herokuapp.com request_id=0b4d635d-20d2-42e8-8cbb-82f12e18c487 fwd="138.51.122.175" dyno=web.1 connect=2ms service=2ms status=304 bytes=200
+2015-06-17T00:13:23.380472+00:00 heroku[router]: at=info method=GET path="/assets/icons/snapchat-f4fad71ac781e4bc5c2384a3d9b6e9b4.png" host=froshweek-staging.herokuapp.com request_id=46f868e7-65b2-43f1-9613-35f0e9b9ec7e fwd="138.51.122.175" dyno=web.1 connect=1ms service=2ms status=304 bytes=200
+2015-06-17T00:13:24.238084+00:00 heroku[router]: at=info method=GET path="/favicon.ico" host=froshweek-staging.herokuapp.com request_id=cb4d2a80-0507-47ec-b570-617eb981ff3c fwd="138.51.122.175" dyno=web.1 connect=2ms service=3ms status=200 bytes=1694
+2015-06-17T00:14:07.503869+00:00 heroku[slug-compiler]: Slug compilation started
+2015-06-17T00:14:07.503900+00:00 heroku[slug-compiler]: Slug compilation finished
+2015-06-17T00:14:07.456675+00:00 heroku[api]: Deploy 84f6e45 by technology@orientation.skule.ca
+2015-06-17T00:14:07.456675+00:00 heroku[api]: Release v154 created by technology@orientation.skule.ca
+2015-06-17T00:14:08.227777+00:00 heroku[web.1]: State changed from up to starting
+2015-06-17T00:14:10.091144+00:00 heroku[web.1]: Stopping all processes with SIGTERM
 2015-06-17T00:14:10.633575+00:00 app[web.1]: I, [2015-06-17T00:14:10.633504 #3]  INFO -- : master complete
 2015-06-17T00:14:10.632844+00:00 app[web.1]: I, [2015-06-17T00:14:10.632697 #3]  INFO -- : reaped #<Process::Status: pid 6 exit 0> worker=0
+2015-06-17T00:14:11.417734+00:00 heroku[web.1]: Process exited with status 0
+2015-06-17T00:14:12.836013+00:00 heroku[web.1]: Starting process with command `bundle exec unicorn -p 42608 -E $RACK_ENV`
 2015-06-17T00:14:14.683515+00:00 app[web.1]: I, [2015-06-17T00:14:14.683406 #3]  INFO -- : worker=0 spawning...
 2015-06-17T00:14:14.683354+00:00 app[web.1]: I, [2015-06-17T00:14:14.683184 #3]  INFO -- : listening on addr=0.0.0.0:42608 fd=9
 2015-06-17T00:14:14.690895+00:00 app[web.1]: I, [2015-06-17T00:14:14.690717 #3]  INFO -- : master process ready
 2015-06-17T00:14:14.692458+00:00 app[web.1]: I, [2015-06-17T00:14:14.692319 #6]  INFO -- : Refreshing Gem list
 2015-06-17T00:14:14.692248+00:00 app[web.1]: I, [2015-06-17T00:14:14.692039 #6]  INFO -- : worker=0 spawned pid=6
+2015-06-17T00:14:15.017419+00:00 heroku[web.1]: State changed from starting to up
 2015-06-17T00:14:15.990756+00:00 app[web.1]: Google::APIClient - Please provide :application_name and :application_version when initializing the client
 2015-06-17T00:14:16.101944+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
 2015-06-17T00:14:16.101687+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
@@ -41,10 +54,49 @@
 2015-06-17T00:14:25.603975+00:00 app[web.1]:   Rendered client/home.html.erb within layouts/application (3.0ms)
 2015-06-17T00:14:25.565637+00:00 app[web.1]: Processing by ClientController#home as HTML
 2015-06-17T00:14:25.606311+00:00 app[web.1]: Completed 200 OK in 41ms (Views: 40.2ms | ActiveRecord: 0.0ms)
+2015-06-17T00:14:25.606465+00:00 heroku[router]: at=info method=GET path="/" host=froshweek-staging.herokuapp.com request_id=526db2c9-6e5a-483f-9349-56fa552f717f fwd="138.51.122.175" dyno=web.1 connect=1ms service=131ms status=304 bytes=378
+2015-06-17T00:14:25.887314+00:00 heroku[router]: at=info method=GET path="/" host=froshweek-staging.herokuapp.com request_id=a6d4465a-b098-45b6-a67b-0b4ede4eb775 fwd="138.51.122.175" dyno=web.1 connect=1ms service=14ms status=200 bytes=2083
+2015-06-17T00:14:26.043344+00:00 heroku[router]: at=info method=GET path="/assets/application-81f0e9829f08f8699da4e75e954fbad9.css" host=froshweek-staging.herokuapp.com request_id=cf0be90f-5a7c-4b57-a829-22ab3fc6fe30 fwd="138.51.122.175" dyno=web.1 connect=1ms service=14ms status=200 bytes=201054
 2015-06-17T00:14:25.868337+00:00 app[web.1]: Started GET "/" for 138.51.122.175 at 2015-06-17 00:14:25 +0000
 2015-06-17T00:14:25.872976+00:00 app[web.1]:   Rendered client/home.html.erb within layouts/application (0.0ms)
 2015-06-17T00:14:25.872343+00:00 app[web.1]: Processing by ClientController#home as HTML
 2015-06-17T00:14:25.874190+00:00 app[web.1]: Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.0ms)
+2015-06-17T00:14:26.111055+00:00 heroku[router]: at=info method=GET path="/assets/application-dce5d6c46dab0310eb610d486154933b.js" host=froshweek-staging.herokuapp.com request_id=4209616c-b81a-45ac-9760-d39d37402ee8 fwd="138.51.122.175" dyno=web.1 connect=1ms service=47ms status=200 bytes=830772
+2015-06-17T00:14:26.851751+00:00 heroku[router]: at=info method=GET path="/assets/engsoc-24707e7aaf2ce04726323da4a9a6af5c.png" host=froshweek-staging.herokuapp.com request_id=ec7e9cc1-8843-4708-8982-3c9246a79eb3 fwd="138.51.122.175" dyno=web.1 connect=1ms service=2ms status=200 bytes=9966
+2015-06-17T00:14:26.791507+00:00 heroku[router]: at=info method=GET path="/assets/icons/snapchat-gray.png" host=froshweek-staging.herokuapp.com request_id=5c35dc53-774f-4687-a561-ef41bcb28deb fwd="138.51.122.175" dyno=web.1 connect=2ms service=7ms status=200 bytes=19152
+2015-06-17T00:14:26.844781+00:00 heroku[router]: at=info method=GET path="/assets/home-banner-6fde7060aa7206a630a079b4390f5e36.jpg" host=froshweek-staging.herokuapp.com request_id=96514126-9019-490f-b43a-df90efe82007 fwd="138.51.122.175" dyno=web.1 connect=3ms service=24ms status=200 bytes=680091
+2015-06-17T00:14:26.788654+00:00 heroku[router]: at=info method=GET path="/assets/logo-large-ebca803bf34a6db9e6e58364a36a0765.png" host=froshweek-staging.herokuapp.com request_id=01c8a372-5eba-4ba8-8878-2b50c162111e fwd="138.51.122.175" dyno=web.1 connect=1ms service=8ms status=200 bytes=97672
+2015-06-17T00:14:26.845120+00:00 heroku[router]: at=info method=GET path="/assets/icons/snapchat-f4fad71ac781e4bc5c2384a3d9b6e9b4.png" host=froshweek-staging.herokuapp.com request_id=1f5ff2e1-1935-4245-85cd-bb423b25cdbd fwd="138.51.122.175" dyno=web.1 connect=4ms service=7ms status=200 bytes=18772
 2015-06-17T00:14:29.132095+00:00 app[web.1]: Started GET "/api/packages" for 138.51.122.175 at 2015-06-17 00:14:29 +0000
 2015-06-17T00:14:29.149460+00:00 app[web.1]: Processing by Api::Admin::PackagesController#index as JSON
+2015-06-17T00:14:29.812127+00:00 heroku[router]: at=info method=GET path="/api/packages" host=froshweek-staging.herokuapp.com request_id=b045bde7-a7a8-4e5c-af81-824c2d415c42 fwd="138.51.122.175" dyno=web.1 connect=1ms service=683ms status=200 bytes=6868
 2015-06-17T00:14:29.800230+00:00 app[web.1]: Completed 200 OK in 650ms (Views: 106.7ms | ActiveRecord: 46.6ms)
+2015-06-17T00:30:40.125391+00:00 heroku[router]: at=info method=GET path="/assets/chevron-e33915b3bd3ae8579fdb110abc191910.svg" host=froshweek-staging.herokuapp.com request_id=982b8b51-94eb-48d8-abbf-b8cefacff754 fwd="138.51.122.175" dyno=web.1 connect=1ms service=8ms status=200 bytes=1048
+2015-06-17T00:31:01.995753+00:00 heroku[slug-compiler]: Slug compilation started
+2015-06-17T00:31:01.995776+00:00 heroku[slug-compiler]: Slug compilation finished
+2015-06-17T00:31:01.951674+00:00 heroku[api]: Deploy 15af438 by technology@orientation.skule.ca
+2015-06-17T00:31:01.951674+00:00 heroku[api]: Release v155 created by technology@orientation.skule.ca
+2015-06-17T00:31:02.310840+00:00 heroku[web.1]: State changed from up to starting
+2015-06-17T00:31:05.156017+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2015-06-17T00:31:05.946408+00:00 heroku[web.1]: Starting process with command `bundle exec unicorn -p 15805 -E $RACK_ENV`
+2015-06-17T00:31:06.120811+00:00 app[web.1]: I, [2015-06-17T00:31:06.120759 #3]  INFO -- : master complete
+2015-06-17T00:31:06.120687+00:00 app[web.1]: I, [2015-06-17T00:31:06.120549 #3]  INFO -- : reaped #<Process::Status: pid 6 exit 0> worker=0
+2015-06-17T00:31:07.070165+00:00 heroku[web.1]: Process exited with status 0
+2015-06-17T00:31:08.326507+00:00 app[web.1]: I, [2015-06-17T00:31:08.326369 #3]  INFO -- : listening on addr=0.0.0.0:15805 fd=9
+2015-06-17T00:31:08.326627+00:00 app[web.1]: I, [2015-06-17T00:31:08.326572 #3]  INFO -- : worker=0 spawning...
+2015-06-17T00:31:08.333778+00:00 app[web.1]: I, [2015-06-17T00:31:08.333643 #3]  INFO -- : master process ready
+2015-06-17T00:31:08.334757+00:00 app[web.1]: I, [2015-06-17T00:31:08.334520 #6]  INFO -- : worker=0 spawned pid=6
+2015-06-17T00:31:08.334922+00:00 app[web.1]: I, [2015-06-17T00:31:08.334854 #6]  INFO -- : Refreshing Gem list
+2015-06-17T00:31:08.692098+00:00 heroku[web.1]: State changed from starting to up
+2015-06-17T00:31:09.901804+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyonrails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
+2015-06-17T00:31:09.793327+00:00 app[web.1]: Google::APIClient - Please provide :application_name and :application_version when initializing the client
+2015-06-17T00:31:09.901501+00:00 app[web.1]: DEPRECATION WARNING: You have Rails 2.3-style plugins in vendor/plugins! Support for these plugins will be removed in Rails 4.0. Move them out and bundle them in your Gemfile, or fold them in to your app as lib/myplugin/* and config/initializers/myplugin.rb. See the release notes for more on this: http://weblog.rubyon
+rails.org/2012/1/4/rails-3-2-0-rc2-has-been-released. (called from <top (required)> at /app/config/environment.rb:5)
+2015-06-17T00:31:11.944868+00:00 app[web.1]: Connecting to database specified by DATABASE_URL
+2015-06-17T00:31:12.302463+00:00 app[web.1]: I, [2015-06-17T00:31:12.302342 #6]  INFO -- : worker=0 ready
+2015-06-17T00:31:12.691133+00:00 app[web.1]: Started GET "/api/packages" for 138.51.122.175 at 2015-06-17 00:31:12 +0000
+2015-06-17T00:31:12.741142+00:00 app[web.1]: Google::APIClient::Request Sending API request get https://www.googleapis.com/oauth2/v2/userinfo {"User-Agent"=>"google-api-ruby-client/0.6.4 Linux/3.13.0-49-generic", "Authorization"=>"Bearer ya29.lQE8-iqkqUcgDaiJeyPn_bHQ8cTi-oPvkC9KsV_LKwrHX-DyXc_xOAIubfPiAHjBq0A83y0G5BKIQw", "Cache-Control"=>"no-store"}
+2015-06-17T00:31:12.930245+00:00 app[web.1]: Completed 200 OK in 192ms (Views: 20.8ms | ActiveRecord: 13.0ms)
+2015-06-17T00:31:12.738547+00:00 app[web.1]: Processing by Api::Admin::PackagesController#index as JSON
+2015-06-17T00:31:12.870512+00:00 app[web.1]: Google::APIClient::Request Result: 200 {"cache-control"=>"no-cache, no-store, max-age=0, must-revalidate", "pragma"=>"no-cache", "expires"=>"Fri, 01 Jan 1990 00:00:00 GMT", "date"=>"Wed, 17 Jun 2015 00:31:12 GMT", "vary"=>"X-Origin, Origin,Accept-Encoding", "content-type"=>"application/json; charset=UTF-8", "x-content-type-options"=>"nosniff", "x-frame-options"=>"SAMEORIGIN", "x-xss-protection"=>"1; mode=block", "server"=>"GSE", "alternate-protocol"=>"443:quic,p=1", "accept-ranges"=>"none", "connection"=>"close"}
+2015-06-17T00:31:12.929527+00:00 heroku[router]: at=info method=GET path="/api/packages" host=froshweek-staging.herokuapp.com request_id=2114af2c-bd0d-4ebe-a345-28f8f66229bc fwd="138.51.122.175" dyno=web.1 connect=1ms service=272ms status=304 bytes=378

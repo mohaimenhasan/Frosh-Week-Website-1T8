@@ -20,14 +20,14 @@ class Api::PackagesController < ApplicationController
       packages = Package.all
     end
     #Re-sort packages by price
-    sorted_packages = packages.sort_by { |k| k.price }
-    print "********************************PRINT SORTED ***\n"
-    sorted_packages.each do |package|
+    #sorted_packages = packages.sort_by { |k| k.price }
+   # print "********************************PRINT SORTED ***\n"
+    packages.each do |package|
       print package.key + "\n";
     end
-    print "*******************DONE****\n"
+    #print "*******************DONE****\n"
 
-    render json: { packages: sorted_packages.keep_if { |p| p.available? } }
+    render json: { packages: packages.keep_if { |p| p.available? } }
     
   end
 

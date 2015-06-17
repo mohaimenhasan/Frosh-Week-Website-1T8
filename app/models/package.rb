@@ -21,18 +21,18 @@ class Package < ActiveRecord::Base
   has_many :users
 
   def available?
-    print "IN AVAILABLE-----------------------\n"
-    print self.key + "\n"
+    print "IN AVAILABLE-----------------------"
+    print self.key 
     if (self.key == 'early-bird-standalone' ||
         self.key == 'early-bird-with-farm' ||
         self.key == 'early-bird-with-commuter' ||
         self.key == 'early-bird-all')
       available = available_early_bird?
-    elsif (self.key == 'middle-bird-standalone')
+    #elsif (self.key == 'middle-bird-standalone')
        #or self.key == 'middle-bird-with-farm' \
        #or self.key == 'middle-bird-with-commuter' \
        #or self.key == 'middle-bird-all')
-      available = available_middle_bird?
+      #available = available_middle_bird?
     elsif (self.key == 'standalone')
        #or self.key == 'farm' \
        #or self.key == 'commuter' \
@@ -46,20 +46,20 @@ class Package < ActiveRecord::Base
     else
       available = false
     end
-    print "available: " + available.to_s() + "\n"
-    print "available_by_time: " + available_by_time?.to_s() + "\n"
-    print "EXITING ------------------------\n";
+    print "available: " + available.to_s()
+    print "available_by_time: " + available_by_time?.to_s()
+    print "EXITING ------------------------";
     return (available_by_time? and available)
   end
-#Duplicate?
+
   def available_early_bird?
     early_count = Package.select("sum(count)").where("key IN ('early-bird-standalone', 'early-bird-with-farm', 'early-bird-width-commuter', 'early-bird-all')").sum(:count)
     print "Early Count: " + early_count.to_s() + "\n"
     return true if early_count < 150
     return false
   end
-#END
 
+#NOT USE IN 1T5
   def available_middle_bird?
     if !available_early_bird?
       middle_count = Package.select("sum(count)").where("key IN ('middle-bird-standalone', 'middle-bird-with-farm', 'middle-bird-with-commuter', 'middle-bird-all')").sum(:count)
@@ -67,7 +67,7 @@ class Package < ActiveRecord::Base
     end
     return false
   end
-
+#NOT USE END
   def available_normal?
     if available_early_bird? == false and available_middle_bird? == false
       return true if self.max == 0
