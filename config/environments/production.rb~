@@ -72,6 +72,6 @@ SkuleOrientation::Application.configure do
   config.logger = Logger.new(STDOUT)
 		
   config.logger.level = Logger.const_get(
-    'DEBUG'
+    ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'DEBUG'
   )
 end
