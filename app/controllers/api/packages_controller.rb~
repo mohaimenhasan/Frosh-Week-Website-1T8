@@ -3,7 +3,6 @@ require 'admin_authorization'
 class Api::PackagesController < ApplicationController
 
   def show
-    print "IN SHOOWW*******************************************"
     package = Package.find(params[:id])
     package = nil unless package.available?
     
@@ -11,7 +10,6 @@ class Api::PackagesController < ApplicationController
   end
 
   def index
-    print "IN index*******************************************\n"
     if params.has_key? :key
       packages = Package.where params.slice :key
     else
@@ -22,11 +20,6 @@ class Api::PackagesController < ApplicationController
     end
     #Re-sort packages by price
     sorted_packages = packages.sort_by { |k| k.price }
-    print "********************************PRINT SORTED ***\n"
-    sorted_packages.each do |package|
-      print package.key + "\n";
-    end
-    print "*******************DONE****\n"
 
     render json: { packages: sorted_packages}
     

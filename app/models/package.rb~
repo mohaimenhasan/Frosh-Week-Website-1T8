@@ -21,8 +21,8 @@ class Package < ActiveRecord::Base
   has_many :users
 
   def available?
-    put "IN AVAILABLE-----------------------"
-    put self.key 
+    print "IN AVAILABLE-----------------------"
+    print self.key 
     if (self.key == 'early-bird-standalone' ||
         self.key == 'early-bird-with-farm' ||
         self.key == 'early-bird-with-commuter' ||
@@ -47,8 +47,8 @@ class Package < ActiveRecord::Base
       available = false
     end
     print "available: " + available.to_s()
-    put "available_by_time: " + available_by_time?.to_s()
-    put "EXITING ------------------------";
+    print "available_by_time: " + available_by_time?.to_s()
+    print "EXITING ------------------------";
     return (available_by_time? and available)
   end
 

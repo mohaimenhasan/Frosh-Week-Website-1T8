@@ -21,7 +21,7 @@ class Package < ActiveRecord::Base
   has_many :users
 
   def available?
-    print "IN AVAILABLE-----------------------"
+
     print self.key 
     if (self.key == 'early-bird-standalone' ||
         self.key == 'early-bird-with-farm' ||
@@ -46,15 +46,12 @@ class Package < ActiveRecord::Base
     else
       available = false
     end
-    print "available: " + available.to_s()
-    print "available_by_time: " + available_by_time?.to_s()
-    print "EXITING ------------------------";
     return (available_by_time? and available)
   end
 
   def available_early_bird?
     early_count = Package.select("sum(count)").where("key IN ('early-bird-standalone', 'early-bird-with-farm', 'early-bird-width-commuter', 'early-bird-all')").sum(:count)
-    print "Early Count: " + early_count.to_s() + "\n"
+
     return true if early_count < 150
     return false
   end
