@@ -420,7 +420,6 @@
 .registration-snap {
     width: 17px;
     height: 17px;
-    margin-bottom: 2.5px;
 }
 /* Logo
  * ----
