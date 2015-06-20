@@ -34,13 +34,12 @@ Group.find_each do |g|
   g.save!
 end
 
-early = 97
-normal = 124
+early = 85
+normal = 110
 hhf_addon = 40
 commuter_addon = 130
-hhf_commuter_addon = 170
 early_bird_max = 200
-
+hhf_max = 250
 Package.create(
   key: 'early-bird-standalone',
   name: 'F!rosh Kit Early Bird Standalone Package',
@@ -51,37 +50,6 @@ Package.create(
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
-Package.create(
-  key: 'early-bird-with-farm',
-  name: 'F!rosh Kit Early Bird + Hart House Farm Package',
-  description: 'A standard F!rosh Kit... except even better! This package includes a ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 12 and 13 to cap off F!rosh Week!',
-  price: early + hhf_addon,
-  count: 0,
-  max: early_bird_max,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
-)
-Package.create(
-  key: 'early-bird-with-commuter',
-  name: 'F!rosh Kit Early Bird + Commuter Program Package',
-  description: "A standard F!rosh Kit... with living accommodations! This offer includes room and board at a downtown hostel for four nights so you can fully enjoy F!rosh Week's days and nights.",
-  price: early + commuter_addon,
-  count: 0,
-  max: early_bird_max,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
-)
-Package.create(
-  key: 'early-bird-all',
-  name: 'F!rosh Kit Early Bird + Hart House Farm + Commuter Program Package',
-  description: 'This is for the F!rosh that wants to have the ultimate F!rosh Week experience. You get a standard F!rosh kit, accommodations throughout the week, and a ticket to the weekend Hart House Farm camping trip. Super fun!',
-  price: early + hhf_commuter_addon,
-  count: 0,
-  max: early_bird_max,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
-)
-
 
 Package.create(
   key: 'standalone',
@@ -95,9 +63,9 @@ Package.create(
 )
 Package.create(
   key: 'farm',
-  name: 'F!rosh Kit + Hart House Farm Package',
-  description: 'A standard F!rosh Kit just like above... except even better! This package includes a ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 12 and 13 to cap off F!rosh Week!',
-  price: normal + hhf_addon ,
+  name: 'Hart House Farm Retreat',
+  description: 'A ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 12 and 13 to cap off F!rosh Week!',
+  price: hhf_addon ,
   count: 0,
   max: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
@@ -105,21 +73,12 @@ Package.create(
 )
 Package.create(
   key: 'commuter',
-  name: 'F!rosh Kit + Commuter Program Package',
-  description: "A standard F!rosh Kit... with living accommodations! This offer includes room and board at a downtown hostel for four nights so you can fully enjoy F!rosh Week's days and nights.",
-  price: normal + commuter_addon,
+  name: 'Commuter Program Package',
+  description: "Living accommodations! This offer includes room and board at a downtown hostel for four nights so you can fully enjoy F!rosh Week's days and nights.",
+  price: commuter_addon,
   count: 0,
   max: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
-Package.create(
-  key: 'all',
-  name: 'F!rosh Kit + Hart House Farm + Commuter Program Package',
-  description: 'This is for the F!rosh that wants to have the ultimate F!rosh Week experience. You get a standard F!rosh kit, accommodations throughout the week, and a ticket to the weekend Hart House Farm camping trip. Super fun!',
-  price: normal + hhf_commuter_addon,
-  count: 0,
-  max: 0,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
-)
+
