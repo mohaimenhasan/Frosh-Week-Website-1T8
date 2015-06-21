@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20130829070232) do
     t.integer  "price"
     t.integer  "count"
     t.integer  "max"
+    t.integer  "left"
     t.date     "start_date"
     t.date     "end_date"
     t.datetime "created_at",  :null => false

@@ -7,6 +7,7 @@ class CreatePackages < ActiveRecord::Migration
       t.integer :price
       t.integer :count
       t.integer :max
+      t.integer :left
       t.date :start_date
       t.date :end_date
 

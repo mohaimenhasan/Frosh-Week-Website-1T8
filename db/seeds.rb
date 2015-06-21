@@ -39,7 +39,9 @@ normal = 110
 hhf_addon = 40
 commuter_addon = 130
 early_bird_max = 200
+commuter_max = 65
 hhf_max = 250
+unlimited = -1
 Package.create(
   key: 'early-bird-standalone',
   name: 'F!rosh Kit Early Bird Standalone Package',
@@ -47,6 +49,7 @@ Package.create(
   price: early,
   count: 0,
   max: early_bird_max,
+  left: early_bird_max,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
@@ -58,6 +61,7 @@ Package.create(
   price: normal,
   count: 0,
   max: 0,
+  left: unlimited, 
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
@@ -67,7 +71,8 @@ Package.create(
   description: 'A ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 12 and 13 to cap off F!rosh Week!',
   price: hhf_addon ,
   count: 0,
-  max: 0,
+  max: hhf_max,
+  left: hhf_max,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
@@ -77,7 +82,8 @@ Package.create(
   description: "Living accommodations! This offer includes room and board at a downtown hostel for four nights so you can fully enjoy F!rosh Week's days and nights.",
   price: commuter_addon,
   count: 0,
-  max: 0,
+  max: commuter_max,
+  left: commuter_max,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
