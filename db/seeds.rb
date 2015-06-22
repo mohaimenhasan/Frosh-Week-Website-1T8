@@ -8,8 +8,10 @@
 
 Group.delete_all
 Package.delete_all
+Package_Item.delete_all
 ActiveRecord::Base.connection.reset_pk_sequence! Group.table_name
 ActiveRecord::Base.connection.reset_pk_sequence! Package.table_name
+ActiveRecord::Base.connection.reset_pk_sequence! Package_Item.table_name
 
 Group.create(symbol: '&alpha;', name: 'Alpha')
 Group.create(symbol: '&beta;', name: 'Beta')
