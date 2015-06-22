@@ -94,21 +94,74 @@ Package_Item.create(
 
 
 # PACKAGE
-#Package.create(
-#  key: 'early-bird-standalone',
-#  name: 'Early Bird Standalone Package',
-#  price: early,
-# count: 0,
-#  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-#  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
-#)
+Package.create(
+  key: 'early-bird-standalone',
+  name: 'Early Bird Standalone Package',
+  price: early,
+  count: 0,
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+)
 
-#Package.create(
-#  key: 'early-bird-standalone_commuter',
- # name: 'Early Bird Standalone Package',
-#  price: early+commuter_addon,
-#  count: 0,
-#  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-#  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
-#)
+Package.create(
+  key: 'early-bird-standalone_commuter',
+  name: 'Early Bird Standalone Package + commuter',
+  price: early+commuter_addon,
+  count: 0,
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+)
 
+Package.create(
+  key: 'early-bird-standalone_hhf',
+  name: 'Early Bird Standalone Package + hhf',
+  price: early+hhf_addon,
+  count: 0,
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+)
+
+Package.create(
+  key: 'early-bird-standalone_commuter_hhf',
+  name: 'Early Bird Standalone Package + commuter + hhf',
+  price: early+commuter_addon+hhf_addon,
+  count: 0,
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+)
+
+Package.create(
+  key: 'standalone',
+  name: 'Standalone Package',
+  price: normal,
+  count: 0,
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+)
+
+Package.create(
+  key: 'standalone_commuter',
+  name: 'Standalone Package + commuter',
+  price: normal+commuter_addon,
+  count: 0,
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+)
+
+Package.create(
+  key: 'standalone_hhf',
+  name: 'Standalone Package + hhf',
+  price: normal+hhf_addon,
+  count: 0,
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+)
+
+Package.create(
+  key: 'standalone_commuter_hhf',
+  name: 'Standalone Package + commuter + hhf',
+  price: normal+commuter_addon+hhf_addon,
+  count: 0,
+  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+)
