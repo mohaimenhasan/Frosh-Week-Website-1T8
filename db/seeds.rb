@@ -8,8 +8,10 @@
 
 Group.delete_all
 Package.delete_all
+Package_Item.delete_all
 ActiveRecord::Base.connection.reset_pk_sequence! Group.table_name
 ActiveRecord::Base.connection.reset_pk_sequence! Package.table_name
+ActiveRecord::Base.connection.reset_pk_sequence! Package_Item.table_name
 
 Group.create(symbol: '&alpha;', name: 'Alpha')
 Group.create(symbol: '&beta;', name: 'Beta')
@@ -42,9 +44,11 @@ early_bird_max = 200
 commuter_max = 65
 hhf_max = 250
 unlimited = -1
-Package.create(
+
+# BASIC ITEMS FOR SELECTION
+Package_Item.create(
   key: 'early-bird-standalone',
-  name: 'F!rosh Kit Early Bird Standalone Package',
+  name: 'Early Bird Standalone Package',
   description: 'A standard F!rosh Kit. Includes entrance to all events (like a parade!), a collection of cool things (like a hard hat!), and lots more! This kit has tons of awesome stuff!',
   price: early,
   count: 0,
@@ -54,9 +58,9 @@ Package.create(
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
 
-Package.create(
+Package_Item.create(
   key: 'standalone',
-  name: 'F!rosh Kit Standalone Package',
+    name: 'Regular Standalone Package',
   description: 'A standard F!rosh Kit. Includes entrance to all events (like a parade!), a collection of cool things (like a hard hat!), and lots more! This kit has tons of awesome stuff!',
   price: normal,
   count: 0,
@@ -65,7 +69,7 @@ Package.create(
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
-Package.create(
+Package_Item.create(
   key: 'farm',
   name: 'Hart House Farm Retreat',
   description: 'A ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 12 and 13 to cap off F!rosh Week!',
@@ -76,7 +80,7 @@ Package.create(
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
-Package.create(
+Package_Item.create(
   key: 'commuter',
   name: 'Commuter Program Package',
   description: "Living accommodations! This offer includes room and board at a downtown hostel for four nights so you can fully enjoy F!rosh Week's days and nights.",
@@ -87,4 +91,24 @@ Package.create(
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
+
+
+# PACKAGE
+#Package.create(
+#  key: 'early-bird-standalone',
+#  name: 'Early Bird Standalone Package',
+#  price: early,
+# count: 0,
+#  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+#  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+#)
+
+#Package.create(
+#  key: 'early-bird-standalone_commuter',
+ # name: 'Early Bird Standalone Package',
+#  price: early+commuter_addon,
+#  count: 0,
+#  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
+#  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+#)
 
