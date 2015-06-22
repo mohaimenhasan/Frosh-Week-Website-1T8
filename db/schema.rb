@@ -74,15 +74,15 @@ ActiveRecord::Schema.define(:version => 20150621222500) do
   end
   
   create_table :package_items, :force => true do |t|
-    t.string :key
-    t.string :name
-    t.text :description
-    t.integer :price
-    t.integer :count
-    t.integer :max
-    t.integer :left
-    t.date :start_date
-    t.date :end_date
+    t.string   "key"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "price"
+    t.integer  "count"
+    t.integer  "max"
+    t.integer  "left"
+    t.date     "start_date"
+    t.date     "end_date"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
