@@ -8,10 +8,10 @@
 
 Group.delete_all
 Package.delete_all
-Package_Item.delete_all
+PackageItem.delete_all
 ActiveRecord::Base.connection.reset_pk_sequence! Group.table_name
 ActiveRecord::Base.connection.reset_pk_sequence! Package.table_name
-ActiveRecord::Base.connection.reset_pk_sequence! Package_Item.table_name
+ActiveRecord::Base.connection.reset_pk_sequence! PackageItem.table_name
 
 Group.create(symbol: '&alpha;', name: 'Alpha')
 Group.create(symbol: '&beta;', name: 'Beta')
@@ -36,8 +36,8 @@ Group.find_each do |g|
   g.save!
 end
 
-early = 85
-normal = 110
+early = 95
+normal = 125
 hhf_addon = 40
 commuter_addon = 130
 early_bird_max = 200
@@ -46,7 +46,7 @@ hhf_max = 250
 unlimited = -1
 
 # BASIC ITEMS FOR SELECTION
-Package_Item.create(
+PackageItem.create(
   key: 'early-bird-standalone',
   name: 'Early Bird Standalone Package',
   description: 'A standard F!rosh Kit. Includes entrance to all events (like a parade!), a collection of cool things (like a hard hat!), and lots more! This kit has tons of awesome stuff!',
@@ -58,7 +58,7 @@ Package_Item.create(
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
 
-Package_Item.create(
+PackageItem.create(
   key: 'standalone',
     name: 'Regular Standalone Package',
   description: 'A standard F!rosh Kit. Includes entrance to all events (like a parade!), a collection of cool things (like a hard hat!), and lots more! This kit has tons of awesome stuff!',
@@ -69,7 +69,7 @@ Package_Item.create(
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
-Package_Item.create(
+PackageItem.create(
   key: 'farm',
   name: 'Hart House Farm Retreat',
   description: 'A ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 12 and 13 to cap off F!rosh Week!',
@@ -80,7 +80,7 @@ Package_Item.create(
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
-Package_Item.create(
+PackageItem.create(
   key: 'commuter',
   name: 'Commuter Program Package',
   description: "Living accommodations! This offer includes room and board at a downtown hostel for four nights so you can fully enjoy F!rosh Week's days and nights.",
@@ -105,7 +105,7 @@ Package.create(
 
 Package.create(
   key: 'early-bird-standalone_commuter',
-  name: 'Early Bird Standalone Package + commuter',
+  name: 'Early Bird Standalone Package + Commuter Program Package',
   price: early+commuter_addon,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
@@ -114,7 +114,7 @@ Package.create(
 
 Package.create(
   key: 'early-bird-standalone_hhf',
-  name: 'Early Bird Standalone Package + hhf',
+  name: 'Early Bird Standalone Package + Hart House Farm Retreat',
   price: early+hhf_addon,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
@@ -122,8 +122,8 @@ Package.create(
 )
 
 Package.create(
-  key: 'early-bird-standalone_commuter_hhf',
-  name: 'Early Bird Standalone Package + commuter + hhf',
+  key: 'early-bird-standalone_commuter_farm',
+  name: 'Early Bird Standalone Package + Hart House Farm Retreat + Commuter Program Package' ,
   price: early+commuter_addon+hhf_addon,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
@@ -132,7 +132,7 @@ Package.create(
 
 Package.create(
   key: 'standalone',
-  name: 'Standalone Package',
+  name: 'Regular Standalone Package',
   price: normal,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
@@ -141,7 +141,7 @@ Package.create(
 
 Package.create(
   key: 'standalone_commuter',
-  name: 'Standalone Package + commuter',
+  name: 'Standalone Package + Commuter Program Package',
   price: normal+commuter_addon,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
@@ -149,8 +149,8 @@ Package.create(
 )
 
 Package.create(
-  key: 'standalone_hhf',
-  name: 'Standalone Package + hhf',
+  key: 'standalone_farm',
+  name: 'Standalone Package + Hart House Farm Retreat',
   price: normal+hhf_addon,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
@@ -158,8 +158,8 @@ Package.create(
 )
 
 Package.create(
-  key: 'standalone_commuter_hhf',
-  name: 'Standalone Package + commuter + hhf',
+  key: 'standalone_farm_commuter',
+  name: 'Standalone Package + Hart House Farm Retreat + Commuter Program Package',
   price: normal+commuter_addon+hhf_addon,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
