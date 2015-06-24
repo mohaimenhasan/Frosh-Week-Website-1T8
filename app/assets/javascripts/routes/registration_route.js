@@ -1,7 +1,7 @@
 App.RegistrationIndexRoute = Ember.Route.extend({
   //Call from index template and invoke def index in packages.rb
   model: function() {
-    return App.Package.find();
+    return App.PackageItem.find();
   }
 });
 
@@ -35,7 +35,14 @@ App.RegistrationItemRoute = Ember.Route.extend({
   },
 
   serialize: function(model) {
-    return { 'key': model.get('key') };
+    //Check for model that exists in db otherwise, setupController will transition back
+    if(model.get('content').get('firstObject')){
+      return { 'key': model.get('firstObject').get('key') };
+    }
+    else {
+      return { 'key': ""};
+    }
+    
   }
 });
 

@@ -1,7 +1,9 @@
 <section class="section content row">
     <div class="side col">
         {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}
-        <section class="box">
+    </div>
+    <div class="main col">
+        <section class="box normal">
             <h2>Why register?</h2>
             <ul class="registration-side">
                 <li>Access to <strong>ALL</strong> events except Hart House Farm.</li>
@@ -9,25 +11,111 @@
                 <li>Free lunch and dinner on Monday, Tuesday, and Wednesday.</li>
                 <li>One free Skule&trade; yearbook at the end of the year ($20 value).</li>
             </ul>
+            <br>
         </section>
     </div>
 
-    <div class="main col">
+    <div class="col">
         <section class="box normal">
             <h1>
                 <i class="icon-ticket"></i> Register online
             </h1>
-            {{#each model}}
-                {{#linkTo 'registration.item' this}}
-                    <div class="registration-item">
-                            <h3>
-                                <strong>${{price}}</strong> {{name}}
-                            </h3>
-                            <p>
-                                {{description}}
-                            </p>
+            
+            <div class="row registration-row">
+                <div class="float-right registration-price col-header col ">
+                    <h3>Price</h3>
+                    <hr>
+                </div>
+                <div class="float-right registration-item col-header col ">
+                    <h3>F!rosh Kit Package</h3>
+                    <hr>
+                </div>
+            </div>
+                
+            
+            {{#ifOnlinePurchase}} 
+                {{#each model}}
+                    {{#ifAddonTitle name}}
+                    <div class="row registration-row">
+                        <div class=" registration-checkbox col">
+                            &nbsp;
+                        </div>
+                        <div class=" registration-item col-header col ">
+                            <h3>Add-ons</h3>
+                            <hr>
+                        </div>
                     </div>
-                {{/linkTo}}
+                    {{/ifAddonTitle}}
+                    <div class="row registration-row">
+                        <div class="registration-checkbox col">
+                            {{#ifSoldOut left}}
+                            &nbsp;
+                            {{else}}
+                                {{#ifEarlyBird key}}
+                                    <input {{bindAttr id="key" value="price"}} type="checkbox" >
+                                    <label {{bindAttr for="key"}}></label>
+                                {{/ifEarlyBird}}
+                                {{#ifAddons key}}
+                                    <input {{bindAttr id="key" value="price"}} type="checkbox"  disabled=true >
+                                    <label {{bindAttr for="key"}}></label>
+                                {{/ifAddons}}
+                                {{#ifStandalone key}}
+                                    &nbsp;
+                                {{/ifStandalone}}
+                            {{/ifSoldOut}}
+                        </div>
+                        <div class="registration-item  col">
+                            <h3><strong>{{name}}</strong> </h3>
+                            {{#ifStandalone key }}
+                                <h5 style="color:crimson;"> OPEN WHEN EARLY BIRDS ARE SOLD OUT</h5>
+                            {{else}}
+                                {{#ifSoldOut left}}
+                                {{else}}
+                                <h5 style="color:crimson;">* ONLY <strong>{{left}}</strong> LEFT *</h5>
+                                
+                                {{/ifSoldOut}}
+                                <p>
+                                    {{description}}
+                                </p>
+                            {{/ifStandalone}}
+                        </div>
+                        <div  class="registration-price col ">
+                            <h3 class="float-right">
+                                {{#ifSoldOut left}}
+                                <strong style="color:crimson;"> SOLD OUT</strong>
+                                {{else}}
+                                <strong>${{price}} </strong>
+                                {{/ifSoldOut}}
+                            </h3>
+                        </div>
+                    </div>
+                {{/each}}
+                <div class="row registration-row">
+                    <div class="col registration-price float-right">
+                        <hr>
+                        <div class="float-right">
+                             <h3 ><strong>${{totalPrice}}</strong> </h3>
+                        </div>
+                    </div>
+                    <div class="col registration-item float-right">
+                        <div class="float-right">
+                            <br>
+                            <h3 >Total: </h3>
+                        </div>
+
+                    </div>
+                
+                </div>
+                <div class="row registration-row">
+                    <div class="col registration-checkout float-right ">
+                        <div class="action-button float-right ">
+                            <button {{action "checkOutClicked"}} class="highlight"  {{bindAttr disabled=checkOutDisable }} >
+                                <strong>Check Out!</strong>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
             {{else}}
                 <h3>Missed online registration?</h3>
                 <p>
@@ -54,7 +142,11 @@
                         marginwidth="0"
                         src="https://maps.google.ca/maps?source=embed&amp;f=q&amp;hl=en&amp;geocode=&amp;q=Convocation+Hall,+Kings+College+Circle,+Toronto,+Ontario&amp;aq=0&amp;sll=49.891235,-97.15369&amp;sspn=46.422473,114.169922&amp;ie=UTF8&amp;hq=Convocation+Hall,+Kings+College+Circle,+Toronto,+Ontario&amp;t=m&amp;cid=13013795246944744418&amp;hnear=&amp;ll=43.668679,-79.390039&amp;spn=0.031043,0.042915&amp;output=embed">
                 </iframe-->
-            {{/each}}
+            {{/ifOnlinePurchase}}
+            
+            
+                    
+            
         </section>
     </div>
 </section>

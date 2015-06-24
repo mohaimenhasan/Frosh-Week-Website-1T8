@@ -418,6 +418,13 @@ body {
     clear: both;
 }
 
+.debug_div_container { 
+    background-color: black;
+}
+.debug_div {
+    background-color:blueviolet;
+}
+
 hr {
     border: 0;
     color: $black-alt;
@@ -569,7 +576,7 @@ input[type=radio], input[type=checkbox] {
         width: 1.5em;
         height: 1.5em;
 
-        &:hover, &:focus {
+        &:hover{
             @include box-shadow($box-shadow-args $purple);
             background-color: $gray-alt;
             border-color: $white-alt;
@@ -578,12 +585,6 @@ input[type=radio], input[type=checkbox] {
         & + label {
             vertical-align: middle;
         }
-    }
-
-    &:focus + label {
-        @include box-shadow($box-shadow-args $purple);
-        background-color: $gray-alt;
-        border-color: $white-alt;
     }
 
     &:checked + label {

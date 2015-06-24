@@ -101,30 +101,41 @@
     }
 }
 
+.registration-row {
+    padding-bottom:15px;
+    .col-header {
+        text-align: center;
+    }
+}
 
 /* Packages
  * --------
  */
 
+
 .registration-item {
-    @include transition(all 0.3s);
-
-    padding: 0.5em;
-
-    &:hover {
-        cursor: pointer;
-        background-color: $white-alt;
-    }
+    width: 70%; 
 }
 
-
+//checkbox
+.registration-checkbox {
+    width: 10%;
+}
+//Price
+.registration-price {
+    width: 20%; 
+}
+.registration-checkout {
+    width: 35%; 
+    margin-top: 15px;
+}
 /* Form
  * ----
  */
 
 .registration-form-group {
     margin: 0.5em;
-
+    
     .input {
         margin: { top: 0.5em; bottom: 0.5em; };
 

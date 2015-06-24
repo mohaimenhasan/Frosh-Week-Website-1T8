@@ -1,3 +1,74 @@
+App.RegistrationIndexController = Ember.Controller.extend({
+//F YOU EMBER EASYFORM EASY MY...
+//Update total Price by getting checkbox value
+  totalPrice: 0,
+  earlyBirdSelected: false,
+  regularSelected: false,
+  hhfSelected: false,
+  commuterSelected: false,
+//disable CheckOut
+  checkOutDisable: true,
+  disableCheckOut: function () {
+    
+    var value =  (this.get("earlyBirdSelected") || this.get("regularSelected"));
+    this.set("checkOutDisable", !value); //if nothing selected, disable should be true
+      Ember.Logger.log(value);
+  }.observes("earlyBirdSelected", "regularSelected"),
+    
+//Event when check out is clicked
+  
+    checkOutClicked: function() {
+        //Only happen if enabled
+      if(!this.get("checkOutDisable")) {
+        //Compute package string and transition
+        //At this point package should not be null
+        var package = "";
+        package += this.get('earlyBirdSelected')? "early-bird-standalone" : "";
+        package += this.get('regularSelected')? "standalone" : "";
+        package += this.get('hhfSelected')? "_farm" : "";
+        package += this.get('commuterSelected')? "_commuter" : "";
+        
+        
+        Ember.Logger.log("Package:", package);
+        var item = App.Package.find({key: package});
+        var that = this;
+        item.one('didLoad', function() {
+          that.transitionToRoute("registration.item", item);  
+        })
+        
+      }
+    },
+  updateAddons: function() {
+    //Enable Addons
+    if(this.get('earlyBirdSelected') || this.get('regularSelected')){
+      $('#farm').removeAttr('disabled');  
+      $('#commuter').removeAttr('disabled');
+    }
+    else {
+    //Disable all addons
+      $('#farm').attr("checked", false);
+      $('#commuter').attr("checked", false);
+      $('#farm').attr('disabled', true);  
+      $('#commuter').attr('disabled', true);  
+      this.set("hhfSelected", false);
+      this.set("commuterSelected", false);
+    }
+  }.observes('earlyBirdSelected', 'regularSelected'),
+    
+  updatePrice: function() {
+    var totalPrice = 0;
+    totalPrice += this.get('earlyBirdSelected')? Number($('#early-bird-standalone').attr("value")) : 0;
+    totalPrice += this.get('regularSelected')? Number($('#standalone').attr("value")) : 0;
+    totalPrice += this.get('hhfSelected')? Number($('#farm').attr("value")) : 0;
+    totalPrice += this.get('commuterSelected')? Number($('#commuter').attr("value")) : 0;
+
+    this.set('totalPrice', totalPrice);
+  
+  
+  }.observes('earlyBirdSelected', 'regularSelected', 'hhfSelected' , 'commuterSelected')
+});
+
+
 App.RegistrationItemController = Ember.Controller.extend({
   //Invoked by "Change kit" button, refer to item.hbs in registration
   cancel: function() {
