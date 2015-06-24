@@ -16,69 +16,65 @@
 #
 
 class Package < ActiveRecord::Base
-  attr_accessible :key, :count, :description, :end_date, :max, :name, :price, :start_date
+  attr_accessible :key, :name, :count,  :max,   :price, :start_date ,:end_date
 
   has_many :users
-
+    
   def available?
 
-    print self.key 
-    if (self.key == 'early-bird-standalone' ||
-        self.key == 'early-bird-with-farm' ||
-        self.key == 'early-bird-with-commuter' ||
-        self.key == 'early-bird-all')
+    print "IN RUBY: " + self.key 
+    if (self.key == 'early-bird-standalone')
       available = available_early_bird?
-    #elsif (self.key == 'middle-bird-standalone')
-       #or self.key == 'middle-bird-with-farm' \
-       #or self.key == 'middle-bird-with-commuter' \
-       #or self.key == 'middle-bird-all')
-      #available = available_middle_bird?
+    elsif (self.key == 'early-bird-standalone_commuter')
+      available = available_early_bird? && available_commuter?
+    elsif (self.key == 'early-bird-standalone_farm')
+      available = available_early_bird? && available_hhf?
+    elsif (self.key == 'early-bird-standalone_farm_commuter')
+      available = available_early_bird? && available_hhf? && available_commuter?
+        
     elsif (self.key == 'standalone')
-       #or self.key == 'farm' \
-       #or self.key == 'commuter' \
-       #or self.key == 'all')
       available = available_normal?
-    elsif (self.key == 'standalone-day-of')
-       #or self.key == 'farm' \
-       #or self.key == 'commuter' \
-       #or self.key == 'all')
-      available = true
-    else
+    elsif (self.key == 'standalone_commuter')
+      available = available_normal? && available_commuter?
+    elsif (self.key == 'standalone_farm')
+      available = available_normal? && available_hhf?
+    elsif (self.key == 'standalone_farm_commuter')
+      available = available_normal? && available_hhf? && available_commuter?
+    else 
       available = false
     end
     return (available_by_time? and available)
+
   end
 
   def available_early_bird?
-    early_count = Package.select("sum(count)").where("key IN ('early-bird-standalone', 'early-bird-with-farm', 'early-bird-width-commuter', 'early-bird-all')").sum(:count)
-
-    return true if early_count < 150
+    item = PackageItem.where("key IN ('early-bird-standalone')")
+    early_count = item.count
+    print  early_count 
+    return true if early_count > 0
     return false
   end
-
-#NOT USE IN 1T5
-  def available_middle_bird?
-    if !available_early_bird?
-      middle_count = Package.select("sum(count)").where("key IN ('middle-bird-standalone', 'middle-bird-with-farm', 'middle-bird-with-commuter', 'middle-bird-all')").sum(:count)
-      return true if middle_count < 500
-    end
+  def available_commuter?
+    item = PackageItem.where("key IN ('commuter')")
+    commuter_count = item.count
+    print commuter_count 
+    return true if commuter_count > 0 
     return false
   end
-#NOT USE END
   def available_normal?
-    if available_early_bird? == false and available_middle_bird? == false
-      return true if self.max == 0
+    if available_early_bird? == false 
+      return true if PackageItem.where("key IN ('normal')").max == 0
     end
     return false
   end
-
-  def available_by_count?(total_count)
-    if self.max = 0 or total_count < self.max
-      return true
-    else
-      return false
-    end
+  def available_hhf?
+    item = PackageItem.where("key IN ('farm')")
+    farm_count = item.count
+    print farm_count 
+    return true if farm_count > 0 
+    return false
   end
+
 
   def available_by_time?
     start_time = start_date.to_time_in_current_zone.beginning_of_day
@@ -87,7 +83,16 @@ class Package < ActiveRecord::Base
   end
 
   def increase_count
+    print "UPDATING DATABASE------\n"
     self.count = self.count + 1
+      #NEED testing
+      package_items = self.key.split('_')
+      package_items.each do |name|
+          sql_clause = "key In ('" + name + "')";
+          print "SEARCHING for " + sql_
+          item = PackageItem.where(sql_clause)
+          item.update_amount
+      end
     self.save!
   end
 end

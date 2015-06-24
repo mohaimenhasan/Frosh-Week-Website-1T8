@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: packages
+# Table name: package_item
 #
 #  id          :integer          not null, primary key
 #  name        :string(255)
@@ -16,7 +16,7 @@
 #  updated_at  :datetime         not null
 #
 
-class Package_Item < ActiveRecord::Base
+class PackageItem < ActiveRecord::Base
   attr_accessible :key, :count, :description, :max, :left, :name, :price, :start_date, :end_date
 
   def update_amount

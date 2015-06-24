@@ -10,16 +10,20 @@ class Api::PackagesController < ApplicationController
   end
 
   def index
+      print "In packages controller\n"
     if params.has_key? :key
+        print "getting packages"
       packages = Package.where params.slice :key
+    
     else
       #Get all packages from database and check if they are available
       #Then render all available into json
       packages = Package.all
-      packages.keep_if {|p| p.available?}
+      
     end
+    packages.keep_if {|p| p.available?}
     #Re-sort packages by price
-    sorted_packages = packages.sort_by { |k| k.price }
+    sorted_packages = packages.sort_by { |k| k.id }
 
     render json: { packages: sorted_packages}
     
