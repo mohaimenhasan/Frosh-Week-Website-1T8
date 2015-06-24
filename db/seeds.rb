@@ -113,7 +113,7 @@ Package.create(
 )
 
 Package.create(
-  key: 'early-bird-standalone_hhf',
+  key: 'early-bird-standalone_farm',
   name: 'Early Bird Standalone Package + Hart House Farm Retreat',
   price: early+hhf_addon,
   count: 0,
@@ -122,14 +122,14 @@ Package.create(
 )
 
 Package.create(
-  key: 'early-bird-standalone_commuter_farm',
+  key: 'early-bird-standalone_farm_commuter',
   name: 'Early Bird Standalone Package + Hart House Farm Retreat + Commuter Program Package' ,
   price: early+commuter_addon+hhf_addon,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
   end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
 )
-
+#STANDALONE
 Package.create(
   key: 'standalone',
   name: 'Regular Standalone Package',

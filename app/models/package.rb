@@ -63,7 +63,7 @@ class Package < ActiveRecord::Base
   end
   def available_normal?
     if available_early_bird? == false 
-      return true if PackageItem.where("key IN ('normal')").max == 0
+      return true if PackageItem.where("key IN ('standalone')").max == 0
     end
     return false
   end
