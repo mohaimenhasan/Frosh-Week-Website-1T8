@@ -40,9 +40,9 @@ early = 95
 normal = 125
 hhf_addon = 40
 commuter_addon = 130
-early_bird_max = 200
-commuter_max = 65
-hhf_max = 250
+early_bird_max = 2
+commuter_max = 1
+hhf_max = 3
 unlimited = -1
 
 # BASIC ITEMS FOR SELECTION
