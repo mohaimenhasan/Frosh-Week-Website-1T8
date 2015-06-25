@@ -18,7 +18,9 @@
 
 class PackageItem < ActiveRecord::Base
   attr_accessible :key, :count, :description, :max, :left, :name, :price, :start_date, :end_date
-
+  
+  belongs_to :package
+    
   def update_amount
     self.count = self.count + 1
     self.left = self.left - 1

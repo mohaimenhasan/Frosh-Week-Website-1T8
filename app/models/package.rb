@@ -19,6 +19,7 @@ class Package < ActiveRecord::Base
   attr_accessible :key, :name, :count,  :max,   :price, :start_date ,:end_date
 
   has_many :users
+  has_many :package_items
     
   def available?
 
@@ -65,7 +66,7 @@ class Package < ActiveRecord::Base
     if available_early_bird? == false 
       return true if PackageItem.where("key IN ('standalone')").max == 0
     end
-    return false
+      return false
   end
   def available_hhf?
     item = PackageItem.where("key IN ('farm')")
@@ -89,8 +90,8 @@ class Package < ActiveRecord::Base
       package_items = self.key.split('_')
       package_items.each do |name|
           sql_clause = "key In ('" + name + "')";
-          print "SEARCHING for " + sql_
-          item = PackageItem.where(sql_clause)
+          print "SEARCHING for " + sql_clause
+          item = PackageItem.where(sql_clause).first
           item.update_amount
       end
     self.save!

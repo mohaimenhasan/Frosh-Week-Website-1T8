@@ -67,6 +67,9 @@
                         <div class="registration-item  col">
                             <h3><strong>{{name}}</strong> </h3>
                             {{#ifStandalone key }}
+                                <!--p>
+                                    {{description}}
+                                </p-->
                                 <h5 style="color:crimson;"> OPEN WHEN EARLY BIRDS ARE SOLD OUT</h5>
                             {{else}}
                                 {{#ifSoldOut left}}
@@ -100,7 +103,9 @@
                     <div class="col registration-item float-right">
                         <div class="float-right">
                             <br>
-                            <h3 >Total: </h3>
+                            <h3 >Total: 
+                                <span class="subtitle green"><strong>Tax included</strong></span>
+                            </h3>
                         </div>
 
                     </div>

@@ -1,43 +1,58 @@
 App.RegistrationIndexController = Ember.Controller.extend({
 //F YOU EMBER EASYFORM EASY MY...
 //Update total Price by getting checkbox value
-  totalPrice: 0,
   earlyBirdSelected: false,
   regularSelected: false,
   hhfSelected: false,
   commuterSelected: false,
 //disable CheckOut
-  checkOutDisable: true,
-  disableCheckOut: function () {
-    
+  checkOutDisable: function () {
     var value =  (this.get("earlyBirdSelected") || this.get("regularSelected"));
-    this.set("checkOutDisable", !value); //if nothing selected, disable should be true
-      Ember.Logger.log(value);
-  }.observes("earlyBirdSelected", "regularSelected"),
-    
+    //if nothing selected, disable should be true
+    return !value;
+  }.property("earlyBirdSelected", "regularSelected"),
+//totalPrice
+  totalPrice: function() {
+    var totalPrice = 0;
+    totalPrice += this.get('earlyBirdSelected')? Number($('#early-bird-standalone').attr("value")) : 0;
+    totalPrice += this.get('regularSelected')? Number($('#standalone').attr("value")) : 0;
+    totalPrice += this.get('hhfSelected')? Number($('#farm').attr("value")) : 0;
+    totalPrice += this.get('commuterSelected')? Number($('#commuter').attr("value")) : 0;
+
+    return totalPrice;
+  }.property('earlyBirdSelected', 'regularSelected', 'hhfSelected' , 'commuterSelected'),
 //Event when check out is clicked
+    
   
-    checkOutClicked: function() {
-        //Only happen if enabled
-      if(!this.get("checkOutDisable")) {
-        //Compute package string and transition
-        //At this point package should not be null
-        var package = "";
-        package += this.get('earlyBirdSelected')? "early-bird-standalone" : "";
-        package += this.get('regularSelected')? "standalone" : "";
-        package += this.get('hhfSelected')? "_farm" : "";
-        package += this.get('commuterSelected')? "_commuter" : "";
-        
-        
-        Ember.Logger.log("Package:", package);
-        var item = App.Package.find({key: package});
-        var that = this;
-        item.one('didLoad', function() {
-          that.transitionToRoute("registration.item", item);  
-        })
-        
-      }
-    },
+    
+  checkOutClicked: function() {
+      //Only happen if enabled
+    if(!this.get("checkOutDisable")) {
+      //Compute package string and transition
+      //At this point package should not be null
+      var package = "";
+      package += this.get('earlyBirdSelected')? "early-bird-standalone" : "";
+      package += this.get('regularSelected')? "standalone" : "";
+      package += this.get('hhfSelected')? "_farm" : "";
+      package += this.get('commuterSelected')? "_commuter" : "";
+      
+      //Transitioning
+      var item = App.Package.find({key: package});
+      
+      
+      //Transition as soon as finish loading up the selected model
+      var that = this;
+      item.one('didLoad', function() {
+        //Need to reset value in case user do backpost, do it here so that user doesn't notice
+        that.set("earlyBirdSelected", false);
+        that.set("regularSelected", false);
+        that.set("hhfSelected", false);
+        that.set("commuterSelected", false);
+        that.transitionToRoute("registration.item", item);  
+      })
+      
+    }
+  },
   updateAddons: function() {
     //Enable Addons
     if(this.get('earlyBirdSelected') || this.get('regularSelected')){
@@ -53,19 +68,8 @@ App.RegistrationIndexController = Ember.Controller.extend({
       this.set("hhfSelected", false);
       this.set("commuterSelected", false);
     }
-  }.observes('earlyBirdSelected', 'regularSelected'),
-    
-  updatePrice: function() {
-    var totalPrice = 0;
-    totalPrice += this.get('earlyBirdSelected')? Number($('#early-bird-standalone').attr("value")) : 0;
-    totalPrice += this.get('regularSelected')? Number($('#standalone').attr("value")) : 0;
-    totalPrice += this.get('hhfSelected')? Number($('#farm').attr("value")) : 0;
-    totalPrice += this.get('commuterSelected')? Number($('#commuter').attr("value")) : 0;
-
-    this.set('totalPrice', totalPrice);
+  }.observes('earlyBirdSelected', 'regularSelected')
   
-  
-  }.observes('earlyBirdSelected', 'regularSelected', 'hhfSelected' , 'commuterSelected')
 });
 
 
