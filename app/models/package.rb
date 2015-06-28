@@ -84,15 +84,13 @@ class Package < ActiveRecord::Base
   end
 
   def increase_count
-    print "UPDATING DATABASE------\n"
     self.count = self.count + 1
       #NEED testing
       package_items = self.key.split('_')
       package_items.each do |name|
-          sql_clause = "key In ('" + name + "')";
-          print "SEARCHING for " + sql_clause
-          item = PackageItem.where(sql_clause).first
-          item.update_amount
+      sql_clause = "key In ('" + name + "')";
+      item = PackageItem.where(sql_clause).first
+      item.update_amount
       end
     self.save!
   end

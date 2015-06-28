@@ -32,7 +32,6 @@ Group.create(symbol: '&Omega;', name: 'Omega')
 
 Group.find_each do |g|
   g.facebook_link = "http://facebook.com/groups/#{g.name.downcase}.1t5"
-  g.facebook_link = "http://facebook.com/groups/1t5.#{g.name.downcase}" if g.name == 'Phi'
   g.save!
 end
 

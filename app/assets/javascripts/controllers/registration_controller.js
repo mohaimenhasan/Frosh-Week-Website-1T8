@@ -112,6 +112,31 @@ App.RegistrationBursaryController = Ember.Controller.extend({
 });
 
 App.RegistrationConfirmController = Ember.Controller.extend({
+  /** sorting hat**/
+  enableAnimation: false,
+
+  doneAnimation: false,
+    
+  displayFroshGroup: false,
+    
+  
+  base: true,
+  
+    
+  messageShowing: true,
+    
+  startClicked: function() {
+    Ember.Logger.log("Start button clicked");
+    this.set("enableAnimation", true);
+  },
+  
+  doneClicked: function() {
+    this.set("messageShowing", false);
+     $("#froshgroup").fadeIn("slow");
+  },
+    
+  
+  //Actual Form  
   firstTime: false,
 
   url: function() {
