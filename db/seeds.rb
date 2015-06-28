@@ -31,7 +31,7 @@ Group.create(symbol: '&Psi;', name: 'Psi')
 Group.create(symbol: '&Omega;', name: 'Omega')
 
 Group.find_each do |g|
-  g.facebook_link = "http://facebook.com/groups/#{g.name.downcase}.1t5"
+  g.facebook_link = "https://www.facebook.com/groups/#{g.name.downcase}.1t5"
   g.save!
 end
 
