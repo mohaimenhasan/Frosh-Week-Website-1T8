@@ -154,7 +154,7 @@ class User < ActiveRecord::Base
   def send_email(opts)
     message = {
      subject: opts[:subject],
-     from_name: 'F!rosh Week 1T4',
+     from_name: 'F!rosh Week 1T5',
      html: ERB.new(File.read(Rails.root.join(opts[:html_body]))).result(binding),
      to: [
        {
@@ -233,8 +233,9 @@ class User < ActiveRecord::Base
       'XL'
     end
   end
-
+    
   def get_confirm_url
+    #'http://' + 'localhost:3000' + '/register/confirm/' + id.to_s + '/' + confirmation_token
     'http://' + Rails.application.config.hostname + '/register/confirm/' + id.to_s + '/' + confirmation_token
   end
 

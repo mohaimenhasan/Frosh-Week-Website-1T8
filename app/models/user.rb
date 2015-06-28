@@ -233,7 +233,7 @@ class User < ActiveRecord::Base
       'XL'
     end
   end
-    gi
+    
   def get_confirm_url
     #'http://' + 'localhost:3000' + '/register/confirm/' + id.to_s + '/' + confirmation_token
     'http://' + Rails.application.config.hostname + '/register/confirm/' + id.to_s + '/' + confirmation_token
