@@ -31,12 +31,13 @@
                     
                     {{else}}
                     <div class="message_center">
-                        <h1 style="text-align:center;"> The sorting hat has called you up, 
+                        <h2 style="text-align:center;"> The Sorting Hat has called you up, 
                         <br>
-                        <strong>{{model.firstName}} </strong>!
+                        <strong class="messageName">{{model.firstName}} </strong>!
                         <br>
-                        Are you ready to find out what your f!rosh group will be?
-                        </h1>
+                        <br>
+                        Are you ready to find out what your F!rosh group will be in?
+                        </h2>
                         
                     </div>
                     
@@ -50,7 +51,7 @@
                     </button>
                     {{else}}
                     <button id="sortingHat_Start" {{action "startClicked"}} class="highlight" >
-                        <strong>Ready!</strong>    
+                        <strong>I'm Ready!</strong>    
                     </button>
                     {{/if}}
                 </div>
@@ -123,7 +124,7 @@
                                     </h1>
                                 </div>
                                 <div class="col half">
-                                    <div class="registration-logo"></div>
+                                    <div class="harry-potter-logo"></div>
                                     <p class="registration-engsoc small">
                                         <strong>September 7 - September 13, 2015</strong> <br>
                                         31 Kings' College Circle, Toronto, ON

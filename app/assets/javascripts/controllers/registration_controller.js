@@ -126,7 +126,6 @@ App.RegistrationConfirmController = Ember.Controller.extend({
   messageShowing: true,
     
   startClicked: function() {
-    Ember.Logger.log("Start button clicked");
     this.set("enableAnimation", true);
   },
   

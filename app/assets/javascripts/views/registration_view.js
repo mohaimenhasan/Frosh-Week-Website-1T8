@@ -45,19 +45,24 @@ App.RegistrationConfirmView = Ember.View.extend ({
       setTimeout(function(){
           //Not yet done here, just need the message to be ready so we can load the link on
             that.set("controller.doneAnimation", true);
+          //Create background image on the spot
+            var groupName = that.get("controller.group.name").toLowerCase();
+        var url = "url(/assets/sorting_hat/frosh_group_backgrounds/" + groupName + ".png)";
+        $(".full_s").css("background-image", url);
       }, 1000);
+        
       //Wait for animation to be done  
       setTimeout(function(){
-        Ember.Logger.log(that.get("controller.group")); 
-        Ember.Logger.log(that.get("controller.group.facebook_link"));
+        that.set("controller.displayFroshGroup", true);
+        
         $("#sortingHat_gif_container").fadeOut("slow"); 
         $("#sortingHat_Full").fadeIn("slow");
         //Since for some reason, unable to get group.facebook_link, create on the spot
         var groupName = that.get("controller.group.name").toLowerCase();
         var linkstr = "http://facebook.com/groups/" + groupName + ".1t5";
         $("#group_link").attr("href", linkstr);
-        that.set("controller.displayFroshGroup", true);
-      },12500); 
+        
+      },8000); 
        
     }
        
@@ -65,7 +70,6 @@ App.RegistrationConfirmView = Ember.View.extend ({
   
   click: function(event) {
     var clickedElement = $(event.target).attr('id');
-    Ember.Logger.log("Clicked", clickedElement);
 
     if(clickedElement == "viewSortinghat" &&
        !(clickedElement == "sortingHat_messageBox")){
@@ -73,7 +77,6 @@ App.RegistrationConfirmView = Ember.View.extend ({
         this.set("controller.messageShowing", false);
         $("#froshgroup").fadeIn("slow");
       }
-      Ember.Logger.log("Clicked background", this.get("controller.showDoneAnimation"));
     
           
     }   

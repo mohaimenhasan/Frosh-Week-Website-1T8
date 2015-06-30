@@ -3,6 +3,7 @@ require 'admin_authorization'
 class Api::PackagesController < ApplicationController
 
   def show
+     print "In show controller\n"
     package = Package.find(params[:id])
     package = nil unless package.available?
     
