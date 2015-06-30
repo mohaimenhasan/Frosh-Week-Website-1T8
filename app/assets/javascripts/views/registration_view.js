@@ -62,7 +62,7 @@ App.RegistrationConfirmView = Ember.View.extend ({
         var linkstr = "http://facebook.com/groups/" + groupName + ".1t5";
         $("#group_link").attr("href", linkstr);
         
-      },8000); 
+      },12500); 
        
     }
        
