@@ -570,9 +570,9 @@ input[type=radio], input[type=checkbox] {
         vertical-align: middle;
         background-color: $white;
         border: {
-            width: 0.35em;
+            width: 0.15em;
             style: solid;
-            color: $white;
+            color: $purple;
         }
         margin: { top: 0; left: 0.125em; bottom: 0; right: 0.125em; };
         width: 1.5em;
@@ -581,18 +581,26 @@ input[type=radio], input[type=checkbox] {
         &:hover{
             @include box-shadow($box-shadow-args $purple);
             background-color: $gray-alt;
-            border-color: $white-alt;
+            border: {
+                width: 0.35em;
+                style: solid;
+                color: $white-alt;
+            }
         }
 
         & + label {
             vertical-align: middle;
         }
     }
-
+    
     &:checked + label {
         color: $white;
         background-color: $purple;
-        border-color: $white;
+        border: {
+            width: 0.35em;
+            style: solid;
+            color: $white;
+        }
     }
 }
 
