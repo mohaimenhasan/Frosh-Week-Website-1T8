@@ -49,28 +49,29 @@ class Package < ActiveRecord::Base
   end
 
   def available_early_bird?
-    item = PackageItem.where("key IN ('early-bird-standalone')")
-    early_count = item.count
+    item = PackageItem.where("key LIKE ('early-bird-standalone')")
+    #Return an array rather than an object 
+    early_count=item.first.left;
     print  early_count 
     return true if early_count > 0
     return false
   end
   def available_commuter?
-    item = PackageItem.where("key IN ('commuter')")
-    commuter_count = item.count
+    item = PackageItem.where("key LIKE ('commuter')")
+    commuter_count = item.first.left
     print commuter_count 
     return true if commuter_count > 0 
     return false
   end
   def available_normal?
     if available_early_bird? == false 
-      return true if PackageItem.where("key IN ('standalone')").max == 0
+      return true if PackageItem.where("key LIKE ('standalone')").first.max == 0
     end
       return false
   end
   def available_hhf?
-    item = PackageItem.where("key IN ('farm')")
-    farm_count = item.count
+    item = PackageItem.where("key LIKE ('farm')")
+    farm_count = item.first.left
     print farm_count 
     return true if farm_count > 0 
     return false
@@ -88,7 +89,7 @@ class Package < ActiveRecord::Base
       #NEED testing
       package_items = self.key.split('_')
       package_items.each do |name|
-      sql_clause = "key In ('" + name + "')";
+      sql_clause = "key LIKE ('" + name + "')";
       item = PackageItem.where(sql_clause).first
       item.update_amount
       end

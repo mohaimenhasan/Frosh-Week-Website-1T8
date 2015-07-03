@@ -469,6 +469,7 @@
   transition-duration :0.5s;
   .sortinghat_box {
     
+    z-index: 20;
     position:absolute;
     margin:auto;
     top:0;
@@ -500,7 +501,20 @@
       @include screen-large   { top:0px; left:0px;};
     }
   }
-    
+  .sortingHat {
+    background: {
+      image: image-url($sortingHat);
+      size: contain;
+      repeat: no-repeat;
+      position: center;   
+    };
+    width:300px;
+    height:300px;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index:21;
+  }
   &.hidding{
     opacity: 0;
     filter: alpha(opacity=0);

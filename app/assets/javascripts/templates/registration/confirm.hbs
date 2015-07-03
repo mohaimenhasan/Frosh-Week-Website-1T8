@@ -1,10 +1,12 @@
 <section class="section">
-    
+    {{!#if showAnimation}}
     <div id="viewSortinghat" {{bindAttr class="base:sortingHat_Base messageShowing:showing:hidding"}} >
+    
         <div id="sortingHat_messageBox" class="sortinghat_box">
             <div id="sortingHat_gif_container" class="gif_container float-right">
                 <img id="sorting_hat" class="gif" src="">
             </div>
+            
             <div id = "sortingHat_Full" class="full_s">
                 
                 <div class="col top">
@@ -33,10 +35,10 @@
                     <div class="message_center">
                         <h2 style="text-align:center;"> The Sorting Hat has called you up, 
                         <br>
-                        <strong class="messageName">{{model.firstName}} </strong>!
+                            <span class="messageName"> <strong>{{model.firstName}} </strong>!</span>
                         <br>
                         <br>
-                        Are you ready to find out what your F!rosh group will be in?
+                        Are you ready to find out what F!rosh group you will be in?
                         </h2>
                         
                     </div>
@@ -59,7 +61,7 @@
             
         </div>
     </div>
-    
+    {{!/if}}
     <div class="content row">
         <div class="side col registration-print-hidden">
             {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}

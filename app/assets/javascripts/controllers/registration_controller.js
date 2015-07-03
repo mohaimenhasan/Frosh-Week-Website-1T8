@@ -5,6 +5,16 @@ App.RegistrationIndexController = Ember.Controller.extend({
   regularSelected: false,
   hhfSelected: false,
   commuterSelected: false,
+  init: function() {
+    
+     //Disable all addons
+     $('#farm').attr("checked", false);
+      $('#commuter').attr("checked", false);
+      $('#farm').attr('disabled', true);  
+      $('#commuter').attr('disabled', true);  
+      this.set("hhfSelected", false);
+      this.set("commuterSelected", false);
+  },
 //disable CheckOut
   checkOutDisable: function () {
     var value =  (this.get("earlyBirdSelected") || this.get("regularSelected"));
@@ -122,9 +132,15 @@ App.RegistrationConfirmController = Ember.Controller.extend({
   
   base: true,
   
-    
   messageShowing: true,
+
     
+  showAnimation: function() {
+    
+    return (this.get('firstTime')  && this.get('model.verified'));
+  }.property("firstTime"),
+
+  //Button Action
   startClicked: function() {
     this.set("enableAnimation", true);
   },
@@ -133,7 +149,7 @@ App.RegistrationConfirmController = Ember.Controller.extend({
     this.set("messageShowing", false);
      $("#froshgroup").fadeIn("slow");
   },
-    
+  
   
   //Actual Form  
   firstTime: false,
@@ -180,7 +196,7 @@ App.RegistrationConfirmController = Ember.Controller.extend({
 
   showAlreadyVerified: function() {
     var model = this.get('model');
-    return !this.get('firstTime') && model && model.get('verified') && !(!model.get('bursaryRequested') || model.get('bursaryPaid') || model.get('bursaryChosen'));
+    return (!this.get('firstTime') && model && model.get('verified') && !(model.get('bursaryRequested') || model.get('bursaryPaid') || model.get('bursaryChosen')));
   }.property('firstTime', 'model'),
 
   showError: function() {
@@ -197,7 +213,7 @@ App.RegistrationConfirmController = Ember.Controller.extend({
 
         if (!verified) {
           model.set('verified', true);
-          model.get('store').commit();
+          model.get('store').commit ();
         }
       }
     });

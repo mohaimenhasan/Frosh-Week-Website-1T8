@@ -21,21 +21,22 @@
                 <i class="icon-ticket"></i> Register online
             </h1>
             
-            <div class="row registration-row">
-                <div class="float-right registration-price col-header col ">
-                    <h3>Price</h3>
-                    <hr>
-                </div>
-                <div class="float-right registration-item col-header col ">
-                    <h3>F!rosh Kit Package</h3>
-                    <hr>
-                </div>
-            </div>
+           
                 
             
             {{#ifOnlinePurchase}} 
+                 <div class="row registration-row">
+                    <div class="float-right registration-price col-header col ">
+                        <h3>Price</h3>
+                        <hr>
+                    </div>
+                    <div class="float-right registration-item col-header col ">
+                        <h3>F!rosh Kit Package</h3>
+                        <hr>
+                    </div>
+                </div>
                 {{#each model}}
-                    {{#ifAddonTitle name}}
+                    {{#ifAddonTitle key}}
                     <div class="row registration-row">
                         <div class=" registration-checkbox col">
                             &nbsp;
@@ -51,16 +52,11 @@
                             {{#ifSoldOut left}}
                             &nbsp;
                             {{else}}
-                                {{#ifEarlyBird key}}
-                                    <input {{bindAttr id="key" value="price"}} type="checkbox" >
-                                    <label {{bindAttr for="key"}}></label>
-                                {{/ifEarlyBird}}
-                                {{#ifAddons key}}
-                                    <input {{bindAttr id="key" value="price"}} type="checkbox"  disabled=true >
-                                    <label {{bindAttr for="key"}}></label>
-                                {{/ifAddons}}
                                 {{#ifStandalone key}}
                                     &nbsp;
+                                {{else}}
+                                    <input {{bindAttr id="key" value="price"}} type="checkbox" >
+                                    <label {{bindAttr for="key"}}></label>
                                 {{/ifStandalone}}
                             {{/ifSoldOut}}
                         </div>
@@ -132,21 +128,21 @@
                 </p>
                 <ul>
                     <li>
-                        <strong>$120</strong> F!rosh Kit Standalone Package.
+                        <strong>$125</strong> F!rosh Kit Standalone Package.
                     </li>
                     <li>
-                        <strong>$150</strong> F!rosh Kit + Hart House Farm Package.
+                        <strong>$165</strong> F!rosh Kit + Hart House Farm Package.
                     </li>
                 </ul>
                 <p></p>
-                <!--iframe width="100%"
+                <iframe width="100%"
                         height="400"
                         frameborder="0"
                         scrolling="no"
                         marginheight="0"
                         marginwidth="0"
                         src="https://maps.google.ca/maps?source=embed&amp;f=q&amp;hl=en&amp;geocode=&amp;q=Convocation+Hall,+Kings+College+Circle,+Toronto,+Ontario&amp;aq=0&amp;sll=49.891235,-97.15369&amp;sspn=46.422473,114.169922&amp;ie=UTF8&amp;hq=Convocation+Hall,+Kings+College+Circle,+Toronto,+Ontario&amp;t=m&amp;cid=13013795246944744418&amp;hnear=&amp;ll=43.668679,-79.390039&amp;spn=0.031043,0.042915&amp;output=embed">
-                </iframe-->
+                </iframe>
             {{/ifOnlinePurchase}}
             
             

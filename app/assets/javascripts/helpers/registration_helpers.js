@@ -8,10 +8,10 @@ Ember.Handlebars.registerHelper('ifOnlinePurchase', function(options) {
     return options.inverse(this);
   }
 });
-Ember.Handlebars.registerHelper('ifAddonTitle', function(name, options) {
+Ember.Handlebars.registerHelper('ifAddonTitle', function(key, options) {
   
-  var _name = Em.get(this, name);
-  if(_name.includes("Hart House")) {
+  var _key = Em.get(this, key);
+  if(_key == "farm") {
       return options.fn(this);
   }
   else {
@@ -30,34 +30,12 @@ Ember.Handlebars.registerHelper('ifSoldOut', function(left, options) {
   }
 });
 
-Ember.Handlebars.registerHelper('ifEarlyBird', function(key,  options) {
-  
-  var _key = Em.get(this, key);
-  if(_key == "early-bird-standalone") {
-      return options.fn(this);
-  }
-  else {
-      return options.inverse(this);
-  }
-});
 
 Ember.Handlebars.registerHelper('ifStandalone', function(key, options) {
 
   var _key = Em.get(this, key);
 
   if(_key == "standalone") {
-      return options.fn(this);
-  }
-  else {
-      return options.inverse(this);
-  }
-});
-
-Ember.Handlebars.registerHelper('ifAddons', function(key, options) {
-
-  var _key = Em.get(this, key);
-
-  if(_key == "farm" || _key == "commuter") {
       return options.fn(this);
   }
   else {
