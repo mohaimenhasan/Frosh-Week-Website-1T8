@@ -20,7 +20,11 @@
 $font-weight-normal: 400;
 $font-weight-bold: 700;
 $box-shadow-args: 0 1px 2px;
-
+//Harry Potter png
+$emblem: 'harry_potter_emblem.png';
+$questionMark: 'sorting_hat/background_question.png';
+$sortingHat: 'sorting_hat/sorting_hat.png';
+//End
 $logo: 'logo-large.png';
 $chevron: 'chevron.svg';
 $snapchat-image: 'icons/snapchat.png';
@@ -418,6 +422,13 @@ body {
     clear: both;
 }
 
+.debug_div_container { 
+    background-color: black;
+}
+.debug_div {
+    background-color:blueviolet;
+}
+
 hr {
     border: 0;
     color: $black-alt;
@@ -561,35 +572,39 @@ input[type=radio], input[type=checkbox] {
         vertical-align: middle;
         background-color: $white;
         border: {
-            width: 0.35em;
+            width: 0.15em;
             style: solid;
-            color: $white;
+            color: $purple;
         }
         margin: { top: 0; left: 0.125em; bottom: 0; right: 0.125em; };
         width: 1.5em;
         height: 1.5em;
 
-        &:hover, &:focus {
+        &:hover{
             @include box-shadow($box-shadow-args $purple);
             background-color: $gray-alt;
-            border-color: $white-alt;
+
+            border: {
+                width: 0.35em;
+                style: solid;
+                color: $white-alt;
+            }
         }
 
         & + label {
             vertical-align: middle;
         }
     }
-
-    &:focus + label {
-        @include box-shadow($box-shadow-args $purple);
-        background-color: $gray-alt;
-        border-color: $white-alt;
-    }
-
+    
     &:checked + label {
         color: $white;
         background-color: $purple;
-        border-color: $white;
+
+        border: {
+            width: 0.35em;
+            style: solid;
+            color: $white;
+        }
     }
 }
 

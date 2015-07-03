@@ -9,7 +9,10 @@ Ember.Handlebars.registerHelper('ifOnlinePurchase', function(options) {
   }
 });
 Ember.Handlebars.registerHelper('ifAddonTitle', function(key, options) {
-
+<<<<<<< HEAD
+  
+=======
+>>>>>>> 6aae603c035a550cf7d65c232d034cd6b0e07cb8
   var _key = Em.get(this, key);
   if(_key == "farm") {
       return options.fn(this);
@@ -30,7 +33,10 @@ Ember.Handlebars.registerHelper('ifSoldOut', function(left, options) {
   }
 });
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 6aae603c035a550cf7d65c232d034cd6b0e07cb8
 
 Ember.Handlebars.registerHelper('ifStandalone', function(key, options) {
 
@@ -44,4 +50,8 @@ Ember.Handlebars.registerHelper('ifStandalone', function(key, options) {
  
   
 });
+<<<<<<< HEAD
+=======
 
+
+>>>>>>> 6aae603c035a550cf7d65c232d034cd6b0e07cb8
