@@ -38,7 +38,7 @@
 
 @mixin registration-printable {
     .main {
-        width: 65%;
+        width: 55%;
 
         &.total {
             text-align: right;
@@ -51,7 +51,7 @@
     }
 
     .side {
-        width: 35%;
+        width: 45%;
     }
 
     .half {
@@ -101,20 +101,33 @@
     }
 }
 
+.registration-row {
+    padding-bottom:15px;
+    .col-header {
+        text-align: center;
+    }
+}
 
 /* Packages
  * --------
  */
 
+
 .registration-item {
-    @include transition(all 0.3s);
-
-    padding: 0.5em;
-
-    &:hover {
-        cursor: pointer;
-        background-color: $white-alt;
-    }
+    width: 70%; 
+}
+//checkbox
+.registration-checkbox {
+    width: 10%;
+    text-align: center;
+}
+//Price
+.registration-price {
+    width: 20%; 
+}
+.registration-checkout {
+    width: 35%; 
+    margin-top: 15px;
 }
 
 
@@ -124,7 +137,7 @@
 
 .registration-form-group {
     margin: 0.5em;
-
+    
     .input {
         margin: { top: 0.5em; bottom: 0.5em; };
 
@@ -420,6 +433,7 @@
 .registration-snap {
     width: 17px;
     height: 17px;
+    margin-bottom: 2.5px;
 }
 /* Logo
  * ----
@@ -438,3 +452,177 @@
 
     @include print { display: none; };
 }
+
+/* Sorting Hat
+ * ---------------
+ */
+
+.sortingHat_Base {
+  width: 100%;
+  height: 100%;
+  
+  position: fixed;
+  top:0;
+  right:0;
+  color: white;
+  background-color: rgba(0,0,0, 0.7);
+  transition-duration :0.5s;
+  .sortinghat_box {
+    
+    z-index: 20;
+    position:absolute;
+    margin:auto;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    @include border-radius(0.35em);
+    box-sizing: border-box;
+    background-color: $white;
+    width: 750px;
+    padding: 10px;
+    @include screen-small   { width: 330px; height: 200px; };
+    @include screen-medium  { width: 570px; height: 450px; };
+    @include screen-large   { width: 750px; height: 570px; };
+  }
+  .gif_container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: none;
+    top:10px;
+    .gif {
+      position: relative; 
+      max-width: 100%;
+      max-height: 100%;
+      top: 0px;
+      @include screen-small   { top:0px; left:60px; };
+      @include screen-medium  { top:13px; left:0px; };
+      @include screen-large   { top:0px; left:0px;};
+    }
+  }
+  .sortingHat {
+    background: {
+      image: image-url($sortingHat);
+      size: contain;
+      repeat: no-repeat;
+      position: center;   
+    };
+    width:300px;
+    height:300px;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index:21;
+  }
+  &.hidding{
+    opacity: 0;
+    filter: alpha(opacity=0);
+    z-index: -1;
+    transition: all 0.5s, z-index 0s;
+  }
+  &.showing {
+    transform: scale(1,1);
+    transition: all 0.5s, z-index auto;
+    index: 0s ;
+    z-index: 20;
+  }
+}
+
+.full_s {
+  width: 100%;
+  height: 100%;
+  background: {
+      image: image-url($questionMark);
+      size: contain;
+      repeat: no-repeat;
+      position: center;   
+  };
+}
+
+.top {
+ 
+  @include screen-small   {  height: 80%;};
+  @include screen-medium  {  height: 75%;};
+  @include screen-large   {  height: 75%;};
+  .message{
+    font-size: 36px;   
+  }
+  .message_center {
+    width:85%;
+    height:50%;
+    position:absolute;
+    margin:auto;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    h1 {
+      text-align:center;
+      @include screen-small   { font-size:1.2em; };
+      @include screen-medium  { font-size:2.2em; };
+      @include screen-large   { font-size:2.2em; };
+    }
+    h2 {
+      text-align:center;
+      @include screen-small   { font-size:0.8em; };
+      @include screen-medium  { font-size:1.8em; };
+      @include screen-large   { font-size:1.8em; };
+    }
+  }
+}
+
+.bottom {
+  bottom: 0;
+  margin-bottom: 30px;
+  text-align: center;
+  .confirm {
+     margin-left: auto;
+     margin-right: auto;
+  }
+}
+
+
+
+.harry-potter-logo {
+    background: {
+        image: image-url($emblem);
+        size: contain;
+        repeat: no-repeat;
+        position: center;
+    };
+
+    height: 200px;
+    margin: 0;
+    position: relative;
+    @include screen-small   { bottom: 1.5em; left: 0em;};
+    @include screen-medium  { bottom: 2.7em; left: 0em;};
+    @include screen-large   { bottom: 1em; left: 1em;};
+    @include print { display: none; };
+}
+
+.harry-potter-logo-receipt {
+    background: {
+        image: image-url($emblem);
+        size: contain;
+        repeat: no-repeat;
+        position: center;
+    };
+
+    height: 200px;
+    margin: 0;
+    position: relative;
+    @include screen-small   { bottom: 1.7em; right: 1.5em;};
+    @include screen-medium  { bottom: 2.7em; right: 0.5em;};
+    @include screen-large   { bottom: 1em; right: 1.5em;};
+    @include print { display: none; };
+}
+
+.messageName {
+    @include screen-small   { font-size: 30px;};
+    @include screen-medium  { font-size: 55px;};
+    @include screen-large   { font-size: 65px;};
+       
+}
+
+
