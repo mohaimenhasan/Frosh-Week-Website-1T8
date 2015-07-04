@@ -11,7 +11,7 @@ class Api::Admin::PackageItemsController < Api::PackageItemsController
   end
     
   def index
-      print "in package_item index\n"
+    #  print "in package_item index\n"
     if params.has_key? :key
       items = PackageItem.where params.slice :key
     else

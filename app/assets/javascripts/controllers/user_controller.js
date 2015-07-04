@@ -11,6 +11,8 @@ App.UserController = Ember.ObjectController.extend({
     });
   },
 
+  showPackageUnavailable: false,
+    
   showBursary: true,
 
   showAccessibilityInfo: false,
@@ -140,7 +142,6 @@ App.UserController = Ember.ObjectController.extend({
           // ccType must be set on server.
         });
         transaction.commit();
-
         record.on('didCreate', function() {
           // Transition to receipt page.
           submitButton.stop();
@@ -174,7 +175,8 @@ App.UserController = Ember.ObjectController.extend({
               content.set('errors.' + key, errors[key][0]);
               that.trackError(key, 'client', content.get(key));
               errorCount++;
-            }
+            } 
+              
           }
 
           if (errorCount) {

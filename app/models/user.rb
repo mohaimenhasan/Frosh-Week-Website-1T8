@@ -128,6 +128,7 @@ class User < ActiveRecord::Base
     unless ticket_number
       self.ticket_number = (id.to_i * 100) + rand(100) + 100_000
       self.save!
+       # print "increasing_count"
       package.increase_count
     end
   end
@@ -213,8 +214,9 @@ class User < ActiveRecord::Base
   end
 
   def package_is_available
-    unless package.available? || is_created_by_admin?
-      errors.add(:package, "must be available")
+      #if ticket is already created means that package has already been 
+    unless self.ticket_number || package.available? || is_created_by_admin?
+      errors.add(:package, "Package is no longer available")
     end
   end
 
@@ -236,7 +238,6 @@ class User < ActiveRecord::Base
   end
     
   def get_confirm_url
-    #'http://' + 'localhost:3000' + '/register/confirm/' + id.to_s + '/' + confirmation_token
     'http://' + Rails.application.config.hostname + '/register/confirm/' + id.to_s + '/' + confirmation_token
   end
 

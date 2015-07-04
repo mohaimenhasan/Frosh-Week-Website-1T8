@@ -5,22 +5,31 @@ App.RegistrationIndexController = Ember.Controller.extend({
   regularSelected: false,
   hhfSelected: false,
   commuterSelected: false,
+ 
+//Enable EarlyBird or Standalone
   init: function() {
-    
-     //Disable all addons
-     $('#farm').attr("checked", false);
-      $('#commuter').attr("checked", false);
-      $('#farm').attr('disabled', true);  
-      $('#commuter').attr('disabled', true);  
-      this.set("hhfSelected", false);
-      this.set("commuterSelected", false);
+    var that = this;
+    this.addObserver('model', function() {
+      this.get('model');
+    });
   },
+  earlyBird: function() {
+    var early_bird = this.get("model").objectAt(0);
+    return early_bird;
+  }.property("model.[]"),
+
+  regular: function() {
+    var regular = this.get("model").objectAt(1);
+    return regular;
+  }.property("model.[]"),
+    
 //disable CheckOut
   checkOutDisable: function () {
     var value =  (this.get("earlyBirdSelected") || this.get("regularSelected"));
     //if nothing selected, disable should be true
     return !value;
   }.property("earlyBirdSelected", "regularSelected"),
+
 //totalPrice
   totalPrice: function() {
     var totalPrice = 0;

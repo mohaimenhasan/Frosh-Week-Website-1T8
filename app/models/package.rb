@@ -23,7 +23,7 @@ class Package < ActiveRecord::Base
     
   def available?
 
-    print "IN RUBY: " + self.key 
+   # print "IN RUBY: " + self.key 
     if (self.key == 'early-bird-standalone')
       available = available_early_bird?
     elsif (self.key == 'early-bird-standalone_commuter')
@@ -52,14 +52,14 @@ class Package < ActiveRecord::Base
     item = PackageItem.where("key LIKE ('early-bird-standalone')")
     #Return an array rather than an object 
     early_count=item.first.left;
-    print  early_count 
+    #print  early_count 
     return true if early_count > 0
     return false
   end
   def available_commuter?
     item = PackageItem.where("key LIKE ('commuter')")
     commuter_count = item.first.left
-    print commuter_count 
+    #print commuter_count 
     return true if commuter_count > 0 
     return false
   end
@@ -72,7 +72,7 @@ class Package < ActiveRecord::Base
   def available_hhf?
     item = PackageItem.where("key LIKE ('farm')")
     farm_count = item.first.left
-    print farm_count 
+    #print farm_count 
     return true if farm_count > 0 
     return false
   end
@@ -86,7 +86,6 @@ class Package < ActiveRecord::Base
 
   def increase_count
     self.count = self.count + 1
-      #NEED testing
       package_items = self.key.split('_')
       package_items.each do |name|
       sql_clause = "key LIKE ('" + name + "')";

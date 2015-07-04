@@ -32,10 +32,10 @@ Ember.Handlebars.registerHelper('ifSoldOut', function(left, options) {
 
 
 
-Ember.Handlebars.registerHelper('ifStandalone', function(key, options) {
+Ember.Handlebars.registerHelper('ifAddons', function(key, options) {
 
   var _key = Em.get(this, key);
-  if(_key == "standalone") {
+  if(_key == "farm" || _key == "commuter") {
       return options.fn(this);
   }
   else {

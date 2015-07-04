@@ -25,7 +25,8 @@
             
             
             {{#ifOnlinePurchase}} 
-                 <div class="row registration-row">
+            
+                <div class="row registration-row">
                     <div class="float-right registration-price col-header col ">
                         <h3>Price</h3>
                         <hr>
@@ -35,60 +36,105 @@
                         <hr>
                     </div>
                 </div>
-                {{#each model}}
-                    {{#ifAddonTitle key}}
-                    <div class="row registration-row">
-                        <div class=" registration-checkbox col">
+            
+                <div class="row registration-row">
+                    <div class="registration-checkbox col">
+                        {{#if earlyBird.left}}
+                            <input {{bindAttr id="earlyBird.key" value="earlyBird.price"}} type="checkbox" >        
+                            <label {{bindAttr for="earlyBird.key"}} ></label>
+                        {{else}}
                             &nbsp;
-                        </div>
-                        <div class=" registration-item col-header col ">
-                            <h3>Add-ons</h3>
-                            <hr>
-                        </div>
+                        {{/if}}
+                        
                     </div>
-                    {{/ifAddonTitle}}
-                    <div class="row registration-row">
-                        <div class="registration-checkbox col">
+                    <div class="registration-item  col">
+                        <h3><strong>{{earlyBird.name}}</strong> </h3>
+                        {{#if earlyBird.left}}
+                            <h5 style="color:crimson;">* ONLY <strong>{{earlyBird.left}}</strong> LEFT *</h5>   
+                        {{/if}}
+                        <p>
+                            {{earlyBird.description}}
+                        </p>
+                    </div>
+                    <div  class="registration-price col ">
+                        <h3 class="float-right">
+                        {{#if earlyBird.left}} 
+                            <strong>${{earlyBird.price}} </strong>
+                        {{else}}
+                            <strong style="color:crimson;"> SOLD OUT</strong>
+                        {{/if}}
+                        </h3>
+                    </div>
+                </div>
+                
+                 <div class="row registration-row">
+                    <div class="registration-checkbox col">
+                        {{#if earlyBird.left}}
+                            &nbsp;
+                        {{else}}
+                            <input {{bindAttr id="regular.key" value="regular.price"}} type="checkbox" >        
+                            <label {{bindAttr for="regular.key"}} ></label>
+                        {{/if}}
+                        
+                    </div>
+                    <div class="registration-item  col">
+                        <h3><strong>{{regular.name}}</strong> </h3>
+                        {{#if earlyBird.left}}
+                            <h5 style="color:crimson;">* OPEN WHEN EARLY BIRDS ARE SOLD OUT *</h5>   
+                        {{/if}}
+                        <p>
+                            {{regular.description}}
+                        </p>
+                    </div>
+                    <div  class="registration-price col ">
+                        <h3 class="float-right">
+                            <strong>${{regular.price}} </strong>
+                        </h3>
+                    </div>
+                </div>
+            
+                <div class="row registration-row">
+                    <div class=" registration-checkbox col">
+                          &nbsp;
+                    </div>
+                    <div class=" registration-item col-header col ">
+                        <h3>Add-ons</h3>
+                        <hr>
+                    </div>
+                </div>
+            {{#each model}} 
+                {{#ifAddons key}}
+                <div class="row registration-row">
+                    <div class="registration-checkbox col">
+                        {{#ifSoldOut left}}
+                        &nbsp;
+                        {{else}}
+                            <input {{bindAttr id="key" value="price"}} type="checkbox" disabled=disabled >
+                            <label {{bindAttr for="key"}}></label>
+                        {{/ifSoldOut}}
+                    </div>
+                    <div class="registration-item  col">
+                        <h3><strong>{{name}}</strong> </h3>
+                        {{#ifSoldOut left}}
+                        {{else}}
+                            <h5 style="color:crimson;">* ONLY <strong>{{left}}</strong> LEFT *</h5>   
+                        {{/ifSoldOut}}
+                        <p>
+                            {{description}}
+                        </p>
+                    </div>
+                    <div  class="registration-price col ">
+                        <h3 class="float-right">
                             {{#ifSoldOut left}}
-                            &nbsp;
+                            <strong style="color:crimson;"> SOLD OUT</strong>
                             {{else}}
-                                {{#ifStandalone key}}
-                                    &nbsp;
-                                {{else}}
-                                    <input {{bindAttr id="key" value="price"}} type="checkbox" >
-                                    <label {{bindAttr for="key"}}></label>
-                                {{/ifStandalone}}
+                            <strong>${{price}} </strong>
                             {{/ifSoldOut}}
-                        </div>
-                        <div class="registration-item  col">
-                            <h3><strong>{{name}}</strong> </h3>
-                            {{#ifStandalone key }}
-                                <!--p>
-                                    {{description}}
-                                </p-->
-                                <h5 style="color:crimson;"> OPEN WHEN EARLY BIRDS ARE SOLD OUT</h5>
-                            {{else}}
-                                {{#ifSoldOut left}}
-                                {{else}}
-                                <h5 style="color:crimson;">* ONLY <strong>{{left}}</strong> LEFT *</h5>
-                                
-                                {{/ifSoldOut}}
-                                <p>
-                                    {{description}}
-                                </p>
-                            {{/ifStandalone}}
-                        </div>
-                        <div  class="registration-price col ">
-                            <h3 class="float-right">
-                                {{#ifSoldOut left}}
-                                <strong style="color:crimson;"> SOLD OUT</strong>
-                                {{else}}
-                                <strong>${{price}} </strong>
-                                {{/ifSoldOut}}
-                            </h3>
-                        </div>
+                        </h3>
                     </div>
-                {{/each}}
+                </div>
+                {{/ifAddons}}
+            {{/each}}
                 <div class="row registration-row">
                     <div class="col registration-price float-right">
                         <hr>

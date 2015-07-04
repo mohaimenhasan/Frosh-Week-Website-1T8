@@ -132,8 +132,9 @@
                         Please only apply if your financial situation prevents you from participating in F!rosh
                         Week. The bursary covers $50 of the F!rosh kit package. The Commuter program and
                         the Hart House Farm camping trip are not covered by the bursary. Bursaries are limited and
-                        will be awarded based on greatest need. You will need to fill out an additional short
-                        application.
+                        will be awarded based on greatest need. Students who receive the bursary will get a $50
+                        cheque from the Engineering Society at the beginning of the term as a reimbursement.You will
+                        need to fill out the following short application.
                     </div>
                     {{#input bursary}}
                         {{inputField bursary as=checkbox}}{{labelField bursary text=" "}}
@@ -173,6 +174,12 @@
                         {{#input bursaryFinancialReasoning}}
                             {{inputField bursaryFinancialReasoning as=text toggledBinding=bursary reverse="false"}}
                         {{/input}}
+                    </section>
+                    
+                    <section class="subsection">
+                        <div style="font-size:14px;" class="info">
+                            *Note: If you have any concerns regarding this application, please email <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b>
+                        </div>
                     </section>
                 </section>
             </div>
@@ -219,8 +226,21 @@
         </section>
     {{/unless}}
 
+    <div {{bindAttr class=":registration-error showPackageUnavailable:showing:hidden"}}>
+        <section class="box highlight">
+            <h2>Unavailable Package!</h2>    
+                <p>
+                    Sorry! Seems like the package you chose is no longer
+                    available. Please go back and choose an available
+                    package. If you have any concerns with this issue, 
+                    please contact <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b>.
+                </p>
+        </section>
+    </div>
+            
     <div {{bindAttr class=":registration-error showError:showing:hidden"}}>
         <section class="box highlight">
+            
             {{#if serverError}}
                 <h2>Oops! Something is wrong with the server!</h2>
                 <p>

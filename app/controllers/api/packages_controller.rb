@@ -3,7 +3,7 @@ require 'admin_authorization'
 class Api::PackagesController < ApplicationController
 
   def show
-     print "In show controller\n"
+    # print "In show controller\n"
     package = Package.find(params[:id])
     package = nil unless package.available?
     
@@ -11,9 +11,9 @@ class Api::PackagesController < ApplicationController
   end
 
   def index
-      print "In packages controller\n"
+     # print "In packages controller\n"
     if params.has_key? :key
-        print "getting packages"
+       # print "getting packages"
       packages = Package.where params.slice :key
     
     else

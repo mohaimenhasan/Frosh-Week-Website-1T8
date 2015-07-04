@@ -83,7 +83,7 @@ PackageItem.create(
 PackageItem.create(
   key: 'commuter',
   name: 'Commuter Program Package',
-  description: "Living accommodations! This offer includes room and board at a downtown hostel for four nights so you can fully enjoy F!rosh Week's days and nights.",
+  description: "Living accommodations! This offer includes room and board at a downtown hostel for four nights (from Sunday night to Thursday morning) so you can fully enjoy F!rosh Week's days and nights.",
   price: commuter_addon,
   count: 0,
   max: commuter_max,
