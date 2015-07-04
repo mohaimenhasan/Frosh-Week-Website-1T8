@@ -1,5 +1,5 @@
 <section class="section">
-    {{!#if showAnimation}}
+    {{#if showAnimation}}
     <div id="viewSortinghat" {{bindAttr class="base:sortingHat_Base messageShowing:showing:hidding"}} >
     
         <div id="sortingHat_messageBox" class="sortinghat_box">
@@ -61,11 +61,11 @@
             
         </div>
     </div>
-    {{!/if}}
+    {{/if}}
     <div class="content row">
         <div class="side col registration-print-hidden">
             {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}
-            {{#if displayFroshGroup}}
+            {{#if showFroshGroup}}
             {{#if showReceipt}}
                 <section id="froshgroup" class="box highlight">
                     <h2>Your F!rosh group is..</h2>
@@ -77,11 +77,13 @@
                 </section>
             {{/if}}
             {{/if}}
+            
         </div>
 
         <div class="main col">
             <div class="row">
                 <div class="full col">
+                    
                     {{#if showConfirmed}}
                         <section class="box highlight registration-print-hidden">
                             <h1>Confirmed!</h1>
@@ -96,7 +98,7 @@
                         <section class="box highlight registration-print-hidden">
                             <h1>You've already verified this email!</h1>
                             <p>
-                                Your email has already been verified. Looking for your ticket? If you didn't get your
+                                Your email has already been verified. Looking for your ticket? If you didn't get yours
                                 via email, or have any other concerns, contact
                                 <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>.
                             </p>

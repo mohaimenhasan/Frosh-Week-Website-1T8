@@ -189,6 +189,7 @@ class User < ActiveRecord::Base
       charge = create_stripe_charge token
 
       self.charge_id = charge["id"]
+      self.bursary_paid = true
       save!
 
       :success

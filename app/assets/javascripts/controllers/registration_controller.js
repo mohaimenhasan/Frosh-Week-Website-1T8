@@ -134,7 +134,10 @@ App.RegistrationConfirmController = Ember.Controller.extend({
   
   messageShowing: true,
 
-    
+  showFroshGroup: function () {
+    return (this.get("displayFroshGroup") || this.get("showAlreadyVerified"))
+  }.property("displayFroshGroup", "showAlreadyVerified"),
+      
   showAnimation: function() {
     
     return (this.get('firstTime')  && this.get('model.verified'));
@@ -187,7 +190,7 @@ App.RegistrationConfirmController = Ember.Controller.extend({
 
   showReceipt: function() {
     var model = this.get('model');
-    return model && model.get('verified') && (!model.get('bursaryRequested') || (model.get('bursaryPaid') || model.get('bursaryChosen')));
+    return model && model.get('verified');
   }.property('model'),
 
   showConfirmed: function() {
@@ -196,7 +199,7 @@ App.RegistrationConfirmController = Ember.Controller.extend({
 
   showAlreadyVerified: function() {
     var model = this.get('model');
-    return (!this.get('firstTime') && model && model.get('verified') && !(model.get('bursaryRequested') || model.get('bursaryPaid') || model.get('bursaryChosen')));
+    return (!this.get('firstTime') && model && model.get('verified'));
   }.property('firstTime', 'model'),
 
   showError: function() {

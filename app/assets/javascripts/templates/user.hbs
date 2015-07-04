@@ -142,46 +142,6 @@
                 </section>
             {{/if}}
 
-            <div {{bindAttr class=":registration-payment bursary:hidden:showing"}}>
-                <section class="registration-form-group aligned">
-                    <h3>
-                        Pay by credit card
-                        <span class="subtitle green"><strong>Secure connection</strong></span>
-                    </h3>
-                    <p>We accept Visa, Mastercard, and American Express.</p>
-                    {{#input ccName}}
-                        {{labelField ccName text="Name on card"}}
-                        {{inputField ccName placeholder="Jane Smith" toggledBinding=bursary reverse="true"}}
-                    {{/input}}
-
-                    <div class="input">
-                        <label>Card number</label>
-                        <div class="inline">
-                            {{#input ccNumber}}
-                                {{inputField ccNumber as=tel placeholder="1234 1234 1234 1234" inputConfig="class:cc cc-number" toggledBinding=bursary reverse="true"}}
-                            {{/input}}
-                            {{#input ccCVC}}
-                                {{inputField ccCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc" toggledBinding=bursary reverse="true"}}
-                            {{/input}}
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-
-                    <div class="input">
-                        <label>Expires</label>
-                        <div class="inline">
-                            {{#input ccExpiration}}
-                                {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month" toggledBinding=bursary reverse="true"}}
-                            {{/input}}
-                            {{#input ccExpiration}}
-                                {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year" toggledBinding=bursary reverse="true"}}
-                            {{/input}}
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                </section>
-            </div>
-
             <div {{bindAttr class=":registration-bursary bursary:showing:hidden"}}>
                 <section class="registration-form-group">
                     <h3>Fill out your bursary application details</h3>
@@ -214,6 +174,46 @@
                             {{inputField bursaryFinancialReasoning as=text toggledBinding=bursary reverse="false"}}
                         {{/input}}
                     </section>
+                </section>
+            </div>
+            
+            <div class=":registration-payment showing">
+                <section class="registration-form-group aligned">
+                    <h3>
+                        Pay by credit card
+                        <span class="subtitle green"><strong>Secure connection</strong></span>
+                    </h3>
+                    <p>We accept Visa, Mastercard, and American Express.</p>
+                    {{#input ccName}}
+                        {{labelField ccName text="Name on card"}}
+                        {{inputField ccName placeholder="Jane Smith"}}
+                    {{/input}}
+
+                    <div class="input">
+                        <label>Card number</label>
+                        <div class="inline">
+                            {{#input ccNumber}}
+                                {{inputField ccNumber as=tel placeholder="1234 1234 1234 1234" inputConfig="class:cc cc-number" }}
+                            {{/input}}
+                            {{#input ccCVC}}
+                                {{inputField ccCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc"}}
+                            {{/input}}
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="input">
+                        <label>Expires</label>
+                        <div class="inline">
+                            {{#input ccExpiration}}
+                                {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month"}}
+                            {{/input}}
+                            {{#input ccExpiration}}
+                                {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year" }}
+                            {{/input}}
+                        </div>
+                        <div class="clear"></div>
+                    </div>
                 </section>
             </div>
         </section>

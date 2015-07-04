@@ -12,7 +12,7 @@ class Api::UsersController < ApplicationController
 
     u.set_random_gender_disc if check_skip :random_gender_disc
 
-    unless u.bursary_requested || check_skip(:skip_stripe) || u.is_created_by_admin?
+    unless check_skip(:skip_stripe) || u.is_created_by_admin?
       result = u.process_payment(user_data[:cc_token])
       render json: { errors: result }, status: 422 and return unless result == :success
     end

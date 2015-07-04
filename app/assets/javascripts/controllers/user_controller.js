@@ -46,6 +46,7 @@ App.UserController = Ember.ObjectController.extend({
       } else {
         content.validate('bursaryEngineeringMotivation');
         content.validate('bursaryFinancialReasoning');
+        
       }
     });
   },
@@ -143,13 +144,13 @@ App.UserController = Ember.ObjectController.extend({
         record.on('didCreate', function() {
           // Transition to receipt page.
           submitButton.stop();
-          if (that.get('content.bursary')) {
-            that.get('controllers.registrationBursary').set('model', record);
+          //if (that.get('content.bursary')) {
+            /*that.get('controllers.registrationBursary').set('model', record);
             that.transitionToRoute('registration.bursary');
-          } else {
+          } else {*/
             that.get('controllers.registrationReceipt').set('model', record);
             that.transitionToRoute('registration.receipt');
-          }
+         // }
 
           that.set('content', App.UserForm.create({}));
         });
@@ -197,7 +198,7 @@ App.UserController = Ember.ObjectController.extend({
       }, 250);
     };
 
-    if (content.get('bursary') || content.get('isManual')) {
+    if (/*content.get('bursary') || */content.get('isManual')) {
       delayedHandleTransaction(null, { id: 0 });
     } else {
       Stripe.card.createToken({

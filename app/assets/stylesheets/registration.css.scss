@@ -431,9 +431,11 @@
 }
 
 .registration-snap {
-    width: 17px;
     height: 17px;
     margin-bottom: 2.5px;
+    @include screen-small   {  width: 13px;};
+    @include screen-medium  { width: 14px; };
+    @include screen-large   { width: 17px; };
 }
 /* Logo
  * ----

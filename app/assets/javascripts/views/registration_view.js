@@ -46,7 +46,7 @@ App.RegistrationConfirmView = Ember.View.extend ({
             that.set("controller.doneAnimation", true);
           //Create background image on the spot
             var groupName = that.get("controller.group.name").toLowerCase();
-        var url = "url(/assets/sorting_hat/frosh_group_backgrounds/" + groupName + ".png)";
+        var url = "url(https://froshweek-staging.herokuapp.com/assets/sorting_hat/frosh_group_backgrounds/" + groupName + ".png)";
         $(".full_s").css("background-image", url);
       }, 1000);
         
