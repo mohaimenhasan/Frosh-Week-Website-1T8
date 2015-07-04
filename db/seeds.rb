@@ -39,10 +39,10 @@ end
 early = 95
 normal = 125
 hhf_addon = 40
-commuter_addon = 130
-early_bird_max = 10
-commuter_max = 1
-hhf_max = 3
+commuter_addon = 145
+early_bird_max = 200
+commuter_max = 50
+hhf_max = 250
 unlimited = -1
 
 # BASIC ITEMS FOR SELECTION
@@ -83,7 +83,7 @@ PackageItem.create(
 PackageItem.create(
   key: 'commuter',
   name: 'Commuter Program Package',
-  description: "Living accommodations! This offer includes room and board at a downtown hostel for four nights (from Sunday night to Thursday morning) so you can fully enjoy F!rosh Week's days and nights.",
+  description: "Living accommodations! This offer includes a stay at a downtown hostel for four nights (Sunday September 6 - Thursday September 10) including 3 breakfasts, 1 dinner and a chaperone supervision for the entirety of your stay, so you can fully enjoy F!rosh Week's days and nights!",
   price: commuter_addon,
   count: 0,
   max: commuter_max,

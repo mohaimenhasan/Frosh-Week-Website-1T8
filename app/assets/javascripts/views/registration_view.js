@@ -42,7 +42,7 @@ App.RegistrationConfirmView = Ember.View.extend ({
       
      
       setTimeout(function(){
-          //Not yet done here, just need the message to be ready so we can load the link on
+          //Not yet done here, just need the message to be ready so we can load the img on
             that.set("controller.doneAnimation", true);
           //Create background image on the spot
             var groupName = that.get("controller.group.name").toLowerCase();
@@ -56,10 +56,6 @@ App.RegistrationConfirmView = Ember.View.extend ({
         
         $("#sortingHat_gif_container").fadeOut("slow"); 
         $("#sortingHat_Full").fadeIn("slow");
-        //Since for some reason, unable to get group.facebook_link, create on the spot
-        var groupName = that.get("controller.group.name").toLowerCase();
-        var linkstr = "http://facebook.com/groups/" + groupName + ".1t5";
-        $("#group_link").attr("href", linkstr);
         
       },16500); 
        

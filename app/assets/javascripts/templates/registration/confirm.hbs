@@ -21,7 +21,7 @@
                         
                         <h2>Join your group now on 
                         <strong>
-                        <a id="group_link" target="_blank">
+                        <a {{bindAttr href=group.facebook_link }} target="_blank">
                             Facebook 
                         </a> !
                         </strong>
@@ -72,7 +72,7 @@
                     <span class="big"><h2 class="center">{{{group.symbol}}} <strong>{{group.name}}</strong></h2></span>
                     <ul>
                         <li>Read detailed introduction.</li>
-                        <li>Meet your F!rosh group on Facebook!</li>
+                        <li>Meet your F!rosh group on <a {{bindAttr href=group.facebook_link }} target="_blank"><strong>Facebook</strong></a>! </li>
                     </ul>
                 </section>
             {{/if}}

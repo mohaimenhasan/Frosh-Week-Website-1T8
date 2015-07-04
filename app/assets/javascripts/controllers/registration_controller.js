@@ -137,8 +137,7 @@ App.RegistrationConfirmController = Ember.Controller.extend({
   doneAnimation: false,
     
   displayFroshGroup: false,
-    
-  
+
   base: true,
   
   messageShowing: true,
