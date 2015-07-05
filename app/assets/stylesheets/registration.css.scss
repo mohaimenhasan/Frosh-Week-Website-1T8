@@ -45,7 +45,7 @@
         }
 
         @include print {
-            width: 60%;
+            width: 70%;
             float: left;
         }
     }
@@ -323,7 +323,7 @@
 
     .half {
         width: 50%;
-        @include print { width: 45%; };
+        @include print { width: 50%; };
     }
 
     .main {
@@ -410,7 +410,7 @@
         @include print {
             float: right;
             display: block;
-            width: 25%;
+            width: 30%;
         };
     }
 }
