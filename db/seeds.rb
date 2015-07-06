@@ -55,7 +55,7 @@ PackageItem.create(
   max: early_bird_max,
   left: early_bird_max,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
 )
 
 PackageItem.create(
@@ -67,7 +67,7 @@ PackageItem.create(
   max: 0,
   left: unlimited, 
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
 )
 PackageItem.create(
   key: 'farm',
@@ -78,7 +78,7 @@ PackageItem.create(
   max: hhf_max,
   left: hhf_max,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
 )
 PackageItem.create(
   key: 'commuter',
@@ -89,7 +89,7 @@ PackageItem.create(
   max: commuter_max,
   left: commuter_max,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
 )
 
 
@@ -100,7 +100,7 @@ Package.create(
   price: early,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -109,7 +109,7 @@ Package.create(
   price: early+commuter_addon,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -118,7 +118,7 @@ Package.create(
   price: early+hhf_addon,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -127,7 +127,7 @@ Package.create(
   price: early+commuter_addon+hhf_addon,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
 )
 #STANDALONE
 Package.create(
@@ -136,7 +136,7 @@ Package.create(
   price: normal,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -145,7 +145,7 @@ Package.create(
   price: normal+commuter_addon,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -154,7 +154,7 @@ Package.create(
   price: normal+hhf_addon,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -163,5 +163,5 @@ Package.create(
   price: normal+commuter_addon+hhf_addon,
   count: 0,
   start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-21-2015', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
 )
