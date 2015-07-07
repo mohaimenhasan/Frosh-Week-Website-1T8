@@ -55,6 +55,9 @@
                         <p>
                             {{earlyBird.description}}
                         </p>
+                        {{#unless earlyBird.left}}
+                        <h5 style="color:crimson;">* 200 tickets have already been sold out on the first day! Buy yours quickly! *</h5>   
+                        {{/unless}}
                     </div>
                     <div  class="registration-price col ">
                         <h3 class="float-right">
@@ -80,7 +83,9 @@
                     <div class="registration-item  col">
                         <h3><strong>{{regular.name}}</strong> </h3>
                         {{#if earlyBird.left}}
-                            <h5 style="color:crimson;">* OPEN WHEN EARLY BIRDS ARE SOLD OUT *</h5>   
+                            <h5 style="color:crimson;">* OPEN WHEN EARLY BIRDS ARE SOLD OUT *</h5>
+                        {{else}}
+                            <h5 style="color:crimson;">* ONLY <strong>{{regular.left}}</strong> LEFT *</h5>
                         {{/if}}
                         <p>
                             {{regular.description}}
@@ -154,6 +159,14 @@
                 
                 </div>
                 <div class="row registration-row">
+                    <div class="registration-checkbox col">
+                        &nbsp;
+                    </div>
+                    <div class="col registration-item ">
+                        <br>
+                        <h6 >*If you encounter any problems or questions, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a></h6>
+
+                    </div>
                     <div class="col registration-checkout float-right ">
                         <div class="action-button float-right ">
                             <button {{action "checkOutClicked"}} class="highlight"  {{bindAttr disabled=checkOutDisable }} >
