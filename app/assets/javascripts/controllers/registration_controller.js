@@ -22,6 +22,23 @@ App.RegistrationIndexController = Ember.Controller.extend({
     var regular = this.get("model").objectAt(1);
     return regular;
   }.property("model.[]"),
+
+  isError: false,
+  isLoaded: false,
+    
+  isLoading: function() {
+    var that = this;
+    //TimeOut
+    setTimeout(function(){
+        if(!that.get("isLoaded")) {
+          that.set("isLoading", false);
+          that.set("isLoaded", !Ember.isNone(that.get('earlyBird')));
+          that.set("isError", Ember.isNone(that.get('earlyBird')));
+        }
+    }, 60000);
+    this.set("isLoaded", !Ember.isNone(this.get('earlyBird')));
+    return Ember.isNone(this.get('earlyBird'));
+  }.property('earlyBird'),
     
 //disable CheckOut
   checkOutDisable: function () {

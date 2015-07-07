@@ -116,6 +116,13 @@
 .registration-item {
     width: 70%; 
 }
+//footer
+.registration-footer {
+    
+    @include screen-small   { width: 50%;  };
+    @include screen-medium  { width: 60%;  };
+    @include screen-large   { width: 70%;  };
+}
 //checkbox
 .registration-checkbox {
     width: 10%;
@@ -128,6 +135,26 @@
 .registration-checkout {
     width: 20%; 
     margin-top: 15px;
+}
+
+//Loader
+.icon-big-loader {
+    font-size: 12em;
+}
+
+.registration-loader {
+    @include slide(15em);
+}
+.registration-error {
+    @include slide(15em);
+}
+
+.registration-data {
+    @include slide(100em);
+
+    opacity: 0;
+    max-height: 0;
+
 }
 
 

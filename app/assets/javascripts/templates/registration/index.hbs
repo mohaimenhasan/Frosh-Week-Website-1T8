@@ -23,7 +23,17 @@
             
            
             
+        <div {{bindAttr class=":registration-loader :center isLoading:showing:hidden"}}>
             
+            <i class="icon-big-loader icon-spin icon-gear"></i>
+           
+        </div>
+            
+        <div {{bindAttr class=":registration-error :center isError:showing:hidden"}}>
+         <h3 style="color: crimson;">Timeout: Connection seems to have lost! Try refreshing the page or using incognito. If problem still persists, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>  </h3>.    
+        </div>
+            
+        <div {{bindAttr class=":registration-data isLoaded:showing:hidden"}}>
             {{#ifOnlinePurchase}} 
             
                 <div class="row registration-row">
@@ -162,20 +172,22 @@
                     <div class="registration-checkbox col">
                         &nbsp;
                     </div>
-                    <div class="col registration-item ">
+                    <div class="col registration-footer ">
                         <br>
                         <h6 >*If you encounter any problems or questions, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a></h6>
 
                     </div>
-                    <div class="col registration-checkout float-right ">
-                        <div class="action-button float-right ">
-                            <button {{action "checkOutClicked"}} class="highlight"  {{bindAttr disabled=checkOutDisable }} >
-                                <strong>Check Out!</strong>
-                            </button>
+                        <div class="col registration-checkout float-right ">
+                            <div class="action-button float-right ">
+                                <button {{action "checkOutClicked"}} class="highlight"  {{bindAttr disabled=checkOutDisable }} >
+                                    <strong>Check Out!</strong>
+                                </button>
+                            </div>
                         </div>
-                    </div>
+                    
 
                 </div>
+            </div>
             {{else}}
                 <h3>Missed online registration?</h3>
                 <p>
