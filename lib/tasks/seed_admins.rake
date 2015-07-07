@@ -5,7 +5,7 @@ namespace :db do
     Admin.delete_all
     ActiveRecord::Base.connection.reset_pk_sequence! Admin.table_name
 
-    Admin.create(email: 'me@amandeep.ca')
+    Admin.create(email: 'rhonda@g.skule.ca')
     Admin.create(email: 'technology@orientation.skule.ca')
     Admin.create(email: 'chair@orientation.skule.ca')
     Admin.create(email: 'orientation@skule.ca')
