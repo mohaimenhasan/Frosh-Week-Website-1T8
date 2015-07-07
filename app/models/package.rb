@@ -65,7 +65,8 @@ class Package < ActiveRecord::Base
   end
   def available_normal?
     if available_early_bird? == false 
-      return true if PackageItem.where("key LIKE ('standalone')").first.max == 0
+        return true if PackageItem.where("key LIKE ('standalone')").first.left > 0
+      #return true if PackageItem.where("key LIKE ('standalone')").first.max == 700
     end
       return false
   end
