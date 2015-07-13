@@ -12,21 +12,13 @@ App.FaqController = Ember.Controller.extend({
   isAsking: true,
     
   submit: function(){
-    //No spamming
-    var current = Date.now() / 1000 | 0;
-    var past = this.get("timestamp");
-    if (current < past + 5) {
-      //if more than 3 sec, consider spam
-      $("#spam_message").fadeIn("slow");
-      return;   
-    }
-    else {
-      $("#spam_message").fadeOut("slow");
-      this.set("timestamp", current); //renew timestamp   
-    }
-      
-    //Validation
+    //Make sure all fields are filled up
+
     if(!this.get("isDisable")){
+      //Clear out all error messages first
+      $("#spam_message").fadeOut("fast");
+      $("#send_error_msg").fadeOut("fast");
+      $("#error_message").fadeOut("fast");
       /************ Validate email *****************/
       var email = this.get("email");
       //Reference: (different from backend validation) http://emailregex.com/
@@ -35,24 +27,47 @@ App.FaqController = Ember.Controller.extend({
         $("#error_message").fadeIn("slow");
         this.set("isAsking", true);
       }
-      //Posting to google sheet
+      //Posting to google sheet hack: will produce cross-site error
       else {
-        $("#error_message").fadeOut("slow");
-        this.set("isAsking", false);
+        //No spamming
+        var current = Date.now() / 1000 | 0;
+        var past = this.get("timestamp");
+        if (current < past + 5) {
+          //if more than 5 sec, consider spam
+          $("#spam_message").fadeIn("slow");
+          return;   
+        }
+        else {
+          this.set("timestamp", current); //renew timestamp   
+        }
+      
+       
+        var that = this
         $.ajax({
           url: "https://docs.google.com/forms/d/12w17v5mgY0wSYrCk-eshsTja6YstyuF5s4hcqM7aIz0/formResponse",
-          data: {"entry.1580877580" : this.get("name"), 
-                       "entry.421886191" : this.get("email"), 
-                       "entry.811584276": this.get("question") },
+          data: {"entry.1580877580" : that.get("name"), 
+                       "entry.421886191" : that.get("email"), 
+                       "entry.811584276": that.get("question") },
           type: "POST",
           dataType: "xml",
           statusCode: {
             0: function (){
-              //Success 
+            //Success
+              that.set("isAsking", false);
             },
             200: function (){
             //Success 
-            }
+              that.set("isAsking", false);
+            },
+            400: function () {
+              $("#send_error_msg").fadeIn("slow");
+              this.set("isAsking", true); 
+            },
+            500: function () {
+              $("#send_error_msg").fadeIn("slow");
+              this.set("isAsking", true); 
+            },   
+            
           }
         });
 

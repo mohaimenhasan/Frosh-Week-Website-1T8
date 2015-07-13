@@ -9,7 +9,7 @@
                 <section class="box normal">
                     <h1><i class="icon-question-sign"></i> FAQs</h1>
                     <p>
-                        If you have any questions that weren't answered in this FAQ, send us an email at
+                        If you have any questions that weren't answered in this FAQ, leave your question below or send us an email at
                         <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>.
                     </p>
 
@@ -33,6 +33,9 @@
                             </div>
                             <div id="spam_message" class="message">
                                 <h5 style="color:crimson;" >* Error: Submit too frequent. (We know you are real hype)</h5>
+                            </div>
+                            <div id="send_error_msg" class="message">
+                                <h5 style="color:crimson;" >* Error: Seems like your request could not get through.</h5>
                             </div>
                             <button {{action "submit"}} class="highlight" {{bindAttr disabled=isDisable }}>
                                 Submit!
