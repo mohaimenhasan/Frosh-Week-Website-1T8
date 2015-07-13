@@ -6,7 +6,7 @@ if (window.history && window.history.pushState) {
 
 App.RouteList = [
   Ember.Object.create({ route: 'index',    path: '/',          name: 'Home' }),
-//  Ember.Object.create({ route: 'schedule', path: '/schedule',  name: 'Events & Schedule' }),
+  Ember.Object.create({ route: 'schedule', path: '/schedule',  name: 'Events & Schedule' }),
   Ember.Object.create({ route: 'faq',      path: '/faq',       name: 'FAQs' }),
 //  Ember.Object.create({ route: 'groups',   path: '/groups',    name: 'Groups' }),
 //  Ember.Object.create({ route: 'about',    path: '/about',     name: 'About' }),
