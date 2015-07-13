@@ -40,23 +40,21 @@ App.FaqController = Ember.Controller.extend({
         $("#error_message").fadeOut("slow");
         this.set("isAsking", false);
         $.ajax({
-                url: "https://docs.google.com/forms/d/12w17v5mgY0wSYrCk-eshsTja6YstyuF5s4hcqM7aIz0/viewform",
-                data: {"entry.1580877580" : this.get("name"), 
+          url: "https://docs.google.com/forms/d/12w17v5mgY0wSYrCk-eshsTja6YstyuF5s4hcqM7aIz0/formResponse",
+          data: {"entry.1580877580" : this.get("name"), 
                        "entry.421886191" : this.get("email"), 
                        "entry.811584276": this.get("question") },
-                type: "POST",
-                dataType: "xml",
-                statusCode: {
-                    0: function (){
-                        Ember.Logger.log("Successfully posted!");
-                        //Success message
-                    },
-                    200: function (){
-                        Ember.Logger.log("Successfully posted!");
-                        //Success Message
-                    }
-                }
-            });
+          type: "POST",
+          dataType: "xml",
+          statusCode: {
+            0: function (){
+              //Success 
+            },
+            200: function (){
+            //Success 
+            }
+          }
+        });
 
       }
     }
