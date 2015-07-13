@@ -12,6 +12,39 @@
                         If you have any questions that weren't answered in this FAQ, send us an email at
                         <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>.
                     </p>
+
+                    {{#formFor controller wrapper="orientation"}}
+                    <div  {{bindAttr class=":faq_dropbox_wrapper isAsking:showing:hidden"}}>
+                        {{#input name}}
+                            {{labelField name text="Name:" }}
+                            {{inputField name placeholder="Harry"}}
+                        {{/input}}
+                        {{#input email}}
+                            {{labelField email text="Email Address:" }}
+                            {{inputField email placeholder="hype@fweek.skule.ca"}}
+                        {{/input}}
+                        <label>Questions:</label>
+                        {{#input question}}
+                            {{inputField question as=text placeholder="Put your questions/concerns/comments here"}}
+                        {{/input}}
+                        <div class="submit_wrapper">
+                            <div id="error_message" class="message">
+                                <h5 style="color:crimson;" >* Error: Invalid Email!</h5>
+                            </div>
+                            <div id="spam_message" class="message">
+                                <h5 style="color:crimson;" >* Error: Submit too frequent. (We know you are real hype)</h5>
+                            </div>
+                            <button {{action "submit"}} class="highlight" {{bindAttr disabled=isDisable }}>
+                                Submit!
+                            </button>
+                        </div>
+                        
+                    </div>
+                    {{/formFor}}
+                    
+                    <div {{bindAttr class=":finish_asking_wrapper isAsking:hidden:showing"}}> 
+                        <h3 style="color:green;">All Done! We will get back to you ASAP!</h3> 
+                    </div>
                     <p>
                         P.S: We'll have more details on each event (and the F!rosh Kits) for you as we get closer
                         and closer to F!rosh Week. Stay tuned!
