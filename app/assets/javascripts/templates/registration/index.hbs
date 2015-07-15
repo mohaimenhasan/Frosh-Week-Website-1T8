@@ -94,8 +94,7 @@
                         <h3><strong>{{regular.name}}</strong> </h3>
                         {{#if earlyBird.left}}
                             <h5 style="color:crimson;">* OPEN WHEN EARLY BIRDS ARE SOLD OUT *</h5>
-                        {{else}}
-                            <h5 style="color:crimson;">* ONLY <strong>{{regular.left}}</strong> LEFT *</h5>
+
                         {{/if}}
                         <p>
                             {{regular.description}}
@@ -130,10 +129,7 @@
                     </div>
                     <div class="registration-item  col">
                         <h3><strong>{{name}}</strong> </h3>
-                        {{#ifSoldOut left}}
-                        {{else}}
-                            <h5 style="color:crimson;">* ONLY <strong>{{left}}</strong> LEFT *</h5>   
-                        {{/ifSoldOut}}
+                        
                         <p>
                             {{description}}
                         </p>
