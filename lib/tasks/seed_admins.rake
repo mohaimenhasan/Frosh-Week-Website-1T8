@@ -8,9 +8,7 @@ namespace :db do
     Admin.create(email: 'rhonda@g.skule.ca')
     Admin.create(email: 'technology@orientation.skule.ca')
     Admin.create(email: 'chair@orientation.skule.ca')
-    Admin.create(email: 'orientation@skule.ca')
-    Admin.create(email: 'promotions@orientation.skule.ca')
-    Admin.create(email: 'operations@orientation.skule.ca')
+    Admin.create(email: 'finance@orientation.skule.ca')
     Admin.create(email: 'marketing@orientation.skule.ca')
     Admin.create(email: 'offline_admin')
   end
