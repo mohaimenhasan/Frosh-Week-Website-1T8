@@ -1,0 +1,117 @@
+<section class="section content row">
+    <div class="side col">
+        {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}
+    </div>
+    <div class="main col">
+        <section class="box normal">
+            <h2>Leedur Stuff</h2>
+        </section>
+    </div>
+
+    <div class="col">
+        <section class="box normal">
+            <h1>
+                <i class="icon-ticket"></i> Register online
+            </h1>
+            
+           
+            
+        <div {{bindAttr class=":registration-loader :center isLoading:showing:hidden"}}>
+            
+            <i class="icon-big-loader icon-spin icon-gear"></i>
+           
+        </div>
+            
+        <div {{bindAttr class=":registration-error :center isError:showing:hidden"}}>
+         <h3 style="color: crimson;">Timeout: Connection seems to have lost! Try refreshing the page or using incognito. If problem still persists, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>  </h3>.    
+        </div>
+            
+        <div {{bindAttr class=":registration-data isLoaded:showing:hidden"}}>
+            {{#ifOnlinePurchase}} 
+                <div class="row registration-row">
+                    <div class="float-right registration-price col-header col ">
+                        <h3>Price</h3>
+                        <hr>
+                    </div>
+                    <div class="float-right registration-item col-header col ">
+                        <h3>Leedur Hart House Farm Retreat</h3>
+                        <hr>
+                    </div>
+                </div>
+            
+            {{#each model}}
+                <div class="row registration-row">
+                    <div class="registration-checkbox col">
+                        {{#ifSoldOut left}}
+                        &nbsp;
+                        {{else}}
+                            <input {{bindAttr id="key" value="price"}} type="checkbox">
+                            <label {{bindAttr for="key"}}></label>
+                        {{/ifSoldOut}}
+                    </div>
+                    <div class="registration-item  col">
+                        <h3><strong>{{name}}</strong> </h3>
+                        
+                        <p>
+                            {{description}}
+                        </p>
+                    </div>
+                    <div  class="registration-price col ">
+                        <h3 class="float-right">
+                            {{#ifSoldOut left}}
+                            <strong style="color:crimson;"> SOLD OUT</strong>
+                            {{else}}
+                            <strong>${{price}} </strong>
+                            {{/ifSoldOut}}
+                        </h3>
+                    </div>
+                </div>
+            {{/each}}
+                <div class="row registration-row">
+                    <div class="col registration-price float-right">
+                        <hr>
+                        <div class="float-right">
+                             <h3 ><strong>${{totalPrice}}</strong> </h3>
+                        </div>
+                    </div>
+                    <div class="col registration-item float-right">
+                        <div class="float-right">
+                            <br>
+                            <h3 >Total: 
+                                <span class="subtitle green"><strong>Tax included</strong></span>
+                            </h3>
+                        </div>
+
+                    </div>
+                
+                </div>
+                <div class="row registration-row">
+                    <div class="registration-checkbox col">
+                        &nbsp;
+                    </div>
+                    <div class="col registration-footer ">
+                        <br>
+                        <h6 >*If you encounter any problems or questions, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a></h6>
+
+                    </div>
+                        <div class="col registration-checkout float-right ">
+                            <div class="action-button float-right ">
+                                <button {{action "checkOutClicked"}} class="highlight"  {{bindAttr disabled=checkOutDisable }} >
+                                    <strong>Check Out!</strong>
+                                </button>
+                            </div>
+                        </div>
+                    
+
+                </div>
+            </div>
+            {{else}}
+                <h3>Registration is closed!</h3>
+            {{/ifOnlinePurchase}}
+            
+            
+                    
+            
+        </section>
+    </div>
+</section>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150621222500) do
+ActiveRecord::Schema.define(:version => 20150721010600) do
 
   create_table "admins", :force => true do |t|
     t.string   "email"
@@ -28,6 +28,34 @@ ActiveRecord::Schema.define(:version => 20150621222500) do
     t.string   "facebook_link"
   end
 
+  create_table "hhf_packages", :force => true do |t|
+    t.string   "name"
+    t.string   "key"
+    t.text     "description"
+    t.integer  "price"
+    t.integer  "count"
+    t.integer  "max"
+    t.integer  "left"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "package_items", :force => true do |t|
+    t.string   "key"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "price"
+    t.integer  "count"
+    t.integer  "max"
+    t.integer  "left"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "packages", :force => true do |t|
     t.string   "name"
     t.string   "key"
@@ -35,10 +63,10 @@ ActiveRecord::Schema.define(:version => 20150621222500) do
     t.integer  "count"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-  
+
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -72,21 +100,7 @@ ActiveRecord::Schema.define(:version => 20150621222500) do
     t.string   "created_by_admin"
     t.boolean  "checked_in",                     :default => false
   end
-  
-  create_table :package_items, :force => true do |t|
-    t.string   "key"
-    t.string   "name"
-    t.text     "description"
-    t.integer  "price"
-    t.integer  "count"
-    t.integer  "max"
-    t.integer  "left"
-    t.date     "start_date"
-    t.date     "end_date"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-    
+
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end
