@@ -15,3 +15,17 @@ App.ScheduleEventView = Ember.View.extend({
     return false;
   }
 });
+
+App.ScheduleGalleryView = Ember.View.extend({
+  templateName: 'schedule_gallery',
+
+  classNames: ['gallery'],
+
+  classNameBindings: ['galleryShowing:showing:hidden'],
+ 
+  galleryShowing: function() {
+    return this.get('controller.galleryShowing'); 
+  }.property('controller.galleryShowing')
+    
+    
+});

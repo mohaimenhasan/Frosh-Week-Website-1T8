@@ -85,7 +85,7 @@ App.RegistrationIndexController = Ember.Controller.extend({
         that.set("hhfSelected", false);
         that.set("commuterSelected", false);
         that.transitionToRoute("registration.item", item);  
-      })
+      });
       
     }
   },
@@ -132,6 +132,7 @@ App.RegistrationReceiptController = Ember.Controller.extend({
   },
 
   print: function() {
+    Ember.Logger.log("going to print");
     window.print();
   }
 });

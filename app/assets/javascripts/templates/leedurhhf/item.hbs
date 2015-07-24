@@ -1,0 +1,23 @@
+<section class="section content row">
+    <div class="side col">
+        {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}
+    </div>
+
+    <div class="main col">
+        <div class="box highlight">
+            You're about to register for...
+            <h1>{{model.name}} - $<strong>{{model.price}}</strong></h1>
+            <div class="align-right">
+                <button {{action cancel}}>&lt; Change Kit</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section content row">
+    <div class="main col float-right">
+        {{render leedur}}
+                           
+               
+    </div>
+</section>

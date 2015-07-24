@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150721010600) do
+ActiveRecord::Schema.define(:version => 20150723103700) do
 
   create_table "admins", :force => true do |t|
     t.string   "email"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20150721010600) do
     t.string   "facebook_link"
   end
 
-  create_table "hhf_packages", :force => true do |t|
+  create_table "hhf_package_items", :force => true do |t|
     t.string   "name"
     t.string   "key"
     t.text     "description"
@@ -41,6 +41,41 @@ ActiveRecord::Schema.define(:version => 20150721010600) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "hhf_packages", :force => true do |t|
+    t.string   "name"
+    t.string   "key"
+    t.integer  "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "leedurs", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "year"
+    t.string   "discipline"
+    t.string   "email"
+    t.string   "gender"
+    t.string   "phone"
+    t.string   "confirmation_token"
+    t.boolean  "verified"
+    t.string   "emergency_name"
+    t.string   "emergency_phone"
+    t.string   "emergency_relationship"
+    t.string   "emergency_email"
+    t.text     "restrictions_dietary"
+    t.text     "restrictions_misc"
+    t.string   "charge_id"
+    t.string   "ticket_number"
+    t.integer  "hhf_packages_id"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "created_by_admin"
+    t.boolean  "checked_in",             :default => false
+  end
+
+  add_index "leedurs", ["email"], :name => "index_leedurs_on_email", :unique => true
 
   create_table "package_items", :force => true do |t|
     t.string   "key"
@@ -63,6 +98,13 @@ ActiveRecord::Schema.define(:version => 20150721010600) do
     t.integer  "count"
     t.date     "start_date"
     t.date     "end_date"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "photos", :force => true do |t|
+    t.string   "event"
+    t.string   "link"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

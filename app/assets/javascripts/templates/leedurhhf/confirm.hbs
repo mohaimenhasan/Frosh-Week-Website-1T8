@@ -1,0 +1,134 @@
+<section class="section">
+    <div class="content row">
+        <div class="side col registration-print-hidden">
+            {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}
+            To be filled in
+        </div>
+
+        <div class="main col">
+            <div class="row">
+                <div class="full col">
+                    
+                    {{#if showConfirmed}}
+                        <section class="box highlight registration-print-hidden">
+                            <h1>Confirmed!</h1>
+                            <p>
+                                Your email has been verified. Check your inbox for more details about orientation throughout the
+                                summer. If you have any questions or concerns, contact
+                                <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>.
+                            </p>
+                        </section>
+                    {{/if}}
+                    {{#if showAlreadyVerified}}
+                        <section class="box highlight registration-print-hidden">
+                            <h1>You've already verified this email!</h1>
+                            <p>
+                                Your email has already been verified. Looking for your ticket? If you didn't get yours
+                                via email, or have any other concerns, contact
+                                <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>.
+                            </p>
+                        </section>
+                    {{/if}}
+                    {{#if showError}}
+                        <section class="box highlight registration-print-hidden">
+                            <h1>Oops! Something went wrong.</h1>
+                            <p>
+                                Your email couldn't be confirmed. Is this an error? Send us an email at
+                                <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>.
+                            </p>
+                        </section>
+                    {{/if}}
+                </div>
+            </div>
+
+            {{#if showReceipt}}
+                <div class="row">
+                    <div class="full col">
+                        <section class="box normal registration-ticket">
+                            <div class="row">
+                                <div class="col half">
+                                    <h1>
+                                        <div class="label">Name</div>
+                                        {{model.firstName}} {{model.lastName}}
+                                    </h1>
+                                </div>
+                                <div class="col half">
+                                    <div class="harry-potter-logo"></div>
+                                    <p class="registration-engsoc small">
+                                        <strong>September 7 - September 13, 2015</strong> <br>
+                                        31 Kings' College Circle, Toronto, ON
+                                    </p>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="row qr-code-optional">
+                                <div class="main col">
+                                    <div class="row registration-ticket-details">
+                                        <div class="third col qr-hidden">
+                                            <h2>
+                                                <div class="label">Ticket</div>
+                                                {{model.ticketNumber}}
+                                            </h2>
+                                        </div>
+                                    </div>
+                                    <strong> NEED HHF NAME</strong>
+                                    <hr>
+
+                                    <div class="row">
+                                        <div class="full col">
+                                            <h2><div class="label">Emergency Contact</div></h2>
+                                            <p>
+                                                {{model.emergencyName}} <b>{{model.emergencyPhone}}</b>
+                                            </p>
+
+                                            {{#if showDietary}}
+                                                <h2><div class="label">Dietary Restrictions</div></h2>
+                                                <p>
+                                                    {{model.restrictionsDietary}}
+                                                </p>
+                                            {{/if}}
+                                            {{#if showMisc}}
+                                                <h2><div class="label">Additional Information</div></h2>
+                                                <p>
+                                                    {{model.restrictionsMisc}}
+                                                </p>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="side col qr">
+                                    <img {{bindAttr src=url}}>
+                                    <h1>
+                                        <strong>{{model.ticketNumber}}</strong>
+                                        <span class="subtitle">Ticket Number</span>
+                                    </h1>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col full">
+                                    <p class="small">
+                                        This ticket is required for admission! <br>
+                                        For any problems regarding your ticket, contact
+                                        <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a> for help.
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="content row">
+                    <div class="main col float-right">
+                        <div class="align-right">
+                            <button class="registration-print-button" {{action print}}>Print Ticket</button>
+                        </div>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</section>

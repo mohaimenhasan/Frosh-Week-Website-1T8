@@ -1,6 +1,6 @@
-class CreateHhfPackages < ActiveRecord::Migration
+class CreateHhfPackageItems < ActiveRecord::Migration
   def change
-    create_table :hhf_packages do |t|
+    create_table :hhf_package_items do |t|
       t.string :name
       t.string :key
       t.text :description

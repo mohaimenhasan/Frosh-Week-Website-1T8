@@ -3,13 +3,7 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
   leedurSelected: false,
   fweekSelected: false,
  
-//Enable EarlyBird or Standalone
-  init: function() {
-    var that = this;
-    this.addObserver('model', function() {
-      this.get('model');
-    });
-  },
+
   leedur: function() {
     var leedur = this.get("model").objectAt(0);
     return leedur;
@@ -47,8 +41,8 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
 //totalPrice
   totalPrice: function() {
     var totalPrice = 0;
-    totalPrice += this.get('leedurSelected')? Number($('#leedur').attr("value")) : 0;
-    totalPrice += this.get('fweekSelected')? Number($('#fweek').attr("value")) : 0;
+    totalPrice += this.get('leedurSelected')? this.get("leedur").get("price") : 0;
+    totalPrice += this.get('fweekSelected')? this.get("fweek").get("price") : 0;
 
     return totalPrice;
   }.property('leedurSelected', 'fweekSelected'),
@@ -59,30 +53,122 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
   checkOutClicked: function() {
       //Only happen if enabled
     if(!this.get("checkOutDisable")) {
-      //Compute package string and transition
-      //At this point package should not be null
-      var package = "";
-      package += this.get('leedurSelected')? "leedur" : "";
-      package += this.get('fweekSelected')? "_fweek" : "";
+      //Compute key string and transition
+      //At this point key should not be null
+      var key = "";
+      key += this.get('leedurSelected')? "leedur_" : "";
+      key += this.get('fweekSelected')? "fweek_" : "";
+      key = key.substring(0, key.length - 1);
       
       //Transitioning
-      //TODO: Creating json on the spot and pass as model
-      /*var item = App.Package.find({key: package});
+      var item = App.HhfPackage.find({key: key});
       
       
       //Transition as soon as finish loading up the selected model
       var that = this;
       item.one('didLoad', function() {
         //Need to reset value in case user do backpost, do it here so that user doesn't notice
-        that.set("earlyBirdSelected", false);
-        that.set("regularSelected", false);
-        that.set("hhfSelected", false);
-        that.set("commuterSelected", false);
-        that.transitionToRoute("registration.item", item);  
-      })*/
+        that.set("leedurSelected", false);
+        that.set("fweekSelected", false);
+        that.transitionToRoute("leedurhhf.item", item);
+      });
+      
       
     }
   },
   
 });
 
+App.LeedurhhfItemController = Ember.Controller.extend({
+  //Invoked by "Change kit" button, refer to item.hbs in leedurhhf
+  cancel: function() {
+    this.transitionToRoute('leedurhhf.index');
+  }
+});
+
+
+App.LeedurhhfReceiptController = Ember.Controller.extend({
+  selectedPackage: function() {
+    var packageId = this.get('model.hhf_package_id');
+    Ember.Logger.log(packageId);
+    return App.HhfPackage.find(packageId);
+  }.property('model.hhf_package_id'),
+
+  init: function() {
+    var that = this;
+    this.addObserver('model', function() {
+      if (!this.get('model')) {
+        that.transitionToRoute('leedurhhf.index');
+      }
+    });
+  },
+
+  print: function() {
+    window.print();
+  }
+});
+
+App.LeedurhhfConfirmController = Ember.Controller.extend({
+
+  
+  //Actual Form  
+  firstTime: false,
+
+  url: function() {
+    var api = 'https://chart.googleapis.com/chart?chs=450x450&cht=qr&chld=H|0&chl=';
+    var host = window.location.host;
+    var path = '/admin/users/checkin/';
+
+    return api + host + path + this.get('model.ticketNumber');
+  }.property('model.ticketNumber'),
+
+
+  showDietary: function() {
+    var dietary = this.get('model.restrictionsDietary');
+    return dietary && dietary.length > 0;
+  }.property('model.restrictionsDietary'),
+
+  showMisc: function() {
+    var misc = this.get('model.restrictionsMisc');
+    return misc && misc.length > 0;
+  }.property('model.restrictionsMisc'),
+
+  showReceipt: function() {
+    var model = this.get('model');
+    return model && model.get('verified');
+  }.property('model'),
+
+  showConfirmed: function() {
+    return this.get('firstTime')  && this.get('model.verified');
+  }.property('firstTime', 'model.verified'),
+
+  showAlreadyVerified: function() {
+    var model = this.get('model');
+    return (!this.get('firstTime') && model && model.get('verified'));
+  }.property('firstTime', 'model'),
+
+  showError: function() {
+    var model = this.get('model');
+    Ember.Logger.log(model);
+    return !model || !model.get('verified');
+  }.property('model'),
+
+  init: function() {
+    this.addObserver('model', function() {
+      var model = this.get('model');
+      if (model) {
+        var verified = model.get('verified');
+        this.set('firstTime', this.get('firstTime') || !verified);
+
+        if (!verified) {
+          model.set('verified', true);
+          model.get('store').commit ();
+        }
+      }
+    });
+  },
+
+  print: function() {
+    window.print();
+  }
+});

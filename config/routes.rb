@@ -14,6 +14,8 @@ SkuleOrientation::Application.routes.draw do
         resources :admins
         resources :package_items
         resources :hhf_packages
+        resources :hhf_package_items
+        resources :leedurs
       end
     end
 
@@ -23,6 +25,8 @@ SkuleOrientation::Application.routes.draw do
     resources :admins
     resources :package_items
     resources :hhf_packages
+    resources :hhf_package_items
+    resources :leedurs
   end
 
   match '/auth', to: 'oauth#callback'

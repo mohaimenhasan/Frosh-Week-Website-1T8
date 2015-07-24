@@ -5,13 +5,7 @@
 #  id          :integer          not null, primary key
 #  name        :string(255)
 #  key         :string(255)
-#  description :text
 #  price       :integer
-#  count       :integer
-#  max         :integer
-#  left        :integer
-#  start_date  :date
-#  end_date    :date
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -19,16 +13,27 @@
 class HhfPackage < ActiveRecord::Base
   attr_accessible :key, :count, :description, :max, :left, :name, :price, :start_date, :end_date
   
-  #belongs_to :leedurs
+  has_many :leedurs
+  has_many :hhf_package_items
   
-  def available_hhf?
-    return true if self.left > 0 
-    return false
+  def available?
+    available = true;
+    package_items = self.key.split('_')
+    package_items.each do |name|
+      sql_clause = "key LIKE ('" + name + "')";
+      item = HhfPackageItem.where(sql_clause).first
+      available = available && item.available?
+    end
+    return available
   end 
     
   def increase_count
-    self.count = self.count + 1
-    self.left = self.left - 1
-    self.save!
+    print "Increasing " + self.key + "count\n"
+    package_items = self.key.split('_')
+    package_items.each do |name|
+      sql_clause = "key LIKE ('" + name + "')";
+      item = HhfPackageItem.where(sql_clause).first
+      item.update_amount
+    end
   end
 end

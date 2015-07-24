@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: package_item
+# Table name: hhf_package_item
 #
 #  id          :integer          not null, primary key
 #  name        :string(255)
@@ -16,10 +16,16 @@
 #  updated_at  :datetime         not null
 #
 
-class PackageItem < ActiveRecord::Base
+class HhfPackageItem < ActiveRecord::Base
   attr_accessible :key, :count, :description, :max, :left, :name, :price, :start_date, :end_date
   
-  has_many :package
+  
+  has_many :hhf_packages
+
+  def available?
+    return true if self.left > 0 
+    return false
+  end 
     
   def update_amount
     self.count = self.count + 1

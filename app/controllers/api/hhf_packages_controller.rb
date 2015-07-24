@@ -3,23 +3,36 @@ require 'admin_authorization'
 class Api::HhfPackagesController < ApplicationController
 
   def show
-    item = HhfPackage.find(params[:id])
-    render json: { package_items: item }
-  end
+    # print "In show controller\n"
+    package = HhfPackage.find(params[:id])
+    package = nil unless package.available?
     
-  def index
-    #  print "in package_item index\n"
-    if params.has_key? :key
-      items = HhfPackage.where params.slice :key
-    else
-      #Get all items from database
-      #Then render all available into json
-      items = HhfPackage.all
-    end
-    #Re-sort items by Id
-    sorted_items = items.sort_by { |k| k.id }
+    render json: { hhf_package: package }
+  end
 
-      render json: { hhf_packages: sorted_items}
+  def index
+     print "In packages controller\n"
+    print params
+    if params.has_key? :key
+       # print "getting packages"
+      packages = HhfPackage.where params.slice :key
+    
+    elsif params
+      print "finding packages"
+      package = HhfPackage.find(params)
+      print package.inspect
+      render json: { hhf_package: package}
+    else
+      #Get all packages from database and check if they are available
+      #Then render all available into json
+      packages = HhfPackage.all
+      
+    end
+    packages.keep_if {|p| p.available?}
+    #Re-sort packages by price
+    sorted_packages = packages.sort_by { |k| k.id }
+    print sorted_packages.inspect
+    render json: { hhf_packages: sorted_packages}
     
   end
 

@@ -1,0 +1,170 @@
+{{#formFor content wrapper="orientation"}}
+    <section class="box normal registration-form-step">
+        <span class="number">1</span>
+        <h2>Tell us about yourself</h2>
+
+        <section class="registration-form-group aligned">
+            {{#input firstName}}
+                {{labelField firstName text="First name"}}
+                {{inputField firstName placeholder="Hype"}}
+            {{/input}}
+            {{#input lastName}}
+                {{labelField lastName text="Last name"}}
+                {{inputField lastName placeholder="Train"}}
+            {{/input}}
+            {{#input email}}
+                {{labelField email text="Your email address"}}
+                {{inputField email as=email placeholder="Please use your utoronto email"}}
+            {{/input}}
+            {{#input gender}}
+                {{labelField gender text="Gender"}}
+                {{inputField gender
+                as=select
+                collection=App.LeedurFormGender
+                selection=gender
+                optionValuePath=content
+                optionLabelPath=content}}
+            {{/input}}
+            {{#input phone}}
+                {{labelField phone text="Phone number"}}
+                {{inputField phone as=tel placeholder="647 765 4321"}}
+            {{/input}}
+            {{#input year}}
+                {{labelField year text="Year"}}
+                {{inputField year placeholder="1T6"}}
+            {{/input}}
+            {{#input discipline}}
+                {{labelField discipline text="Engineering discipline"}}
+                {{inputField discipline
+                as=select
+                collection=App.LeedurFormEngineeringDisciplines
+                selection=discipline
+                optionValuePath=content
+                optionLabelPath=content}}
+            {{/input}}
+        </section>
+    </section>
+
+    <section class="box normal registration-form-step">
+        <span class="number">2</span>
+        <h2>Health and safety information</h2>
+
+        <section class="registration-form-group aligned">
+            <h3>Emergency contact</h3>
+            {{#input emergencyName}}
+                {{labelField emergencyName text="Name"}}
+                {{inputField emergencyName placeholder="Hype Ship"}}
+            {{/input}}
+            {{#input emergencyEmail}}
+                {{labelField emergencyEmail text="Email address"}}
+                {{inputField emergencyEmail as=email placeholder="john@example.com"}}
+            {{/input}}
+            {{#input emergencyRelationship}}
+                {{labelField emergencyRelationship text="Relationship"}}
+                {{inputField emergencyRelationship placeholder="Father"}}
+            {{/input}}
+            {{#input emergencyPhone}}
+                {{labelField emergencyPhone text="Phone number"}}
+                {{inputField emergencyPhone as=tel placeholder="647 123 5678"}}
+            {{/input}}
+        </section>
+
+        <section class="registration-form-group">
+            <h3>List any dietary restrictions you may have.</h3>
+            {{#input restrictionsDietary}}
+                {{inputField restrictionsDietary as=text placeholder="Examples include: Halal, Kosher, vegetarian, peanut allergies"}}
+            {{/input}}
+        </section>
+
+        <section class="registration-form-group">
+            <h3>Anything else we should know?</h3>
+            {{#input restrictionsMisc}}
+                {{inputField restrictionsMisc as=text}}
+            {{/input}}
+        </section>
+    </section>
+
+    {{#unless isManual}}
+        <section class="box normal registration-form-step">
+            <span class="number">3</span>
+            <h2>How will you be paying?</h2>
+
+            <div class=":registration-payment showing">
+                <section class="registration-form-group aligned">
+                    <h3>
+                        Pay by credit card
+                        <span class="subtitle green"><strong>Secure connection</strong></span>
+                    </h3>
+                    <p>We accept Visa, Mastercard, and American Express.</p>
+                    {{#input ccName}}
+                        {{labelField ccName text="Name on card"}}
+                        {{inputField ccName placeholder="Jane Smith"}}
+                    {{/input}}
+
+                    <div class="input">
+                        <label>Card number</label>
+                        <div class="inline">
+                            {{#input ccNumber}}
+                                {{inputField ccNumber as=tel placeholder="1234 1234 1234 1234" inputConfig="class:cc cc-number" }}
+                            {{/input}}
+                            {{#input ccCVC}}
+                                {{inputField ccCVC as=tel placeholder="CVC" inputConfig="class:cc cc-cvc"}}
+                            {{/input}}
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="input">
+                        <label>Expires</label>
+                        <div class="inline">
+                            {{#input ccExpiration}}
+                                {{inputField ccExpirationMonth as=tel placeholder="MM" inputConfig="class:cc cc-month"}}
+                            {{/input}}
+                            {{#input ccExpiration}}
+                                {{inputField ccExpirationYear as=tel placeholder="YY" inputConfig="class:cc cc-year" }}
+                            {{/input}}
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    {{/unless}}
+
+    <div {{bindAttr class=":registration-error showPackageUnavailable:showing:hidden"}}>
+        <section class="box highlight">
+            <h2>Unavailable Package!</h2>    
+                <p>
+                    Sorry! Seems like the package you chose is no longer
+                    available. Please go back and choose an available
+                    package. If you have any concerns with this issue, 
+                    please contact <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b>.
+                </p>
+        </section>
+    </div>
+            
+    <div {{bindAttr class=":registration-error showError:showing:hidden"}}>
+        <section class="box highlight">
+            
+            {{#if serverError}}
+                <h2>Oops! Something is wrong with the server!</h2>
+                <p>
+                    Try again later, or let us know about this problem at:
+                    <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b></li>.
+                </p>
+            {{else}}
+                <h2>We couldn't process all the form information!</h2>
+                <p>
+                    There are errors above, highlighted in <strong style="color:red">RED</strong>. Please review all information and try again.
+                    If you are having trouble contact <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b>.
+                </p>
+            {{/if}}
+        </section>
+    </div>
+
+    <div class="align-right">
+        {{#submit class="ladda-button" data-style="zoom-out"}}
+            <span class="ladda-label">Register</span>
+        {{/submit}}
+    </div>
+{{/formFor}}
