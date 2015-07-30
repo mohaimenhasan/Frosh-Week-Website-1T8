@@ -12,6 +12,7 @@
 #  phone                          :string(255)
 #  confirmation_token             :string(255)
 #  verified                       :boolean
+#  bus                            :boolean
 #  emergency_name                 :string(255)
 #  emergency_phone                :string(255)
 #  emergency_relationship         :string(255)
@@ -41,7 +42,7 @@ class Leedur < ActiveRecord::Base
                   :email,
                   :gender,
                   :phone, 
-                  :confirmation_token, :verified,
+                  :confirmation_token, :verified, :bus,
                   :emergency_name, :emergency_phone, :emergency_relationship, :emergency_email,
                   :restrictions_dietary, :restrictions_misc,
                   :charge_id, :ticket_number,
@@ -54,6 +55,7 @@ class Leedur < ActiveRecord::Base
   validates :first_name, :last_name, :emergency_name, :emergency_relationship, presence: true, length: { maximum: 50 }
   validates :year, length: { maximum: 10 }
   validates :discipline, inclusion: { in: ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral'] }
+  validates :bus, inclusion: { in: [true, false] }
   validates :email, presence: true, format: { with: VALID_UTMAIL_REGEX } 
   validates :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX } 
   validates :email, uniqueness: { case_sensitive: false }
@@ -137,7 +139,7 @@ class Leedur < ActiveRecord::Base
   def send_confirmation
     send_email({
       subject: 'Please confirm your email',
-      html_body: 'app/views/email_confirm.html.erb',
+      html_body: 'app/views/email_leedur_confirm.html.erb',
       from_email: Rails.application.config.mandrill_from
     })
   end
@@ -145,7 +147,7 @@ class Leedur < ActiveRecord::Base
   def send_receipt
     send_email({
       subject: 'Your receipt and ticket',
-      html_body: 'app/views/email_receipt.html.erb',
+      html_body: 'app/views/email_leedur_receipt.html.erb',
       from_email: Rails.application.config.mandrill_from
     })
   end
@@ -190,7 +192,7 @@ class Leedur < ActiveRecord::Base
   end
     
   def get_confirm_url
-    'http://' + Rails.application.config.hostname + '/register/confirm/' + id.to_s + '/' + confirmation_token
+    'http://' + Rails.application.config.hostname + '/leedurs_adventures/confirm/' + id.to_s + '/' + confirmation_token
   end
 
   def get_billing_last4

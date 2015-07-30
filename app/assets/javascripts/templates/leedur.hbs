@@ -47,6 +47,23 @@
 
     <section class="box normal registration-form-step">
         <span class="number">2</span>
+        <h2>How are you getting to HHF?</h2>
+
+        <section class="registration-form-group">
+            <div class="info">
+                Will you be taking the SKULE&trade; Express on Platform 9&frac34; (Skule bus)? 
+                <span class="subDescription green">Note: If you choose to drive Ford Anglia(get there by yourself), you can meet us there by 2:15pm.</span>
+            </div>
+            {{#input bus}}
+                {{inputField bus as=checkbox}}{{labelField bursary text=" "}}
+                    <label>Yes</label>
+            {{/input}}
+
+        </section>
+    </section>
+
+    <section class="box normal registration-form-step">
+        <span class="number">3</span>
         <h2>Health and safety information</h2>
 
         <section class="registration-form-group aligned">
@@ -86,7 +103,7 @@
 
     {{#unless isManual}}
         <section class="box normal registration-form-step">
-            <span class="number">3</span>
+            <span class="number">4</span>
             <h2>How will you be paying?</h2>
 
             <div class=":registration-payment showing">

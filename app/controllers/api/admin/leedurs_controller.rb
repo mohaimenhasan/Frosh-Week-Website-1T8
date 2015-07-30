@@ -1,72 +1,70 @@
 require 'awesome_print' if Rails.env.development?
 
-class Api::LeedursController < ApplicationController
+class Api::Admin::LeedursController < Api::LeedursController
 
-  def create
-    "IN CREATE\n"
-    leedur_data = params[:leedur]
+  include AdminAuthorization
+  before_filter :authorize_admin
+  before_filter :check_offline_mode, only: [:send_confirmation_email, :send_receipt_email]
 
-    u = Leedur.new leedur_data.slice *Leedur.accessible_attributes
-    add_details_from_admin(u)
-    u.package = HhfPackage.find(leedur_data[:package_id].to_s.to_i)
-    "Validating leedur\n"
-    render json: { errors: u.errors }, status: 422 and return unless u.valid?
-
-    u.set_random_gender_disc if check_skip :random_gender_disc
-    # "Payment start\n"
-    unless check_skip(:skip_stripe) || u.is_created_by_admin?
-      result = u.process_payment(leedur_data[:cc_token])
-      render json: { errors: result }, status: 422 and return unless result == :success
-    end
-
-    u.save!
-     #"Send email\n"
-    u.send_confirmation unless (check_skip(:skip_confirm_email) || Rails.application.config.offline_mode)
-    #"Done\n"
+  def index
+    selector = params.slice *Leedur.accessible_attributes
+    selector.merge!({ hhf_package_id: params[:hhf_package_id] }) if params[:hhf_package_id]
     render json: {
-      leedur: u.exposed_data({
-        hide_confirmation_token: true,
-        show_credit_info: true
-      })
+      leedurs: Leedur.where(selector)
     }
   end
 
-  def index
-    if params.has_key? :id and params.has_key? :confirmation_token
-      render json: {
-        leedurs: Leedur.where(params.slice(:id, :confirmation_token)).map { |u| u.exposed_data }
-      }
-      return
-    end
-
-    render json: { leedurs: [] }
+  def show
+    render json: {
+      leedur: Leedur.find(params[:id])
+    }
   end
 
   def update
     u = Leedur.find(params[:id])
-    if u.confirmation_token == params[:leedur][:confirmation_token]
-      u.send_receipt if (!u.verified)
-      u.verified = params[:leedur][:verified]
-      u.save!
-      render json: {
-        leedur: u.exposed_data({
-          hide_confirmation_token: true,
-          show_credit_info: true
-        })
-      }
-      return
+    u.update_attributes params[:leedur].slice(:email, :phone, :discipline, :year, :checked_in, :restrictions_dietary, :restrictions_misc)
+    if params[:leedur].has_key?(:hhf_package_id)
+      u.hhf_package = HhfPackage.find(params[:leedur][:hhf_package_id])
+      u.save! validate: false
     end
 
-    render json: { leedur: nil }
+    render json: { leedur: u }
   end
 
-  def check_skip(skip_flag)
-    Rails.env.development? and params.has_key? skip_flag
+  def destroy
+    u = Leedur.find(params[:id])
+    u.delete
+
+    render json: { leedur: u }
+  end
+
+  def send_confirmation_email
+    u = Leedur.find(params[:id])
+    if u.verified
+      render nothing: true, status: :bad_request and return
+    else
+      u.send_confirmation
+      render nothing: true, status: :ok and return
+    end
+
+  end
+
+  def send_receipt_email
+    u = Leedur.find(params[:id])
+    u.send_receipt
+    render nothing: true, status: :ok
   end
 
   protected
 
   def add_details_from_admin(leedur)
+    leedur.created_by_admin = get_admin.email
+  end
+
+  def check_offline_mode
+    if Rails.application.config.offline_mode
+      render nothing: true, status: :bad_request and return
+    end
   end
 
 end

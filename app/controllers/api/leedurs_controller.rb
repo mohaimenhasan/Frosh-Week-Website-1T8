@@ -7,6 +7,9 @@ class Api::LeedursController < ApplicationController
     leedur_data = params[:leedur]
 
     u = Leedur.new leedur_data.slice *Leedur.accessible_attributes
+    print "Got: "
+    print u.inspect
+    print "\n"
     add_details_from_admin(u)
     u.hhf_package = HhfPackage.find(leedur_data[:hhf_package_id].to_s.to_i)
     print"Validating leedur\n"
@@ -18,7 +21,9 @@ class Api::LeedursController < ApplicationController
       result = u.process_payment(leedur_data[:cc_token])
       render json: { errors: result }, status: 422 and return unless result == :success
     end
-
+    print "Saving"
+    print u.inspect
+    print "\n"
     u.save!
     print "Send email\n"
     u.send_confirmation unless (check_skip(:skip_confirm_email) || Rails.application.config.offline_mode)

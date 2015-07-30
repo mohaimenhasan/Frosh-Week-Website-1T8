@@ -1,0 +1,36 @@
+<div class="box normal">
+    <h1>Leedur Overview</h1>
+    <p>
+        Today is {{timestamp today format="dddd, MMMM Do YYYY"}}.
+        There {{pluralize registrationsToday string="is" plural="are"}} {{registrationsToday}} new
+        {{pluralize registrationsToday string="registration"}} today.
+        There are a total of {{leedurs.length}} registrants.
+    </p>
+    <p>
+        This page is an overview of all leedurs. Use filters to refine your search.
+    </p>
+
+    {{view App.ReactiveTextField class="spaced" action="filter" onEvent="keyUp" placeholder="Filter"}}
+
+    <div {{bindAttr class=":admin-loader :center isLoading:showing:hidden"}}>
+        <i class="icon-big-loader icon-spin icon-gear"></i>
+    </div>
+
+    <div {{bindAttr class=":admin-data :align-right isLoading:hidden:showing"}}>
+        {{filteredLeedurs.length}} {{pluralize filteredLeedurs.length string="result"}} of {{leedurs.length}} ({{percentage}}%). |
+        <span class="toggle-link" {{action toggleExpandAll}}>
+            {{#if expandAll}}
+                Collapse All
+            {{else}}
+                Expand All
+            {{/if}}
+        </span>
+    </div>
+
+    {{#each leedur in displayableLeedurs}}
+        <div {{bindAttr class=":admin-data :row :col :spaced isLoading:hidden:showing"}}>
+            {{view App.LeedurElementView leedurBinding=leedur}}
+        </div>
+    {{/each}}
+    {{view App.LoaderView class="row col"}}
+</div>

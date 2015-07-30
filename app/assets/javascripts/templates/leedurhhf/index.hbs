@@ -4,7 +4,63 @@
     </div>
     <div class="main col">
         <section class="box normal">
-            <h2>Leedur Stuff</h2>
+             <h1><i class="icon-bullhorn"></i> Leedur Events</h1>
+            <div class="event_title">
+                <h2><strong>Leedur Hart House Farm Retreat</strong></h2>
+                <hr>
+            </div>
+            <div class="event_short_detail">
+                <div class="heading">
+                    <b>Date:</b>
+                </div>
+                <div class="detail">
+                    August 15-16
+                </div>
+            </div>
+            <div class="event_short_detail">
+                <div class="heading">
+                    Location:
+                </div>
+                <div class="detail">
+                    Hart House Farm (15911, Terra Cotta)
+                </div>
+            </div>
+            <div class="event_short_detail">
+                <div class="heading">
+                    Logistics:
+                </div>
+                <div class="detail">
+                    <div class="day"><i>Sat.</i></div>
+                    <div class="time_detail">
+                        12:00pm: Meet at the pit<br>
+                        12:30pm: Buses leave campus<br>
+                        2:15pm: Arrive at HHF<br>
+                        
+                    </div>
+                    <div class="day"><i>Sun.</i></div>
+                    <div class="time_detail">
+                        1:00pm: Back at the pit
+                    </div>
+                </div>
+            </div>
+            <div class="event_short_detail">
+                <div class="heading">
+                    What's provided:
+                </div>
+                <div class="detail">
+                    Bbq dinner, snacks, and breakfast 
+                </div>
+            </div>
+            <div class="event_note">
+                Note: More details will be posted soon!
+            </div>
+            <div class="event_title">
+                <h2><strong>F!rosh Hart House Farm Retreat</strong></h2>
+                <hr>
+            </div>
+            <div style="text-align:center">
+                <h3>Details Coming Soon</h3>
+            </div>
         </section>
     </div>
 
@@ -34,7 +90,7 @@
                         <hr>
                     </div>
                     <div class="float-right registration-item col-header col ">
-                        <h3>Leedur Hart House Farm Retreat</h3>
+                        <h3>Admission Ticket</h3>
                         <hr>
                     </div>
                 </div>
@@ -50,7 +106,12 @@
                         {{/ifSoldOut}}
                     </div>
                     <div class="registration-item  col">
+                        
                         <h3><strong>{{name}}</strong> </h3>
+                        
+                        {{#if left}}
+                            <h5 style="color:crimson;">* ONLY <strong>{{left}}</strong> LEFT *</h5>   
+                        {{/if}}
                         
                         <p>
                             {{description}}

@@ -1,5 +1,5 @@
 App.LeedurController = Ember.ObjectController.extend({
-  needs: ['leedurhhfItem', 'leedurhhfReceipt'/*, 'adminUsersRegister'*/],
+  needs: ['leedurhhfItem', 'leedurhhfReceipt', 'adminLeedursRegister'],
 
   trackError: function(field, type, errorValue) {
     if (!window._gaq) {
@@ -25,7 +25,7 @@ App.LeedurController = Ember.ObjectController.extend({
     this.set('content.isManual', isManual);
 
     return isManual;
-  }.property(/*'controllers.adminUsersRegister.packageId',*/ 'controllers.leedurhhfItem.model'),
+  }.property('controllers.adminLeedursRegister.packageId', 'controllers.leedurhhfItem.model'),
 
   init: function() {
     this._super.apply(this, arguments);
@@ -73,11 +73,11 @@ App.LeedurController = Ember.ObjectController.extend({
   submit: function() {
     var content = this.get('content');
     var selectedPackage = this.get('controllers.leedurhhfItem').get('model');
-    /*if (Ember.isNone(selectedPackage)) {
-      var packages = this.get('controllers.adminUsersRegister.packages');
-      var packageId = this.get('controllers.adminUsersRegister.packageId');
+    if (Ember.isNone(selectedPackage)) {
+      var packages = this.get('controllers.adminLeedursRegister.hhfpackages');
+      var packageId = this.get('controllers.adminLeedursRegister.packageId');
       selectedPackage = packages.findProperty('id', packageId.toString());
-    }*/
+    }
 
     // Prepare parts of the user object from form data.
     var submitButton = Ladda.create(document.querySelector('button[type=submit]'));
@@ -107,8 +107,10 @@ App.LeedurController = Ember.ObjectController.extend({
           lastName: content.get('lastName'),
           gender: content.get('gender'),
           phone: content.get('phone') || '',
-          year: content.get('shirtSize'),
+          year: content.get('year'),
           discipline: content.get('discipline'),
+
+          bus: content.get('bus') || false,
 
           hhf_package_id: selectedPackage.get('id'),
 

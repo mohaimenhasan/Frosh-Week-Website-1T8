@@ -16,12 +16,7 @@ class Api::HhfPackagesController < ApplicationController
     if params.has_key? :key
        # print "getting packages"
       packages = HhfPackage.where params.slice :key
-    
-    elsif params
-      print "finding packages"
-      package = HhfPackage.find(params)
-      print package.inspect
-      render json: { hhf_package: package}
+
     else
       #Get all packages from database and check if they are available
       #Then render all available into json

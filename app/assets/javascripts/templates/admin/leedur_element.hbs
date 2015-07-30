@@ -1,0 +1,162 @@
+{{#with view}}
+    <h2>
+        <span class="toggle-link" {{action toggleCheckIn leedur}}>
+            {{#if leedur.checked_in}}
+                <i class="icon-check-sign"></i>
+            {{else}}
+                <i class="icon-check-empty"></i>
+            {{/if}}
+        </span>
+        <i {{bindAttr class="genderIcon"}}></i>
+        <span class="toggle-link" {{action toggleExpand target=view}}>{{leedur.firstName}} {{leedur.lastName}}</span>
+        <span class="toggle-icon" {{action toggleEdit target=view}}><i class="icon-edit-sign"></i></span>
+        <span class="toggle-icon" {{action deleteLeedur leedur}}><i class="icon-remove-sign"></i></span>
+        <span class="subtitle">
+            {{leedur.ticketNumber}} |
+            {{leedur.email}} <i {{bindAttr class="leedur.verified:icon-ok:icon-question"}}></i>
+        </span>
+    </h2>
+    <div {{bindAttr class=":admin-user-element view.expanded:showing:hidden"}}>
+        {{#if editMode}}
+            <div class="row">
+                <div class="full col">
+                    <ul>
+                        {{#unless leedur.verified}}
+                            <li>
+                                <span class="toggle-link" {{action sendConfirmation leedur}}>
+                                    <i class="icon-envelope"></i> Send Confirmation
+                                </span>
+                            </li>
+                        {{/unless}}
+                        <li>
+                            <span class="toggle-link" {{action sendTicket leedur}}>
+                                <i class="icon-ticket"></i> Send Ticket
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        {{/if}}
+
+        <div class="row">
+            <div class="half col">
+                <ul {{bindAttr class=":icons-ul editMode:expanded"}}>
+                    <li>
+                        <i class="icon-li icon-ticket"></i> {{leedur.ticketNumber}}
+                    </li>
+                    <li>
+                        <i class="icon-li icon-envelope"></i>
+                        {{#if editMode}}
+                            {{view Ember.TextField valueBinding=leedur.email}}
+                        {{else}}
+                            {{leedur.email}}<sup><i {{bindAttr class="leedur.verified:icon-ok:icon-question :icon-small"}}></i></sup>
+                        {{/if}}
+                    </li>
+                    <li>
+                        <i class="icon-li icon-calendar"></i> {{timestamp leedur.createdAt format="MMMM DD, YYYY"}}
+                    </li>
+                    <li>
+                        <i class="icon-li icon-phone"></i>
+                        {{#if editMode}}
+                            {{view Ember.TextField valueBinding=leedur.phone}}
+                        {{else}}
+                            {{#if leedur.phone}}{{leedur.phone}}{{else}}N/A{{/if}}
+                        {{/if}}
+                    </li>
+                    <li>
+                        <i class="icon-li icon-compass"></i>
+                        {{#if editMode}}
+                            {{view Ember.TextField valueBinding=leedur.year}}
+                        {{else}}
+                            {{#if leedur.year}}{{leedur.year}}{{else}}N/A{{/if}}
+                        {{/if}}
+                    </li>
+                    <li>
+                        <i class="icon-li icon-book"></i>
+                        {{#if editMode}}
+                            {{view Ember.Select contentBinding=App.LeedurFormEngineeringDisciplines valueBinding=leedur.discipline}}
+                        {{else}}
+                            {{leedur.discipline}}
+                        {{/if}}
+                    </li>
+                   
+                </ul>
+            </div>
+            <div class="half col">
+                <ul {{bindAttr class=":icons-ul editMode:expanded"}}>
+                    <li>
+                        <i class="icon-li icon-tag"></i>
+                        {{!#if editMode}}
+                            {{!view Ember.Select contentBinding=App.UserFormShirtSize valueBinding=user.shirtSize}}
+                        {{!else}}
+                            {{!user.shirtSize}}
+                        {{!/if}}
+                    </li>
+                    <li>
+                        <i class="icon-li icon-gift"></i>
+                        {{#if editMode}}
+                            {{view Ember.Select contentBinding=hhfpackagesSelect valueBinding=hhfpkg}}
+                        {{else}}
+                            {{hhfpkg}}
+                        {{/if}}
+                    </li>
+                </ul>
+
+                <ul {{bindAttr class=":icons-ul editMode:expanded"}}>
+                    <li>
+                        <i class="icon-li emergency icon-user"></i> {{leedur.emergencyName}}
+                    </li>
+                    <li>
+                        <i class="icon-li emergency icon-heart"></i> {{leedur.emergencyRelationship}}
+                    </li>
+                    <li>
+                        <i class="icon-li emergency icon-envelope"></i> {{leedur.emergencyEmail}}
+                    </li>
+                    <li>
+                        <i class="icon-li emergency icon-phone"></i> {{leedur.emergencyPhone}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+         <div class="row">
+            <div class="full col">
+                <h3>
+                    Transport
+                </h3>
+                <p>Skule Bus: <i {{bindAttr class="leedur.bus:icon-ok:icon-remove"}}></i>
+                </p>
+            </div>
+        </div>
+        {{#if restrictions}}
+            <div class="row">
+                <div class="full col">
+                    <h3>Restrictions</h3>
+                    {{#if leedur.restrictionsDietary}}
+                        <p>
+                            <strong>Dietary Restrictions:</strong><br>
+                            {{#if editMode}}
+                                {{view Ember.TextArea valueBinding=leedur.restrictionsDietary}}
+                            {{else}}
+                                {{leedur.restrictionsDietary}}
+                            {{/if}}
+                        </p>
+                    {{/if}}
+                    
+                    {{#if leedur.restrictionsMisc}}
+                        <p>
+                            <strong>Others Restrictions:</strong><br>
+                            {{#if editMode}}
+                                {{view Ember.TextArea valueBinding=leedur.restrictionsMisc}}
+                            {{else}}
+                                {{leedur.restrictionsMisc}}
+                            {{/if}}
+                        </p>
+                    {{/if}}
+                </div>
+            </div>
+        {{/if}}
+    </div>
+{{/with}}
+
+
+

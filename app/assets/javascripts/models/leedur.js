@@ -17,6 +17,7 @@ App.Leedur = DS.Model.extend({
 
   /* Package Information */
   hhf_package_id: DS.attr('number'),
+  bus: DS.attr('boolean'),
 
   /* Emergency Contact Information */
   emergencyName: DS.attr('string'),
@@ -47,6 +48,7 @@ App.Leedur.Filter = Ember.Object.create({
     'phone',                  // string
     'discipline',             // string
     'package',                // string
+    'bus',                    // boolean
     'year',                   // string
     'emergency_contact',      // string
     'emergency_email',        // string
@@ -108,9 +110,17 @@ App.Leedur.Filter = Ember.Object.create({
   },
 
   'package': function(model, query) {
-    var pkg = App.Package.find(model.get('hhf_package_id'));
+    var pkg = App.HhfPackage.find(model.get('hhf_package_id'));
     var searchable = (pkg.get('key') || '') + ' ' + (pkg.get('name') || '' ) + ' ' + (pkg.get('id') || '');
     return searchable.toLowerCase().match(new RegExp(query.toLowerCase()));
+  },
+
+  'bus': function(model, query) {
+    var bus = model.get('bus');
+    var queryTrue = query.toLowerCase() === 'true';
+    var queryFalse = query.toLowerCase() === 'false';
+
+    return (bus && queryTrue) || (!bus && queryFalse);
   },
 
   'year': function(model, query) {

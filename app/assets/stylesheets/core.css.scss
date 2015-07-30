@@ -465,6 +465,16 @@ h6 { @include heading-style(1.0em, $font-weight-normal, false); }
     text-transform: uppercase;
 }
 
+.subDescription {
+    display: block;
+    position: relative;
+    height: 1em;
+    top: -0.2em;
+
+    font-size: 0.7em;
+    font-weight: $font-weight-normal;
+}
+
 p {
     @include font-on-light;
     margin-bottom: 1em;

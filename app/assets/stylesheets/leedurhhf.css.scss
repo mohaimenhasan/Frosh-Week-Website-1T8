@@ -1,0 +1,55 @@
+/* Orientation Registration (Leedur Ver.) Styles
+ *
+ * This is the style sheet for registration related pages.
+ *
+ * author: Jason Ng
+ * version: 0.0.1
+ */
+
+@import 'compass';
+@import 'library';
+@import 'core';
+
+.event_title {
+	width: 100%;
+	text-align: center;
+}
+
+.event_short_detail {
+	margin: 0.5em;
+	font-size:1.0em;
+	.heading {
+		font-weight: bold;
+		color: $purple;
+		@include screen-small   { width: 100%; };
+    	@include screen-medium  { width: 100%; };
+    	@include screen-large   { width: 25%; };
+		display: inline-block;
+		vertical-align: top;
+	}
+	.detail {
+		@include screen-small   { width: 100%; };
+    	@include screen-medium  { width: 100%; };
+    	@include screen-large   { width: 70%; };
+		display: inline-block;
+		ul {
+			padding-left: 1em;
+		}
+		.day {
+			width:20%;
+			display:inline-block;
+			vertical-align: top;
+		}
+		.time_detail{
+			width:78%;
+			display:inline-block;
+		}
+	}
+
+}
+
+.event_note {
+	margin: 0.5em;
+	font-size:0.9em;
+	color: $green;
+}

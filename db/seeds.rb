@@ -17,8 +17,8 @@ leedur = 40
 fweek = 30
 leedur_name = 'Leedur ForbiddenForest Adventure'
 fweek_name = 'Leedurs n the Chamber of Froshies'
-leedur_max = 200
-fweek_max = 50
+leedur_max = 100
+fweek_max = 70
 
 # BASIC ITEMS FOR SELECTION
 HhfPackageItem.create(

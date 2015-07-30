@@ -2,7 +2,14 @@
     <div class="content row">
         <div class="side col registration-print-hidden">
             {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}
-            To be filled in
+            <section class="box highlight">
+                <h2>Reminders:</h2>
+                <ul>
+                    <li>Bring this ticket either on mobile device or on paper on the day of the event.</li>
+                    <li>Go <b>{{#linkTo 'leedurhhf.index'}}here{{/linkTo}}</b> to find out all the details about the Leedur HHF Retreat</li>
+                    <li>GET HYPEEEEEEEE!!!!</li>
+                </ul>
+            </section>
         </div>
 
         <div class="main col">
@@ -13,8 +20,7 @@
                         <section class="box highlight registration-print-hidden">
                             <h1>Confirmed!</h1>
                             <p>
-                                Your email has been verified. Check your inbox for more details about orientation throughout the
-                                summer. If you have any questions or concerns, contact
+                                Your email has been verified. A copy of this ticket has  already been sent to your email address. If you have any questions or concerns, contact
                                 <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>.
                             </p>
                         </section>
@@ -73,7 +79,10 @@
                                             </h2>
                                         </div>
                                     </div>
-                                    <strong> NEED HHF NAME</strong>
+                                    <h2>
+                                        <div class="label">HHF Type</div>
+                                        <p>{{hhfpackage.name}}</p>
+                                    </h2>
                                     <hr>
 
                                     <div class="row">

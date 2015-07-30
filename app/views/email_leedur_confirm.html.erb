@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Confirm your email</title>
+</head>
+
+<body>
+<table cellpadding="0" cellspacing="0" border="0" style="background-color:whitesmoke;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:#444;margin:0;padding:0;width:100%!important;"><tr><td>
+  <table cellpadding="0" cellspacing="0" border="0" align="center"><tr><td width="600">
+    <div style="font-size:1.5em;background-color:#6C198F;padding:5px;color:white;">
+      <img style="width:250px; height:250px; max-width:100%;vertical-align:middle;margin:7px" src="https://www.orientation.skule.ca/assets/1T5Logo_greyver.png" />
+      <span style="margin-left:2em;">Confirm your email</span>
+    </div>
+
+    <div>
+      <p>Hey <%= first_name %> <%= last_name %>,</p>
+
+      <p>Thanks for registering for Leedur Hart House Farm Retreat. There's only one more thing you need
+      to do: We need you to confirm the email you used to register. Then you're all good
+      to go!</p>
+
+      <div style="text-align:center;">
+        <a href="<%= get_confirm_url %>">
+          <div style="font-size:1.3em;background-color:#6C198F;margin-top:20px;margin-bottom:20px;padding:20px;color:white;display:inline-block;">
+            Click here to confirm your email
+          </div>
+        </a>
+      </div>
+
+      <p style="font-style: italic;">If you didn't use this email to register for F!rosh
+      Week, please contact <a href="support@orientation.skule.ca">support@orientation.skule.ca</a>.</p>
+
+      <p>Thanks,<br />
+      Your Engineering Orientation Committee, 2015</p>
+    </div>
+  </td></tr></table>
+</td></tr></table></body>
+</html>

@@ -100,6 +100,93 @@ App.UserElementView = Ember.View.extend({
   }
 });
 
+App.LeedurElementView = Ember.View.extend({
+  tagName: 'div',
+  templateName: 'admin/leedur_element',
+
+  leedur: null,
+  expanded: false,
+  editMode: false,
+
+  genderIcon: function() {
+    var gender = this.get('leedur.gender');
+    if (gender) {
+      if (gender === 'Male') {
+        return 'icon-male';
+      } else if (gender === 'Female') {
+        return 'icon-female';
+      }
+    }
+
+    return 'icon-lemon';
+  }.property('leedur.gender'),
+
+
+  hhfpkg: function(key, value) {
+    var packages = this.get('controller.hhfpackages');
+    var pkg;
+
+    if (arguments.length === 1) {
+      var packageId = this.get('leedur.hhf_package_id');
+      if (!Ember.isNone(packageId)) {
+        packageId = packageId.toString();
+      }
+
+      if (!Ember.isNone(packages)) {
+        pkg = packages.findProperty('id', packageId);
+        return !Ember.isNone(pkg) ? pkg.get('key') : '-';
+      }
+
+      return '-';
+    } else {
+      if (!Ember.isNone(packages)) {
+        pkg = packages.findProperty('key', value);
+        this.set('leedur.hhf_package_id', pkg.get('id'));
+      }
+    }
+  }.property('leedur.hhf_package_id', 'controller.hhfpackages.firstObject'),
+
+  hhfpackagesSelect: function() {
+    var packages = this.get('controller.hhfpackages');
+    return packages.map(function(item) {
+      return item.get('key');
+    });
+  }.property('controller.hhfpackages.firstObject'),
+
+  restrictions: function() {
+    var diet = (this.get('leedur.restrictionsDietary') || '').length > 0;
+    var misc = (this.get('leedur.restrictionsMisc') || '').length > 0;
+    return diet || misc ;
+  }.property('leedur.restrictionsDietary', 'leedur.restrictionsMisc'),
+
+  init: function() {
+    this._super.apply(this, arguments);
+    this.addObserver('controller.expandAll', function() {
+      var expand = this.get('controller.expandAll');
+      Ember.Logger.log(expand);
+      this.set('expanded', expand || false);
+    });
+  },
+
+  stopEdit: function() {
+    if (!this.get('expanded')) {
+      this.set('editMode', false);
+    }
+  }.observes('expanded'),
+
+  toggleExpand: function() {
+    this.toggleProperty('expanded');
+  },
+
+  toggleEdit: function() {
+    this.set('expanded', true);
+    this.toggleProperty('editMode');
+
+    if (!this.get('editMode')) {
+      this.get('controller').send('saveLeedur', this.get('leedur'));
+    }
+  }
+});
 
 App.LoaderView = Ember.View.extend({
   tagName: 'div',

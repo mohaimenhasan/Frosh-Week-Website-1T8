@@ -114,10 +114,15 @@ App.LeedurhhfConfirmController = Ember.Controller.extend({
   //Actual Form  
   firstTime: false,
 
+  hhfpackage: function() {
+    return App.HhfPackage.find(this.get('model.hhf_package_id'));
+  }.property('model.hhf_package_id'),
+
+
   url: function() {
     var api = 'https://chart.googleapis.com/chart?chs=450x450&cht=qr&chld=H|0&chl=';
     var host = window.location.host;
-    var path = '/admin/users/checkin/';
+    var path = '/admin/leedurs/checkin/';
 
     return api + host + path + this.get('model.ticketNumber');
   }.property('model.ticketNumber'),
@@ -158,10 +163,12 @@ App.LeedurhhfConfirmController = Ember.Controller.extend({
       var model = this.get('model');
       if (model) {
         var verified = model.get('verified');
+        Ember.Logger.log("verified");
         this.set('firstTime', this.get('firstTime') || !verified);
 
         if (!verified) {
           model.set('verified', true);
+          Ember.Logger.log("Setting verified to true");
           model.get('store').commit ();
         }
       }

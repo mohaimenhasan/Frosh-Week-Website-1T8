@@ -31,7 +31,7 @@ App.RouteList = [
     
   Ember.Object.create({
     route: 'leedurhhf',
-    path: '/leedur_fun_stuff',
+    path: '/leedurs_adventures',
     routes: [
       Ember.Object.create({ route: 'item',    path: '/:key' }),
       Ember.Object.create({ route: 'receipt', path: '/receipt' }),
@@ -47,8 +47,10 @@ App.RouteList = [
       Ember.Object.create({ route: 'usersBursary',      path: '/users/bursary' }),
       Ember.Object.create({ route: 'usersCheckin',      path: '/users/checkin' }),
       Ember.Object.create({ route: 'usersCheckinUser',  path: '/users/checkin/:ticket' }),
-      Ember.Object.create({ route: 'usersDetails',      path: '/users/:user' }),
-      Ember.Object.create({ route: 'packages',          path: '/packages' })
+//      Ember.Object.create({ route: 'usersDetails',      path: '/users/:user' }),
+//      Ember.Object.create({ route: 'packages',          path: '/packages' }),
+      Ember.Object.create({ route: 'leedurs',           path: '/leedurs' }),
+      Ember.Object.create({ route: 'leedursRegister',   path: '/leedurs/register' }),
     ]
   })
 ];

@@ -2,13 +2,15 @@ App.AdminController = Ember.Controller.extend({
   users: [],
   packages: [],
   groups: [],
-
+  leedurs: [],
+  hhfpackages: [],
   init: function() {
     this._super.apply(this, arguments);
     this.set('users', App.User.find());
     this.set('packages', App.Package.find());
     this.set('groups', App.Group.find());
-
+    this.set('leedurs', App.Leedur.find());
+    this.set('hhfpackages', App.HhfPackage.find());
     var that = this;
     if (Ember.isNone(window._offline)) {
       window.setTimeout(function() {
@@ -49,6 +51,14 @@ App.AdminSubController = Ember.Controller.extend({
     return this.get('controllers.admin.packages');
   }.property('controllers.admin.packages'),
 
+  leedurs: function() {
+    return this.get('controllers.admin.leedurs');
+  }.property('controllers.admin.leedurs'),
+
+  hhfpackages: function() {
+    return this.get('controllers.admin.hhfpackages');
+  }.property('controllers.admin.hhfpackages'),
+
   groups: function() {
     return this.get('controllers.admin.groups');
   }.property('controllers.admin.groups'),
@@ -75,6 +85,7 @@ App.AdminIndexController = App.AdminSubController.extend({
     }, this).length;
   }.property('users.firstObject')
 });
+
 
 App.AdminUsersSubController = App.AdminSubController.extend({
   expandAll: false,
@@ -117,6 +128,7 @@ App.AdminUsersSubController = App.AdminSubController.extend({
     user.get('transaction').commit();
   }
 });
+
 
 App.AdminUsersController = App.AdminUsersSubController.extend({
   showExamples: false,
@@ -282,6 +294,168 @@ App.AdminUsersRegisterController = Ember.Controller.extend({
 
   pkg: function(key, value) {
     var packages = this.get('packages');
+    var pkg;
+
+    if (arguments.length === 1) {
+      var packageId = this.get('packageId');
+      if (!Ember.isNone(packageId)) {
+        packageId = packageId.toString();
+      }
+
+      if (!Ember.isNone(packages)) {
+        pkg = packages.findProperty('id', packageId);
+        return !Ember.isNone(pkg) ? pkg.get('key') : '-';
+      }
+
+      return '-';
+    } else {
+      if (!Ember.isNone(packages)) {
+        pkg = packages.findProperty('key', value);
+        if (!Ember.isNone(pkg)) {
+          this.set('packageId', pkg.get('id'));
+        }
+      }
+    }
+  }.property('packageId')
+});
+
+
+
+
+/********************** Leedurs **************/
+App.AdminLeedursSubController = App.AdminSubController.extend({
+  expandAll: false,
+
+  today: function() {
+    return new Date();
+  }.property(),
+
+  registrationsToday: function() {
+    var all = this.get('leedurs');
+    return all.filter(function(item) {
+      var creation = item.get('createdAt');
+      var today = this.get('today');
+
+      return today.getFullYear() === creation.getFullYear() &&
+        today.getMonth() === creation.getMonth() &&
+        today.getDate() === creation.getDate();
+    }, this).length;
+  }.property('leedurs.firstObject'),
+
+  toggleExpandAll: function() {
+    this.toggleProperty('expandAll');
+  },
+
+  deleteLeedur: function(leedur) {
+    var result = window.confirm('Are you sure you want to delete the leedur?');
+    if (result === true) {
+      leedur.deleteRecord();
+      leedur.get('transaction').commit();
+    }
+  },
+
+  toggleCheckIn: function(leedur) {
+    leedur.toggleProperty('checked_in');
+    leedur.get('transaction').commit();
+  },
+
+  sendTicket: function(leedur) {
+    Ember.$.post('/api/leedurs/' + leedur.get('id') + '/send_receipt_email')
+      .done(function() { window.alert('Sent!'); })
+      .fail(function() { window.alert('Could not send ticket.'); });
+  },
+
+  sendConfirmation: function(leedur) {
+    Ember.$.post('/api/leedurs/' + leedur.get('id') + '/send_confirmation_email')
+      .done(function() { window.alert('Sent!'); })
+      .fail(function() { window.alert('Could not send confirmation email.'); });
+  },
+
+  saveLeedur: function(leedur) {
+    leedur.get('transaction').commit();
+  }
+});
+
+App.AdminLeedursController = App.AdminLeedursSubController.extend({
+  showExamples: false,
+  page: 1,
+
+  percentage: function() {
+    return (100 * this.get('filteredLeedurs.length') / this.get('leedurs.length')).toFixed(1);
+  }.property('filteredLeedurs.length', 'leedurs.length'),
+
+  displayableLeedurs: function() {
+    return this.get('filteredLeedurs').slice(0, 20 * this.get('page'));
+  }.property('filteredLeedurs', 'page'),
+
+  filteredLeedurs: function() {
+    var all = this.get('leedurs');
+    var attributes = App.Leedur.Filter.attributes;
+    this.set('page', 1);
+
+    // Parse the query.
+    var query = this.get('query') || '';
+    if (query === '') {
+      return all;
+    }
+
+    var parsedQuery = query.match(/\w+:(\w+|"[\w\s]+")/g);
+    var filtered = all.filter(function(leedur) {
+      if (Ember.isNone(parsedQuery)) {
+        return attributes.some(function(attribute) {
+          return App.Leedur.Filter[attribute](leedur, query);
+        }, this);
+      } else {
+        return parsedQuery.every(function(elem) {
+          elem = elem.split(':');
+          var filter = elem[0];
+          var search = elem[1];
+
+          if (search.charAt(0) === '"') {
+            search = search.slice(1, search.length - 1);
+          }
+
+          return attributes.contains(filter.toLowerCase()) && App.Leedur.Filter[filter](leedur, search);
+        }, this);
+      }
+    }, this);
+    Ember.Logger.log(filtered);
+    return filtered;
+  }.property('leedurs.@each', 'query'),
+
+  pageIfNeeded: function() {
+    if (this.get('filteredLeedurs.length') > 20 * this.get('page')) {
+      this.incrementProperty('page');
+    }
+  },
+
+  toggleExamples: function() {
+    this.toggleProperty('showExamples');
+  },
+
+  filter: function(text) {
+    this.set('query', text);
+  }
+});
+
+App.AdminLeedursRegisterController = Ember.Controller.extend({
+  needs: ['admin'],
+
+  hhfpackages: function() {
+    return this.get('controllers.admin.hhfpackages');
+  }.property('controllers.admin.hhfpackages'),
+
+  formPackages: function() {
+    var packages = this.get('hhfpackages') || [];
+    return packages.map(function(item) {
+      return item.get('key');
+    });
+  }.property('hhfpackages.firstObject'),
+
+  packageId: 1,
+
+  hhfpkg: function(key, value) {
+    var packages = this.get('hhfpackages');
     var pkg;
 
     if (arguments.length === 1) {

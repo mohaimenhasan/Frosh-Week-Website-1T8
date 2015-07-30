@@ -1,0 +1,14 @@
+<div class="box normal">
+    <h1>Manual Registration</h1>
+    <p>
+        Manually register a leedur. Select a HHF ticket below.
+    </p>
+    <p>
+        After registering the leedur, go to {{#linkTo "admin.leedurs"}}overview{{/linkTo}} and refresh the page to
+        see the new registrant.
+    </p>
+    {{view Ember.Select contentBinding=formPackages valueBinding=hhfpkg}}
+</div>
+<div class="registration">
+    {{render leedur}}
+</div>
