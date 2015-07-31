@@ -12,7 +12,8 @@
 #  phone                          :string(255)
 #  confirmation_token             :string(255)
 #  verified                       :boolean
-#  bus                            :boolean
+#  leedurbus                      :boolean
+#  fweekbus                       :boolean
 #  emergency_name                 :string(255)
 #  emergency_phone                :string(255)
 #  emergency_relationship         :string(255)
@@ -42,7 +43,7 @@ class Leedur < ActiveRecord::Base
                   :email,
                   :gender,
                   :phone, 
-                  :confirmation_token, :verified, :bus,
+                  :confirmation_token, :verified, :leedurbus, :fweekbus,
                   :emergency_name, :emergency_phone, :emergency_relationship, :emergency_email,
                   :restrictions_dietary, :restrictions_misc,
                   :charge_id, :ticket_number,
@@ -55,10 +56,9 @@ class Leedur < ActiveRecord::Base
   validates :first_name, :last_name, :emergency_name, :emergency_relationship, presence: true, length: { maximum: 50 }
   validates :year, length: { maximum: 10 }
   validates :discipline, inclusion: { in: ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral'] }
-  validates :bus, inclusion: { in: [true, false] }
+  validates :leedurbus, :fweekbus, inclusion: { in: [true, false] }
   validates :email, presence: true, format: { with: VALID_UTMAIL_REGEX } 
   validates :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX } 
-  validates :email, uniqueness: { case_sensitive: false }
   validates :restrictions_dietary, :restrictions_misc,  length: { maximum: 2000 }
   validates :gender, inclusion: { in: ['Male', 'Female', '-'] }
   validates :emergency_phone, presence: true, length: { maximum: 25 }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150730172200) do
+ActiveRecord::Schema.define(:version => 20150730235600) do
 
   create_table "admins", :force => true do |t|
     t.string   "email"
@@ -55,7 +55,6 @@ ActiveRecord::Schema.define(:version => 20150730172200) do
     t.string   "last_name"
     t.string   "year"
     t.string   "discipline"
-    t.string   "email"
     t.string   "gender"
     t.string   "phone"
     t.string   "confirmation_token"
@@ -73,10 +72,10 @@ ActiveRecord::Schema.define(:version => 20150730172200) do
     t.datetime "updated_at",                                :null => false
     t.string   "created_by_admin"
     t.boolean  "checked_in",             :default => false
-    t.boolean  "bus",                    :default => false
+    t.boolean  "leedurbus",              :default => false
+    t.boolean  "fweekbus",               :default => false
+    t.string   "email"
   end
-
-  add_index "leedurs", ["email"], :name => "index_leedurs_on_email", :unique => true
 
   create_table "package_items", :force => true do |t|
     t.string   "key"

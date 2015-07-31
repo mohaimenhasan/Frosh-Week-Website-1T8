@@ -6,11 +6,11 @@
         <section class="registration-form-group aligned">
             {{#input firstName}}
                 {{labelField firstName text="First name"}}
-                {{inputField firstName placeholder="Hype"}}
+                {{inputField firstName placeholder="Harry"}}
             {{/input}}
             {{#input lastName}}
                 {{labelField lastName text="Last name"}}
-                {{inputField lastName placeholder="Train"}}
+                {{inputField lastName placeholder="Potter"}}
             {{/input}}
             {{#input email}}
                 {{labelField email text="Your email address"}}
@@ -51,13 +51,25 @@
 
         <section class="registration-form-group">
             <div class="info">
-                Will you be taking the SKULE&trade; Express on Platform 9&frac34; (Skule bus)? 
-                <span class="subDescription green">Note: If you choose to drive Ford Anglia(get there by yourself), you can meet us there by 2:15pm.</span>
+                Will you be taking the SKULE&trade; Express on Platform 9&frac34; (skule bus)? 
+                <div class="subDescription green">Note: You may also choose to drive the Flying Ford Anglia(get there by yourself).</div>
             </div>
-            {{#input bus}}
-                {{inputField bus as=checkbox}}{{labelField bursary text=" "}}
-                    <label>Yes</label>
-            {{/input}}
+            <div class="row">
+                <div class="half col">
+                For Leedur Trip (August)
+                {{#input leedurbus}}
+                    {{inputField leedurbus as=checkbox}}{{labelField leedurbus text=" "}}
+                        <label>Yes</label>
+                {{/input}}
+                </div>
+                <div class="half col">
+                For Fweek Trip (September)
+                {{#input fweekbus}}
+                    {{inputField fweekbus as=checkbox}}{{labelField fweekbus text=" "}}
+                        <label>Yes</label>
+                {{/input}}
+                </div>
+            </div>
 
         </section>
     </section>
@@ -70,15 +82,15 @@
             <h3>Emergency contact</h3>
             {{#input emergencyName}}
                 {{labelField emergencyName text="Name"}}
-                {{inputField emergencyName placeholder="Hype Ship"}}
+                {{inputField emergencyName placeholder="Voldemort"}}
             {{/input}}
             {{#input emergencyEmail}}
                 {{labelField emergencyEmail text="Email address"}}
-                {{inputField emergencyEmail as=email placeholder="john@example.com"}}
+                {{inputField emergencyEmail as=email placeholder="tom.riddle@youknowwho.com"}}
             {{/input}}
             {{#input emergencyRelationship}}
                 {{labelField emergencyRelationship text="Relationship"}}
-                {{inputField emergencyRelationship placeholder="Father"}}
+                {{inputField emergencyRelationship placeholder="Best Friend"}}
             {{/input}}
             {{#input emergencyPhone}}
                 {{labelField emergencyPhone text="Phone number"}}
@@ -115,7 +127,7 @@
                     <p>We accept Visa, Mastercard, and American Express.</p>
                     {{#input ccName}}
                         {{labelField ccName text="Name on card"}}
-                        {{inputField ccName placeholder="Jane Smith"}}
+                        {{inputField ccName placeholder="Severus Snape"}}
                     {{/input}}
 
                     <div class="input">

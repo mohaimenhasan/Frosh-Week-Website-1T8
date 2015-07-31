@@ -110,8 +110,8 @@ App.LeedurController = Ember.ObjectController.extend({
           year: content.get('year'),
           discipline: content.get('discipline'),
 
-          bus: content.get('bus') || false,
-
+          leedurbus: content.get('leedurbus') || false,
+          fweekbus: content.get('fweekbus') || false,
           hhf_package_id: selectedPackage.get('id'),
 
           emergencyName: content.get('emergencyName'),

@@ -15,15 +15,17 @@ ActiveRecord::Base.connection.reset_pk_sequence! HhfPackageItem.table_name
 
 leedur = 40
 fweek = 30
-leedur_name = 'Leedur ForbiddenForest Adventure'
+leedur_name = 'Leedurs Forbidden Forest Adventure'
 fweek_name = 'Leedurs n the Chamber of Froshies'
+leedur_aka = " (aka Leedur Retreat)"
+fweek_aka = " (aka F!week Retreat)"
 leedur_max = 100
 fweek_max = 70
 
 # BASIC ITEMS FOR SELECTION
 HhfPackageItem.create(
   key: 'leedur',
-  name: leedur_name,
+  name: leedur_name + leedur_aka,
   description: 'We, leedurs, be the first to explore the Forbidden Forest. Fight spiders, dementors n stuff',
   price: leedur,
   count: 0,
@@ -35,7 +37,7 @@ HhfPackageItem.create(
 
 HhfPackageItem.create(
   key: 'fweek',
-  name: fweek_name,
+  name: fweek_name + fweek_aka,
   description: 'Having fun with frosh n stuff',
   price: fweek,
   count: 0,

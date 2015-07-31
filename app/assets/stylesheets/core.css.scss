@@ -466,10 +466,7 @@ h6 { @include heading-style(1.0em, $font-weight-normal, false); }
 }
 
 .subDescription {
-    display: block;
-    position: relative;
-    height: 1em;
-    top: -0.2em;
+    margin:0.2em;
 
     font-size: 0.7em;
     font-weight: $font-weight-normal;
