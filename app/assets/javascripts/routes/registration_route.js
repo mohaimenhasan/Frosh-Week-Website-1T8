@@ -26,7 +26,6 @@ App.RegistrationItemRoute = Ember.Route.extend({
     if (model.get('content')) {
       hack = model.get('firstObject');
     }
-    Ember.Logger.log(hack);
     if (!hack) {
       this.transitionTo('registration.index');
     }

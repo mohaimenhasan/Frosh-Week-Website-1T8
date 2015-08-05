@@ -90,7 +90,7 @@ App.LeedurhhfItemController = Ember.Controller.extend({
 App.LeedurhhfReceiptController = Ember.Controller.extend({
   selectedPackage: function() {
     var packageId = this.get('model.hhf_package_id');
-    Ember.Logger.log(packageId);
+    
     return App.HhfPackage.find(packageId);
   }.property('model.hhf_package_id'),
 
@@ -154,7 +154,6 @@ App.LeedurhhfConfirmController = Ember.Controller.extend({
 
   showError: function() {
     var model = this.get('model');
-    Ember.Logger.log(model);
     return !model || !model.get('verified');
   }.property('model'),
 
@@ -163,12 +162,10 @@ App.LeedurhhfConfirmController = Ember.Controller.extend({
       var model = this.get('model');
       if (model) {
         var verified = model.get('verified');
-        Ember.Logger.log("verified");
         this.set('firstTime', this.get('firstTime') || !verified);
 
         if (!verified) {
           model.set('verified', true);
-          Ember.Logger.log("Setting verified to true");
           model.get('store').commit ();
         }
       }

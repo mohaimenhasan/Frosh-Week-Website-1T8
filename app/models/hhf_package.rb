@@ -28,7 +28,7 @@ class HhfPackage < ActiveRecord::Base
   end 
     
   def increase_count
-    print "Increasing " + self.key + "count\n"
+  #  print "Increasing " + self.key + "count\n"
     package_items = self.key.split('_')
     package_items.each do |name|
       sql_clause = "key LIKE ('" + name + "')";

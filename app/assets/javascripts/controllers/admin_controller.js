@@ -419,7 +419,6 @@ App.AdminLeedursController = App.AdminLeedursSubController.extend({
         }, this);
       }
     }, this);
-    Ember.Logger.log(filtered);
     return filtered;
   }.property('leedurs.@each', 'query'),
 

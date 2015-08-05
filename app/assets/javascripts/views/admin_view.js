@@ -163,7 +163,6 @@ App.LeedurElementView = Ember.View.extend({
     this._super.apply(this, arguments);
     this.addObserver('controller.expandAll', function() {
       var expand = this.get('controller.expandAll');
-      Ember.Logger.log(expand);
       this.set('expanded', expand || false);
     });
   },

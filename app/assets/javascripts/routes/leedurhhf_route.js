@@ -34,7 +34,6 @@ App.LeedurhhfItemRoute = Ember.Route.extend({
 
   serialize: function(model) {
     //Check for model that exists in db otherwise, setupController will transition back
-    Ember.Logger.log("serialize", model, model.get('content'), model.get('content').get('firstObject'), model.get('firstObject'));
     if(model.get('content').get('firstObject')){
       return { 'key': model.get('firstObject').get('key') };
     }

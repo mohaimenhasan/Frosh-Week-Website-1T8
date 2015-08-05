@@ -11,8 +11,8 @@ class Api::HhfPackagesController < ApplicationController
   end
 
   def index
-     print "In packages controller\n"
-    print params
+    # print "In packages controller\n"
+    #print params
     if params.has_key? :key
        # print "getting packages"
       packages = HhfPackage.where params.slice :key
