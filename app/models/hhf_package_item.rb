@@ -22,8 +22,14 @@ class HhfPackageItem < ActiveRecord::Base
   
   has_many :hhf_packages
 
+  def available_by_time?
+    start_time = start_date.to_time_in_current_zone.beginning_of_day
+    end_time = end_date.to_time_in_current_zone.end_of_day
+    Time.now.in_time_zone(Rails.application.config.time_zone).between? start_time, end_time
+  end
+
   def available?
-    return true if self.left > 0 
+    return true if self.left > 0 && available_by_time?
     return false
   end 
     

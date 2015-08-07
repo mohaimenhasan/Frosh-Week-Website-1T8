@@ -1,7 +1,13 @@
-Ember.Handlebars.registerHelper('ifOnlinePurchase', function(options) {
-  var end = new Date('Sept 04 2015 23:59:59 EDT');
+
+Ember.Handlebars.registerHelper('ifBeforeDeadline', function(key, options) {
+  var leedurEnd = new Date('Aug 13 2015 23:59:59 EDT');
+  var fweekEnd = new Date('Aug 31 2015 23:59:59 EDT');
   var current = new Date();
-  if(current < end){
+  var _key = Em.get(this, key);
+  if(current < leedurEnd && _key == "leedur"){
+    return options.fn(this);
+  }
+  else if(current < fweekEnd && _key == "fweek"){
     return options.fn(this);
   }
   else {
@@ -21,5 +27,15 @@ Ember.Handlebars.registerHelper('ifSoldOut', function(left, options) {
   }
 });
 
-
+Ember.Handlebars.registerHelper('ifLeedur', function(key, left, options) {
+  
+  var _left = Em.get(this, left);
+  var _key = Em.get(this, key);
+  if(_key == "leedur" && _left > 0) {
+      return options.fn(this);
+  }
+  else {
+      return options.inverse(this);
+  }
+});
 
