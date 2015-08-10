@@ -26,7 +26,8 @@ App.RegistrationItemRoute = Ember.Route.extend({
     if (model.get('content')) {
       hack = model.get('firstObject');
     }
-    if (!hack) {
+
+    if (!hack || hack.get("key").indexOf("early-bird") > -1) {
       this.transitionTo('registration.index');
     }
     controller.set('model', hack);
