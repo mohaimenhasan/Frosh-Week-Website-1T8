@@ -49,53 +49,35 @@
             
                 <div class="row registration-row">
                     <div class="registration-checkbox col">
-                        {{#if earlyBird.left}}
-                            <input {{bindAttr id="earlyBird.key" value="earlyBird.price"}} type="checkbox" >        
-                            <label {{bindAttr for="earlyBird.key"}} ></label>
-                        {{else}}
                             &nbsp;
-                        {{/if}}
                         
                     </div>
                     <div class="registration-item  col">
                         <h3><strong>{{earlyBird.name}}</strong> </h3>
-                        {{#if earlyBird.left}}
-                            <h5 style="color:crimson;">* ONLY <strong>{{earlyBird.left}}</strong> LEFT *</h5>   
-                        {{/if}}
                         <p>
                             {{earlyBird.description}}
                         </p>
-                        {{#unless earlyBird.left}}
                         <h5 style="color:crimson;">* All 200 tickets were sold out on the first day! Buy yours quickly! *</h5>   
-                        {{/unless}}
+
                     </div>
                     <div  class="registration-price col ">
                         <h3 class="float-right">
-                        {{#if earlyBird.left}} 
-                            <strong>${{earlyBird.price}} </strong>
-                        {{else}}
                             <strong style="color:crimson;"> SOLD OUT</strong>
-                        {{/if}}
                         </h3>
                     </div>
                 </div>
                 
                  <div class="row registration-row">
                     <div class="registration-checkbox col">
-                        {{#if earlyBird.left}}
-                            &nbsp;
-                        {{else}}
+
                             <input {{bindAttr id="regular.key" value="regular.price"}} type="checkbox" >        
                             <label {{bindAttr for="regular.key"}} ></label>
-                        {{/if}}
+
                         
                     </div>
                     <div class="registration-item  col">
                         <h3><strong>{{regular.name}}</strong> </h3>
-                        {{#if earlyBird.left}}
-                            <h5 style="color:crimson;">* OPEN WHEN EARLY BIRDS ARE SOLD OUT *</h5>
 
-                        {{/if}}
                         <p>
                             {{regular.description}}
                         </p>
