@@ -14,7 +14,7 @@ class Api::Admin::PackagesController < Api::PackagesController
   def index
     #Only render available ones
     packages = Package.where(params.slice(*Package.accessible_attributes))
-    packages.keep_if {|p| p.available?}
+    #packages.keep_if {|p| p.available?}
     #Re-sort packages by id
     sorted_packages = packages.sort_by { |k| k.id }
     render json: {
