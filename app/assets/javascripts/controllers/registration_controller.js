@@ -18,6 +18,17 @@ App.RegistrationIndexController = Ember.Controller.extend({
     return early_bird;
   }.property("model.[]"),
 
+  earlyBirdAvailable: function() {
+    if(this.get("isLoaded"))
+    {
+      if(this.get("earlyBird").left > 0)
+        return true;
+      else 
+        return false;
+    }
+    
+  }.property("earlyBirdAvailable"),
+
   regular: function() {
     var regular = this.get("model").objectAt(1);
     return regular;

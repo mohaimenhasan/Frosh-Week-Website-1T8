@@ -19,7 +19,7 @@ Ember.Handlebars.registerHelper('ifBeforeDeadline', function(key, options) {
 Ember.Handlebars.registerHelper('ifSoldOut', function(left, options) {
   
   var _left = Em.get(this, left);
-  if(_left === 0) {
+  if(_left <= 0) {
       return options.fn(this);
   }
   else {

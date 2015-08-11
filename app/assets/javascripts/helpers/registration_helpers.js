@@ -8,6 +8,8 @@ Ember.Handlebars.registerHelper('ifOnlinePurchase', function(options) {
     return options.inverse(this);
   }
 });
+
+
 Ember.Handlebars.registerHelper('ifAddonTitle', function(key, options) {
 
   var _key = Em.get(this, key);
@@ -22,7 +24,7 @@ Ember.Handlebars.registerHelper('ifAddonTitle', function(key, options) {
 Ember.Handlebars.registerHelper('ifSoldOut', function(left, options) {
   
   var _left = Em.get(this, left);
-  if(_left === 0) {
+  if(_left <= 0) {
       return options.fn(this);
   }
   else {

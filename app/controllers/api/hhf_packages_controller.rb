@@ -26,7 +26,6 @@ class Api::HhfPackagesController < ApplicationController
     packages.keep_if {|p| p.available?}
     #Re-sort packages by price
     sorted_packages = packages.sort_by { |k| k.id }
-    print sorted_packages.inspect
     render json: { hhf_packages: sorted_packages}
     
   end
