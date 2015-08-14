@@ -30,6 +30,7 @@ App.LeedurhhfItemRoute = Ember.Route.extend({
       this.transitionTo('leedurhhf.index');
     }
     controller.set('model', hack);
+
   },
 
   serialize: function(model) {

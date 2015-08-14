@@ -6,12 +6,14 @@
 #  name        :string(255)
 #  key         :string(255)
 #  price       :integer
+#  leedurbus   :integer //manually added, need fix
+#  fweekbus    :integer //manually added, need fix
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 class HhfPackage < ActiveRecord::Base
-  attr_accessible :key, :count, :description, :max, :left, :name, :price, :start_date, :end_date
+  attr_accessible :key, :description, :name, :price, :leedurbus, :fweekbus, :start_date, :end_date
   
   has_many :leedurs
   has_many :hhf_package_items
@@ -28,12 +30,14 @@ class HhfPackage < ActiveRecord::Base
   end 
     
   def increase_count
-  #  print "Increasing " + self.key + "count\n"
     package_items = self.key.split('_')
+    self.fweekbus += 1 if self.key.include? "fweek"
+    self.leedurbus += 1 if self.key.include? "leedur"
     package_items.each do |name|
       sql_clause = "key LIKE ('" + name + "')";
       item = HhfPackageItem.where(sql_clause).first
       item.update_amount
     end
+    self.save!
   end
 end

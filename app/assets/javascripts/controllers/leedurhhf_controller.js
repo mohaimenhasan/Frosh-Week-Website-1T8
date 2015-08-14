@@ -83,9 +83,6 @@ App.LeedurhhfItemController = Ember.Controller.extend({
   //Invoked by "Change kit" button, refer to item.hbs in leedurhhf
   cancel: function() {
     this.transitionToRoute('leedurhhf.index');
-  },
-  
-  init: function() {
   }
 });
 

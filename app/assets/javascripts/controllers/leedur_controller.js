@@ -15,6 +15,28 @@ App.LeedurController = Ember.ObjectController.extend({
 
   serverError: false,
 
+  //Buses
+  leedurTrip: function() {
+    return (this.get('controllers.leedurhhfItem.model').get('leedurbus') > 0);
+  }.property('controllers.leedurhhfItem.model'),
+
+  fweekTrip: function() {
+    return (this.get('controllers.leedurhhfItem.model').get('fweekbus') > 0);
+  }.property('controllers.leedurhhfItem.model'),
+
+  leedurBusAvailable: function(){
+    if(this.get('controllers.leedurhhfItem.model').get('leedurbus') < 44){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }.property('controllers.leedurhhfItem.model'),
+
+  leedurBusSeats: function() {
+    return (44 - this.get('controllers.leedurhhfItem.model').get('leedurbus')) ;
+  }.property('controllers.leedurhhfItem.model'),
+
 
 
   showError: function() {

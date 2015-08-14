@@ -14,7 +14,7 @@ class Api::Admin::HhfPackagesController < Api::HhfPackagesController
   def index
     #Only render available ones
     packages = HhfPackage.where(params.slice(*HhfPackage.accessible_attributes))
-    print packages.inspect
+
     #packages.keep_if {|p| p.available?}
     #Re-sort packages by id
     sorted_packages = packages.sort_by { |k| k.id }
