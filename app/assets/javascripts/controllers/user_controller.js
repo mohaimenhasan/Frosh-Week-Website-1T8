@@ -11,7 +11,7 @@ App.UserController = Ember.ObjectController.extend({
     });
   },
 
-  showPackageUnavailable: false,
+  packageIsUnavailable: false,
     
   showBursary: true,
 
@@ -19,9 +19,11 @@ App.UserController = Ember.ObjectController.extend({
 
   serverError: false,
 
+
   showError: function() {
-    return this.get('serverError') || !this.get('content.isValid');
-  }.property('serverError', 'content.isValid'),
+    //Ember.Logger.log("Setting error");
+    return this.get('packageIsUnavailable') || this.get('serverError') || !this.get('content.isValid');
+  }.property('packageIsUnavailable','serverError', 'content.isValid'),
 
   isManual: function() {
     var selectedPackage = this.get('controllers.registrationItem.model');
@@ -80,10 +82,27 @@ App.UserController = Ember.ObjectController.extend({
   submit: function() {
     var content = this.get('content');
     var selectedPackage = this.get('controllers.registrationItem').get('model');
+    //Ember.Logger.log("Submitting");
     if (Ember.isNone(selectedPackage)) {
+      //Ember.Logger.log("selectedPackage")
       var packages = this.get('controllers.adminUsersRegister.packages');
       var packageId = this.get('controllers.adminUsersRegister.packageId');
       selectedPackage = packages.findProperty('id', packageId.toString());
+      //FIXME: temp hack, should do this check on server side, Check if package is sold out
+      //Does not cover outdated ones, this model is not up to date as it has been retrieved on render
+      //This is solely for admin if they forgot to change early-bird to available package
+      //Ember.Logger.log(this.get('packageIsUnavailable'), content.get('packageIsUnavailable'));
+      if(selectedPackage.get("id") >= 1 && selectedPackage.get("id") <= 4){
+        //Ember.Logger.log("set true");
+        this.set('packageIsUnavailable', true);
+        //Ember.Logger.log(this.get('packageIsUnavailable'));
+        return;
+      }
+      else {
+        //Ember.Logger.log("set false");
+        this.set('packageIsUnavailable', false);
+      }
+      
     }
 
     // Prepare parts of the user object from form data.

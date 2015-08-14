@@ -282,7 +282,7 @@ App.AdminUsersRegisterController = Ember.Controller.extend({
   packages: function() {
     return this.get('controllers.admin.packages');
   }.property('controllers.admin.packages'),
-
+  
   formPackages: function() {
     var packages = this.get('packages') || [];
     return packages.map(function(item) {

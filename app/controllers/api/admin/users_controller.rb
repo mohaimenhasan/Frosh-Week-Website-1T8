@@ -7,6 +7,7 @@ class Api::Admin::UsersController < Api::UsersController
   before_filter :check_offline_mode, only: [:send_confirmation_email, :send_receipt_email]
 
   def index
+    #print "In index\n\n\n"
   	selector = params.slice *User.accessible_attributes
   	selector.merge!({ package_id: params[:package_id] }) if params[:package_id]
   	selector.merge!({ group_id: params[:group_id] }) if params[:group_id]

@@ -3,7 +3,7 @@ require 'awesome_print' if Rails.env.development?
 class Api::UsersController < ApplicationController
 
   def create
-    # "IN CREATE\n"
+    "IN CREATE\n\n"
     user_data = params[:user]
 
     u = User.new user_data.slice *User.accessible_attributes

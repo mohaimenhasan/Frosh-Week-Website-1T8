@@ -15,6 +15,8 @@ App.LeedurController = Ember.ObjectController.extend({
 
   serverError: false,
 
+
+
   showError: function() {
     return this.get('serverError') || !this.get('content.isValid');
   }.property('serverError', 'content.isValid'),

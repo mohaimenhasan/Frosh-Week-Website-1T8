@@ -225,34 +225,32 @@
             </div>
         </section>
     {{/unless}}
-
-    <div {{bindAttr class=":registration-error showPackageUnavailable:showing:hidden"}}>
+            
+    <div {{bindAttr class=":registration-error showError:showing:hidden"}}>
         <section class="box highlight">
-            <h2>Unavailable Package!</h2>    
+            {{#if packageIsUnavailable}}
+                <h2>Unavailable Package!</h2>
                 <p>
                     Sorry! Seems like the package you chose is no longer
                     available. Please go back and choose an available
                     package. If you have any concerns with this issue, 
                     please contact <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b>.
                 </p>
-        </section>
-    </div>
-            
-    <div {{bindAttr class=":registration-error showError:showing:hidden"}}>
-        <section class="box highlight">
-            
-            {{#if serverError}}
-                <h2>Oops! Something is wrong with the server!</h2>
-                <p>
-                    Try again later, or let us know about this problem at:
-                    <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b></li>.
-                </p>
             {{else}}
-                <h2>We couldn't process all the form information!</h2>
-                <p>
-                    There are errors above, highlighted in <strong style="color:red">RED</strong>. Please review all information and try again.
-                    If you are having trouble contact <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b>.
-                </p>
+                {{#if serverError}}
+                    <h2>Oops! Something is wrong with the server!</h2>
+                    <p>
+                        Try again later, or let us know about this problem at:
+                        <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b></li>.
+                    </p>
+                {{else}}
+                    
+                    <h2>We couldn't process all the form information!</h2>
+                    <p>
+                        There are errors above, highlighted in <strong style="color:red">RED</strong>. Please review all information and try again.
+                        If you are having trouble contact <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b>.
+                    </p>
+                {{/if}}
             {{/if}}
         </section>
     </div>

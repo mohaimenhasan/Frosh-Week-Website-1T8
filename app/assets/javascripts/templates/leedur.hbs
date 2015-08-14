@@ -56,7 +56,15 @@
             </div>
             <div class="row">
                 <div class="half col">
-                For Leedur Trip (August)
+                For Leedur Trip (August) 
+                <br>
+                <span style="color:crimson;">
+                {{!#if busAvailable}}
+                * only 10 bus seats left *
+                {{!else}}
+             <!--   Sorry, buses are all full! You can still buy ticket and get there by yourself.-->
+                {{!/if}}
+                </span>
                 {{#input leedurbus}}
                     {{inputField leedurbus as=checkbox}}{{labelField leedurbus text=" "}}
                         <label>Yes</label>
@@ -64,6 +72,7 @@
                 </div>
                 <div class="half col">
                 For Fweek Trip (September)
+                <br><br>
                 {{#input fweekbus}}
                     {{inputField fweekbus as=checkbox}}{{labelField fweekbus text=" "}}
                         <label>Yes</label>
