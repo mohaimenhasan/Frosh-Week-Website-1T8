@@ -23,7 +23,7 @@ class Package < ActiveRecord::Base
     
   def available?
 
-   # print "IN RUBY: " + self.key 
+    print "IN RUBY: " + self.key 
     if (self.key == 'early-bird-standalone')
       available = available_early_bird?
     elsif (self.key == 'early-bird-standalone_commuter')
@@ -31,7 +31,7 @@ class Package < ActiveRecord::Base
     elsif (self.key == 'early-bird-standalone_farm')
       available = available_early_bird? && available_hhf?
     elsif (self.key == 'early-bird-standalone_farm_commuter')
-     available = available_early_bird? && available_hhf? && available_commuter?
+      available = available_early_bird? && available_hhf? && available_commuter?
         
     elsif (self.key == 'standalone')
       available = available_normal?

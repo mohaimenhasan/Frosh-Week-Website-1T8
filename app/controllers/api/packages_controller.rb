@@ -25,6 +25,8 @@ class Api::PackagesController < ApplicationController
       
     end
     packages.keep_if {|p| p.available?}
+    print packages.inspect
+
     #Re-sort packages by price
     sorted_packages = packages.sort_by { |k| k.id }
 
