@@ -55,37 +55,18 @@
                 <div class="subDescription green">Note: You may also choose to drive the Flying Ford Anglia(get there by yourself).</div>
             </div>
             <div class="row">
-                {{#if leedurTrip}}
-                    <div class="half col">
-                    For Leedur Trip (August) 
-                    <br>
-                    
-                    {{#if leedurBusAvailable}}
-                        <span style="color:crimson;">
-                        * only {{leedurBusSeats}} bus seats left *</span>
-                        {{#input leedurbus}}
-                            {{inputField leedurbus as=checkbox}}{{labelField leedurbus text=" "}}
-                                <label>Yes</label>
-                        {{/input}}
-                    {{else}}
-                        <span style="color:crimson;">
-                        Sorry, bus is full!
-                        </span>
-                    {{/if}}
                 
-                    </div>
-                {{/if}}
 
-                {{#if fweekTrip}}
+                
                     <div class="half col">
                     For Fweek Trip (September)
                     <br><br>
-                    {{#input fweekbus}}
+            
                         {{inputField fweekbus as=checkbox}}{{labelField fweekbus text=" "}}
                             <label>Yes</label>
-                    {{/input}}
+                   
                     </div>
-                {{/if}}
+                
             </div>
 
         </section>

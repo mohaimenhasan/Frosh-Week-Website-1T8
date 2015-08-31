@@ -1,18 +1,21 @@
-App.FaqController = Ember.Controller.extend({
+App.VolunteerController = Ember.Controller.extend({
   name: "",
   email: "",
-  question: "",
+  year: "",
+  selected: {'leedur':false, 'hhf':false},
   timestamp: 0,
   isDisable: function(){
     return Ember.isEmpty(this.get("name")) || 
-           Ember.isEmpty(this.get("email")) ||
-           Ember.isEmpty(this.get("question"));
-  }.property("name", "email", "question"),
+           Ember.isEmpty(this.get("email")) || 
+           Ember.isEmpty(this.get("year"));
+  }.property("name", "email", "year"),
 
   isAsking: true,
-    
+  
+
   submit: function(){
     //Make sure all fields are filled up
+
     if(!this.get("isDisable")){
       //Clear out all error messages first
       $("#spam_message").fadeOut("fast");
@@ -39,8 +42,15 @@ App.FaqController = Ember.Controller.extend({
         else {
           this.set("timestamp", current); //renew timestamp   
         }
-      
-       
+        
+        //FIXME: Should use Ember features
+        var checkList = "";
+        $('input[type=checkbox]').each(function(){
+          Ember.Logger.log(this.id, this);
+          checkList += (this.checked? this.id : "") + " ";
+        });
+        Ember.Logger.log(checkList);
+       /*
         var that = this
         $.ajax({
           url: "https://docs.google.com/forms/d/12w17v5mgY0wSYrCk-eshsTja6YstyuF5s4hcqM7aIz0/formResponse",
@@ -69,7 +79,7 @@ App.FaqController = Ember.Controller.extend({
             
           }
         });
-
+*/    this.set("isAsking", false); 
       }
     }
       
@@ -77,3 +87,16 @@ App.FaqController = Ember.Controller.extend({
   }
   
 });
+
+App.VolunteerFormEngineeringDisciplines = [
+  'Engineering Science',
+  'Track One',
+  'Chemical',
+  'Civil',
+  'Computer',
+  'Electrical',
+  'Industrial',
+  'Material Science',
+  'Mechanical',
+  'Mineral'
+];

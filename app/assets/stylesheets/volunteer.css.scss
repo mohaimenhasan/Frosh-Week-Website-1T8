@@ -1,6 +1,6 @@
-/* Orientation FAQ Styles
+/* Orientation volunteer Styles
  *
- * This is the style sheet for the FAQ page.
+ * This is the style sheet for the volunteer page.
  *
  * author:  Jason Ng
  * version: 0.0.1
@@ -10,7 +10,7 @@
 @import 'library';
 @import 'core';
 
-@mixin faq_input_style {
+@mixin volunteer_input_style {
     @include screen-small {
         margin-left: 0;
         width: 99%;
@@ -26,11 +26,11 @@
     
 }
 
-.faq {
+.volunteer {
     margin: { top: 1em; bottom: 1em };
 }
 
-.faq_dropbox_wrapper {
+.volunteer_wrapper {
     @include slide(40em); 
     width: 100%;
     .input {
@@ -41,10 +41,10 @@
         }
     }
     @include input-text {
-        @include faq_input_style;
+        @include volunteer_input_style;
     }
     select {
-        @include faq_input_style;
+        @include volunteer_input_style;
     }
     label {
         width: 30%;
@@ -57,6 +57,16 @@
         margin-left: 0.1em;
         margin-right: 0.1em;
         width:99%;
+    }
+
+    .volunteer-checkbox {
+        width: 10%;
+        text-align: center;
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+    }
+    .volunteer-position {
+        width: 50%;
     }
     .submit_wrapper {
         margin-bottom: 0.5em;   

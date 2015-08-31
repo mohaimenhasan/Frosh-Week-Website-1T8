@@ -1,10 +1,8 @@
 #froshweek-staging Config Vars
 RACK_ENV=development
 PORT=3000
-DATABASE_URL=postgres://zhabtapkjiooca:uvci3LK710pBV51FVPCFJxsc9O@ec2-54-225-106-227.compute-1.amazonaws.com:5432/deh65oj2hq3lip
 GOOGLE_API_CLIENT_ID=1059117754088.apps.googleusercontent.com
 GOOGLE_API_CLIENT_SECRET=ZdfU5lNUwuIDQyGdH0-PRrL1
-HEROKU_POSTGRESQL_BRONZE_URL=postgres://zhabtapkjiooca:uvci3LK710pBV51FVPCFJxsc9O@ec2-54-225-106-227.compute-1.amazonaws.com:5432/deh65oj2hq3lip
 HOSTNAME=localhost:3000
 MANDRILL_APIKEY=brCitlGrVC177mJLSQnfHA
 MANDRILL_FROM=support@orientation.skule.ca

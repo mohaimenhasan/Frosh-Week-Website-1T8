@@ -451,6 +451,7 @@ App.AdminLeedursRegisterController = Ember.Controller.extend({
     });
   }.property('hhfpackages.firstObject'),
 
+  //FIXME: temp value for fweek
   packageId: 1,
 
   hhfpkg: function(key, value) {

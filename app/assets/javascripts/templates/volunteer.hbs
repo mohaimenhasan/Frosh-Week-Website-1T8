@@ -1,0 +1,91 @@
+<section class="section content row">
+    <div class="col">
+    	<section class="box normal">
+             <h1>
+                <i class="icon-group"></i> Volunteerz Sign-up Form
+            </h1>
+            <p>
+                Wanna hop on the hype train and help out during F!week 1T5? Sign up below to receive updates from your F!rosh Group and/or SubComms! 
+            </p>
+            <p>
+                <strong>Note:</strong> F!rosh Leedur and some volunteer positions require additional info from you, so instead of filling out this form, please click on the icon next to the name and fill out the corresponding google form separately.
+            </p>
+            {{#formFor controller wrapper="orientation"}}
+                <div  {{bindAttr class=":volunteer_wrapper isAsking:showing:hidden"}}>
+                    {{#input email}}
+                        {{labelField email text="Email Address:" }}
+                        {{inputField email placeholder="hype@fweek.skule.ca"}}
+                    {{/input}}
+                    {{#input name}}
+                        {{labelField name text="Name:" }}
+                        {{inputField name}}
+                    {{/input}}
+                    {{#input discipline}}
+                        {{labelField discipline text="Discipline: "}}
+                        {{inputField discipline
+                        as=select
+                        collection=App.VolunteerFormEngineeringDisciplines
+                        selection=discipline
+                        optionValuePath=content
+                        optionLabelPath=content}}
+                    {{/input}}
+                    {{#input year}}
+                        {{labelField year text="Year"}}
+                        {{inputField year placeholder="1T6"}}
+                    {{/input}}
+                    <p> Groups/Subcommittees you would like to volunteer for:</p>
+                    <!--need model rendering-->
+                    <div class="row">
+                        <div class="volunteer-checkbox col">
+                            <input id="carnival" type="checkbox">        
+                            <label for="carnival"></label>
+                        </div>
+                        <div class="volunteer-position"><label> Carnival </label></div>
+                    </div>
+                    <div class="row">
+                        <div class="volunteer-checkbox col">
+                            <input id="dye" type="checkbox">        
+                            <label for="dye"></label>
+                        </div>
+                        <div class="volunteer-position"><label> Dye Station </label></div>
+                    </div>
+                    <div class="row">
+                        <div class="volunteer-checkbox col">
+                            <input id="hhf" type="checkbox">        
+                            <label for="hhf"></label>
+                        </div>
+                        <div class="volunteer-position"><label> Hart House Farm </label></div>
+                    </div>
+                    <div class="row">
+                        <div class="volunteer-checkbox col">
+                            <input id="matriculation" type="checkbox">        
+                            <label for="matriculation"></label>
+                        </div>
+                        <div class="volunteer-position"><label> Matriculation </label></div>
+                    </div>
+                    <hr>
+                        <div class="submit_wrapper">
+                            <div id="error_message" class="message">
+                                <h5 style="color:crimson;" >* Error: Invalid Email!</h5>
+                            </div>
+                            <div id="spam_message" class="message">
+                                <h5 style="color:crimson;" >* Error: Submit too frequent. (We know you are real hype)</h5>
+                            </div>
+                            <div id="send_error_msg" class="message">
+                                <h5 style="color:crimson;" >* Error: Seems like your request could not get through.</h5>
+                            </div>
+                            <button {{action "submit"}} class="highlight" {{bindAttr disabled=isDisable }}>
+                                Submit!
+                            </button>
+                        </div>
+                        
+                    </div>
+            {{/formFor}}
+            <div {{bindAttr class=":finish_asking_wrapper isAsking:hidden:showing"}}> 
+                <h3 style="color:green;">All Done! We will get back to you ASAP!</h3> 
+            </div>
+
+        </section>
+
+    </div>
+</section>

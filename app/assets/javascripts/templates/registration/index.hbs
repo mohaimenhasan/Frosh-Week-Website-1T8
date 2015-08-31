@@ -72,10 +72,7 @@
                         <p>
                             {{earlyBird.description}}
                         </p>
-                        {{#if earlyBirdAvailable}}
-                        {{else}}
-                            <h5 style="color:crimson;">* All 200 tickets were sold out on the first day! Buy yours quickly! *</h5>    
-                        {{/if}}
+                        
                     </div>
                     <div  class="registration-price col ">
                         <h3 class="float-right">
@@ -137,7 +134,9 @@
                     </div>
                     <div class="registration-item  col">
                         <h3><strong>{{name}}</strong> </h3>
-                        
+                        {{#ifSoldOut left}}
+                            <h5 style="color:crimson;">* If you wish to purchase this add on, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a> for inquiries. *</h5> 
+                        {{/ifSoldOut}}
                         <p>
                             {{description}}
                         </p>

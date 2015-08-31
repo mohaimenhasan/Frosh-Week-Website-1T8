@@ -59,7 +59,40 @@ $snapchat-gray-image: 'icons/snapchat-gray.png';
         @include screen-medium  { background-position: left; }
         @include screen-large   { background-position: left; }
     }
+    .ivvi-logo {
+        @include box-sizing(border-box);
 
+        background: {
+            image: image-url("sponsors/ivvi.png");
+            size: contain;
+            repeat: no-repeat;
+        }
+        display: inline-block;
+        margin: { top: 0.5em; bottom: 0.5em; }
+        height: 150px;
+        width: 200px;
+
+        @include screen-small   { background-position: center; }
+        @include screen-medium  { background-position: left; }
+        @include screen-large   { background-position: left; }
+    }
+    .altera-logo {
+        @include box-sizing(border-box);
+
+        background: {
+            image: image-url("sponsors/altera.png");
+            size: contain;
+            repeat: no-repeat;
+        }
+        display: inline-block;
+        margin: { top: 0.5em; bottom: 0.5em; }
+        height: 150px;
+        width: 200px;
+
+        @include screen-small   { background-position: center; }
+        @include screen-medium  { background-position: left; }
+        @include screen-large   { background-position: left; }
+    }
     .hidden-links {
         a:not(:hover) {
             color: $white;

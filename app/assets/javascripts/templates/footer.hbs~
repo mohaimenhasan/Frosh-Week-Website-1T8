@@ -1,5 +1,10 @@
 <div id="footer" class="footer">
     <div class="content row">
+        <div class="full col">
+            <h2><i class="icon-globe"></i> Sponsors:</h2>
+        </div>
+    </div>
+    <div class="content row">
         <div class="half col">
             <h2><i class="icon-rocket"></i> Built by engineers.</h2>
             <p>
