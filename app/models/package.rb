@@ -52,7 +52,7 @@ class Package < ActiveRecord::Base
     item = PackageItem.where("key LIKE ('early-bird-standalone')")
     #Return an array rather than an object 
     early_count=item.first.left;
-    #print  early_count 
+    print  early_count 
     return true if early_count > 0
     return false
   end
