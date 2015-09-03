@@ -93,6 +93,23 @@ $snapchat-gray-image: 'icons/snapchat-gray.png';
         @include screen-medium  { background-position: left; }
         @include screen-large   { background-position: left; }
     }
+    .fetch-logo {
+        @include box-sizing(border-box);
+
+        background: {
+            image: image-url("sponsors/fetch.png");
+            size: contain;
+            repeat: no-repeat;
+        }
+        display: inline-block;
+        margin: { top: 0.5em; bottom: 0.5em; }
+        height: 150px;
+        width: 200px;
+
+        @include screen-small   { background-position: center; }
+        @include screen-medium  { background-position: left; }
+        @include screen-large   { background-position: left; }
+    }
     .hidden-links {
         a:not(:hover) {
             color: $white;
