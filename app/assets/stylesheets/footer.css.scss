@@ -72,9 +72,7 @@ $snapchat-gray-image: 'icons/snapchat-gray.png';
         height: 150px;
         width: 200px;
 
-        @include screen-small   { background-position: center; }
-        @include screen-medium  { background-position: left; }
-        @include screen-large   { background-position: left; }
+        background-position: center;
     }
     .altera-logo {
         @include box-sizing(border-box);
@@ -89,9 +87,7 @@ $snapchat-gray-image: 'icons/snapchat-gray.png';
         height: 150px;
         width: 200px;
 
-        @include screen-small   { background-position: center; }
-        @include screen-medium  { background-position: left; }
-        @include screen-large   { background-position: left; }
+        background-position: center;
     }
     .fetch-logo {
         @include box-sizing(border-box);
@@ -105,10 +101,22 @@ $snapchat-gray-image: 'icons/snapchat-gray.png';
         margin: { top: 0.5em; bottom: 0.5em; }
         height: 150px;
         width: 200px;
+        background-position: center;
+    }
+    .SAndD-logo {
+        @include box-sizing(border-box);
 
-        @include screen-small   { background-position: center; }
-        @include screen-medium  { background-position: left; }
-        @include screen-large   { background-position: left; }
+        background: {
+            image: image-url("sponsors/SAndD.png");
+            size: contain;
+            repeat: no-repeat;
+        }
+        display: inline-block;
+        margin: { top: 0.5em; bottom: 0.5em; }
+        height: 150px;
+        width: 200px;
+
+        background-position: center;
     }
     .hidden-links {
         a:not(:hover) {
