@@ -108,13 +108,13 @@ App.AdminUsersSubController = App.AdminSubController.extend({
   },
 
   sendTicket: function(user) {
-    Ember.$.post('/api/leedurs/' + user.get('id') + '/send_receipt_email')
+    Ember.$.post('/api/users/' + user.get('id') + '/send_receipt_email')
       .done(function() { window.alert('Sent!'); })
       .fail(function() { window.alert('Could not send ticket.'); });
   },
 
   sendConfirmation: function(user) {
-    Ember.$.post('/api/leedurs/' + user.get('id') + '/send_confirmation_email')
+    Ember.$.post('/api/users/' + user.get('id') + '/send_confirmation_email')
       .done(function() { window.alert('Sent!'); })
       .fail(function() { window.alert('Could not send confirmation email.'); });
   },
