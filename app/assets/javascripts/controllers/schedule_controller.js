@@ -12,5 +12,12 @@ App.ScheduleController = Ember.Controller.extend({
   showGallery: function() {
     this.set('galleryShowing', true);
     return false;
+  },
+
+  AltEvents: false,
+  toggleEvents: function() {
+    this.set('AltEvents', !this.get('AltEvents'));
+    Ember.Logger.log(this.get('AltEvents'));
+    return false;
   }
 });

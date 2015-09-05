@@ -7,7 +7,7 @@
             <!--div {{action "showGallery"}}>click me</div-->
             <div class="main col">
                 <section class="box normal">
-                    <h1><i class="icon-calendar"></i> Events & Schedule</h1>
+                    <h1><i class="icon-calender"></i> Events & Schedule</h1>
                     <p>Mark your calendars! <strong>This is your week.</strong></p>
                     <p>
                         Admission to F!rosh Week includes all access to the events listed below, and a F!rosh Kit with
@@ -23,8 +23,12 @@
         </div>
 
         <div class="content row">
+           
             <div class="full col">
                 <section class="box normal">
+                    <div class="week row">
+                        <div style="font: 24px; color:crimson;" class="float-right" {{action "toggleEvents"}}>Alternate Events <i style="cursor:pointer;"class="icon-arrow-right"></i>  </div>
+                    </div>
                     <div class="week row">
                         <div class="seventh day col">
                             <h2>Mon <span class="subtitle">Sept 7</span></h2>
@@ -202,11 +206,14 @@
                             {{/view}}
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot three-hr external-event size-3" data-time="8:00 pm" data-location="TBA">
-                                    Engineering Society Programming
-                                    <div class="details" style="text-align: center;">
+                                <div class="slot three-hr external-event size-7" data-time="8:00 pm" data-location="SF3201 OR &#10; Hart House Circle">
+                                    Mental Health Awareness <strong>OR</strong> Glow-in-the-dark Capture the Flag
+                                    <div class="details">
                                         <p>
-                                           ???
+                                           Making new friends, studying late on Friday nights, and taking your  first midterm. University can be great, but it can also be very stressful. The Engineering Society is partnering with MoveU and the Health and Wellness Centre to provide an interactive and fun session about mental health awareness. You'll be engaged, active, mentally challenged, and have a super fun time! Most importantly, you'll learn about the resources available to make you stay happy and healthy in your first year.
+                                        </p>
+                                        <p>
+                                            After the entire day, still feeling all the HYYYPE? Come face off against Woodsworth! This battle will be in the dark and across both Front and Back Campus so make sure you bring running shoes and a water bottle!                              
                                         </p>
                                     </div>
                                 </div>
@@ -215,12 +222,27 @@
                         </div>
 
                         <div class="seventh day col">
+                            
                             <h2>Wed <span class="subtitle">Sept 9</span></h2>
 
-                            <div class="slot two-hr half-hr spacer-event"></div>
 
+                            <div class="slot two-hr half-hr spacer-event"></div>
+                            <div {{bindAttr class=" AltEvents:showing:hidden"}}>
                             {{#view App.ScheduleEventView}}
-                                <div class="slot one-hr faculty-event size-7" data-time="10:00 am" data-location="TBA">
+                                <div  class="slot five-hr external-event size-7" data-time="10:00 am" data-location="Hart House Circle">
+                                    UTSU Clubs Fair
+                                    <div class="details">
+                                        <p>
+                                            Do you want to meet people with the same interests as you? Have you an interest in a particular academic field? Do you want to try a new hobby? a new sport? There are clubs for just that. These are clubs all over UofT! Get to know clubs outside of engineering and find out what UofT has to offer by coming out to the clubs fair.
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+                                <div class="slot half-hr spacer-event" style="margin-bottom: 0; padding-bottom:2.8em;"></div>
+                            </div>
+                            <div {{bindAttr class=" AltEvents:hidden:showing"}}>
+                            {{#view App.ScheduleEventView}}
+                                <div  class="slot one-hr faculty-event size-7" data-time="10:00 am" data-location="TBA">
                                     Academic Orientation
                                     <div class="details">
                                         <p>
@@ -233,8 +255,10 @@
                                     </div>
                                 </div>
                             {{/view}}
+                            
+
                             {{#view App.ScheduleEventView}}
-                                <div class="slot one-hr faculty-event size-7" data-time="11:00 am" data-location="TBA">
+                                <div class="slot one-hr faculty-event size-7" data-time="11:00 am" data-location="Various">
                                     First Year Instructor Panel
                                     <div class="details">
                                         <p>
@@ -242,17 +266,17 @@
                                             their teaching experience. Ask them questions on how to improve and make the
                                             most out of your academic experience here at UofT! They don't bite!
                                         </p>
-                                        <!--ul>
+                                        <ul>
                                             <li>Engineering Science - BA 1160</li>
                                             <li>TrackOne, Electrical and Computer Engineering - MC 102</li>
                                             <li>Chemical, Civil and Mineral Engineering - WB 116</li>
                                             <li>Industrial, Materials and Mechanical Engineering - SF 1105</li>
-                                        </ul-->
+                                        </ul>
                                     </div>
                                 </div>
                             {{/view}}
                             {{#view App.ScheduleEventView}}
-                                <div class="slot two-hr faculty-event size-4" data-time="12:00 pm" data-location="TBA">
+                                <div class="slot two-hr faculty-event size-4" data-time="12:00 pm" data-location="Various">
                                     Department Lunch
                                     <div class="details">
                                         <p>
@@ -260,7 +284,7 @@
                                             faculty members will also be attending to give you some valuable advice
                                             for your university life here.
                                         </p>
-                                        <!--ul>
+                                        <ul>
                                             <li>Chememical Engineering - WB 116</li>
                                             <li>Civil and Mineral Engineering - SF 1101</li>
                                             <li>Electircal and Computer Engineering - MC 102</li>
@@ -268,7 +292,7 @@
                                             <li>Industrial and Mechanical Engineering- BA 1130</li>
                                             <li>Materials Engineering - WB 143</li>
                                             <li>TrackOne - SF 3201/3202</li>
-                                        </ul-->
+                                        </ul>
                                     </div>
                                 </div>
                             {{/view}}
@@ -300,11 +324,14 @@
                                 </div>
                             {{/view}}
 
+                            </div>
+
                             {{#view App.ScheduleEventView}}
                                 <div class="slot two-hr external-event size-2" data-time="3:30 pm" data-location="Bahen Centre">
                                     Engineering Clubs Fair
                                     <div class="details">
                                         <p>
+                                            Unlike UTSU Clubs Fair, this clubs fair has all the clubs that are organized by or designed for engineering students.
                                             Skule&trade; truly has something for everyone, including a wide assortment
                                             of undergraduate Engineering Clubs. Feeling high tech? Or are you on a
                                             mission to make the world better? At Skule™, there's a club for that.
@@ -314,7 +341,7 @@
                             {{/view}}
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot two-hr external-event size-5" data-time="5:30 pm" data-location="TBA">
+                                <div class="slot two-hr external-event size-5" data-time="5:30 pm" data-location="Various">
                                     Discipline Club Activities + Dinner
                                     <div class="details">
                                         <p>
@@ -322,7 +349,7 @@
                                             your program, and are an opportunity to get involved within Skule Life.
                                             Meet your Discipline Clubs get some advice and see your common room! 
                                         </p>
-                                        <!-- The
+                                        <The
                                             Discipline Clubs will host their students in their common rooms except for
                                             the following clubs:
                                         </p>
@@ -330,7 +357,7 @@
                                             <li>Engineering Science - BA 1160</li>
                                             <li>Electrical and Computer Engineering - BA 1120</li>
                                             <li>Mechanical Engineering - MB 128</li>
-                                        </ul-->
+                                        </ul>
                                     </div>
                                 </div>
                             {{/view}}
@@ -415,7 +442,7 @@
                             {{/view}}
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot three-hr half-hr external-event size-3" data-time="1:00 pm" data-location="Downtown Toronto">
+                                <div class="slot two-hr half-hr external-event size-3" data-time="1:00 pm" data-location="Downtown Toronto">
                                     U of T Parade
                                     <div class="details">
                                         <p>
@@ -427,13 +454,18 @@
                             {{/view}}
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot six-hr half-hr external-event size-6" data-time="4:30 pm" data-location="Sandford Fleming Atrium">
-                                    Alumni Suds!
+                                <div class="slot seven-hr half-hr external-event size-6" data-time="3:30 pm" data-location="Sandford Fleming Atrium OR &#10; Front Campus">
+                                    Alumni Suds! <strong>OR</strong> UTSU Concert
                                     <div class="details">
                                         <p>
                                             Yay! A break in the schedule! Why not go to Suds? It's a social event that
                                             takes place in the Sandford Fleming atrium. Chill with your new classmates
                                             and meet some upper year engineers too.
+                                        </p>
+                                        <p>
+                                            Feel like just listening to music? A concert featuring amazing artists will be waiting, along with food vendors, give aways, raffles, games, carnival rides, and much more. Past artists have included: Lupe Fiasco, Metric, Dragonette, Tokyo Police Club, Chromeo, Anjulie, Sam Roberts, and Kardinal Offishall.
+                                            <br>
+                                            <strong>REQUIRE YOUR T-CARD</strong>
                                         </p>
                                     </div>
                                 </div>

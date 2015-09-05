@@ -59,6 +59,20 @@ $base-height: 2em;
 
 .schedule {
 
+    .showing {
+         @include transition(all 1.5s);
+        max-height: 100em;
+        opacity: 1;
+    }
+    .hidden {
+        @include transition(all 1.5s);
+        margin:0;
+        padding:0;
+        height:0;
+        max-height: 0;
+        opacity: 0;
+
+    }
     .week.row {
         margin: 0;
     }
@@ -167,7 +181,7 @@ $base-height: 2em;
             color: $white;
         };
         background-clip: border-box;
-        margin: { top: $base-margin; bottom: $base-margin; };
+        margin: {bottom: $base-margin; };
         padding: $base-padding;
         position: relative;
         left: 0;
