@@ -1,10 +1,10 @@
 App.IndexController = Ember.Controller.extend({
   daysRemaining: function() {
-    var end = new Date('Sept 07 2015 23:59:59 EDT');
+    var end = new Date('Sept 05 2016 23:59:59 EDT');
     var current = new Date();
 
     var days = (end - current) / 1000 / 60 / 60 / 24;
-    return parseInt(days, 10);
+    return 0;
   }.property(),
 
   hasStarted: function() {
