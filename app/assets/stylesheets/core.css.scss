@@ -218,10 +218,13 @@ body {
 }
 
 .content {
+    .front_text
+    {
+        text-align:center;
+    }
     margin: 0 auto;
     vertical-align: middle;
     max-width: 60em;
-
     @include screen-small   { margin: { top: 0em; bottom: 0em; }; }
     @include screen-medium  { margin: { top: 0em; bottom: 0em; }; }
     @include screen-large   { margin: { top: 0em; bottom: 0em; }; }
@@ -231,6 +234,10 @@ body {
 .mini-content {
     @extend .content;
     max-width: 35em;
+}
+
+.full-first{
+	max-width : 50em;
 }
 
 

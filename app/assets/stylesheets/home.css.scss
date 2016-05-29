@@ -20,6 +20,7 @@ $logo-scaling: 0.275;
  * ----
  */
 
+
 .home {
     h1 {
         margin-bottom: 0.5em;
@@ -82,6 +83,89 @@ $logo-scaling: 0.275;
     }
 }
 
+.submission-box{
+    margin-top:1em;
+    margin-bottom:1em;
+}
+
+
+.test-box{
+
+    background-color: $white;
+    padding-top:0.5em;
+    padding-bottom:0.5em;
+    text-align: center;
+    margin-top:2em;
+    margin-left:1em;
+    margin-right:1em;
+    vertical-align:middle;
+    border-radius:6px;
+
+    .popposition{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparentize($black, 0.1);
+        &.hidden {
+            @include transition(all 0.5s, z-index 0s ease 0.5s);
+            opacity: 0;
+            z-index: -1;
+
+        };
+
+        &.showing {
+            @include transition(all 0.5s, z-index 0s);
+            opacity: 1;
+            z-index: 20;
+        };
+    }
+
+    .paragraph-one{
+    text-align:left;
+    padding-left:1em;
+    }
+
+    .button-one{
+    background-color:$purple;
+    margin-bottom:0.5em;
+    }
+
+    #popbox-wrap{
+    width: 500px;
+    margin:70px auto;
+    text-align:center;
+
+    
+
+    }
+
+    #popbox-contain
+    {
+    background-color: $white;
+    padding: 20px;
+    border-radius:4px;
+
+        #temporary
+        {
+
+            font-size:30px;
+            padding-left:0.2em;
+            margin-left:14.5em;
+            margin-top:-1em;
+            padding-right:0.2em;
+            padding-top:0.08em;
+            padding-bottom:0.02em;
+            background-color:$white;
+            color:$purple;
+        }
+
+    }
+}
+    
+
+
 .home-banner {
     background: {
         image: image-url($home-banner-image);
@@ -99,6 +183,7 @@ $logo-scaling: 0.275;
     @include screen-large {
         height: image-scaled-height($home-banner-image, $home-banner-scaling-l);
     };
+
 
     .home-message {
         background-color: transparentize($white, 0.1);
@@ -118,13 +203,19 @@ $logo-scaling: 0.275;
 
         .action-button {
             text-align: center;
+            background-color:purple;
         }
     }
     /* for displaying snapchat addme message in banner */
+
+
+    
+
     .main-messageBox {
         
         position: relative;
 				
+                background-color: $white;
         /* message box adjustment */
         .home-snapchat-message{
             
@@ -330,6 +421,11 @@ $logo-scaling: 0.275;
             };
         };
     };
+}
+
+.finish_home_question{
+	text-align: center;
+
 }
 
 .home-video {

@@ -1,65 +1,4 @@
-App.IndexController = Ember.Controller.extend({
-  daysRemaining: function() {
-
-    var end = new Date('Sept 05 2016 23:59:59 EDT');
-    var current = new Date();
-
-    var days = (end - current) / 1000 / 60 / 60 / 24;
-    var new_days = days.toFixed(0);
-    if(new_days<0)
-    {
-      return 0;
-    }
-    else
-    {
-      return new_days;
-    }
-    
-
-
-  }.property(),
-
-  hasStarted: function() 
-  {
-    return this.get('daysRemaining') <= 0;
-  }.property('daysRemaining'),
-
-  showVideo: function(event) {
-    this.set('videoShowing', true);
-    return false;
-  }, 
-
-  hidingPop: true,
-  
-  openPop: function() {
-    this.set("hidingPop", false);
-  },
-
-  closePop: function() {
-    this.set("hidingPop", true);
-  },
-
-  closeBlack: function() 
-  {
-    var that = this;
-    $("#popbox").click(function(e)
-  	{
-    	if(e.target.id == "temporary")
-    	{
-      	that.set("hidingPop",true);
-    	}
-      else if(e.target.id == "popbox") 
-    	{
-    	that.set("hidingPop", true);
-    	}
-        e.stopImmediatePropagation();
-
-    });
-  },
-
-
-
-
+App.PopController = Ember.Controller.extend({
   name: "",
   email: "",
   timestamp: 0,
@@ -69,8 +8,8 @@ App.IndexController = Ember.Controller.extend({
   }.property("name", "email"),
 
   alreadyAsking: true,
- 
-  submit: function(){
+    
+  submit_new: function(){
     //Make sure all fields are filled up
     if(!this.get("alreadyDisable")){
       //Clear out all error messages first
@@ -100,12 +39,9 @@ App.IndexController = Ember.Controller.extend({
         }
       
        
-        var that = this;
-  console.log("william");
-	console.log(that.get("name"));
-	console.log(that.get("email"));
+        var that = this
         $.ajax({
-          url: "https://docs.google.com/forms/d/1TLfX4Oc45AU7EjWZIQK5TGmiQMxmogrvkzmYuiPBdQQ/formResponse",
+          url: "https://docs/google.com/forms/d/1TLfX4Oc45AU7EjWZIQK5TGmiQMxmogrvkzmYuiPBdQQ",
           data: {"entry.2116346682" : that.get("name"), 
                        "entry.147362869" : that.get("email")},
           type: "POST",
@@ -114,12 +50,10 @@ App.IndexController = Ember.Controller.extend({
             0: function (){
             //Success
               that.set("alreadyAsking", false);
-		
             },
             200: function (){
             //Success 
               that.set("alreadyAsking", false);
-	
             },
             400: function () {
               $("#send_error_msg").fadeIn("slow");
@@ -139,5 +73,4 @@ App.IndexController = Ember.Controller.extend({
       
   }
   
-});                             
-
+});
