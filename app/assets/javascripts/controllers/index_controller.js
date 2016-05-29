@@ -20,7 +20,7 @@ App.IndexController = Ember.Controller.extend({
   showVideo: function(event) {
     this.set('videoShowing', true);
     return false;
-  }
+  },
   hidingPop: true,
   
   openPop: function() {
@@ -122,9 +122,3 @@ App.IndexController = Ember.Controller.extend({
   
 });
 
-
-
-
-
-
-});
