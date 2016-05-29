@@ -2,12 +2,12 @@ development:
   adapter: postgresql
   database: skuleorientation
   host: localhost
-  username: william
+  username: jason
   password: 123456
 test:
   adapter: postgresql
   database: skuleorientation-test
   host: localhost
   min_messages: WARNING
-  username: william
+  username: jason
   password: 123456

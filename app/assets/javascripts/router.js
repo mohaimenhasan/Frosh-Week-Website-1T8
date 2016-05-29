@@ -6,7 +6,7 @@ if (window.history && window.history.pushState) {
 
 App.RouteList = [
   Ember.Object.create({ route: 'index',    path: '/',          name: 'Home' }),
- // Ember.Object.create({ route: 'schedule', path: '/schedule',  name: 'Events & Schedule' }),
+  Ember.Object.create({ route: 'schedule', path: '/schedule',  name: 'Events & Schedule' }),
   Ember.Object.create({ route: 'faq',      path: '/faq',       name: 'FAQs' }),
 //  Ember.Object.create({ route: 'volunteer',path: '/volunteerz' }),
 //  Ember.Object.create({ route: 'groups',   path: '/groups',    name: 'Groups' }),
@@ -17,7 +17,7 @@ App.RouteList = [
     name: 'Blog',
     external: true
   }),
- /* Ember.Object.create({
+  Ember.Object.create({
     route: 'registration',
     path: '/register',
     name: 'Register Now',
@@ -29,7 +29,7 @@ App.RouteList = [
 //      Ember.Object.create({ route: 'payment', path: '/payment' }),
     ]
   }), 
-    */
+    
   Ember.Object.create({
     route: 'leedurhhf',
     path: '/leedurs_adventures',
