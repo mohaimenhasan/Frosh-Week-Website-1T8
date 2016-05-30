@@ -21,29 +21,25 @@ App.IndexController = Ember.Controller.extend({
     this.set('videoShowing', true);
     return false;
   },
+
   hidingPop: true,
   
   openPop: function() {
+    Ember.Logger.log("Opening pop");
     this.set("hidingPop", false);
   },
 
   closePop: function() {
+    console.log("Closing pop");
     this.set("hidingPop", true);
   },
 
   closeBlack: function() {
     var that = this;
-    $("#popbox").click(function(e) {
-      if(e.target.id == "temporary") {
-        that.set("hidingPop",true);
-      }
-      else if(e.target.id == "popbox") {
-        that.set("hidingPop", true);
-      }
-      e.stopImmediatePropagation();
-
-    });
+    console.log("Here", this.target);
+    
   },
+
   name: "",
   email: "",
   timestamp: 0,
@@ -55,6 +51,7 @@ App.IndexController = Ember.Controller.extend({
   alreadyAsking: true,
  
   submit: function(){
+    console.log("Submitting");
     //Make sure all fields are filled up
     if(!this.get("alreadyDisable")){
       //Clear out all error messages first

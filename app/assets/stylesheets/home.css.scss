@@ -82,6 +82,7 @@ $logo-scaling: 0.275;
     }
 }
 
+
 .home-banner {
     background: {
         image: image-url($home-banner-image);
@@ -102,8 +103,7 @@ $logo-scaling: 0.275;
 
     .home-message {
         background-color: transparentize($white, 0.1);
-        text-align: left;
-
+        text-align: center;
         @include screen-small   { margin: { top: 0em; bottom: 0em; }; };
         @include screen-medium  { margin: { top: 1em; bottom: 1em; }; };
         @include screen-large   { margin: { top: 2em; bottom: 2em; }; };
@@ -119,7 +119,65 @@ $logo-scaling: 0.275;
         .action-button {
             text-align: center;
         }
+        
+        .popposition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparentize($black, 0.1);
+            &.hidden {
+                @include transition(all 0.5s, z-index 0s ease 0.5s);
+                opacity: 0;
+                z-index: -1;
+
+            };
+
+            &.showing {
+                @include transition(all 0.5s, z-index 0s);
+                opacity: 1;
+                z-index: 20;
+            };
+
+            .popbox-wrap {
+                width: 500px;
+                margin:70px auto;
+                text-align:center;
+            };
+
+            .popbox-contain {
+                background-color: $white;
+                padding: 20px;
+                border-radius:4px;
+
+                .popbox-close {
+
+                    font-size:30px;
+                    padding-left:0.2em;
+                    margin-left:14.5em;
+                    margin-top:-1em;
+                    padding-right:0.2em;
+                    padding-top:0.08em;
+                    padding-bottom:0.02em;
+                    background-color:$white;
+                    color:$purple;
+                };
+                .submission-box{
+                    margin-top:1em;
+                    margin-bottom:1em;
+                }
+
+                
+            };
+
+        }
+
+
     }
+
+
+
     /* for displaying snapchat addme message in banner */
     .main-messageBox {
         

@@ -2,6 +2,8 @@
 //General Index: snapchat message appear
 App.IndexView = Ember.View.extend({
   didInsertElement: function(){
+    this._super.apply(this, arguments);
+    var that = this;
 
     this.$("#snapchat-banner-icon").click(function(e){
       $("#snapchat-message").fadeToggle("slow");
@@ -13,6 +15,17 @@ App.IndexView = Ember.View.extend({
         $("#snapchat-message").fadeOut("slow");
       }
       
+    });
+    this.$("#popbox").click(function(e) {
+      console.log("Closing black", e.target.id);
+      if(e.target.id == "temporary" || e.target.id == "close-button") {
+        that.set("controller.hidingPop",true);
+      }
+      else if(e.target.id == "popbox") {
+        that.set("controller.hidingPop", true);
+      }
+      e.stopImmediatePropagation();
+
     });
   }
 });

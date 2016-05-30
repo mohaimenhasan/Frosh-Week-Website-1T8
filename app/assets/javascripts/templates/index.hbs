@@ -39,7 +39,48 @@
                                 /linkTo}}
                             </button>
                     </div-->
-		                <br>
+                    <br>
+                    <button class = "highlight" {{action "openPop"}}>
+                        Sign up for Emailing List Here!
+                    </button>
+                    
+                    <div id="popbox" {{action "closeBlack"}}  {{bindAttr class=":popposition hidingPop:hidden:showing"}}>
+                        
+                        <div id="popbox-wrap" class="popbox-wrap">
+                            <div id="popbox-contain" class="popbox-contain">
+                                <button id = "temporary" class="popbox-close" {{action "closePop"}}>
+                                    <i id="close-button" class="icon-remove-sign"></i>
+                                </button>
+
+                                <p>
+                                    Fill in your registration below!
+                                </p>
+                               
+                                {{#formFor controller wrapper="orientation"}}
+                                    <div class = "submission-box">
+                                        {{#input name}}
+                                            {{labelField name text="Name:" }}
+                                            {{inputField name placeholder="Harry"}}
+                                        {{/input}}
+                                    </div>
+                                    <div class = "submission-box">
+                                        {{#input email}}
+                                            {{labelField email text="Email Address:" }}
+                                            {{inputField email placeholder="hype@fweek.skule.ca"}}
+                                        {{/input}}
+                                    </div>
+                                        <button class="highlight" {{action "submit"}}  {{bindAttr disabled=alreadyDisable }}>
+                                                    Submit!
+                                        </button>                        
+                                {{/formFor}}
+
+                                <div {{bindAttr class=":finish_asking_wrapper alreadyAsking:hidden:showing"}}>
+                                    <h3 style="color:green;">All Done!</h3> 
+                                </div>
+                            </div>
+                        </div>         
+                    </div>
+
 		              
                 </div>
             </div>
