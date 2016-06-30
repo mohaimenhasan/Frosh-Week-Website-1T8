@@ -214,6 +214,8 @@ class Leedur < ActiveRecord::Base
     return {} unless charge_id
     print "Here\n"
     print charge_id
+    card_details = Stripe::Charge.retrieve(charge_id)["card"]
+    print card_details.inspect
     card = Stripe::Charge.retrieve(charge_id)["card"]
     {
       cc_name: card["name"],
