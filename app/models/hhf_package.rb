@@ -6,8 +6,8 @@
 #  name        :string(255)
 #  key         :string(255)
 #  price       :integer
-#  leedurbus   :integer //manually added, need fix
-#  fweekbus    :integer //manually added, need fix
+#  leedurbus   :integer 
+#  fweekbus    :integer 
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

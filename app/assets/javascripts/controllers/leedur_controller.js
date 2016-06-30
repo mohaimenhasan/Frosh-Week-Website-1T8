@@ -99,6 +99,7 @@ App.LeedurController = Ember.ObjectController.extend({
 
   submit: function() {
     console.log("here");
+
     var content = this.get('content');
     var selectedPackage = this.get('controllers.leedurhhfItem').get('model');
     if (Ember.isNone(selectedPackage)) {
