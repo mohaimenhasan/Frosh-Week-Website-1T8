@@ -155,7 +155,7 @@ class User < ActiveRecord::Base
   def send_email(opts)
     message = {
      subject: opts[:subject],
-     from_name: 'F!rosh Week 1T5',
+     from_name: 'F!rosh Week 1T6',
      html: ERB.new(File.read(Rails.root.join(opts[:html_body]))).result(binding),
      to: [
        {
