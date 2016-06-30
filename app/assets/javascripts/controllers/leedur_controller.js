@@ -17,15 +17,16 @@ App.LeedurController = Ember.ObjectController.extend({
 
   //Buses
   leedurTrip: function() {
-    return (this.get('controllers.leedurhhfItem.model').get('leedurbus') > 0);
+    console.log("here", this.get('controllers.leedurhhfItem.model').get('leedurbus') >= 0);
+    return (this.get('controllers.leedurhhfItem.model').get('leedurbus') >= 0);
   }.property('controllers.leedurhhfItem.model'),
 
   fweekTrip: function() {
-    return (this.get('controllers.leedurhhfItem.model').get('fweekbus') > 0);
+    return (this.get('controllers.leedurhhfItem.model').get('fweekbus') >= 0);
   }.property('controllers.leedurhhfItem.model'),
 
   leedurBusAvailable: function(){
-    if(this.get('controllers.leedurhhfItem.model').get('leedurbus') < 44){
+    if(this.get('controllers.leedurhhfItem.model').get('leedurbus') < 46){
       return true;
     }
     else {
@@ -34,7 +35,9 @@ App.LeedurController = Ember.ObjectController.extend({
   }.property('controllers.leedurhhfItem.model'),
 
   leedurBusSeats: function() {
-    return (44 - this.get('controllers.leedurhhfItem.model').get('leedurbus')) ;
+    console.log("Here");
+    console.log(46 - this.get('controllers.leedurhhfItem.model').get('leedurbus'), this.get('controllers.leedurhhfItem.model'), this.get('controllers.leedurhhfItem.model').get('leedurbus'));
+    return (46 - this.get('controllers.leedurhhfItem.model').get('leedurbus')) ;
   }.property('controllers.leedurhhfItem.model'),
 
 
@@ -95,6 +98,7 @@ App.LeedurController = Ember.ObjectController.extend({
   },
 
   submit: function() {
+    console.log("here");
     var content = this.get('content');
     var selectedPackage = this.get('controllers.leedurhhfItem').get('model');
     if (Ember.isNone(selectedPackage)) {

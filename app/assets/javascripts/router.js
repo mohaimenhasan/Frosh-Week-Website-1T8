@@ -29,7 +29,7 @@ App.RouteList = [
 //      Ember.Object.create({ route: 'payment', path: '/payment' }),
     ]
   }),
-  
+
 */ 
     
   Ember.Object.create({

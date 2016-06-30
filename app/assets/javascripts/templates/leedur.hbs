@@ -6,11 +6,11 @@
         <section class="registration-form-group aligned">
             {{#input firstName}}
                 {{labelField firstName text="First name"}}
-                {{inputField firstName placeholder="Harry"}}
+                {{inputField firstName placeholder="Tony"}}
             {{/input}}
             {{#input lastName}}
                 {{labelField lastName text="Last name"}}
-                {{inputField lastName placeholder="Potter"}}
+                {{inputField lastName placeholder="Stark"}}
             {{/input}}
             {{#input email}}
                 {{labelField email text="Your email address"}}
@@ -51,19 +51,28 @@
 
         <section class="registration-form-group">
             <div class="info">
-                Will you be taking the SKULE&trade; Express on Platform 9&frac34; (skule bus)? 
-                <div class="subDescription green">Note: You may also choose to drive the Flying Ford Anglia(get there by yourself).</div>
+                Please check below if you would like to take the bus.
             </div>
             <div class="row">
-                               
+                {{#if leedurTrip}}
                     <div class="half col">
-                    For Fweek Trip (September)
-                    <br><br>
-                    {{#input fweekbus}}
-                        {{inputField fweekbus as=checkbox}}{{labelField fweekbus text=" "}}
-                            <label>Yes</label>
-                    {{/input}}
+                    For Leedur Trip (July) 
+                    <br>
+
+                    {{#if leedurBusAvailable}}
+                        <span style="color:crimson;">
+                        * only {{leedurBusSeats}} bus seats left *</span>
+                        {{#input leedurbus}}
+                            {{inputField leedurbus as=checkbox}}{{labelField leedurbus text=" "}}
+                                <label>Yes</label>
+                        {{/input}}
+                    {{else}}
+                        <span style="color:crimson;">
+                        Sorry, bus is full!
+                       </span>
+                    {{/if}}
                     </div>
+                {{/if}}              
                 
             </div>
 
@@ -78,15 +87,15 @@
             <h3>Emergency contact</h3>
             {{#input emergencyName}}
                 {{labelField emergencyName text="Name"}}
-                {{inputField emergencyName placeholder="Voldemort"}}
+                {{inputField emergencyName placeholder="Name"}}
             {{/input}}
             {{#input emergencyEmail}}
                 {{labelField emergencyEmail text="Email address"}}
-                {{inputField emergencyEmail as=email placeholder="tom.riddle@youknowwho.com"}}
+                {{inputField emergencyEmail as=email placeholder="Email address"}}
             {{/input}}
             {{#input emergencyRelationship}}
                 {{labelField emergencyRelationship text="Relationship"}}
-                {{inputField emergencyRelationship placeholder="Best Friend"}}
+                {{inputField emergencyRelationship placeholder=""}}
             {{/input}}
             {{#input emergencyPhone}}
                 {{labelField emergencyPhone text="Phone number"}}
@@ -123,7 +132,7 @@
                     <p>We accept Visa, Mastercard, and American Express.</p>
                     {{#input ccName}}
                         {{labelField ccName text="Name on card"}}
-                        {{inputField ccName placeholder="Severus Snape"}}
+                        {{inputField ccName placeholder=""}}
                     {{/input}}
 
                     <div class="input">

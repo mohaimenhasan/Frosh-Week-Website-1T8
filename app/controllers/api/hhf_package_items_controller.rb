@@ -18,7 +18,6 @@ class Api::HhfPackageItemsController < ApplicationController
     end
     #Re-sort items by Id
     sorted_items = items.sort_by { |k| k.id }
-
       render json: { hhf_package_items: sorted_items}
     
   end

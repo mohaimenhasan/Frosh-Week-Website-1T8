@@ -141,8 +141,20 @@ $logo-scaling: 0.275;
             };
 
             .popbox-wrap {
-                width: 500px;
-                margin:70px auto;
+                @include screen-small{
+                   width:300px;
+                   margin:40px auto;
+                };
+
+                @include screen-medium{
+                   width:400px;
+                   margin:55px auto;
+                };
+
+                @include screen-large{
+                   width: 500px;
+                   margin:70px auto;
+                };
                 text-align:center;
             };
 
@@ -152,11 +164,23 @@ $logo-scaling: 0.275;
                 border-radius:4px;
 
                 .popbox-close {
+                    @include screen-small{
+                        margin-left:7.75em;
+                        margin-top:-3em;
+                    };
+
+                    @include screen-medium{
+                        margin-left:10em;
+                        margin-top:-1em;
+                    };
+
+                    @include screen-large{
+                        margin-left:14.5em;
+                        margin-top:-1em;
+                    };
 
                     font-size:30px;
                     padding-left:0.2em;
-                    margin-left:14.5em;
-                    margin-top:-1em;
                     padding-right:0.2em;
                     padding-top:0.08em;
                     padding-bottom:0.02em;

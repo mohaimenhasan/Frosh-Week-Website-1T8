@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(:version => 20150730235600) do
     t.string   "name"
     t.string   "key"
     t.integer  "price"
+    t.integer  "fweekbus"  ,  :default => 0
+    t.integer  "leedurbus" ,  :default => 0
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
