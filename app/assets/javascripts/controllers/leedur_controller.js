@@ -17,7 +17,7 @@ App.LeedurController = Ember.ObjectController.extend({
 
   //Buses
   leedurTrip: function() {
-    console.log("here", this.get('controllers.leedurhhfItem.model').get('leedurbus') >= 0);
+    //console.log("here", this.get('controllers.leedurhhfItem.model').get('leedurbus') >= 0);
     return (this.get('controllers.leedurhhfItem.model').get('leedurbus') >= 0);
   }.property('controllers.leedurhhfItem.model'),
 
