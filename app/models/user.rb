@@ -243,27 +243,27 @@ class User < ActiveRecord::Base
 
   def get_billing_last4
     return nil unless charge_id
-    Stripe::Charge.retrieve(charge_id)["card"]["last4"]
+    Stripe::Charge.retrieve(charge_id)["source"]["last4"]
   end
 
   def get_billing_name
     return nil unless charge_id
-    Stripe::Charge.retrieve(charge_id)["card"]["name"]
+    Stripe::Charge.retrieve(charge_id)["source"]["name"]
   end
 
   def get_billing_type
     return nil unless charge_id
-    Stripe::Charge.retrieve(charge_id)["card"]["type"]
+    Stripe::Charge.retrieve(charge_id)["source"]["brand"]
   end
 
   def credit_info
     return {} unless charge_id
 
-    card = Stripe::Charge.retrieve(charge_id)["card"]
+    card = Stripe::Charge.retrieve(charge_id)["source"]
     {
       cc_name: card["name"],
       cc_last4: card["last4"],
-      cc_type: card["type"],
+      cc_type: card["brand"],
     }
   end
 
