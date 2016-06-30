@@ -13,7 +13,7 @@ ActiveRecord::Base.connection.reset_pk_sequence! HhfPackage.table_name
 ActiveRecord::Base.connection.reset_pk_sequence! HhfPackageItem.table_name
 
 
-leedur = 45
+leedur = 40
 fweek = 35
 leedur_name = 'Leedurs Hart House Farm Retreat'
 fweek_name = 'Froshies x Leedus Hart House Farm Retreat'
