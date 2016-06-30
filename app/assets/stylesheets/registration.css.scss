@@ -614,7 +614,7 @@
 
 
 .harry-potter-logo {
-    background: {
+    /*background: {
         image: image-url($emblem);
         size: contain;
         repeat: no-repeat;
@@ -627,11 +627,11 @@
     @include screen-small   { bottom: 1.5em; left: 0em;};
     @include screen-medium  { bottom: 2.7em; left: 0em;};
     @include screen-large   { bottom: 1em; left: 1em;};
-    @include print { display: none; };
+    @include print { display: none; };*/
 }
 
 .harry-potter-logo-receipt {
-    background: {
+   /* background: {
         image: image-url($emblem);
         size: contain;
         repeat: no-repeat;
@@ -644,7 +644,7 @@
     @include screen-small   { bottom: 1.7em; right: 1.5em;};
     @include screen-medium  { bottom: 2.7em; right: 0.5em;};
     @include screen-large   { bottom: 1em; right: 1.5em;};
-    @include print { display: none; };
+    @include print { display: none; };*/
 }
 
 .messageName {
