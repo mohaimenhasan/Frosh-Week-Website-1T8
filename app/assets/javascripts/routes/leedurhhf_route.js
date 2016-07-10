@@ -9,6 +9,7 @@ App.LeedurhhfItemRoute = Ember.Route.extend({
   //Call from index template and invoke def index in packages.rb with specific params
 
   model: function(params) {
+
     return App.HhfPackage.find({ 'key': params.key });
   },
 

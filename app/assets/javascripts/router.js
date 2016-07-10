@@ -17,7 +17,7 @@ App.RouteList = [
     name: 'Blog',
     external: true
   }),
-/*  Ember.Object.create({
+  Ember.Object.create({
     route: 'registration',
     path: '/register',
     name: 'Register Now',
@@ -30,7 +30,7 @@ App.RouteList = [
     ]
   }),
 
-*/ 
+ 
     
   Ember.Object.create({
     route: 'leedurhhf',

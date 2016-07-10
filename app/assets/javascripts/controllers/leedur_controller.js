@@ -26,7 +26,8 @@ App.LeedurController = Ember.ObjectController.extend({
   }.property('controllers.leedurhhfItem.model'),
 
   leedurBusAvailable: function(){
-    if(this.get('controllers.leedurhhfItem.model').get('leedurbus') < 46){
+
+    if(this.get('controllers.leedurhhfItem.model') && this.get('controllers.leedurhhfItem.model').get('leedurbus') < 46){
       return true;
     }
     else {

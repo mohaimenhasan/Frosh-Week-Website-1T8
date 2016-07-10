@@ -21,13 +21,13 @@ App.RegistrationIndexController = Ember.Controller.extend({
   earlyBirdAvailable: function() {
     if(this.get("isLoaded"))
     {
-      if(this.get("earlyBird").left > 0)
+      if(this.get("earlyBird.left") > 0)
         return true;
       else 
         return false;
     }
     
-  }.property("earlyBirdAvailable"),
+  }.property("earlyBirdAvailable", "isLoaded"),
 
   regular: function() {
     var regular = this.get("model").objectAt(1);
@@ -176,7 +176,8 @@ App.RegistrationConfirmController = Ember.Controller.extend({
       
   showAnimation: function() {
     
-    return (this.get('firstTime')  && this.get('model.verified'));
+    //return (this.get('firstTime')  && this.get('model.verified'));
+    return false;
   }.property("firstTime"),
 
   //Button Action
