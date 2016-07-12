@@ -50,6 +50,7 @@ class User < ActiveRecord::Base
                   :gender,
                   :shirt_size,
                   :phone, :residence,
+                  :photo_consent, :tent,
                   :bursary_requested, :bursary_chosen,
                   :bursary_paid, :bursary_engineering_motivation, :bursary_financial_reasoning, :bursary_osap,
                   :confirmation_token, :verified,
@@ -68,6 +69,8 @@ class User < ActiveRecord::Base
   validates :email, :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX } 
   validates :email, uniqueness: { case_sensitive: false }
   validates :shirt_size, inclusion: { in: ['Small', 'Medium', 'Large', 'Extra Large']}
+  validates :photo_consent, inclusion: { in: [true, false] }
+  validates :tent, inclusion: { in: [true, false] }
   validates :bursary_chosen, inclusion: { in: [nil, true, false] }
   validates :bursary_requested, inclusion: { in: [true, false] }
   validates :bursary_engineering_motivation, :bursary_financial_reasoning, presence: true, length: { maximum: 2000 }, if: :bursary_requested?

@@ -120,9 +120,42 @@
         </section>
     </section>
 
+    <section class="box normal registration-form-step">
+        <span class="number">4</span>
+        <h2>Photo Consent </h2>
+
+        <section class="registration-form-group">
+            <h3>Do you consent for your photo to be taken?</h3>
+            <div class="info">
+                F!rosh week is an amazing experience where you will have so many great experiences!  What better way to remember F!rosh Week than photos? We have a talented team of photographers who will be capturing all the fabulous moments. These photos will be shared with the Skule community.
+            </div>
+            {{#input photoConsent}}
+                {{inputField photoConsent as=checkbox}}{{labelField photoConsent text=" "}}
+                <label>Yes</label>
+            {{/input}}
+        </section>
+    </section>
+
+    <section class="box normal registration-form-step">
+        <span class="number">5</span>
+        <h2>Hart House Farm </h2>
+
+        <section class="registration-form-group">
+            <h3>Will you be bringing a tent?</h3>
+            <div class="info">
+                It will be great if you can bring one. However, this is not mandatory!
+            </div>
+
+            {{#input tent}}
+                {{inputField tent as=checkbox}}{{labelField tent text=" "}}
+                <label>Yes</label>
+            {{/input}}
+        </section>
+
+    </section>
     {{#unless isManual}}
         <section class="box normal registration-form-step">
-            <span class="number">4</span>
+            <span class="number">6</span>
             <h2>How will you be paying?</h2>
 
             {{#if showBursary}}

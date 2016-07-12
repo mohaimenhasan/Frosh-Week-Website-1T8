@@ -38,6 +38,9 @@ App.User = DS.Model.extend({
   bursaryOsap: DS.attr('boolean'),
   bursaryEngineeringMotivation: DS.attr('string'),
   bursaryFinancialReasoning: DS.attr('string'),
+  /* Photo Consent */
+  photoConsent: DS.attr('boolean'),
+  tent: DS.attr('boolean'),
 
   /* Credit Card Information */
   chargeId: DS.attr('string'),    // always null (server side usage).
@@ -60,6 +63,8 @@ App.User.Filter = Ember.Object.create({
     'package',                // string
     'group',                  // string
     'shirt',                  // string
+    'photo_consent',          // boolean
+    'tent',                   // boolean
     'bursary',                // boolean
     'bursary_accepted',       // boolean
     'bursary_osap',           // boolean
@@ -155,7 +160,20 @@ App.User.Filter = Ember.Object.create({
 
     return (bursary && queryTrue) || (!bursary && queryFalse);
   },
+ 'photo_consent': function(model, query) {
+    var photo_consent = model.get('photoConsent');
+    var queryTrue = query.toLowerCase() === 'true';
+    var queryFalse = query.toLowerCase() === 'false';
 
+    return (photo_consent && queryTrue) || (!photo_consent && queryFalse);
+  },
+  'tent': function(model, query) {
+    var tent = model.get('tent');
+    var queryTrue = query.toLowerCase() === 'true';
+    var queryFalse = query.toLowerCase() === 'false';
+
+    return (tent && queryTrue) || (!tent && queryFalse);
+  },
   'bursary_osap': function(model, query) {
     var bursary = model.get('bursaryOsap');
     var queryTrue = query.toLowerCase() === 'true';

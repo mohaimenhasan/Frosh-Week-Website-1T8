@@ -28,21 +28,21 @@
                         student life at U of T Engineering.
                     </p>
 
-                    <!--div class="action-button">
+                    <div class="action-button">
                             <button class="highlight">
-                                #linkTo "registration.index"}}
-                                #unless hasStarted}}
+                                {{#linkTo "registration.index"}}
+                                {{#unless hasStarted}}
                                     <strong>Register on First Day!</strong> <br>
-                                else}}
+                                {{else}}
                                     F!rosh Week has started!<br>
-                                /unless}}
-                                /linkTo}}
+                                {{/unless}}
+                                {{/linkTo}}
                             </button>
-                    </div-->
+                    </div>
                     <br>
-                    <button class = "highlight" {{action "openPop"}}>
+                    <!--button class = "highlight" {{action "openPop"}}>
                         Sign up for Emailing List Here!
-                    </button>
+                    </button-->
                     
                     <div id="popbox" {{action "closeBlack"}}  {{bindAttr class=":popposition hidingPop:hidden:showing"}}>
                         

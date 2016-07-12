@@ -137,6 +137,8 @@ App.UserController = Ember.ObjectController.extend({
 
           packageId: selectedPackage.get('id'),
           shirtSize: content.get('shirtSize'),
+          photoConsent: content.get('photoConsent'),
+          tent: content.get('tent'),
           // group must be set on the server.
           bursaryRequested: !!content.get('bursary'),
           // bursaryChosen must be set on the server.
