@@ -135,27 +135,52 @@
             {{/input}}
         </section>
     </section>
+    {{#if isManual}}
+        <section class="box normal registration-form-step">
+            <span class="number">5</span>
+            <h2>Hart House Farm </h2>
 
-    <section class="box normal registration-form-step">
-        <span class="number">5</span>
-        <h2>Hart House Farm </h2>
+            <section class="registration-form-group">
+                <h3>Will you be bringing a tent?</h3>
+                <div class="info">
+                    It will be great if you can bring one. However, this is not mandatory!
+                </div>
 
-        <section class="registration-form-group">
-            <h3>Will you be bringing a tent?</h3>
-            <div class="info">
-                It will be great if you can bring one. However, this is not mandatory!
-            </div>
+                {{#input tent}}
+                    {{inputField tent as=checkbox}}{{labelField tent text=" "}}
+                    <label>Yes</label>
+                {{/input}}
+            </section>
 
-            {{#input tent}}
-                {{inputField tent as=checkbox}}{{labelField tent text=" "}}
-                <label>Yes</label>
-            {{/input}}
         </section>
+    {{else}}
+        {{#if showHHF}}
+        <section class="box normal registration-form-step">
+            <span class="number">5</span>
+            <h2>Hart House Farm </h2>
 
-    </section>
+            <section class="registration-form-group">
+                <h3>Will you be bringing a tent?</h3>
+                <div class="info">
+                    It will be great if you can bring one. However, this is not mandatory!
+                </div>
+
+                {{#input tent}}
+                    {{inputField tent as=checkbox}}{{labelField tent text=" "}}
+                    <label>Yes</label>
+                {{/input}}
+            </section>
+
+        </section>
+        {{/if}}
+    {{/if}}
     {{#unless isManual}}
         <section class="box normal registration-form-step">
+            {{#if showHHF}}
             <span class="number">6</span>
+            {{else}}
+            <span class="number">5</span>
+            {{/if}}
             <h2>How will you be paying?</h2>
 
             {{#if showBursary}}

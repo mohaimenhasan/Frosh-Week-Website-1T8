@@ -19,6 +19,10 @@ App.UserController = Ember.ObjectController.extend({
 
   serverError: false,
 
+  showHHF: function() {
+    var selectedPackage = this.get('controllers.registrationItem.model.name');
+    return (/Hart House Farm/.test(selectedPackage));
+  }.property('controllers.registrationItem.model'),
 
   showError: function() {
     //Ember.Logger.log("Setting error");
