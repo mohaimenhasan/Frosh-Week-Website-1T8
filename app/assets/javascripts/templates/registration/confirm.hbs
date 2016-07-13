@@ -58,52 +58,41 @@
                     {{/if}}
                 </div>
             </div>
-            
+        
         </div>
     </div>
     {{/if}}
     <div class="content row">
         <div class="side col registration-print-hidden">
             {{#linkTo 'index'}}<div class="registration-logo"></div>{{/linkTo}}
-            {{#if showFroshGroup}}
-            {{#if showReceipt}}
-                <section id="froshgroup" class="box highlight">
-                    <h2>Your F!rosh group is..</h2>
-                    <span class="big"><h2 class="center">{{{group.symbol}}} <strong>{{group.name}}</strong></h2></span>
-                    <ul>
-                        <li>Read detailed introduction.</li>
-                        <li>Meet your F!rosh group on <a {{bindAttr href=group.facebook_link }} target="_blank"><strong>Facebook</strong></a>! </li>
-                    </ul>
-                </section>
-            {{/if}}
-            {{/if}}
+                {{#if showConfirmed}}
+                    <section class="box highlight registration-print-hidden">
+                        <h1>Confirmed!</h1>
+                        <p>
+                            Your email has been verified. Check your inbox for more details about orientation throughout the
+                            summer. If you have any questions or concerns, contact
+                            <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>.
+                        </p>
+                    </section>
+                {{/if}}
+                {{#if showAlreadyVerified}}
+                    <section class="box highlight registration-print-hidden">
+                        <h1>You've already verified this email!</h1>
+                        <p>
+                            Your email has already been verified. Looking for your ticket? If you didn't get yours
+                            via email, or have any other concerns, contact
+                            <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>.
+                        </p>
+                    </section>
+                {{/if}}
+                
+                
             
         </div>
 
         <div class="main col">
             <div class="row">
                 <div class="full col">
-                    
-                    {{#if showConfirmed}}
-                        <section class="box highlight registration-print-hidden">
-                            <h1>Confirmed!</h1>
-                            <p>
-                                Your email has been verified. Check your inbox for more details about orientation throughout the
-                                summer. If you have any questions or concerns, contact
-                                <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>.
-                            </p>
-                        </section>
-                    {{/if}}
-                    {{#if showAlreadyVerified}}
-                        <section class="box highlight registration-print-hidden">
-                            <h1>You've already verified this email!</h1>
-                            <p>
-                                Your email has already been verified. Looking for your ticket? If you didn't get yours
-                                via email, or have any other concerns, contact
-                                <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>.
-                            </p>
-                        </section>
-                    {{/if}}
                     {{#if showError}}
                         <section class="box highlight registration-print-hidden">
                             <h1>Oops! Something went wrong.</h1>
@@ -112,7 +101,18 @@
                                 <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>.
                             </p>
                         </section>
+                    {{else}}
+                        <section id="froshgroup" class="box highlight">
+                            <h2>Your F!rosh group is..</h2>
+                            <span class="big"><h2 class="center">{{{group.symbol}}} <strong>{{group.name}}</strong></h2></span>
+                            <div style="text-align:center;">
+                                <a {{bindAttr href=group.facebook_link }} target="_blank">
+                                    <div style="text-decoration: underline;"> Join on Faceboook!</div>
+                                </a>
+                            </div>
+                        </section>
                     {{/if}}
+                    
                 </div>
             </div>
 
