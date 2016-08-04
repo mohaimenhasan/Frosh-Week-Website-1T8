@@ -27,7 +27,7 @@ App.LeedurController = Ember.ObjectController.extend({
 
   leedurBusAvailable: function(){
 
-    if(this.get('controllers.leedurhhfItem.model') && this.get('controllers.leedurhhfItem.model').get('leedurbus') < 46){
+    if(this.get('controllers.leedurhhfItem.model') && this.get('controllers.leedurhhfItem.model').get('leedurbus') < 18){
       return true;
     }
     else {
@@ -37,8 +37,8 @@ App.LeedurController = Ember.ObjectController.extend({
 
   leedurBusSeats: function() {
     console.log("Here");
-    console.log(46 - this.get('controllers.leedurhhfItem.model').get('leedurbus'), this.get('controllers.leedurhhfItem.model'), this.get('controllers.leedurhhfItem.model').get('leedurbus'));
-    return (46 - this.get('controllers.leedurhhfItem.model').get('leedurbus')) ;
+    console.log(18 - this.get('controllers.leedurhhfItem.model').get('leedurbus'), this.get('controllers.leedurhhfItem.model'), this.get('controllers.leedurhhfItem.model').get('leedurbus'));
+    return (18 - this.get('controllers.leedurhhfItem.model').get('leedurbus')) ;
   }.property('controllers.leedurhhfItem.model'),
 
 
