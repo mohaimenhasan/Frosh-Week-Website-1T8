@@ -55,14 +55,14 @@
             </div>
             <div class="row">
                     <div class="half col">
-                    For Leedur Trip (July) 
+                    For Frosh Trip (July) 
                     <br>
 
-                    {{#if leedurBusAvailable}}
+                    {{#if fweekBusAvailable}}
                         <span style="color:crimson;">
-                        * only {{leedurBusSeats}} bus seats left *</span>
-                        {{#input leedurbus}}
-                            {{inputField leedurbus as=checkbox}}{{labelField leedurbus text=" "}}
+                        * only {{fweekBusSeats}} bus seats left *</span>
+                        {{#input fweekbus}}
+                            {{inputField fweekbus as=checkbox}}{{labelField fweekbus text=" "}}
                                 <label>Yes</label>
                         {{/input}}
                     {{else}}

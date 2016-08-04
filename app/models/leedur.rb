@@ -108,7 +108,7 @@ class Leedur < ActiveRecord::Base
     unless ticket_number
       self.ticket_number = (id.to_i * 100) + rand(100) + 100_000
       self.save!
-      hhf_package.increase_count
+      hhf_package.increase_count if self.fweekbus or self.leedurbus
     end
   end
 
