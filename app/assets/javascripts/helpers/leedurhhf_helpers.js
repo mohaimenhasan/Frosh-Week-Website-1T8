@@ -1,7 +1,7 @@
 
 Ember.Handlebars.registerHelper('ifBeforeDeadline', function(key, options) {
   var leedurEnd = new Date('July 12 2016 23:59:59 EDT');
-  var fweekEnd = new Date('Sept 9 2015 23:59:59 EDT');
+  var fweekEnd = new Date('Aug 18 2016 23:59:59 EDT');
   var current = new Date();
   var _key = Em.get(this, key);
   if(current < leedurEnd && _key == "leedur"){

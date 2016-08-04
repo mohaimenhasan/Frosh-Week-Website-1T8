@@ -107,7 +107,7 @@
                 {{inputField restrictionsDietary as=text placeholder="Examples include: Halal, Kosher, vegetarian, peanut allergies"}}
             {{/input}}
         </section>
-
+        
         <section class="registration-form-group">
             <h3>Anything else we should know?</h3>
             {{#input restrictionsMisc}}
@@ -115,10 +115,27 @@
             {{/input}}
         </section>
     </section>
+    <section class="box normal registration-form-step">
+        <span class="number">4</span>
+        <h2>Tent</h2>
+
+        <section class="registration-form-group">
+            <h3>Do you have any extra tent/sleeping bag?</h3>
+            <div class="info">
+                It will be great if you can bring one. However, this is not mandatory!
+            </div>
+
+            {{#input tent}}
+                {{inputField tent as=checkbox}}{{labelField tent text=" "}}
+                <label>Yes</label>
+            {{/input}}
+        </section>
+
+    </section>
 
     {{#unless isManual}}
         <section class="box normal registration-form-step">
-            <span class="number">4</span>
+            <span class="number">5</span>
             <h2>How will you be paying?</h2>
 
             <div class=":registration-payment showing">

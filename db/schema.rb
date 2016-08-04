@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160711231900) do
+ActiveRecord::Schema.define(:version => 20160804163800) do
 
   create_table "admins", :force => true do |t|
     t.string   "email"
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20160711231900) do
     t.boolean  "leedurbus",              :default => false
     t.boolean  "fweekbus",               :default => false
     t.string   "email"
+    t.boolean  "tent",                   :default => false
   end
 
   create_table "package_items", :force => true do |t|

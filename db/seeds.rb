@@ -9,7 +9,7 @@
 leedur = 40
 fweek = 35
 leedur_name = 'Leedurs Hart House Farm Retreat'
-fweek_name = 'Froshies x Leedus Hart House Farm Retreat'
+fweek_name = 'Froshies x Leedurs Hart House Farm Retreat'
 
 leedur_max = 50
 fweek_max = 40

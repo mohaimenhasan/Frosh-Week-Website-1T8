@@ -43,7 +43,7 @@ class Leedur < ActiveRecord::Base
                   :email,
                   :gender,
                   :phone, 
-                  :confirmation_token, :verified, :leedurbus, :fweekbus,
+                  :confirmation_token, :verified, :leedurbus, :fweekbus, :tent,
                   :emergency_name, :emergency_phone, :emergency_relationship, :emergency_email,
                   :restrictions_dietary, :restrictions_misc,
                   :charge_id, :ticket_number,
@@ -56,7 +56,7 @@ class Leedur < ActiveRecord::Base
   validates :first_name, :last_name, :emergency_name, :emergency_relationship, presence: true, length: { maximum: 50 }
   validates :year, length: { maximum: 10 }
   validates :discipline, inclusion: { in: ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral'] }
-  validates :leedurbus, :fweekbus, inclusion: { in: [true, false] }
+  validates :leedurbus, :fweekbus, :tent, inclusion: { in: [true, false] }
   validates :email, presence: true, format: { with: VALID_UTMAIL_REGEX } 
   validates :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX } 
   validates :restrictions_dietary, :restrictions_misc,  length: { maximum: 2000 }

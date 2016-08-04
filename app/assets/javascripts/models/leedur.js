@@ -19,7 +19,8 @@ App.Leedur = DS.Model.extend({
   hhf_package_id: DS.attr('number'),
   leedurbus: DS.attr('boolean'),
   fweekbus: DS.attr('boolean'),
-
+  tent: DS.attr('boolean'),
+  
   /* Emergency Contact Information */
   emergencyName: DS.attr('string'),
   emergencyEmail: DS.attr('string'),
