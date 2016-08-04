@@ -20,7 +20,7 @@ App.Leedur = DS.Model.extend({
   leedurbus: DS.attr('boolean'),
   fweekbus: DS.attr('boolean'),
   tent: DS.attr('boolean'),
-  
+
   /* Emergency Contact Information */
   emergencyName: DS.attr('string'),
   emergencyEmail: DS.attr('string'),
@@ -52,6 +52,7 @@ App.Leedur.Filter = Ember.Object.create({
     'package',                // string
     'leedurbus',              // boolean
     'fweekbus',               // boolean
+    'tent',                   // boolean
     'year',                   // string
     'emergency_contact',      // string
     'emergency_email',        // string
@@ -133,7 +134,13 @@ App.Leedur.Filter = Ember.Object.create({
 
     return (bus && queryTrue) || (!bus && queryFalse);
   },
-  
+  'tent': function(model, query) {
+    var tent = model.get('tent');
+    var queryTrue = query.toLowerCase() === 'true';
+    var queryFalse = query.toLowerCase() === 'false';
+
+    return (tent && queryTrue) || (!tent && queryFalse);
+  },
   'year': function(model, query) {
     //TODO (Jason)
     return "";
