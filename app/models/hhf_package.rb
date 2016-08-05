@@ -29,10 +29,10 @@ class HhfPackage < ActiveRecord::Base
     return available
   end 
     
-  def increase_count
+  def increase_count (fweekbus=false, leedurbus=false)
     package_items = self.key.split('_')
-    self.fweekbus += 1 if self.key.include? "fweek"
-    self.leedurbus += 1 if self.key.include? "leedur"
+    self.fweekbus += 1 if fweekbus
+    self.leedurbus += 1 if leedurbus
     package_items.each do |name|
       sql_clause = "key LIKE ('" + name + "')";
       item = HhfPackageItem.where(sql_clause).first
