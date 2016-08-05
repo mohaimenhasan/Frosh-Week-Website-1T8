@@ -39,7 +39,7 @@
                     </div>
                     <div class="day"><i>Sun.</i></div>
                     <div class="time_detail">
-                        12:00pm: Back at the pit
+                        12:00pm: Depart from HHF
                     </div>
                 </div>
             </div>
@@ -153,6 +153,7 @@
                 </div>
             
             {{#each model}}
+                {{#ifBeforeDeadline key}}
                 <div class="row registration-row">
                     <div class="registration-checkbox col">
                         {{#ifSoldOut left}}
@@ -194,6 +195,7 @@
                         </h3>
                     </div>
                 </div>
+                {{/ifBeforeDeadline}}
             {{/each}}
                 <div class="row registration-row">
                     <div class="col registration-price float-right">
