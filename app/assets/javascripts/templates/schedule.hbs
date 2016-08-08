@@ -88,14 +88,14 @@
             <div class="full col">
                 <section class="box normal">
                     <div class="week row">
-                        <div style="font: 24px; color:crimson;" class="float-right" {{action "toggleEvents"}}>Alternate Events <i style="cursor:pointer;"class="icon-arrow-right"></i>  </div>
+                        <div style="font: 24px; color:crimson;" class="float-left" {{action "toggleEvents"}}>Alternate Events <i style="cursor:pointer;"class="icon-arrow-right"></i>  </div>
                     </div>
                     <div class="week row">
                         <div class="seventh day col">
                             <h2>Mon <span class="subtitle">Sept 5</span></h2>
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot one-hr skule-event size-2" data-time="7:00 am" data-location="Convocation Hall">
+                                <div class="slot one-hr half-hr skule-event size-2" data-time="7:00 am" data-location="Convocation Hall">
                                     Arrival & Registration
                                     <div class="details">
                                         <p>
@@ -132,8 +132,7 @@
                                             be spending the next four years of your life, from the
                                             best spots to study, to the spots you thought you would
                                             study but never really do. 
-                                            Also, participate in the time-honoured tradition of getting
-                                            dyed purple!!!
+                                            Also, participate in the time-honoured tradition of getting dyed purple with the rest of your F!rosh group! Will you be brave enough to go full body, or will only a pinky finger suffice? Ask your Leedurs about this awesome event - and don't worry: the dye fades and only really lasts a few days :). 
                                         </p>
                                     </div>
                                 </div>
@@ -163,7 +162,7 @@
                             {{/view}}
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot one-hr faculty-event size-4" data-time="7:00 pm" data-location="Bahen Centre">
+                                <div class="slot one-hr faculty-event size-4" data-time="7:00 pm" data-location="JJR Macleod Auitorium (MS2158)">
                                     EEAT Tutorial
                                     <div class="details">
                                         <p>
@@ -178,7 +177,7 @@
                             {{/view}}
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot three-hr skule-event size-4" data-time="8:00 pm" data-location="Sandford Fleming OR &#10; Bahen Centre RM 1130">
+                                <div class="slot two-hr skule-event size-4" data-time="8:00 pm" data-location="Sandford Fleming OR &#10; Bahen Centre RM 1130">
                                     Spark Design Club Event , Hart Hat Decoration & Movie Night
                                     <div class="details">
                                         <p>
@@ -235,22 +234,22 @@
                                 </div>
                             {{/view}}
                             {{#view App.ScheduleEventView}}
-                                <div class="slot two-hr half-hr skule-event size-2" data-time="2:30 pm" data-location="Downtown Toronto">
+                                <div class="slot two-hr half-hr skule-event size-2" data-time="2:30 pm" data-location="Front Campus">
                                     Charity Buskerfest
                                     <div class="details">
                                         <p>
-                                           Take to the streets of Toronto and for a good cause. Show off your talents by singing, dancing, playing instruments, and showcase school spirit to raise money for the Make-A-Wish Foundation.
+                                           Come out to show that engineers can create global change by breaking a World Record! All donations will be going to Pueblo Science, a charity that focuses on improving science education in the community. Be sure to come prepared with cheers and plenty of engineering spirit as we make this charity event the most memorable one yet! 
                                         </p>
                                     </div>
                                 </div>
                             {{/view}}
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot four-hr skule-event size-4" data-time="5:00 pm" data-location="TBD">
+                                <div class="slot five-hr skule-event size-4" data-time="5:00 pm" data-location="The Pit">
                                     Superhero Superparty
                                     <div class="details">
                                         <p>
-                                        
+                                            The day may come to an end, but the fun doesn't stop! The nights of F!rosh week are filled with events such as an illuminating design event hosted by SPARK on Monday, the Superhero Superparty on Tuesday featuring food and drinks, D-Battle taking place on Thursday, and more! Make sure you come out to our Nightlife hub at the Pit to get a piece of the F!rosh week action at sundown!
                                         </p>
                                     </div>
                                 </div>
@@ -262,7 +261,7 @@
                             <h2>Wed <span class="subtitle">Sept 7</span></h2>
 
 
-                            <div class="slot two-hr half-hr spacer-event"></div>
+                            <div class="slot three-hr spacer-event"></div>
                             <div {{bindAttr class=" AltEvents:showing:hidden"}}>
                             {{#view App.ScheduleEventView}}
                                 <div  class="slot five-hr external-event size-7" data-time="10:00 am" data-location="Hart House Circle">
@@ -378,9 +377,9 @@
                                     </div>
                                 </div>
                             {{/view}}
-
+                                <div class="slot one-hr half-hr  spacer-event"></div>
                             </div>
-
+                           
                             
 
                             {{#view App.ScheduleEventView}}
@@ -404,7 +403,7 @@
                                 </div>
                             {{/view}}
                             {{#view App.ScheduleEventView}}
-                                <div class="slot three-hr half-hr skule-event size-5" data-time="7:30 pm" data-location="Sandford Fleming Atrium">
+                                <div class="slot two-hr half-hr skule-event size-5" data-time="7:30 pm" data-location="Sandford Fleming Atrium">
                                     Havenger Scunt!
                                     <div class="details">
                                         <p>
@@ -422,7 +421,7 @@
                         <div class="seventh day col">
                             <h2>Thur <span class="subtitle">Sept 8</span></h2>
 
-                            <div class="slot one-hr half-hr spacer-event"></div>
+                            <div class="slot two-hr spacer-event"></div>
 
                             {{#view App.ScheduleEventView}}
                                 <div class="slot seven-hr half-hr faculty-event size-6" data-time="9:00 am" data-location="Check your timetables!">
@@ -450,8 +449,8 @@
                             {{/view}}
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot four-hr external-event size-6" data-time="7:00 pm" data-location="Sandford Fleming Atrium">
-                                    D-Battle at \Suds!
+                                <div class="slot three-hr external-event size-6" data-time="7:00 pm" data-location="Sandford Fleming Atrium">
+                                    D-Battle at Suds!
                                     <div class="details">
                                         <p>
                                             D-Battle is a dance competition that pits students against each other to
@@ -468,7 +467,7 @@
                         <div class="seventh day col">
                             <h2>Fri <span class="subtitle">Sept 9</span></h2>
 
-                            <div class="slot one-hr half-hr spacer-event"></div>
+                            <div class="slot two-hr spacer-event"></div>
 
                             {{#view App.ScheduleEventView}}
                                 <div class="slot three-hr faculty-event size-6" data-time="9:00 am" data-location="Check your timetables!">
@@ -481,7 +480,7 @@
                                     </div>
                                 </div>
                             {{/view}}
-
+                            <div {{bindAttr class=" AltEvents:hidden:showing"}}>
                             {{#view App.ScheduleEventView}}
                                 <div class="slot three-hr external-event size-3" data-time="12:00 pm" data-location="Downtown Toronto">
                                     U of T Parade
@@ -494,30 +493,52 @@
                                 </div>
                             {{/view}}
                             {{#view App.ScheduleEventView}}
-                                <div class="slot four-hr external-event size-3" data-time="3:00 pm" data-location="Downtown Toronto">
+                                <div class="slot four-hr external-event size-3" data-time="3:00 pm" data-location="Front Campus">
                                     U of T Carnival
                                     <div class="details">
                                         <p>
+                                            TBD
                                         </p>
                                     </div>
                                 </div>
                             {{/view}}
+                             <div class="slot one-hr half-hr spacer-event"></div>
                             {{#view App.ScheduleEventView}}
-                                <div class="slot three-hr external-event size-6" data-time="4:30 pm" data-location="Sandford Fleming Atrium OR &#10; TBD">
-                                    Alumni Suds! <strong>OR</strong> UTSU After Party & Mixer
+                                <div class="slot one-hr half-hr external-event size-6" data-time="8:30 pm" data-location=" &#10; TBD">
+                                    UTSU After Party & Mixer
                                     <div class="details">
                                         <p>
-                                            Yay! A break in the schedule! Why not go to Suds? It's a social event that
-                                            takes place in the Sandford Fleming atrium. Chill with your new classmates
-                                            and meet some upper year engineers too.
-                                        </p>
-                                        <p>
+                                            TBD
                                         </p>
                                     </div>
                                 </div>
                             {{/view}}
-
-                            
+                            </div>
+                            <div {{bindAttr class=" AltEvents:showing:hidden"}}>
+                                {{#view App.ScheduleEventView}}
+                                <div class="slot four-hr half-hr faculty-event size-6" data-time="12:00 am" data-location="Check your timetables!">
+                                    Class
+                                    <div class="details">
+                                        <p>
+                                            I can already hear you booing. But class is important! And you don't want to
+                                            miss your first lectures.
+                                        </p>
+                                    </div>
+                                </div>
+                                {{/view}}
+                                {{#view App.ScheduleEventView}}
+                                    <div class="slot five-hr half-hr external-event size-6" data-time="4:30 pm" data-location="Sandford Fleming Atrium">
+                                        Alumni Suds! 
+                                        <div class="details">
+                                            <p>
+                                                Yay! A break in the schedule! Why not go to Suds? It's a social event that
+                                                takes place in the Sandford Fleming atrium. Chill with your new classmates
+                                                and meet some upper year engineers too.
+                                            </p>
+                                        </div>
+                                    </div>
+                                {{/view}}
+                            </div>
                         </div>
 
                         <div class="seventh day col">
@@ -526,7 +547,7 @@
                             <div class="slot two-hr half-hr spacer-event"></div>
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot thirteen-hr skule-event size-7" data-time="9:30 am" data-location="Hart House Farm">
+                                <div class="slot twelve-hr half-hr skule-event size-7" data-time="9:30 am" data-location="Hart House Farm">
                                     Hart House Farm Camping Trip
                                     <div class="details">
                                         <p>
@@ -548,7 +569,7 @@
                         </div>
 
                         <div class="seventh day col">
-                            <h2>Sun <span class="subtitle">Sept 13</span></h2>
+                            <h2>Sun <span class="subtitle">Sept 11</span></h2>
 
                             {{#view App.ScheduleEventView}}
                                 <div class="slot four-hr half-hr skule-event size-7" data-time="Continued" data-location="Hart House Farm">
