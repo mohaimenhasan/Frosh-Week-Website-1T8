@@ -107,11 +107,21 @@ $base-height: 2em;
         @include screen-large   { display: block; };
     }
 
+    .eeat-event {
+        @extend .highlight;
+        @include transition(all 0.5s);
+        background: repeating-linear-gradient(45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
+        &:hover, .active & {
+            background-color: #606dbc;
+        };
+    };
+    .active .eeat-event {
+        background: repeating-linear-gradient(45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
+    }
     .faculty-event {
         @extend .highlight;
         @include transition(all 0.5s);
 
-        background-color: $black-alt;
         background-color: transparentize($black-alt, 0.25);
 
         &:hover, .active & {
@@ -121,7 +131,6 @@ $base-height: 2em;
     .active .faculty-event {
         background-color: $black-alt;
     }
-
     .skule-event {
         @extend .highlight;
         @include transition(all 0.5s);
