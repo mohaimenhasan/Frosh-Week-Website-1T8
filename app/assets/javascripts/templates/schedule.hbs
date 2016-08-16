@@ -88,7 +88,7 @@
             <div class="full col">
                 <section class="box normal">
                     <div class="week row" style="text-align:center">
-                        <div style="font: 24px; color:crimson;" {action "toggleEvents"}}>Alternate Events <i style="cursor:pointer;"class="icon-arrow-right"></i>  </div>
+                        <div style="font: 24px; color:crimson;" {{action "toggleEvents"}}>Alternate Events <i style="cursor:pointer;"class="icon-arrow-right"></i>  </div>
                     </div>
                     <div class="week row">
                         <div class="seventh day col">
@@ -473,7 +473,7 @@
                                     </div>
                                 </div>
                             {{/view}}
-                            <div {{bindAttr class=" AltEvents:hidden:showing"}}>
+                            <div {{bindAttr class=" AltEvents:showing:hidden"}}>
                             {{#view App.ScheduleEventView}}
                                 <div class="slot three-hr external-event size-3" data-time="12:00 pm" data-location="Downtown Toronto">
                                     U of T Parade
@@ -507,7 +507,7 @@
                                 </div>
                             {{/view}}
                             </div>
-                            <div {{bindAttr class=" AltEvents:showing:hidden"}}>
+                            <div {{bindAttr class=" AltEvents:hidden:showing"}}>
                                 {{#view App.ScheduleEventView}}
                                 <div class="slot four-hr half-hr faculty-event size-6" data-time="12:00 am" data-location="Check your timetables!">
                                     Class
