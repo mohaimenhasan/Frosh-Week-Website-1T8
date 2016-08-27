@@ -74,11 +74,31 @@ $snapchat-gray-image: 'icons/snapchat-gray.png';
 
         background-position: center;
     }
+    .sponsor-wrapper {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 20px;
+    }
     .prep-logo {
         @include box-sizing(border-box);
 
         background: {
             image: image-url("sponsors/prep.jpg");
+            size: contain;
+            repeat: no-repeat;
+        }
+        display: inline-block;
+        margin: { top: 0.5em; bottom: 0.5em; }
+        height: 150px;
+        width: 200px;
+
+        background-position: center;
+    }
+    .einstein-logo {
+        @include box-sizing(border-box);
+
+        background: {
+            image: image-url("sponsors/einstein.jpg");
             size: contain;
             repeat: no-repeat;
         }
