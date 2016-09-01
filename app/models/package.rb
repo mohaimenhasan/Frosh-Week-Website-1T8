@@ -24,6 +24,7 @@ class Package < ActiveRecord::Base
   def available?
 
     print "IN RUBY: " + self.key 
+    print "\n"
     if (self.key == 'early-bird-standalone')
       available = available_early_bird?
     elsif (self.key == 'early-bird-standalone_commuter')
@@ -44,6 +45,8 @@ class Package < ActiveRecord::Base
     else 
       available = false
     end
+    print "Available by time\n" if available_by_time?
+    print "Available\n" if available?
     return (available_by_time? and available)
 
   end
