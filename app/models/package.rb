@@ -44,10 +44,8 @@ class Package < ActiveRecord::Base
       available = available_normal? && available_hhf? && available_commuter?
     else 
       available = false
-    end
-    print "Available by time\n" if available_by_time?
-    print "Available\n" if available?
-    return (available_by_time? and available)
+    end 
+    return (available)
 
   end
 
