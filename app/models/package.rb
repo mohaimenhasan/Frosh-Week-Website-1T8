@@ -24,7 +24,6 @@ class Package < ActiveRecord::Base
   def available?
 
     print "IN RUBY: " + self.key 
-    print "\n"
     if (self.key == 'early-bird-standalone')
       available = available_early_bird?
     elsif (self.key == 'early-bird-standalone_commuter')
@@ -44,8 +43,8 @@ class Package < ActiveRecord::Base
       available = available_normal? && available_hhf? && available_commuter?
     else 
       available = false
-    end 
-    return (available)
+    end
+    return (available_by_time? and available)
 
   end
 
@@ -66,7 +65,6 @@ class Package < ActiveRecord::Base
   end
   def available_normal?
     if available_early_bird? == false 
-      print PackageItem.where("key LIKE ('standalone')").first.inspect
         return true if PackageItem.where("key LIKE ('standalone')").first.left > 0
       #return true if PackageItem.where("key LIKE ('standalone')").first.max == 700
     end

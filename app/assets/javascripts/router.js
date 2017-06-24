@@ -6,9 +6,9 @@ if (window.history && window.history.pushState) {
 
 App.RouteList = [
   Ember.Object.create({ route: 'index',    path: '/',          name: 'Home' }),
-  Ember.Object.create({ route: 'schedule', path: '/schedule',  name: 'Events & Schedule' }),
+  //Ember.Object.create({ route: 'schedule', path: '/schedule',  name: 'Events & Schedule' }),
   Ember.Object.create({ route: 'faq',      path: '/faq',       name: 'FAQs' }),
-//  Ember.Object.create({ route: 'volunteer',path: '/volunteerz' }),
+  Ember.Object.create({ route: 'volunteer',path: '/volunteerz' }),
 //  Ember.Object.create({ route: 'groups',   path: '/groups',    name: 'Groups' }),
 //  Ember.Object.create({ route: 'about',    path: '/about',     name: 'About' }),
   Ember.Object.create({
@@ -30,8 +30,8 @@ App.RouteList = [
     ]
   }),
 
- 
-    
+
+
   Ember.Object.create({
     route: 'leedurhhf',
     path: '/leedurs_adventures',
@@ -40,7 +40,7 @@ App.RouteList = [
       Ember.Object.create({ route: 'receipt', path: '/receipt' }),
       Ember.Object.create({ route: 'confirm', path: '/confirm/:user/:token'})
     ]
-  }), 
+  }),
   Ember.Object.create({
     route: 'admin',
     path: '/admin',
@@ -50,8 +50,8 @@ App.RouteList = [
       Ember.Object.create({ route: 'usersBursary',      path: '/users/bursary' }),
       Ember.Object.create({ route: 'usersCheckin',      path: '/users/checkin' }),
       Ember.Object.create({ route: 'usersCheckinUser',  path: '/users/checkin/:ticket' }),
-//      Ember.Object.create({ route: 'usersDetails',      path: '/users/:user' }),
-//      Ember.Object.create({ route: 'packages',          path: '/packages' }),
+      Ember.Object.create({ route: 'usersDetails',      path: '/users/:user' }),
+      Ember.Object.create({ route: 'packages',          path: '/packages' }),
       Ember.Object.create({ route: 'leedurs',           path: '/leedurs' }),
       Ember.Object.create({ route: 'leedursRegister',   path: '/leedurs/register' }),
     ]

@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
   validates :bursary_osap, inclusion: { in: [true, false] }, if: :bursary_requested?
   validates :residence, length: { maximum: 50 }
   validates :restrictions_dietary, :restrictions_misc, :restrictions_accessibility, length: { maximum: 2000 }
-  validates :gender, inclusion: { in: ['Male', 'Female', '-'] }
+  validates :gender, inclusion: { in: ['Male', 'Female', '-', 'Others', 'Do not wish to disclose'] }
   validates :emergency_phone, presence: true, length: { maximum: 25 }
   validates :phone, :emergency_phone, length: { maximum: 25 }
   validates :emergency_phone, presence: true
@@ -158,7 +158,7 @@ class User < ActiveRecord::Base
   def send_email(opts)
     message = {
      subject: opts[:subject],
-     from_name: 'F!rosh Week 1T6',
+     from_name: ENV['EMAIL_AUTHOR'],
      html: ERB.new(File.read(Rails.root.join(opts[:html_body]))).result(binding),
      to: [
        {

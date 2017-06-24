@@ -1,5 +1,6 @@
 App.RegistrationIndexController = Ember.Controller.extend({
 //F YOU EMBER EASYFORM EASY MY...
+
 //Update total Price by getting checkbox value
   earlyBirdSelected: false,
   regularSelected: false,
@@ -75,6 +76,7 @@ App.RegistrationIndexController = Ember.Controller.extend({
   checkOutClicked: function() {
       //Only happen if enabled
     if(!this.get("checkOutDisable")) {
+      window.console.log("Checkout Process begins"); 
       //Compute package string and transition
       //At this point package should not be null
       var package = "";
@@ -83,9 +85,11 @@ App.RegistrationIndexController = Ember.Controller.extend({
       package += this.get('hhfSelected')? "_farm" : "";
       package += this.get('commuterSelected')? "_commuter" : "";
       
+      window.console.log("Finished consolidating package info");
       //Transitioning
       var item = App.Package.find({key: package});
       
+      window.console.log("Finished looking for package");
       
       //Transition as soon as finish loading up the selected model
       var that = this;
@@ -95,8 +99,9 @@ App.RegistrationIndexController = Ember.Controller.extend({
         that.set("regularSelected", false);
         that.set("hhfSelected", false);
         that.set("commuterSelected", false);
-        that.transitionToRoute("registration.item", item);  
+        that.transitionToRoute("registration.item", item);  //********Deleted the specified model to see if situation improves */
       });
+      window.console.log("Finished resetting selections");
       
     }
   },

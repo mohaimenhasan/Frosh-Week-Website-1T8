@@ -10,7 +10,19 @@ App.User = DS.Model.extend({
   /* Basic Information */
   firstName: DS.attr('string'),
   lastName: DS.attr('string'),
+
   gender: DS.attr('string'),
+
+  // /* Gender information */
+  // genderOption: DS.attr('string'),
+  // genderSpecify: DS.attr('string'),
+  // gender: function(){
+  //     if (genderOption === 'others' && genderSpecify != ''){
+  //         return genderSpecify;
+  //     }else{
+  //         return genderOption;
+  //     }
+  // }
   phone: DS.attr('string'),
   residence: DS.attr('string'),
   discipline: DS.attr('string'),
@@ -109,13 +121,9 @@ App.User.Filter = Ember.Object.create({
   'gender': function(model, query) {
     var gender = model.get('gender') || '-';
     gender = gender.toLowerCase();
+    Console.log(gender);
 
-    var queryMale = query.toLowerCase() === 'male';
-    var queryFemale = query.toLowerCase() === 'female';
-
-    return (queryMale && gender === 'male') ||
-      (queryFemale && gender === 'female') ||
-      (!queryMale && !queryFemale && gender === '-');
+    return !(!gender || gender === '-');
   },
 
   'phone': function(model, query) {
@@ -248,7 +256,9 @@ App.UserFormEngineeringDisciplines = [
 App.UserFormGender = [
   '-',
   'Male',
-  'Female'
+  'Female',
+  'Others',
+  'Do not wish to disclose'
 ];
 
 App.UserFormShirtSize = [

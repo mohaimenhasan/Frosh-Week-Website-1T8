@@ -4,16 +4,17 @@
             <div class="third col home-logo"></div>
             <div class="third col subheader-text">
                 <p>
-                    U of T Engineering's Orientation Week <br>
-                    <strong>September 5 - 11 </strong>
-                </p>
+                  <h2>
+                      U of T Engineering's Orientation Week <br>
+                      <strong>September 4 - 10 </strong>
+                  </h2>
             </div>
             <div class="third col subheader-text">
-                <h1><strong>#fweek</strong></h1>
+                <h3><strong>#IsItFroshWeekYet</strong></h3>
             </div>
         </div>
     </section>
-    
+
     <section class="section highlight small-spacer">
     </section>
 
@@ -23,7 +24,7 @@
                 <div class="box normal home-message">
                     <h1>What will your F!rosh Week moment be?</h1>
                     <p>
-                        Welcome to U of T Engineering. F!rosh Week 1T6 is your official student-run orientation week!
+                        Welcome to U of T Engineering. F!rosh Week 1T7 is your official student-run orientation week!
                         Join us to experience the unique events, traditions, and Skule&trade; spirit that define
                         student life at U of T Engineering.
                     </p>
@@ -43,9 +44,9 @@
                     <!--button class = "highlight" {{action "openPop"}}>
                         Sign up for Emailing List Here!
                     </button-->
-                    
+
                     <div id="popbox" {{action "closeBlack"}}  {{bindAttr class=":popposition hidingPop:hidden:showing"}}>
-                        
+
                         <div id="popbox-wrap" class="popbox-wrap">
                             <div id="popbox-contain" class="popbox-contain">
                                 <button id = "temporary" class="popbox-close" {{action "closePop"}}>
@@ -55,7 +56,7 @@
                                 <p>
                                     Fill in your registration below!
                                 </p>
-                               
+
                                 {{#formFor controller wrapper="orientation"}}
                                     <div class = "submission-box">
                                         {{#input name}}
@@ -71,17 +72,17 @@
                                     </div>
                                         <button class="highlight" {{action "submit"}}  {{bindAttr disabled=alreadyDisable }}>
                                                     Submit!
-                                        </button>                        
+                                        </button>
                                 {{/formFor}}
 
                                 <div {{bindAttr class=":finish_asking_wrapper alreadyAsking:hidden:showing"}}>
-                                    <h3 style="color:green;">All Done!</h3> 
+                                    <h3 style="color:green;">All Done!</h3>
                                 </div>
                             </div>
-                        </div>         
+                        </div>
                     </div>
 
-		              
+
                 </div>
             </div>
         </div>
@@ -97,8 +98,8 @@
     <section class="section highlight home-misc">
         <div class="content row">
             <div class="side col">
-                <div class="number"> 
-                    <div class = "remaining-icon">{{daysRemaining}}</div> 
+                <div class="number">
+                    <div class = "remaining-icon">{{daysRemaining}}</div>
                 </div>
                 <!--span class="days-remaining-text">{{pluralize daysRemaining
                 string="day"}} until F!rosh.</span-->
@@ -110,17 +111,17 @@
                 <a href="http://blog.orientation.skule.ca/" target="_blank">
                     <i class="icon icon-large icon-tumblr"></i>
                 </a>
-                <a href="http://www.twitter.com/FroshWeek" target="_blank">
+                <!--<a href="http://www.twitter.com/FroshWeek" target="_blank">
                     <i class="icon icon-large icon-twitter"></i>
-                </a>
+                </a>-->
                 <a href="http://www.instagram.com/froshweek" target="_blank">
                     <i class="icon icon-large icon-instagram"></i>
                 </a>
                 <a>
 		    <span id="snapchat-banner-icon" class="snapchat-banner-icon"></span>
                 </a>
-                
-                
+
+
             </div>
         </div>
     </section>
@@ -184,7 +185,7 @@
                     </h2>
                     <p>
                         Start your week off right! Every F!rosh Week registration includes two t-shirts, a laundry bag,
-                        a towel, water bottle, and many other fun and/or useful things!
+                        a towel, water bottle and many other fun and/or useful things!
                     </p>
                 </div>
             </div>

@@ -74,16 +74,11 @@ $snapchat-gray-image: 'icons/snapchat-gray.png';
 
         background-position: center;
     }
-    .sponsor-wrapper {
-        display: inline-block;
-        vertical-align: top;
-        margin: 0 20px;
-    }
-    .prep-logo {
+    .altera-logo {
         @include box-sizing(border-box);
 
         background: {
-            image: image-url("sponsors/prep.jpg");
+            image: image-url("sponsors/altera.png");
             size: contain;
             repeat: no-repeat;
         }
@@ -94,11 +89,25 @@ $snapchat-gray-image: 'icons/snapchat-gray.png';
 
         background-position: center;
     }
-    .einstein-logo {
+    .fetch-logo {
         @include box-sizing(border-box);
 
         background: {
-            image: image-url("sponsors/einstein.jpg");
+            image: image-url("sponsors/fetch.png");
+            size: contain;
+            repeat: no-repeat;
+        }
+        display: inline-block;
+        margin: { top: 0.5em; bottom: 0.5em; }
+        height: 150px;
+        width: 200px;
+        background-position: center;
+    }
+    .SAndD-logo {
+        @include box-sizing(border-box);
+
+        background: {
+            image: image-url("sponsors/SAndD.png");
             size: contain;
             repeat: no-repeat;
         }
@@ -109,11 +118,11 @@ $snapchat-gray-image: 'icons/snapchat-gray.png';
 
         background-position: center;
     }
-    .citymarket-logo {
+    .hatchery-logo {
         @include box-sizing(border-box);
 
         background: {
-            image: image-url("sponsors/citymarket.jpg");
+            image: image-url("sponsors/hatchery.png");
             size: contain;
             repeat: no-repeat;
         }
@@ -124,31 +133,6 @@ $snapchat-gray-image: 'icons/snapchat-gray.png';
 
         background-position: center;
     }
-    .lumos-logo {
-        @include box-sizing(border-box);
-
-        background: {
-            image: image-url("sponsors/lumos.jpg");
-            size: contain;
-            repeat: no-repeat;
-        }
-        display: inline-block;
-        margin: { top: 0.5em; bottom: 0.5em; }
-        height: 150px;
-        width: 200px;
-
-        background-position: center;
-    }
-    .sponsor-description {
-        @include screen-small   { width: auto; }
-        @include screen-medium  { width: 200px; }
-        @include screen-large   { width: 200px; }
-        text-align: center;
-        p {
-            color: #555;
-        }
-    }
-    
     .hidden-links {
         a:not(:hover) {
             color: $white;
