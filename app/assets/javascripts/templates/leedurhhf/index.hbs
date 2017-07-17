@@ -6,7 +6,7 @@
         <section class="box normal">
              <h1><i class="icon-bullhorn"></i> Leedur Events</h1>
             <div class="event_title">
-                <h2><strong>Frosh Week Hart House Farm Retreat</strong></h2>
+                <h2><strong>Leedur Retreat</strong></h2>
                 <hr>
             </div>
             <div class="event_short_detail">
@@ -14,49 +14,63 @@
                     <b>Date:</b>
                 </div>
                 <div class="detail">
-                    Sept 10 - 11
+                    July 23rd
                 </div>
-            </div>
+            </div> <pg>
             <div class="event_short_detail">
                 <div class="heading">
                     Location:
                 </div>
                 <div class="detail">
-                    Hart House Farm (15911, Terra Cotta)
+                    Erindale Park <br>
+                    1695 Dundas St. W <br>
+                    Mississauga, Ontario <br>
+                    L5C 1E3
                 </div>
-            </div>
+            </div><pg>
             <div class="event_short_detail">
                 <div class="heading">
                     Logistics:
                 </div>
+
                 <div class="detail">
-                    <div class="day"><i>Sat.</i></div>
+                  TBD
+                    <!--<div class="day"><i>Sat.</i></div>
                     <div class="time_detail">
                         10:45am: Meet at the pit<br>
                         11:00am: Buses leave campus<br>
                         12:45pm: Arrive at HHF<br>
-                        
+
                     </div>
                     <div class="day"><i>Sun.</i></div>
                     <div class="time_detail">
                         12:00pm: Depart from HHF
-                    </div>
+                    </div>-->
                 </div>
-            </div>
+            </div> <pg>
+
             <div class="event_short_detail">
                 <div class="heading">
                     What's provided:
                 </div>
                 <div class="detail">
-                    TBD
+                    Shuttle bus seat there and back, and meals for the day!
                 </div>
-            </div>
+            </div><pg>
             <div class="event_short_detail">
                 <div class="heading">
                     What to bring:
                 </div>
                 <div class="detail">
-                    TBD
+                    Games, sports equipment, picnic blankets, kites, anything to have a good time!
+                </div>
+            </div> <pg>
+            <div class="event_short_detail">
+                <div class="heading">
+                    Useful Links:
+                </div>
+                <div class="detail">
+                    Link to the facebook <u><a href="https://www.facebook.com/events/233413227169304/"> event </a></u>
                 </div>
             </div>
             <!--div class="event_title">
@@ -89,7 +103,7 @@
                         10:00am: Meet at the pit<br>
                         11:30am: Buses leave campus<br>
                         1:15pm: Arrive at HHF<br>
-                        
+
                     </div>
                     <div class="day"><i>Sun.</i></div>
                     <div class="time_detail">
@@ -102,7 +116,7 @@
                     What's provided:
                 </div>
                 <div class="detail">
-                    Food -> &infin; 
+                    Food -> &infin;
                 </div>
             </div>
             <div class="event_short_detail">
@@ -127,19 +141,20 @@
             <h1>
                 <i class="icon-ticket"></i> Register online
             </h1>
-            
-           
-            
+
+
+
+
         <div {{bindAttr class=":registration-loader :center isLoading:showing:hidden"}}>
-            
+
             <i class="icon-big-loader icon-spin icon-gear"></i>
-           
+
         </div>
-            
+
         <div {{bindAttr class=":registration-error :center isError:showing:hidden"}}>
-         <h3 style="color: crimson;">Timeout: Connection seems to have lost! Try refreshing the page or using incognito. If problem still persists, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>  </h3>.    
+         <h3 style="color: crimson;">Timeout: Connection seems to have lost! Try refreshing the page or using incognito. If problem still persists, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>  </h3>.
         </div>
-            
+
         <div {{bindAttr class=":registration-data isLoaded:showing:hidden"}}>
                 <div class="row registration-row">
                     <div class="float-right registration-price col-header col ">
@@ -149,9 +164,16 @@
                     <div class="float-right registration-item col-header col ">
                         <h3>Admission Ticket</h3>
                         <hr>
+                        <body>
+                            <b style = "color:crimson;">
+                                In order to purchase both a ticket and a shirt please purchase them seperately
+                            </b>
+                        </body>
+                      <pg>
+                      <hr>
                     </div>
                 </div>
-            
+
             {{#each model}}
                 {{#ifBeforeDeadline key}}
                 <div class="row registration-row">
@@ -168,18 +190,18 @@
                         {{/ifSoldOut}}
                     </div>
                     <div class="registration-item  col">
-                        
+
                         <h3><strong>{{name}}</strong> </h3>
                         {{#ifBeforeDeadline key}}
                             {{#ifLeedur key left}}
-                                <h5 style="color:crimson;">* Bus seats are filling up! * 
+                                <h5 style="color:crimson;">* Bus seats are filling up! *
                                 <br>
-                                After bus is full, you can still buy ticket but will need to get there by yourself. </h5> 
+                                After bus is full, you can still buy ticket but will need to get there by yourself. </h5>
                             {{else}}
-                                <!--h5 style="color:crimson;">* Registration will be closed at 23:59:59 on Sept 4th *</h5-->  
+                                <!--h5 style="color:crimson;">* Registration will be closed at 23:59:59 on Sept 4th *</h5-->
                             {{/ifLeedur}}
                         {{else}}
-                            <h5 style="color:crimson;">* Registration is closed!  *</h5> 
+                            <h5 style="color:crimson;">* Registration is closed!  *</h5>
                         {{/ifBeforeDeadline }}
                         <p>
                             {{description}}
@@ -207,13 +229,13 @@
                     <div class="col registration-item float-right">
                         <div class="float-right">
                             <br>
-                            <h3 >Total: 
+                            <h3 >Total:
                                 <span class="subtitle green"><strong>Tax included</strong></span>
                             </h3>
                         </div>
 
                     </div>
-                
+
                 </div>
                 <div class="row registration-row">
                     <div class="registration-checkbox col">
@@ -231,7 +253,7 @@
                                 </button>
                             </div>
                         </div>
-                    
+
 
                 </div>
             </div>

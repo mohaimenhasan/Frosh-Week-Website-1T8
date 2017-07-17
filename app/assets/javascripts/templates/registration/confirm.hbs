@@ -1,64 +1,64 @@
 <section class="section">
     {{#if showAnimation}}
     <div id="viewSortinghat" {{bindAttr class="base:sortingHat_Base messageShowing:showing:hidding"}} >
-    
+
         <div id="sortingHat_messageBox" class="sortinghat_box">
             <div id="sortingHat_gif_container" class="gif_container float-right">
                 <img id="sorting_hat" class="gif" src="">
             </div>
-            
+
             <div id = "sortingHat_Full" class="full_s">
-                
+
                 <div class="col top">
                     {{#if doneAnimation}}
                     <div class="message_center">
-                        <h1 > 
-                            Your F!rosh Group is 
+                        <h1 >
+                            Your F!rosh Group is
                             <br>
                             <br>
                             {{{group.symbol}}} <strong>{{group.name}}</strong>
                         </h1>
-                        
-                        <h2>Join your group now on 
+
+                        <h2>Join your group now on
                         <strong>
                         <a {{bindAttr href=group.facebook_link }} target="_blank">
-                            Facebook 
+                            Facebook
                         </a> !
                         </strong>
-                       
-                        </h2> 
+
+                        </h2>
                         </div>
-                       
+
                     </div>
-                    
+
                     {{else}}
                     <div class="message_center">
-                        <h2 style="text-align:center;"> The Sorting Hat has called you up, 
+                        <h2 style="text-align:center;"> The Sorting Hat has called you up,
                         <br>
                             <span class="messageName"> <strong>{{model.firstName}} </strong>!</span>
                         <br>
                         <br>
                         Are you ready to find out what F!rosh group you will be in?
                         </h2>
-                        
+
                     </div>
-                    
+
                     {{/if}}
                 </div>
-                
+
                 <div  class="col bottom">
                     {{#if doneAnimation}}
                     <button id="sortingHat_Done" {{action "doneClicked"}} class="highlight" >
-                        <strong>Done!</strong>    
+                        <strong>Done!</strong>
                     </button>
                     {{else}}
                     <button id="sortingHat_Start" {{action "startClicked"}} class="highlight" >
-                        <strong>I'm Ready!</strong>    
+                        <strong>I'm Ready!</strong>
                     </button>
                     {{/if}}
                 </div>
             </div>
-        
+
         </div>
     </div>
     {{/if}}
@@ -85,9 +85,9 @@
                         </p>
                     </section>
                 {{/if}}
-                
-                
-            
+
+
+
         </div>
 
         <div class="main col">
@@ -112,7 +112,7 @@
                             </div>
                         </section>
                     {{/if}}
-                    
+
                 </div>
             </div>
 
@@ -130,7 +130,7 @@
                                 <div class="col half">
                                     <div class="harry-potter-logo"></div>
                                     <p class="registration-engsoc small">
-                                        <strong>September 5 - September 11, 2016</strong> <br>
+                                        <strong>September 4 - September 10, 2017</strong> <br>
                                         31 Kings' College Circle, Toronto, ON
                                     </p>
                                 </div>

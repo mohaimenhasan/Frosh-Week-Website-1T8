@@ -14,6 +14,7 @@ App.Leedur = DS.Model.extend({
   phone: DS.attr('string'),
   year: DS.attr('string'),
   discipline: DS.attr('string'),
+  shirtSize: DS.attr('string'),
 
   /* Package Information */
   hhf_package_id: DS.attr('number'),
@@ -92,15 +93,11 @@ App.Leedur.Filter = Ember.Object.create({
   },
 
   'gender': function(model, query) {
-    var gender = model.get('gender') || '-';
-    gender = gender.toLowerCase();
+      var gender = model.get('gender') || '-';
+      gender = gender.toLowerCase();
+      Console.log(gender);
 
-    var queryMale = query.toLowerCase() === 'male';
-    var queryFemale = query.toLowerCase() === 'female';
-
-    return (queryMale && gender === 'male') ||
-      (queryFemale && gender === 'female') ||
-      (!queryMale && !queryFemale && gender === '-');
+      return !(!gender || gender === '-');
   },
 
   'phone': function(model, query) {
@@ -111,6 +108,10 @@ App.Leedur.Filter = Ember.Object.create({
   'discipline': function(model, query) {
     var discipline = model.get('discipline') || '';
     return discipline.toLowerCase().match(new RegExp(query.toLowerCase()));
+  },
+  'shirt': function(model, query) {
+    var shirt = model.get('shirtSize') || '';
+    return shirt.toLowerCase().match(new RegExp(query.toLowerCase()));
   },
 
   'package': function(model, query) {
@@ -146,7 +147,7 @@ App.Leedur.Filter = Ember.Object.create({
     return "";
   },
 
-  
+
   'emergency_contact': function(model, query) {
     var emergency = model.get('emergencyName') || '';
     return emergency.toLowerCase().match(new RegExp(query.toLowerCase()));
@@ -204,9 +205,26 @@ App.LeedurFormEngineeringDisciplines = [
 App.LeedurFormGender = [
   '-',
   'Male',
-  'Female'
+  'Female',
+  'Others',
+  'Do not wish to disclose'
+];
+App.LeedurFormShirtSize = [
+  '-',
+  'Small',
+  'Medium',
+  'Large',
+  'Extra Large',
+  'Farm Ticket Not Shirt'
 ];
 
+App.LeedurFormShirtHash = {
+  'Small': 'S',
+  'Medium': 'M',
+  'Large': 'L',
+  'Extra Large': 'XL',
+  'Farm Ticket Not Shirt' : 'NA'
+};
 
 App.LeedurForm = Ember.Object.extend(Ember.Validations.Mixin);
 App.LeedurForm.reopen({

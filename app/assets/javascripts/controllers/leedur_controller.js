@@ -88,7 +88,7 @@ App.LeedurController = Ember.ObjectController.extend({
       } else {
         content.validate('bursaryEngineeringMotivation');
         content.validate('bursaryFinancialReasoning');
-        
+
       }
     });*/
   },
@@ -142,7 +142,7 @@ App.LeedurController = Ember.ObjectController.extend({
       } else {
         var transaction = that.get('store').transaction();
         var record = transaction.createRecord(App.Leedur, {
-          
+
           email: content.get('email'),
           // verified must be set on server.
           createdAt: new Date(), // only accurate on server, temporarily set.
@@ -155,6 +155,7 @@ App.LeedurController = Ember.ObjectController.extend({
           phone: content.get('phone') || '',
           year: content.get('year'),
           discipline: content.get('discipline'),
+          shirtSize: content.get('shirtSize'),
 
           leedurbus: content.get('leedurbus') || false,
           fweekbus: content.get('fweekbus') || false,
@@ -205,8 +206,8 @@ App.LeedurController = Ember.ObjectController.extend({
               content.set('errors.' + key, errors[key][0]);
               that.trackError(key, 'client', content.get(key));
               errorCount++;
-            } 
-              
+            }
+
           }
 
           if (errorCount) {

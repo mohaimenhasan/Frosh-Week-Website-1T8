@@ -6,11 +6,11 @@
         <section class="registration-form-group aligned">
             {{#input firstName}}
                 {{labelField firstName text="First name"}}
-                {{inputField firstName placeholder="Tony"}}
+                {{inputField firstName placeholder="Jar Jar"}}
             {{/input}}
             {{#input lastName}}
                 {{labelField lastName text="Last name"}}
-                {{inputField lastName placeholder="Stark"}}
+                {{inputField lastName placeholder="Binks"}}
             {{/input}}
             {{#input email}}
                 {{labelField email text="Your email address"}}
@@ -42,40 +42,51 @@
                 optionValuePath=content
                 optionLabelPath=content}}
             {{/input}}
+            <section class="registration-form-group aligned">
+                {{#input shirtSize}}
+                    {{labelField shirtSize text="What's your t-shirt size?"}}
+                    {{inputField shirtSize
+                    as=select
+                    collection=App.LeedurFormShirtSize
+                    selection=shirtSize
+                    optionValuePath=content
+                    optionLabelPath=content}}
+                {{/input}}
+            </section>
         </section>
     </section>
 
-    <section class="box normal registration-form-step">
-        <span class="number">2</span>
-        <h2>How are you getting to HHF?</h2>
+    <!--<section class="box normal registration-form-step">-->
+        <!--<span class="number">2</span>-->
+        <!--<h2>How are you getting to HHF?</h2>-->
 
-        <section class="registration-form-group">
-            <div class="info">
-                Please check below if you would like to take the bus.
-            </div>
-            <div class="row">
-                    <div class="half col">
-                    For Frosh Trip (July) 
-                    <br>
+        <!--<section class="registration-form-group">-->
+            <!--<div class="info">-->
+                <!--Please check below if you would like to take the bus.-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                    <!--<div class="half col">-->
+                    <!--For Frosh Trip (July)-->
+                    <!--<br>-->
 
-                    {{#if fweekBusAvailable}}
-                        <span style="color:crimson;">
-                        * only {{fweekBusSeats}} bus seats left *</span>
-                        {{#input fweekbus}}
-                            {{inputField fweekbus as=checkbox}}{{labelField fweekbus text=" "}}
-                                <label>Yes</label>
-                        {{/input}}
-                    {{else}}
-                        <span style="color:crimson;">
-                        Sorry, bus is full!
-                       </span>
-                    {{/if}}
-                    </div>
+                    <!--{{#if fweekBusAvailable}}-->
+                        <!--<span style="color:crimson;">-->
+                        <!--* only {{fweekBusSeats}} bus seats left *</span>-->
+                        <!--{{#input fweekbus}}-->
+                            <!--{{inputField fweekbus as=checkbox}}{{labelField fweekbus text=" "}}-->
+                                <!--<label>Yes</label>-->
+                        <!--{{/input}}-->
+                    <!--{{else}}-->
+                        <!--<span style="color:crimson;">-->
+                        <!--Sorry, bus is full!-->
+                       <!--</span>-->
+                    <!--{{/if}}-->
+                    <!--</div>-->
 
-            </div>
+            <!--</div>-->
 
-        </section>
-    </section>
+        <!--</section>-->
+    <!--</section>-->
 
     <section class="box normal registration-form-step">
         <span class="number">3</span>
@@ -107,7 +118,7 @@
                 {{inputField restrictionsDietary as=text placeholder="Examples include: Halal, Kosher, vegetarian, peanut allergies"}}
             {{/input}}
         </section>
-        
+
         <section class="registration-form-group">
             <h3>Anything else we should know?</h3>
             {{#input restrictionsMisc}}
@@ -182,19 +193,19 @@
 
     <div {{bindAttr class=":registration-error showPackageUnavailable:showing:hidden"}}>
         <section class="box highlight">
-            <h2>Unavailable Package!</h2>    
+            <h2>Unavailable Package!</h2>
                 <p>
                     Sorry! Seems like the package you chose is no longer
                     available. Please go back and choose an available
-                    package. If you have any concerns with this issue, 
+                    package. If you have any concerns with this issue,
                     please contact <b><a href="mailto:support@orientation.skule.ca" tabindex="-1">support@orientation.skule.ca</a></b>.
                 </p>
         </section>
     </div>
-            
+
     <div {{bindAttr class=":registration-error showError:showing:hidden"}}>
         <section class="box highlight">
-            
+
             {{#if serverError}}
                 <h2>Oops! Something is wrong with the server!</h2>
                 <p>

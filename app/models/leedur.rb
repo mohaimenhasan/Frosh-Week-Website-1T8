@@ -25,6 +25,7 @@
 #  hhf_package_id                     :integer
 #  created_at                     :datetime         not null
 #  updated_at                     :datetime         not null
+#shirtSize                        :string(255)
 #
 
 require 'mandrill'
@@ -42,7 +43,7 @@ class Leedur < ActiveRecord::Base
                   :year, :discipline,
                   :email,
                   :gender,
-                  :phone, 
+                  :phone, :shirt_size,
                   :confirmation_token, :verified, :leedurbus, :fweekbus, :tent,
                   :emergency_name, :emergency_phone, :emergency_relationship, :emergency_email,
                   :restrictions_dietary, :restrictions_misc,
@@ -56,11 +57,12 @@ class Leedur < ActiveRecord::Base
   validates :first_name, :last_name, :emergency_name, :emergency_relationship, presence: true, length: { maximum: 50 }
   validates :year, length: { maximum: 10 }
   validates :discipline, inclusion: { in: ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral'] }
+  validates :shirt_size, inclusion: { in: ['Small', 'Medium', 'Large', 'Extra Large', 'Farm Ticket Not Shirt']}
   validates :leedurbus, :fweekbus, :tent, inclusion: { in: [true, false] }
-  validates :email, presence: true, format: { with: VALID_UTMAIL_REGEX } 
-  validates :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX } 
+  validates :email, presence: true, format: { with: VALID_UTMAIL_REGEX }
+  validates :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX }
   validates :restrictions_dietary, :restrictions_misc,  length: { maximum: 2000 }
-  validates :gender, inclusion: { in: ['Male', 'Female', '-'] }
+  validates :gender, inclusion: { in: ['Male', 'Female', '-', 'Others', 'Do not wish to disclose'] }
   validates :emergency_phone, presence: true, length: { maximum: 25 }
   validates :phone, :emergency_phone, length: { maximum: 25 }
   validate  :hhf_package_is_available
@@ -181,7 +183,7 @@ class Leedur < ActiveRecord::Base
   end
 
   def hhf_package_is_available
-      #if ticket is already created means that package has already been 
+      #if ticket is already created means that package has already been
     unless self.ticket_number || hhf_package.available? || is_created_by_admin?
       errors.add(:hhf_package, "Package is no longer available")
     end
@@ -190,7 +192,7 @@ class Leedur < ActiveRecord::Base
   def is_created_by_admin?
     !created_by_admin.blank?
   end
-    
+
   def get_confirm_url
     'http://' + Rails.application.config.hostname + '/leedurs_adventures/confirm/' + id.to_s + '/' + confirmation_token
   end
@@ -208,6 +210,18 @@ class Leedur < ActiveRecord::Base
   def get_billing_type
     return nil unless charge_id
     Stripe::Charge.retrieve(charge_id)["source"]["brand"]
+  end
+  def get_shirt_size_abbr
+    case shirt_size
+    when 'Small'
+      'S'
+    when 'Medium'
+      'M'
+    when 'Large'
+      'L'
+    when 'Extra Large'
+      'XL'
+    end
   end
 
   def credit_info
