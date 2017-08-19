@@ -3,6 +3,8 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
   leedurSelected: false,
   shirtSelected: false,
   leedurnobusSelected: false,
+    shirtmSelected: false,
+    shirtxlSelected: false,
 
 
   leedur: function() {
