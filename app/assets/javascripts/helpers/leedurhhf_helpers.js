@@ -18,7 +18,7 @@ Ember.Handlebars.registerHelper('ifBeforeDeadline', function(key, options) {
   else if(current < fweekEnd && _key == "fweek"){
     return options.fn(this);
   }
-  else if(current < shirtEnd && (_key == "shirt"){
+  else if(current < shirtEnd && (_key == "shirt")){
     return options.fn(this);
   }
     else if(current < shirtSizedEnd && (_key == "shirtm" || _key == "shirtxl")){
