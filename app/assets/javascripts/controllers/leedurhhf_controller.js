@@ -80,7 +80,9 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
       key += this.get('leedurSelected')? "leedur_" : "";
       key += this.get('leedurnobusSelected')? "leedurnobus_" : "";
       key += this.get('shirtSelected')? "shirt_" : "";
-      key = key.substring(0, key.length - 1);
+      key += this.get('shirtmSelected')? "shirtm" : "";
+      key += this.get('shirtxlSelected')? "shirtxl" : "";
+      kkkey = key.substring(0, key.length - 1);
 
       //Transitioning
       var item = App.HhfPackage.find({key: key});
