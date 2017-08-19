@@ -66,7 +66,7 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
     totalPrice += this.get('shirtxlSelected')? this.get("shirtxl").get("price") : 0;
 
     return totalPrice;
-  }.property('leedurSelected', 'leedurnobusSelected', 'shirtSelected'),
+  }.property('leedurSelected', 'leedurnobusSelected', 'shirtSelected', 'shirtmSelected', 'shirtxlSelected'),
 //Event when check out is clicked
 
 
