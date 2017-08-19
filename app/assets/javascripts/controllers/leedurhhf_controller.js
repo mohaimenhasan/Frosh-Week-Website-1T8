@@ -20,14 +20,14 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
       return leedurnobus;
   }.property("model.[]"),
 
-    shirt_m: function(){
-      var shirt_m = this.get("model").objectAt(4);
-      return shirt_m;
+    shirtm: function(){
+      var shirtm = this.get("model").objectAt(4);
+      return shirtm;
     }.property("model.[]"),
 
-    shirt_xl: function(){
-        var shirt_xl = this.get("model").objectAt(5);
-        return shirt_xl;
+    shirtxl: function(){
+        var shirtxl = this.get("model").objectAt(5);
+        return shirtxl;
     }.property("model.[]"),
 
   isError: false,
