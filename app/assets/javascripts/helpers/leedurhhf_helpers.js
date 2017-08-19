@@ -3,6 +3,7 @@ Ember.Handlebars.registerHelper('ifBeforeDeadline', function(key, options) {
   var leedurEnd = new Date('July 22 2017 23:59:59 EDT');
   var fweekEnd = new Date('Aug 18 2016 23:59:59 EDT');
   var shirtEnd = new Date('Oct 26 2017 23:59:59 EDT');
+  var shirtSizedEnd = new Date('Oct 26 2017 23:59:59 EDT');
   var current = new Date();
   var _key = Em.get(this, key);
   if(current < shirtEnd && _key == "leedur shirt"){
@@ -17,10 +18,12 @@ Ember.Handlebars.registerHelper('ifBeforeDeadline', function(key, options) {
   else if(current < fweekEnd && _key == "fweek"){
     return options.fn(this);
   }
-  else if(current < shirtEnd && (_key == "shirt" || _key == "shirtm" || _key == "shirtxl")){
+  else if(current < shirtEnd && (_key == "shirt"){
     return options.fn(this);
   }
-
+    else if(current < shirtSizedEnd && (_key == "shirtm" || _key == "shirtxl")){
+     return options.fn(this);
+  }
   else {
     return options.inverse(this);
   }
