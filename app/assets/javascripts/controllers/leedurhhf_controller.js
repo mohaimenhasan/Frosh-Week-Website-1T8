@@ -49,10 +49,10 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
 
 //disable CheckOut
   checkOutDisable: function () {
-    var value =  (this.get("leedurSelected") || this.get("leedurnobusSelected")|| this.get("shirtSelected"));
+    var value =  (this.get("leedurSelected") || this.get("leedurnobusSelected")|| this.get("shirtSelected") || this.get("shirtmSelected") || this.get("shirtxlSelected"));
     //if nothing selected, disable should be true
     return !value;
-  }.property("leedurSelected", "leedurnobusSelected", "shirtSelected"),
+  }.property("leedurSelected", "leedurnobusSelected", "shirtSelected", "shirtmSelected", "shirtxlSelected"),
 
 //totalPrice
   totalPrice: function() {
@@ -60,6 +60,8 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
     totalPrice += this.get('leedurSelected')? this.get("leedur").get("price") : 0;
     totalPrice += this.get('leedurnobusSelected')? this.get("leedurnobus").get("price") : 0;
     totalPrice += this.get('shirtSelected')? this.get("shirt").get("price") : 0;
+    totalPrice += this.get('shirtmSelected')? this.get("shirtm").get("price") : 0;
+    totalPrice += this.get('shirtxlSelected')? this.get("shirtxl").get("price") : 0;
 
     return totalPrice;
   }.property('leedurSelected', 'leedurnobusSelected', 'shirtSelected'),
