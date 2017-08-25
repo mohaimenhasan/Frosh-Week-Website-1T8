@@ -163,6 +163,39 @@ $snapchat-gray-image: 'icons/snapchat-gray.png';
 
         background-position: center;
     }
+    .bird-logo {
+      @include box-sizing(border-box);
+
+      background: {
+        image: image-url("sponsors/bird.png");
+        size: contain;
+        repeat: no-repeat;
+      }
+      display: inline-block;
+      margin: {
+        top: 0.5em;
+        bottom: 0.5em;
+      }
+      height: 150px;
+      width: 200px;
+
+      background-position: center;
+    }
+    .vrplaying-logo {
+        @include box-sizing(border-box);
+
+        background: {
+            image: image-url("sponsors/vrplaying.png");
+            size: contain;
+            repeat: no-repeat;
+        }
+        display: inline-block;
+        margin: { top: 0.5em; bottom: 0.5em; }
+        height: 150px;
+        width: 200px;
+
+        background-position: center;
+    }
     .hidden-links {
         a:not(:hover) {
             color: $white;
