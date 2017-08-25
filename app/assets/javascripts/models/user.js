@@ -121,7 +121,7 @@ App.User.Filter = Ember.Object.create({
   'gender': function(model, query) {
     var gender = model.get('gender') || '-';
     gender = gender.toLowerCase();
-    Console.log(gender);
+    // Console.log(gender);
 
     return !(!gender || gender === '-');
   },
