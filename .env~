@@ -1,12 +1,14 @@
-#froshweek-staging Config Vars
+# Copy this file to .env and set environment variables here.
+# Do heroku config > .env
+# ANND change all the colons to = and add RACK_ENV + PORT
 RACK_ENV=development
 PORT=3000
-GOOGLE_API_CLIENT_ID=1059117754088.apps.googleusercontent.com
-GOOGLE_API_CLIENT_SECRET=ZdfU5lNUwuIDQyGdH0-PRrL1
-HOSTNAME=localhost:3000
+STRIPE_SECRET_KEY=sk_live_h30oe2L9WoeqRMo8YccRKQMr
+STRIPE_PUBLISHABLE_KEY=pk_live_oJl2XSqDGhXJJaGqKGQCmEf5
 MANDRILL_APIKEY=brCitlGrVC177mJLSQnfHA
 MANDRILL_FROM=support@orientation.skule.ca
+GOOGLE_API_CLIENT_ID=1059117754088-jdkgbndb8fmdm8201ledpcg0q2kvgeb9.apps.googleusercontent.com
+GOOGLE_API_CLIENT_SECRET=yQVYJjXqhAOQGi_tV8b7elkm
+HOSTNAME=localhost:3000
+SECRET_TOKEN=914796a85449c9926cdf456c6dd8e154f35117461cd486ac084a9e7d5a71d3d498efdc735615eb4070f4b3a22f5384d6c3f10cc37bfab4d7399db5cb06e18c9c
 OFFLINE_MODE=false
-SECRET_TOKEN=2e82d51efbc6c5e66e00d1d657d016dfb929fe84abeaf02f23280a6c5d81ea2d0105e13207d11ea0c2f21eb46313d324589bc5ce5a10966492d51552570f9665
-STRIPE_PUBLISHABLE_KEY=pk_test_KrFLNJf4EqWbQ8uStvEn6Z79
-STRIPE_SECRET_KEY=sk_test_GG0sTCkqayyc82XwTaSClbIX
