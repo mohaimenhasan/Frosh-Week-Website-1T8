@@ -56,7 +56,7 @@ App.RouteList = [
       Ember.Object.create({ route: 'leedurs',           path: '/leedurs' }),
       Ember.Object.create({ route: 'leedursRegister',   path: '/leedurs/register' }),
     ]
-  })
+  }),
   Ember.Object.create({
     route: 'prefrosh',
     path: '/prefrosh'
