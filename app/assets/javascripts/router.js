@@ -73,4 +73,7 @@ App.Router.map(function() {
   });
 
   this.route('none', { path: '*path'});
+  Router.map(function(){
+    + this.route('prefrosh');
+  });
 });
