@@ -57,7 +57,12 @@ App.RouteList = [
       Ember.Object.create({ route: 'leedursRegister',   path: '/leedurs/register' }),
     ]
   })
+  Ember.Object.create({
+    route: 'prefrosh',
+    path: '/prefrosh'
+  })
 ];
+
 
 App.Router.map(function() {
   var outerContext = this;
