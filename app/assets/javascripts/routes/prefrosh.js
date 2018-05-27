@@ -1,2 +1,2 @@
-export default Ember.Route.extend({
+App.PrefroshIndex = Ember.Route.extend({
 });
