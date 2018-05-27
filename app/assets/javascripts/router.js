@@ -5,8 +5,8 @@ if (window.history && window.history.pushState) {
 }
 
 App.RouteList = [
-  Ember.Object.create({ route: 'prefrosh', path:'/',               name: 'Prefrosh'})
-  Ember.Object.create({ route: 'index',    path: '/temp',          name: 'Home' }),
+  Ember.Object.create({ route: 'prefrosh', path:'/index.html',               name: 'Prefrosh'})
+  Ember.Object.create({ route: 'index',    path: '/',          name: 'Home' }),
   Ember.Object.create({ route: 'schedule', path: '/schedule',  name: 'Events & Schedule' }),
   Ember.Object.create({ route: 'faq',      path: '/faq',       name: 'FAQs' }),
   Ember.Object.create({ route: 'volunteer',path: '/volunteerz' }),
