@@ -1,5 +1,5 @@
 Ember.Handlebars.registerHelper('ifOnlinePurchase', function(options) {
-  var end = new Date('Aug 27 2017 23:59:59 EDT');
+  var end = new Date('Aug 27 2018 23:59:59 EDT');
   var current = new Date();
   if(current < end){
     return options.fn(this);
@@ -22,7 +22,7 @@ Ember.Handlebars.registerHelper('ifAddonTitle', function(key, options) {
 });
 
 Ember.Handlebars.registerHelper('ifSoldOut', function(left, options) {
-  
+
   var _left = Em.get(this, left);
   if(_left <= 0) {
       return options.fn(this);
@@ -43,7 +43,6 @@ Ember.Handlebars.registerHelper('ifAddons', function(key, options) {
   else {
       return options.inverse(this);
   }
- 
-  
-});
 
+
+});
