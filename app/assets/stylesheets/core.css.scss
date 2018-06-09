@@ -48,6 +48,10 @@ $green-alt: #6EA634;
  * ------
  */
 
+@mixin purple-font{
+  @include anti-aliasing-light;
+  color: $purple;
+}
 @mixin font-on-light {
     @include anti-aliasing-light;
     color: $black;
@@ -337,7 +341,7 @@ body {
     &:before {
         @include box-shadow($box-shadow-args $white-alt);
         @include headings-invert(true);
-        @include font-on-light;
+        @include purple-font;
         //@include border-radius(50%);
 
         content: attr(data-step);
