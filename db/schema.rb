@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20160804163800) do
     t.string   "key"
     t.integer  "price"
     t.integer  "count"
+    t.integer  "max"
     t.date     "start_date"
     t.date     "end_date"
     t.datetime "created_at", :null => false

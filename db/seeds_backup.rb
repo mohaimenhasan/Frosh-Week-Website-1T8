@@ -57,8 +57,8 @@ PackageItem.create(
   count: 0,
   max: early_bird_max,
   left: early_bird_max,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
 )
 
 PackageItem.create(
@@ -68,9 +68,9 @@ PackageItem.create(
   price: normal,
   count: 0,
   max: 0,
-  left: unlimited, 
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
+  left: unlimited,
+  start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
 )
 PackageItem.create(
   key: 'farm',
@@ -80,8 +80,8 @@ PackageItem.create(
   count: 0,
   max: hhf_max,
   left: hhf_max,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
 )
 PackageItem.create(
   key: 'commuter',
@@ -91,8 +91,8 @@ PackageItem.create(
   count: 0,
   max: commuter_max,
   left: commuter_max,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
 )
 
 
@@ -102,8 +102,8 @@ Package.create(
   name: 'Early Bird Standalone Package',
   price: early,
   count: 0,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -111,8 +111,8 @@ Package.create(
   name: 'Early Bird Standalone Package + Commuter Program Package',
   price: early+commuter_addon,
   count: 0,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -120,8 +120,8 @@ Package.create(
   name: 'Early Bird Standalone Package + Hart House Farm Retreat',
   price: early+hhf_addon,
   count: 0,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -129,8 +129,8 @@ Package.create(
   name: 'Early Bird Standalone Package + Hart House Farm Retreat + Commuter Program Package' ,
   price: early+commuter_addon+hhf_addon,
   count: 0,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
 )
 #STANDALONE
 Package.create(
@@ -138,8 +138,8 @@ Package.create(
   name: 'Regular Standalone Package',
   price: normal,
   count: 0,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -147,8 +147,8 @@ Package.create(
   name: 'Standalone Package + Commuter Program Package',
   price: normal+commuter_addon,
   count: 0,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -156,8 +156,8 @@ Package.create(
   name: 'Standalone Package + Hart House Farm Retreat',
   price: normal+hhf_addon,
   count: 0,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
 )
 
 Package.create(
@@ -165,6 +165,6 @@ Package.create(
   name: 'Standalone Package + Hart House Farm Retreat + Commuter Program Package',
   price: normal+commuter_addon+hhf_addon,
   count: 0,
-  start_date: Date.strptime('05-01-2015', '%m-%d-%Y'),
-  end_date: Date.strptime('08-31-2015', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+  end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
 )

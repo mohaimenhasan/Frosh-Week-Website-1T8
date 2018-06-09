@@ -5,7 +5,6 @@ if (window.history && window.history.pushState) {
 }
 
 App.RouteList = [
-  //Ember.Object.create({ route: 'prefrosh', path:'/prefrosh',               name: 'Prefrosh'}),
   Ember.Object.create({ route: 'index',    path: '/',          name: 'Home' }),
   Ember.Object.create({ route: 'schedule', path: '/schedule',  name: 'Events & Schedule' }),
   Ember.Object.create({ route: 'faq',      path: '/faq',       name: 'FAQs' }),
@@ -56,13 +55,8 @@ App.RouteList = [
       Ember.Object.create({ route: 'leedurs',           path: '/leedurs' }),
       Ember.Object.create({ route: 'leedursRegister',   path: '/leedurs/register' }),
     ]
-  }),
-  Ember.Object.create({
-    route: 'prefrosh',
-    path: '/prefrosh'
   })
 ];
-
 
 App.Router.map(function() {
   var outerContext = this;
@@ -78,7 +72,4 @@ App.Router.map(function() {
   });
 
   this.route('none', { path: '*path'});
-  // Router.map(function(){
-  //   + this.route('/prefrosh');
-  // });
 });

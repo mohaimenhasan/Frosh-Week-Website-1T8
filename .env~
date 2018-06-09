@@ -3,8 +3,8 @@
 # ANND change all the colons to = and add RACK_ENV + PORT
 RACK_ENV=development
 PORT=3000
-STRIPE_SECRET_KEY=sk_live_h30oe2L9WoeqRMo8YccRKQMr
-STRIPE_PUBLISHABLE_KEY=pk_live_oJl2XSqDGhXJJaGqKGQCmEf5
+STRIPE_SECRET_KEY=
+STRIPE_PUBLISHABLE_KEY=
 MANDRILL_APIKEY=brCitlGrVC177mJLSQnfHA
 MANDRILL_FROM=support@orientation.skule.ca
 GOOGLE_API_CLIENT_ID=1059117754088.apps.googleusercontent.com

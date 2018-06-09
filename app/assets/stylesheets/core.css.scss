@@ -25,6 +25,8 @@ $emblem: 'harry_potter_emblem.png';
 $questionMark: 'sorting_hat/background_question.png';
 $sortingHat: 'sorting_hat/sorting_hat.png';
 //End
+// magnifying glass for spy theme
+$mag-glass: 'magnify_icon_purple.png';
 $logo: 'logo-large.png';
 $chevron: 'chevron.svg';
 $snapchat-image: 'icons/snapchat.png';
@@ -269,7 +271,7 @@ body {
 
 .box {
     @include border-radius(0.35em);
-		
+
     box-sizing: border-box;
     float: left;
     width: 100%;
@@ -287,27 +289,28 @@ body {
     float: right;
     display: none;
 		/* height adjustments */
-    @include screen-small { 
+    @include screen-small {
    		 	height: 2.5em;
         line-height: 1em;
         max-width: 16em;
-        margin: { top: 0.2em; bottom: 0em; }; 
+        margin: { top: 0.2em; bottom: 0em; };
     };
-    @include screen-medium { 
+    @include screen-medium {
         height: 3em;
         line-height: 2em;
 				max-width: 28em;
-        margin: { top: 0.5em; bottom: 0.5em; }; 
+        margin: { top: 0.5em; bottom: 0.5em; };
     };
-    @include screen-large { 
+    @include screen-large {
         height: 3em;
         line-height: 2em;
 				max-width: 28em;
-        margin: { top: 0.5em; bottom: 0.5em; }; 
+        margin: { top: 0.5em; bottom: 0.5em; };
     };
 }
 .step {
     position: relative;
+
 
     h2 {
         @include screen-small {
@@ -334,17 +337,25 @@ body {
     &:before {
         @include box-shadow($box-shadow-args $white-alt);
         @include headings-invert(true);
-        @include font-on-dark;
-        @include border-radius(50%);
+        @include font-on-light;
+        //@include border-radius(50%);
 
         content: attr(data-step);
         font-weight: $font-weight-bold;
-        background-color: $purple;
-        width: 2.25em;
-        height: 2.25em;
-        line-height: 2.25em;
-        left: -1.125em;
+        //background-color: $white;
+        background: {
+            image: image-url($mag-glass);
+            //size: contain;
+            position: center;
+            //repeat: no-repeat;
+        };
+        width: 2.45em;
+        height: 2.64em;
+        line-height: 2.6em;
+        left: -1.9em;
         text-align: center;
+        padding-left: 0.5em;
+        padding-bottom: 0.3em;
         position: absolute;
 
         @include screen-small {
@@ -422,7 +433,7 @@ body {
     clear: both;
 }
 
-.debug_div_container { 
+.debug_div_container {
     background-color: black;
 }
 .debug_div {
@@ -602,7 +613,7 @@ input[type=radio], input[type=checkbox] {
             vertical-align: middle;
         }
     }
-    
+
     &:checked + label {
         color: $white;
         background-color: $purple;

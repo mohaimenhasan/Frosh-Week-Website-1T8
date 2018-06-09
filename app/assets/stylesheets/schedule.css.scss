@@ -27,14 +27,17 @@ $base-height: 2em;
      .size-1 { max-height: 8em; };
     &.size-1 { max-height: 8em; };
 
-     .size-2 { max-height: 12em; };
-    &.size-2 { max-height: 12em; };
+     .size-2 { max-height: 9em; };
+    &.size-2 { max-height: 9em; };
 
      .size-3 { max-height: 16em; };
     &.size-3 { max-height: 16em; };
 
      .size-4 { max-height: 20em; };
     &.size-4 { max-height: 20em; };
+
+    .size-mo { max-height: 22em; };
+   &.size-mo { max-height: 22em; };
 
      .size-5 { max-height: 24em; };
     &.size-5 { max-height: 24em; };
@@ -150,15 +153,15 @@ $base-height: 2em;
         @extend .normal;
         @include transition(all 0.5s);
 
-        background-color: $white-alt;
-        background-color: transparentize($white-alt, 0.25);
+        background-color: #f4c20d;
+        background-color: transparentize(#f4c20d, 0.25);
 
         &:hover {
-            background-color: $white-alt;
+            background-color: #f4c20d;
         }
     };
     .active .external-event {
-        background-color: $white-alt;
+        background-color: #f4c20d;
     }
 
 
@@ -182,6 +185,7 @@ $base-height: 2em;
         max-height: 50em;
     }
 
+
     .slot {
         cursor: pointer;
         border: {
@@ -204,6 +208,10 @@ $base-height: 2em;
         &.two-hr {
             min-height: slot-height(4);
             max-height: slot-height(4);
+        };
+        &.mo-hr {
+            min-height: slot-height(5);
+            max-height: slot-height(5);
         };
         &.three-hr {
             min-height: slot-height(6);
@@ -278,7 +286,7 @@ $base-height: 2em;
             white-space: pre-wrap;
             content: attr(data-location);
             display: block;
-            text-transform: uppercase;
+            //text-transform: uppercase;
             font-weight: $font-weight-bold;
         }
     }
@@ -337,17 +345,17 @@ $base-height: 2em;
     color: white;
     background-color: rgba(0,0,0, 0.7);
     transition-duration :0.5s;
-    
+
     .gallery_wrapper {
-        margin: 2em;   
+        margin: 2em;
     }
-    
+
     .chevron-wrapper {
         position: relative;
         top: 50%;
         transform: translateY(-50%);
     }
-    
+
     .side_gallery {
         display: inline-block;
         width: 10%;
@@ -373,5 +381,5 @@ $base-height: 2em;
         index: 0s ;
         z-index: 20;
     }
-    
+
 }
