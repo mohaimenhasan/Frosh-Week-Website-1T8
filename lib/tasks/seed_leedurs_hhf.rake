@@ -28,8 +28,8 @@ namespace :db do
       count: 0,
       max: leedur_max,
       left: leedur_max,
-      start_date: Date.strptime('05-01-2016', '%m-%d-%Y'),
-      end_date: Date.strptime('07-15-2016', '%m-%d-%Y'),
+      start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+      end_date: Date.strptime('07-15-2018', '%m-%d-%Y'),
     )
 
     HhfPackageItem.create(
@@ -40,8 +40,8 @@ namespace :db do
       count: 0,
       max: fweek_max,
       left: fweek_max, 
-      start_date: Date.strptime('05-01-2016', '%m-%d-%Y'),
-      end_date: Date.strptime('09-09-2016', '%m-%d-%Y'),
+      start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+      end_date: Date.strptime('09-09-2018', '%m-%d-%Y'),
     )
 
     # All Combo
