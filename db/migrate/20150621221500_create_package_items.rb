@@ -1,8 +1,8 @@
 class CreatePackageItems < ActiveRecord::Migration
   def change
       create_table :package_items do |t|
-      t.string :key
       t.string :name
+      t.string :key
       t.text :description
       t.integer :price
       t.integer :count

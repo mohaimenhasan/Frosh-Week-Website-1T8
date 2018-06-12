@@ -1,6 +1,5 @@
 class RemoveDetailsFromPackages < ActiveRecord::Migration
   def change
-      remove_column :packages, :description, :text
-      remove_column :packages, :max, :int
+      remove_column :packages, :description
   end
 end
