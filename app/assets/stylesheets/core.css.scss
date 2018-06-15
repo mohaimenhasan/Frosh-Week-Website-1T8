@@ -339,7 +339,7 @@ body {
     }
 
     &:before {
-        // changes the box surrounding the magnifying icon
+        // changes the box surrounding the magnifying icon 
         //@include box-shadow($box-shadow-args $white-alt);
         @include headings-invert(true);
         @include purple-font;
@@ -354,13 +354,13 @@ body {
             position: center;
             //repeat: no-repeat;
         };
-        width: 2.3em;
-        height: 2.3em;
+        width: 2.45em;
+        height: 2.45em;
         line-height: 2.6em;
         left: -1.9em;
         text-align: center;
-        padding-left: 0.6em;
-        padding-bottom: 0.7em;
+        padding-left: 0.5em;
+        padding-bottom: 0.5em;
         position: absolute;
 
         @include screen-small {
