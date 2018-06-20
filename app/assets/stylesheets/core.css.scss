@@ -339,28 +339,27 @@ body {
     }
 
     &:before {
-        // changes the box surrounding the magnifying icon 
-        //@include box-shadow($box-shadow-args $white-alt);
+        @include box-shadow($box-shadow-args $white-translucent);
         @include headings-invert(true);
-        @include purple-font;
-        //@include border-radius(50%);
+        @include font-on-dark ;
+        @include border-radius(50%);
 
         content: attr(data-step);
         font-weight: $font-weight-bold;
-        //background-color: $white;
+        background-color: $purple;
         background: {
-            image: image-url($mag-glass);
-            //size: contain;
+            //image: image-url($mag-glass);
+            size: contain;
             position: center;
-            //repeat: no-repeat;
+            repeat: no-repeat;
         };
-        width: 2.45em;
-        height: 2.45em;
-        line-height: 2.6em;
-        left: -1.9em;
+        width: 2.4em;
+        height: 2.1em;
+        line-height: 2.4em;
+        left: -1.2em;
         text-align: center;
-        padding-left: 0.5em;
-        padding-bottom: 0.5em;
+        padding-left: 0.0em;
+        padding-bottom: 0.4em;
         position: absolute;
 
         @include screen-small {
