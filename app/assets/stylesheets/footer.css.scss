@@ -152,12 +152,12 @@ $snapchat-gray-image: 'icons/snapchat-gray.png';
     @include screen-small {
         height: 24px;
         width: 24px;
-        top: 0.15em;
+        top: 0.15em;        
 	  };
 		@include screen-medium {
         height: 25px;
         width: 25px;
-        top: 0.15em;
+        top: 0.15em; 
 		};
 		@include screen-large {
         height: 31px;
@@ -180,23 +180,23 @@ $snapchat-gray-image: 'icons/snapchat-gray.png';
     padding: 0em;
     display: none;
 		/* height adjustments */
-    @include screen-small {
+    @include screen-small { 
    		 	height: 2.5em;
         line-height: 1em;
-        margin: { top: 0.2em; bottom: 0em; };
+        margin: { top: 0.2em; bottom: 0em; }; 
     };
-    @include screen-medium {
+    @include screen-medium { 
         height: 3em;
         line-height: 2em;
 				max-width: 28em;
         float: left;
-        margin: { top: 0.5em; bottom: 0.5em; };
+        margin: { top: 0.5em; bottom: 0.5em; }; 
     };
-    @include screen-large {
+    @include screen-large { 
         height: 3em;
         line-height: 2em;
 				max-width: 28em;
         float: left;
-        margin: { top: 0.5em; bottom: 0.5em; };
+        margin: { top: 0.5em; bottom: 0.5em; }; 
     };
 }

@@ -23,7 +23,7 @@ App.IndexController = Ember.Controller.extend({
   },
 
   hidingPop: true,
-
+  
   openPop: function() {
     Ember.Logger.log("Opening pop");
     this.set("hidingPop", false);
@@ -37,19 +37,19 @@ App.IndexController = Ember.Controller.extend({
   closeBlack: function() {
     var that = this;
     console.log("Here", this.target);
-
+    
   },
 
   name: "",
   email: "",
   timestamp: 0,
   alreadyDisable: function(){
-    return Ember.isEmpty(this.get("name")) ||
+    return Ember.isEmpty(this.get("name")) || 
            Ember.isEmpty(this.get("email"));
   }.property("name", "email"),
 
   alreadyAsking: true,
-
+ 
   submit: function(){
     console.log("Submitting");
     //Make sure all fields are filled up
@@ -74,17 +74,17 @@ App.IndexController = Ember.Controller.extend({
         if (current < past + 5) {
           //if more than 5 sec, consider spam
           $("#spam_message").fadeIn("slow");
-          return;
+          return;   
         }
         else {
-          this.set("timestamp", current); //renew timestamp
+          this.set("timestamp", current); //renew timestamp   
         }
-
-
+      
+       
         var that = this;
         $.ajax({
           url: "https://docs.google.com/forms/d/1TLfX4Oc45AU7EjWZIQK5TGmiQMxmogrvkzmYuiPBdQQ/formResponse",
-          data: {"entry.2116346682" : that.get("name"),
+          data: {"entry.2116346682" : that.get("name"), 
                        "entry.147362869" : that.get("email")},
           type: "POST",
           dataType: "xml",
@@ -92,29 +92,30 @@ App.IndexController = Ember.Controller.extend({
             0: function (){
             //Success
               that.set("alreadyAsking", false);
-
+               
             },
             200: function (){
-             //Success
+             //Success 
                that.set("alreadyAsking", false);
-
+        
             },
             400: function () {
               $("#send_error_msg").fadeIn("slow");
-              this.set("alreadyAsking", true);
+              this.set("alreadyAsking", true); 
             },
             500: function () {
               $("#send_error_msg").fadeIn("slow");
-              this.set("alreadyAsking", true);
-            },
-
+              this.set("alreadyAsking", true); 
+            },   
+            
             }
         });
 
       }
     }
-
-
+      
+      
   }
-
+  
 });
+

@@ -12,10 +12,10 @@
                 <li>One free Skule&trade; yearbook at the end of the year ($20 value).</li>
             </ul>
             <br>
-
+            
             <h2>Other Payment Method</h2>
             <p>
-                We accept cash too! Please visit Rhonda at the Engineering Society in Sandford Fleming building (B740 Sandford Flemming, 10 King's College Road) to drop off your cash payment, if you choose not to pay via credit card.
+                We accept cash too! Please visit Rhonda at the Engineering Society in Sandford Fleming building (B740 Sandford Fleming, 10 King's College Road) to drop off your cash payment, if you choose not to pay via credit card.
             </p>
         </section>
     </div>
@@ -25,20 +25,20 @@
             <h1>
                 <i class="icon-ticket"></i> Register online
             </h1>
-
+            
         <div {{bindAttr class=":registration-loader :center isLoading:showing:hidden"}}>
-
+            
             <i class="icon-big-loader icon-spin icon-gear"></i>
-
+           
         </div>
-
+            
         <div {{bindAttr class=":registration-error :center isError:showing:hidden"}}>
-         <h3 style="color: crimson;">Timeout: Connection seems to have lost! Try refreshing the page or using incognito. If problem still persists, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>  </h3>.
+         <h3 style="color: crimson;">Timeout: Connection seems to have lost! Try refreshing the page or using incognito. If problem still persists, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>  </h3>.    
         </div>
-
+            
         <div {{bindAttr class=":registration-data isLoaded:showing:hidden"}}>
-            {{#ifOnlinePurchase}}
-
+            {{#ifOnlinePurchase}} 
+            
                 <div class="row registration-row">
                     <div class="float-right registration-price col-header col ">
                         <h3>Price</h3>
@@ -49,7 +49,7 @@
                         <hr>
                     </div>
                 </div>
-
+            
                 <div class="row registration-row">
                     <div class="registration-checkbox col">
                         {{#if earlyBirdAvailable}}
@@ -115,7 +115,6 @@
                     <div class=" registration-item col-header col ">
                         <h3>Add-ons</h3>
                         <hr>
-                        <h5 style="color:crimson;">Please consider your option carefully! If you wish to add/remove an addon later, you will have to be refunded and then re-register! </h5>
                     </div>
                 </div>
             {{#each model}} 
@@ -191,18 +190,21 @@
             {{else}}
                 <h3>Missed online registration?</h3>
                 <p>
-                    <strong>You can still join us!</strong> Bring cash on Monday, Sept. 4th, between 7:00am and 8:30am
+                    <strong>You can still join us!</strong> Bring cash or credit on Monday between 7:30am and 9:00am
                     to register at the door! Find us in front of Convocation Hall!
                 </p>
                 <p>
-                    There will be 2 items available at the door:
+                    There will be 3 items available at the door:
                 </p>
                 <ul>
                     <li>
-                        <strong>$120</strong> F!rosh Kit Standalone Package.
+                        <strong>$125</strong> F!rosh Kit Standalone Package.
                     </li>
                     <li>
                         <strong>$40</strong> Hart House Farm Ticket.
+                    </li>
+                    <li>
+                        <strong>$145</strong> Commuter Package.
                     </li>
                 </ul>
                 <p></p>

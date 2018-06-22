@@ -1,5 +1,5 @@
 Ember.Handlebars.registerHelper('ifOnlinePurchase', function(options) {
-  var end = new Date('Aug 27 2018 23:59:59 EDT');
+  var end = new Date('Sept 04 2018 23:59:59 EDT');
   var current = new Date();
   if(current < end){
     return options.fn(this);
