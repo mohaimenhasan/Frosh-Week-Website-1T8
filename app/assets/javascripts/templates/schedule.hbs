@@ -93,7 +93,7 @@
                             <h2>Mon <span class="subtitle">Sept 3</span></h2>
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot one-hr half-hr skule-event size-4" data-time="7:00 am" data-location="Convocation Hall + Front Campus">
+                                <div class="slot two-hr skule-event size-4" data-time="7:00 am" data-location="Convocation Hall + Front Campus">
                                     Arrival & Registration
                                     <div class="details">
                                         <p>
@@ -109,7 +109,7 @@
                             {{/view}}
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot three-hr skule-event size-4" data-time="8:30 am" data-location="Convocation Hall">
+                                <div class="slot two-hr skule-event size-4" data-time="9:00 am" data-location="Convocation Hall">
                                     Matriculation
                                     <div class="details">
                                         <p>
@@ -122,7 +122,7 @@
                             {{/view}}
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot three-hr half-hr skule-event size-5" data-time="11:30 am" data-location="TBD">
+                                <div class="slot four-hr half-hr skule-event size-5" data-time="11:10 am" data-location="TBD">
                                     Campus Tours + Dye Station + Lunch
                                     <div class="details">
                                         <p>
@@ -140,7 +140,7 @@
 
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot two-hr half-hr skule-event size-3" data-time="3:00 pm" data-location="All around Toronto!">
+                                <div class="slot two-hr half-hr skule-event size-3" data-time="3:40 pm" data-location="All around Toronto!">
                                     Downtown Walkaround
                                     <div class="details">
                                         <p>
@@ -151,7 +151,7 @@
                             {{/view}}
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot one-hr half-hr skule-event size-1" data-time="5:30 pm" data-location="Bahen Centre for Information Technology">
+                                <div class="slot one-hr skule-event size-1" data-time="6:00 pm" data-location="Bahen Centre for Information Technology">
                                     Dinner
                                     <div class="details">
                                         <p>
@@ -192,7 +192,7 @@
                             {{/view}}
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot three-hr half-hr skule-event size-4" data-time="11:00 am" data-location="Front Campus, Sandford Fleming Building, Bahen Centre for Information Technology">
+                                <div class="slot four-hr half-hr skule-event size-4" data-time="11:00 am" data-location="Front Campus, Sandford Fleming Building, Bahen Centre for Information Technology">
                                     Mission ImF!roshable
                                     <div class="details">
                                         <p>
@@ -201,6 +201,7 @@
                                     </div>
                                 </div>
                             {{/view}}
+                            <!--
                             {{#view App.ScheduleEventView}}
                                 <div class="slot one-hr half-hr skule-event size-4" data-time="2:30 pm" data-location="Front Campus, Sandford Fleming Building, Bahen Centre for Information Technology">
                                     BBQ Lunch
@@ -211,8 +212,9 @@
                                     </div>
                                 </div>
                             {{/view}}
+                          -->
                             {{#view App.ScheduleEventView}}
-                                <div class="slot two-hr skule-event size-4" data-time="4:00 pm" data-location="Bahen Centre for Information Technology">
+                                <div class="slot one-hr half-hr skule-event size-4" data-time="3:30 pm" data-location="Bahen Centre for Information Technology">
                                     Charity
                                     <div class="details">
                                         <p>
@@ -224,8 +226,20 @@
                                     </div>
                                 </div>
                             {{/view}}
+
                             {{#view App.ScheduleEventView}}
-                                <div class="slot five-hr skule-event size-5" data-time="6:00 pm" data-location="Sandford Fleming Atrium a.k.a. The Pit!">
+                                <div class="slot half-hr skule-event size-4" data-time="5:00 pm" data-location="Bahen Centre for Information Technology">
+                                    Cheer off
+                                    <div class="details">
+                                        <p>
+                                          --
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot four-hr half-hr skule-event size-5" data-time="5:30 pm" data-location="Sandford Fleming Atrium a.k.a. The Pit!">
                                     F!Week Evening Events
                                     <div class="details">
                                         <p>
@@ -272,10 +286,8 @@
                             {{#view App.ScheduleEventView}}
                                 {{#view App.ScheduleEventView}}
 
-                                <div class="slot three-hr external-event size-max" data-time="2:00 pm" data-location="Engineering Clubs: Bahen Centre for Information Technology <> UTSU Clubs Fair: King's College Circle">
-                                    Engineering Clubs Fair <br/>
-                                    and <br/>
-                                    UTSU Clubs Carnival
+                                <div class="slot two-hr external-event size-max" data-time="2:00 pm" data-location="Engineering Clubs: Bahen Centre for Information Technology <> UTSU Clubs Fair: King's College Circle">
+                                    Engineering Clubs Fair
                                     <div class="details">
                                         <h4> Engineering Clubs Fair: </h4>
                                         <p>
@@ -284,15 +296,28 @@
                                         <p>
                                             This clubs fair has all the clubs that are organized by or designed for engineering students.
                                         </p>
+                                      <!--
                                         <h4> UTSU Clubs Carnival: </h4>
                                         <p>
                                             Want to get involved in UofT clubs not all focused on Engineering? This clubs fair showcases the wide variety of clubs the UofT has to offer, organized by non-engineering students.
                                         </p>
+                                      -->
                                     </div>
                                 </div>
 
                                 {{/view}}
                             {{/view}}
+
+                            {{#view App.ScheduleEventView}}
+                                <div class="slot one-hr external-event size-2" data-time="4:00 pm" data-location="Engineering Buildings (TBD)">
+                                    Skule&trade; Nite 101
+                                    <div class="details">
+                                        <p>
+                                        </p>
+                                    </div>
+                                </div>
+                            {{/view}}
+
                             {{#view App.ScheduleEventView}}
                                 <div class="slot two-hr external-event size-5" data-time="5:00 pm" data-location="Engineering Buildings (TBD)">
                                     Discipline Activities + Dinner
@@ -357,8 +382,8 @@
                             {{/view}}
 
                            {{#view App.ScheduleEventView}}
-                                <div class="slot two-hr skule-event size-6" data-time="6:00 pm" data-location="Sandford Fleming Atrium a.k.a. The Pit!">
-                                    D-Battle & Suds!
+                                <div class="slot two-hr external-event size-6" data-time="6:00 pm" data-location="Sandford Fleming Atrium a.k.a. The Pit!">
+                                    Dance Battle ft. NSBE & SDC!
                                     <div class="details">
                                         <p>
                                             D-Battle is a dance competition that pits students against each other to see who is the king of dancing at UofT. F!rosh Week 1T8 will again see students duke it out against each other, popping and locking their way to victory. Who will rule the dancefloor? Come to Suds to find out!
@@ -425,8 +450,8 @@
                             <div class="slot two-hr half-hr spacer-event"></div>
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot thirteen-hr half-hr skule-event size-7" data-time="9:30 am" data-location="Hart House Farm">
-                                    Hart House Farm Camping Trip
+                                <div class="slot thirteen-hr half-hr skule-event size-7" data-time="10:00 am" data-location="Hart House Farm">
+                                    Frosh Retreat
                                     <div class="details">
                                         <p>
                                             Definitely the coolest way to end F!rosh week. This is an overnight camping trip to the legendary Hart House Farm near Caledon (about two hours away from U of T). Bring a sleeping bag and a tent if you have one, or make friends with someone who does when you get there.
@@ -449,8 +474,8 @@
                             <h2>Sun <span class="subtitle">Sept 9</span></h2>
 
                             {{#view App.ScheduleEventView}}
-                                <div class="slot four-hr half-hr skule-event size-7" data-time="Continued" data-location="Hart House Farm">
-                                    Hart House Farm Camping Trip
+                                <div class="slot seven-hr half-hr skule-event size-7" data-time="6:00 am" data-location="Hart House Farm">
+                                    Frosh Retreat
                                     <div class="details">
                                         <p>
                                             Definitely the coolest way to end F!rosh week. This is an overnight camping trip to the legendary Hart House Farm near Caledon (about two hours away from U of T). Bring a sleeping bag and a tent if you have one, or make friends with someone who does when you get there.
