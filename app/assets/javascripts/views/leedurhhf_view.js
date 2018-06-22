@@ -18,15 +18,6 @@ App.LeedurhhfIndexView = Ember.View.extend({
       that.set('controller.shirtSelected', value);
       e.stopImmediatePropagation();
     });
-    this.$("#shirtm").click(function(e){
-      var value = $('#shirtm').is(":checked");
-      that.set('controller.shirtmSelected', value);
-      e.stopImmediatePropagation();
-    });
-this.$("#shirtxl").click(function(e){
-      var value = $('#shirtxl').is(":checked");
-      that.set('controller.shirtxlSelected', value);
-      e.stopImmediatePropagation();
-    });
+
   }
 });

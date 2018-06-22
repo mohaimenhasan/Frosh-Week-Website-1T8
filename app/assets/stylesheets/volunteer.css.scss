@@ -16,14 +16,14 @@
         width: 99%;
     }
     @include screen-medium {
-        margin-left: 0;
+        margin-left: 0;  
         width: 99%;
     }
     @include screen-large {
-        margin-left: 0.5em;
+        margin-left: 0.5em;  
         width: 67.5%;
     }
-
+    
 }
 
 .volunteer {
@@ -31,7 +31,7 @@
 }
 
 .volunteer_wrapper {
-    @include slide(40em);
+    @include slide(40em); 
     width: 100%;
     .input {
         margin: { top: 0.5em; bottom: 0.5em; left: 0.1em };
@@ -69,19 +69,19 @@
         width: 50%;
     }
     .submit_wrapper {
-        margin-bottom: 0.5em;
+        margin-bottom: 0.5em;   
         text-align: right;
         .message {
             float: left;
             display:none;
         }
         button {
-            background-color: $green;
+            background-color: $green;   
         }
     }
 }
 
 .finish_asking_wrapper {
-    @include slide(15em);
+    @include slide(15em);  
     text-align: center;
 }

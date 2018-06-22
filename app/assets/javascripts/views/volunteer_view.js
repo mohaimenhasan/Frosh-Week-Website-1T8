@@ -1,6 +1,6 @@
 /*App.VolunteerView = Ember.View.extend({
-  
-    
+
+
   click: function(event){
     var that = this;
     var element = $(event.target);

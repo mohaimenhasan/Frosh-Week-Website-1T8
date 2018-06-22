@@ -3,8 +3,6 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
   leedurSelected: false,
   shirtSelected: false,
   leedurnobusSelected: false,
-    shirtmSelected: false,
-    shirtxlSelected: false,
 
 
   leedur: function() {
@@ -21,16 +19,6 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
       var leedurnobus = this.get("model").objectAt(1);
       return leedurnobus;
   }.property("model.[]"),
-
-    shirtm: function(){
-      var shirtm = this.get("model").objectAt(4);
-      return shirtm;
-    }.property("model.[]"),
-
-    shirtxl: function(){
-        var shirtxl = this.get("model").objectAt(5);
-        return shirtxl;
-    }.property("model.[]"),
 
   isError: false,
   isLoaded: false,
@@ -51,10 +39,10 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
 
 //disable CheckOut
   checkOutDisable: function () {
-    var value =  (this.get("leedurSelected") || this.get("leedurnobusSelected")|| this.get("shirtSelected") || this.get("shirtmSelected") || this.get("shirtxlSelected"));
+    var value =  (this.get("leedurSelected") || this.get("leedurnobusSelected")|| this.get("shirtSelected"));
     //if nothing selected, disable should be true
     return !value;
-  }.property("leedurSelected", "leedurnobusSelected", "shirtSelected", "shirtmSelected", "shirtxlSelected"),
+  }.property("leedurSelected", "leedurnobusSelected", "shirtSelected"),
 
 //totalPrice
   totalPrice: function() {
@@ -62,11 +50,9 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
     totalPrice += this.get('leedurSelected')? this.get("leedur").get("price") : 0;
     totalPrice += this.get('leedurnobusSelected')? this.get("leedurnobus").get("price") : 0;
     totalPrice += this.get('shirtSelected')? this.get("shirt").get("price") : 0;
-    totalPrice += this.get('shirtmSelected')? this.get("shirtm").get("price") : 0;
-    totalPrice += this.get('shirtxlSelected')? this.get("shirtxl").get("price") : 0;
 
     return totalPrice;
-  }.property('leedurSelected', 'leedurnobusSelected', 'shirtSelected', 'shirtmSelected', 'shirtxlSelected'),
+  }.property('leedurSelected', 'leedurnobusSelected', 'shirtSelected'),
 //Event when check out is clicked
 
 
@@ -80,9 +66,7 @@ App.LeedurhhfIndexController = Ember.Controller.extend({
       key += this.get('leedurSelected')? "leedur_" : "";
       key += this.get('leedurnobusSelected')? "leedurnobus_" : "";
       key += this.get('shirtSelected')? "shirt_" : "";
-      key += this.get('shirtmSelected')? "shirtm" : "";
-      key += this.get('shirtxlSelected')? "shirtxl" : "";
-      kkkey = key.substring(0, key.length - 1);
+      key = key.substring(0, key.length - 1);
 
       //Transitioning
       var item = App.HhfPackage.find({key: key});
