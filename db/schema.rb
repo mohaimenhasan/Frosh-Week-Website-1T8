@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20160804163800) do
   create_table "groups", :force => true do |t|
     t.string   "name"
     t.string   "symbol"
+    t.string   "code"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "facebook_link"
