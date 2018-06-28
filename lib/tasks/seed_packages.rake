@@ -36,8 +36,8 @@ namespace :db do
       description: 'A standard F!rosh Kit. Includes entrance to all events (like a parade!), a collection of cool things (like a hard hat!), and lots more! This kit has tons of awesome stuff!',
       price: normal,
       count: 0,
-      max: 0,
-      left: unlimited,
+      max: regular_max,
+      left: regular_max,
       start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
       end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
     )
