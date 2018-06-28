@@ -13,9 +13,10 @@ namespace :db do
     early_bird_max = 200
     regular_max = 725
     commuter_max = 1
-    hhf_max = 150
+    hhf_max = 1
     unlimited = -1
 
+#hhf_max = 150, commuter_max=20
     # BASIC ITEMS FOR SELECTION
     PackageItem.create(
       key: 'early-bird-standalone',
