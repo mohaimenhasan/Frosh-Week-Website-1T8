@@ -32,7 +32,14 @@ Ember.Handlebars.registerHelper('ifSoldOut', function(left, options) {
   }
 });
 
+Ember.Handlebars.registerHelper('ifCommuterPackage', function(key, options) {
 
+  var _key = Em.get(this, key);
+  if(_key == "commuter") {
+      true;
+  } else {
+      return false;
+  }
 
 Ember.Handlebars.registerHelper('ifAddons', function(key, options) {
 

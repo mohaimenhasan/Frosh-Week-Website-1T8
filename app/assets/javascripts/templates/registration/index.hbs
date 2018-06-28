@@ -12,7 +12,7 @@
                 <li>One free Skule&trade; yearbook at the end of the year ($20 value).</li>
             </ul>
             <br>
-            
+
             <h2>Other Payment Method</h2>
             <p>
                 We accept cash too! Please visit Rhonda at the Engineering Society in Sandford Fleming building (B740 Sandford Fleming, 10 King's College Road) to drop off your cash payment, if you choose not to pay via credit card.
@@ -25,20 +25,20 @@
             <h1>
                 <i class="icon-ticket"></i> Register online
             </h1>
-            
+
         <div {{bindAttr class=":registration-loader :center isLoading:showing:hidden"}}>
-            
+
             <i class="icon-big-loader icon-spin icon-gear"></i>
-           
+
         </div>
-            
+
         <div {{bindAttr class=":registration-error :center isError:showing:hidden"}}>
-         <h3 style="color: crimson;">Timeout: Connection seems to have lost! Try refreshing the page or using incognito. If problem still persists, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>  </h3>.    
+         <h3 style="color: crimson;">Timeout: Connection seems to have lost! Try refreshing the page or using incognito. If problem still persists, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a>  </h3>.
         </div>
-            
+
         <div {{bindAttr class=":registration-data isLoaded:showing:hidden"}}>
-            {{#ifOnlinePurchase}} 
-            
+            {{#ifOnlinePurchase}}
+
                 <div class="row registration-row">
                     <div class="float-right registration-price col-header col ">
                         <h3>Price</h3>
@@ -49,26 +49,26 @@
                         <hr>
                     </div>
                 </div>
-            
+
                 <div class="row registration-row">
                     <div class="registration-checkbox col">
                         {{#if earlyBirdAvailable}}
-                            <input {{bindAttr id="earlyBird.key" value="earlyBird.price"}} type="checkbox" >        
+                            <input {{bindAttr id="earlyBird.key" value="earlyBird.price"}} type="checkbox" >
                             <label {{bindAttr for="earlyBird.key"}} ></label>
                         {{else}}
                             &nbsp;
                         {{/if}}
-                        
+
                     </div>
                     <div class="registration-item  col">
                         <h3><strong>{{earlyBird.name}}</strong> </h3>
                         {{#if earlyBirdAvailable}}
-                            <h5 style="color:crimson;">* ONLY <strong>{{earlyBird.left}}</strong> LEFT *</h5>   
+                            <h5 style="color:crimson;">* ONLY <strong>{{earlyBird.left}}</strong> LEFT *</h5>
                         {{/if}}
                         <p>
                             {{earlyBird.description}}
                         </p>
-                        
+
                     </div>
                     <div  class="registration-price col ">
                         <h3 class="float-right">
@@ -80,16 +80,16 @@
                         </h3>
                     </div>
                 </div>
-                
+
                  <div class="row registration-row">
                     <div class="registration-checkbox col">
                         {{#if earlyBirdAvailable}}
                             &nbsp;
                         {{else}}
-                            <input {{bindAttr id="regular.key" value="regular.price"}} type="checkbox" >        
+                            <input {{bindAttr id="regular.key" value="regular.price"}} type="checkbox" >
                             <label {{bindAttr for="regular.key"}} ></label>
                         {{/if}}
-                        
+
                     </div>
                     <div class="registration-item  col">
                         <h3><strong>{{regular.name}}</strong> </h3>
@@ -107,7 +107,7 @@
                         </h3>
                     </div>
                 </div>
-            
+
                 <div class="row registration-row">
                     <div class=" registration-checkbox col">
                           &nbsp;
@@ -117,7 +117,7 @@
                         <hr>
                     </div>
                 </div>
-            {{#each model}} 
+            {{#each model}}
                 {{#ifAddons key}}
                 <div class="row registration-row">
                     <div class="registration-checkbox col">
@@ -131,7 +131,11 @@
                     <div class="registration-item  col">
                         <h3><strong>{{name}}</strong> </h3>
                         {{#ifSoldOut left}}
-                            <h5 style="color:crimson;">* If you wish to purchase this add on, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a> for inquiries. *</h5> 
+                            {{#ifCommuterPackage key}}
+                                <h5 style="color:crimson;">* Program Full. If you wish to be added to the waitlist please fill out THIS form. For inquiries, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a> for inquiries. *</h5>
+                            {{else}}
+                                <h5 style="color:crimson;">* If you wish to purchase this add on, please contact <a href="mailto:support@orientation.skule.ca">support@orientation.skule.ca</a> for inquiries. *</h5>
+                            {{/ifCommuterPackage}}
                         {{/ifSoldOut}}
                         <p>
                             {{description}}
@@ -159,13 +163,13 @@
                     <div class="col registration-item float-right">
                         <div class="float-right">
                             <br>
-                            <h3 >Total: 
+                            <h3 >Total:
                                 <span class="subtitle green"><strong>Tax included</strong></span>
                             </h3>
                         </div>
 
                     </div>
-                
+
                 </div>
                 <div class="row registration-row">
                     <div class="registration-checkbox col">
@@ -183,7 +187,7 @@
                                 </button>
                             </div>
                         </div>
-                    
+
 
                 </div>
             </div>
@@ -217,10 +221,10 @@
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1443.19161249509!2d-79.39489421779095!3d43.66099911026702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34b88cfce265%3A0x5b6a860f6f34deaa!2sKing&#39;s+College+Rd+%26+Galbraith+Rd%2C+Toronto%2C+ON+M5S!5e0!3m2!1sen!2sca!4v1441434788369">
                 </iframe>
             {{/ifOnlinePurchase}}
-            
-            
-                    
-            
+
+
+
+
         </section>
     </div>
 </section>
