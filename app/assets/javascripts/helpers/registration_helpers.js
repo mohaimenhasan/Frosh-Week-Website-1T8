@@ -40,7 +40,7 @@ Ember.Handlebars.registerHelper('ifCommuterPackage', function(key, options) {
   } else {
       return false;
   }
-
+});
 Ember.Handlebars.registerHelper('ifAddons', function(key, options) {
 
   var _key = Em.get(this, key);
