@@ -10,7 +10,7 @@ namespace :db do
     normal = 120
     hhf_addon = 35
     commuter_addon = 85
-    early_bird_max = 200
+    early_bird_max = 0
     regular_max = 700
     commuter_max = 20
     hhf_max = 150
