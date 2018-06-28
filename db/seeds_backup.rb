@@ -43,10 +43,10 @@ end
 early = 95
 normal = 125
 hhf_addon = 40
-commuter_addon = 145
+commuter_addon = 85
 early_bird_max = 200
 #fake  regular_max = 600
-commuter_max = 50
+commuter_max = 1
 hhf_max = 250
 unlimited = -1
 
