@@ -8,9 +8,9 @@ namespace :db do
     ActiveRecord::Base.connection.reset_pk_sequence! PackageItem.table_name
     early = 100
     normal = 120
-    hhf_addon = 35
+    hhf_addon = 40
     commuter_addon = 85
-    early_bird_max = 0
+    early_bird_max = 200
     regular_max = 700
     commuter_max = 20
     hhf_max = 150
