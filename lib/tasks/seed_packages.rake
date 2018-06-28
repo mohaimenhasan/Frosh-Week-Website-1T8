@@ -11,7 +11,7 @@ namespace :db do
     hhf_addon = 35
     commuter_addon = 85
     early_bird_max = 200
-    regular_max = 725
+    regular_max = 900
     commuter_max = 1
     hhf_max = 1
     unlimited = -1
