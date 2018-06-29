@@ -8,12 +8,12 @@ namespace :db do
     ActiveRecord::Base.connection.reset_pk_sequence! PackageItem.table_name
     early = 100
     normal = 120
-    hhf_addon = 35
+    hhf_addon = 40
     commuter_addon = 85
-    early_bird_max = 1
-    regular_max = 2
-    commuter_max = 1
-    hhf_max = 1
+    early_bird_max = 200
+    regular_max = 700
+    commuter_max = 20
+    hhf_max = 150
     unlimited = -1
 
 #hhf_max = 150, commuter_max=20
@@ -36,8 +36,8 @@ namespace :db do
       description: 'A standard F!rosh Kit. Includes entrance to all events (like a parade!), a collection of cool things (like a hard hat!), and lots more! This kit has tons of awesome stuff!',
       price: normal,
       count: 0,
-      max: regular_max,
-      left: regular_max,
+      max: 0,
+      left: unlimited,
       start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
       end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
     )
