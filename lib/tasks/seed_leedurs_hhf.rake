@@ -9,13 +9,13 @@ namespace :db do
     ActiveRecord::Base.connection.reset_pk_sequence! HhfPackageItem.table_name
 
 
-    leedur = 40
-    fweek = 35
-    leedur_name = 'Leedurs Hart House Farm Retreat'
-    fweek_name = 'Froshies x Leedus Hart House Farm Retreat'
+    leedur = 50
+    fweek = 40
+    leedur_name = 'Leedurs Hart House Farm Retreat w/ Transportation'
+    fweek_name = 'Leedurs Hart House Farm Retreat w/out Transportation'
 
-    leedur_max = 50
-    fweek_max = 40
+    leedur_max = 60
+    fweek_max = 35
 
     leedurbus = 46
     fweekbus = 30
@@ -29,7 +29,7 @@ namespace :db do
       max: leedur_max,
       left: leedur_max,
       start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
-      end_date: Date.strptime('07-15-2018', '%m-%d-%Y'),
+      end_date: Date.strptime('09-09-2018', '%m-%d-%Y'),
     )
 
     HhfPackageItem.create(
@@ -39,7 +39,7 @@ namespace :db do
       price: fweek,
       count: 0,
       max: fweek_max,
-      left: fweek_max, 
+      left: fweek_max,
       start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
       end_date: Date.strptime('09-09-2018', '%m-%d-%Y'),
     )
