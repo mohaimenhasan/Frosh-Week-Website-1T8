@@ -55,7 +55,7 @@ namespace :db do
     PackageItem.create(
       key: 'commuter',
       name: 'Commuter Program Package',
-      description: "Living accommodations! You will stay at the Chestnut Residence from the evening of Monday, September 3rd to the morning of Thursday, September 6th. You will get to spend time with fellow first year students that will be living in Chestnut for the year. This program includes breakfast, lunch and dinner buffets as well as the support of upper year volunteers to make sure you fully enjoy F!rosh Week’s days AND nights!",
+      description: "Living accommodations! You will stay at the Chestnut Residence from the evening of Monday, September 3rd to the morning of Thursday, September 6th. You will get to spend time with fellow first year students that will be living in Chestnut for the year. This program includes breakfast, lunch and dinner buffets as well as the support of upper year volunteers to make sure you fully enjoy F!rosh Week's days AND nights!",
       price: commuter_addon,
       count: 0,
       max: commuter_max,
