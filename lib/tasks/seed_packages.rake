@@ -43,8 +43,8 @@ namespace :db do
     )
     PackageItem.create(
       key: 'farm',
-      name: 'Hart House Farm Retreat',
-      description: 'A ticket to a camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 8 and 9 to cap off F!rosh Week!',
+      name: 'F!rosh Retreat Addon',
+      description: 'A ticket to an overnight camping trip at Hart House Farm, located outside of Caledon on the scenic Niagara Escarpment. Come join us for some fun camping on September 8 and 9 to cap off F!rosh Week!',
       price: hhf_addon ,
       count: 0,
       max: hhf_max,
@@ -55,7 +55,7 @@ namespace :db do
     PackageItem.create(
       key: 'commuter',
       name: 'Commuter Program Package',
-      description: "Living accommodations! This offer includes a stay at a downtown hostel for four nights (Sunday September 2 - Thursday September 6) including 3 breakfasts, 1 dinner and a chaperone supervision for the entirety of your stay, so you can fully enjoy F!rosh Week's days and nights!",
+      description: "Living accommodations! You will stay at the Chestnut Residence from the evening of Monday, September 3rd to the morning of Thursday, September 6th. You will get to spend time with fellow first year students that will be living in Chestnut for the year. This program includes breakfast, lunch and dinner buffets as well as the support of upper year volunteers to make sure you fully enjoy F!rosh Week’s days AND nights!",
       price: commuter_addon,
       count: 0,
       max: commuter_max,
