@@ -11,7 +11,7 @@ class OauthController < ApplicationController
       user_credentials.fetch_access_token!
     end
 
-    redirect_to ('//' + Rails.application.config.hostname + '/admin')
+    redirect_to (Rails.application.config.hostname + '/admin')
   end
 
 end
