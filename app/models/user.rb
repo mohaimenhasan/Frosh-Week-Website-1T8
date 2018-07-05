@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :emergency_name, :emergency_relationship, presence: true, length: { maximum: 50 }
   validates :discipline, inclusion: { in: ['Engineering Science', 'Track One', 'Chemical', 'Civil', 'Computer', 'Electrical', 'Industrial', 'Material Science', 'Mechanical', 'Mineral'] }
-  validates :email, :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX } 
+  validates :email, :emergency_email, presence: true, format: { with: VALID_EMAIL_REGEX }
   validates :email, uniqueness: { case_sensitive: false }
   validates :shirt_size, inclusion: { in: ['Small', 'Medium', 'Large', 'Extra Large']}
   validates :photo_consent, inclusion: { in: [true, false] }
@@ -217,7 +217,7 @@ class User < ActiveRecord::Base
   end
 
   def package_is_available
-      #if ticket is already created means that package has already been 
+      #if ticket is already created means that package has already been
     unless self.ticket_number || package.available? || is_created_by_admin?
       errors.add(:package, "Package is no longer available")
     end
@@ -239,9 +239,11 @@ class User < ActiveRecord::Base
       'XL'
     end
   end
-    
+
   def get_confirm_url
-    'http://' + Rails.application.config.hostname + '/register/confirm/' + id.to_s + '/' + confirmation_token
+#    'http://' + Rails.application.config.hostname + '/register/confirm/' + id.to_s + '/' + confirmation_token
+    Rails.application.config.hostname + '/register/confirm/' + id.to_s + '/' + confirmation_token
+
   end
 
   def get_billing_last4
