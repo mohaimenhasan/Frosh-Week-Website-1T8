@@ -14,7 +14,7 @@ namespace :db do
     leedur_name = 'Leedurs Hart House Farm Retreat w/ Transportation'
     fweek_name = 'Leedurs Hart House Farm Retreat w/out Transportation'
 
-    leedur_max = 60
+    leedur_max = 0
     fweek_max = 35
 
     leedurbus = 46
@@ -25,7 +25,7 @@ namespace :db do
       name: leedur_name ,
       description: '',
       price: leedur,
-      count: 60,
+      count: 0,
       max: leedur_max,
       left: leedur_max,
       start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
