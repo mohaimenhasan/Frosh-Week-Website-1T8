@@ -23,7 +23,7 @@ namespace :db do
     HhfPackageItem.create(
       key: 'leedur',
       name: leedur_name ,
-      description: '',
+      description: 'Well hello there',
       price: leedur,
       count: 0,
       max: leedur_max,

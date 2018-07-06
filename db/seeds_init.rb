@@ -44,8 +44,8 @@ HhfPackageItem.create(
   count: 0,
   max: fweek_max,
   left: fweek_max,
-  start_date: Date.strptime('05-01-2016', '%m-%d-%Y'),
-  end_date: Date.strptime('09-09-2016', '%m-%d-%Y'),
+  start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+  end_date: Date.strptime('09-09-2018', '%m-%d-%Y'),
 )
 
 # All Combo
