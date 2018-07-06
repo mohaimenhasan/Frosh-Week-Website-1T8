@@ -6,18 +6,18 @@
 #  name        :string(255)
 #  key         :string(255)
 #  price       :integer
-#  leedurbus   :integer 
-#  fweekbus    :integer 
+#  leedurbus   :integer
+#  fweekbus    :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 class HhfPackage < ActiveRecord::Base
   attr_accessible :key, :description, :name, :price, :leedurbus, :fweekbus, :start_date, :end_date
-  
+
   has_many :leedurs
   has_many :hhf_package_items
-  
+
   def available?
     available = true;
     package_items = self.key.split('_')
@@ -27,8 +27,8 @@ class HhfPackage < ActiveRecord::Base
       available = available && item.available?
     end
     return available
-  end 
-    
+  end
+
   def increase_count (fweekbus=false, leedurbus=false)
     package_items = self.key.split('_')
     self.fweekbus += 1 if fweekbus
