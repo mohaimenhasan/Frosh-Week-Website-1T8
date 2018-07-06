@@ -13,10 +13,10 @@ ActiveRecord::Base.connection.reset_pk_sequence! HhfPackage.table_name
 ActiveRecord::Base.connection.reset_pk_sequence! HhfPackageItem.table_name
 
 
-leedur = 40
+leedur = 60
 fweek = 35
-leedur_name = 'Leedurs Hart House Farm Retreat'
-fweek_name = 'Froshies x Leedus Hart House Farm Retreat'
+leedur_name = 'Leedurs Hart House Farm Retreat w/ Transportation'
+fweek_name = 'Leedurs Hart House Farm Retreat w/out Transportation'
 
 leedur_max = 50
 fweek_max = 40
@@ -35,7 +35,7 @@ HhfPackageItem.create(
   start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
   end_date: Date.strptime('07-15-2018', '%m-%d-%Y'),
 )
-=begin
+
 HhfPackageItem.create(
   key: 'fweek',
   name: fweek_name ,
@@ -47,14 +47,14 @@ HhfPackageItem.create(
   start_date: Date.strptime('05-01-2016', '%m-%d-%Y'),
   end_date: Date.strptime('09-09-2016', '%m-%d-%Y'),
 )
-=end
+
 # All Combo
 HhfPackage.create(
   key: 'leedur',
   name: leedur_name,
   price: leedur,
 )
-=begin
+
 HhfPackage.create(
   key: 'fweek',
   name: fweek_name,
@@ -65,7 +65,7 @@ HhfPackage.create(
   name: leedur_name + ' + ' + fweek_name,
   price: leedur + fweek
 )
-=end
+
 
 Group.delete_all
 Package.delete_all
