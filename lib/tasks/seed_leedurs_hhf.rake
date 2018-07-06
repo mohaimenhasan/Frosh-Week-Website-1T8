@@ -32,6 +32,17 @@ namespace :db do
       end_date: Date.strptime('09-09-2018', '%m-%d-%Y'),
     )
 
+    HhfPackageItem.create(
+      key: 'fweek',
+      name: fweek_name ,
+      description: '',
+      price: fweek,
+      count: 0,
+      max: fweek_max,
+      left: fweek_max,
+      start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
+      end_date: Date.strptime('09-09-2018', '%m-%d-%Y'),
+    )
 
     # All Combo
     HhfPackage.create(
@@ -40,7 +51,17 @@ namespace :db do
       price: leedur,
     )
 
+    HhfPackage.create(
+      key: 'fweek',
+      name: fweek_name,
+      price: fweek
+    )
 
+    HhfPackage.create(
+      key: 'leedur_fweek',
+      name: leedur_name + ' + ' + fweek_name,
+      price: leedur + fweek
+    )
   end
 
 end
