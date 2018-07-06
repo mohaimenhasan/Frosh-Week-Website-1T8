@@ -23,9 +23,9 @@ namespace :db do
     HhfPackageItem.create(
       key: 'leedur',
       name: leedur_name ,
-      description: 'Well hello there',
+      description: '',
       price: leedur,
-      count: 0,
+      count: 60,
       max: leedur_max,
       left: leedur_max,
       start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
