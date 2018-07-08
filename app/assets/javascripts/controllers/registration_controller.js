@@ -84,16 +84,15 @@ App.RegistrationIndexController = Ember.Controller.extend({
       package += this.get('regularSelected')? "standalone" : "";
       package += this.get('hhfSelected')? "_farm" : "";
       package += this.get('commuterSelected')? "_commuter" : "";
-      //window.console.log("package total = ", package)
+
       window.console.log("Finished consolidating package info");
       //Transitioning
       var item = App.Package.find({key: package});
-      //window.console.log("item total = ", item)
+
       window.console.log("Finished looking for package");
 
       //Transition as soon as finish loading up the selected model
       var that = this;
-      window.console.log(item.one('didLoad'));
       item.one('didLoad', function() {
         //Need to reset value in case user do backpost, do it here so that user doesn't notice
         that.set("earlyBirdSelected", false);
