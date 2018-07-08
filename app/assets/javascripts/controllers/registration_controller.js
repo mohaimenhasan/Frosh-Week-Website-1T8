@@ -6,7 +6,7 @@ App.RegistrationIndexController = Ember.Controller.extend({
   regularSelected: false,
   hhfSelected: false,
   commuterSelected: false,
- 
+
 //Enable EarlyBird or Standalone
   init: function() {
     var that = this;
@@ -24,10 +24,10 @@ App.RegistrationIndexController = Ember.Controller.extend({
     {
       if(this.get("earlyBird.left") > 0)
         return true;
-      else 
+      else
         return false;
     }
-    
+
   }.property("earlyBirdAvailable", "isLoaded"),
 
   regular: function() {
@@ -37,7 +37,7 @@ App.RegistrationIndexController = Ember.Controller.extend({
 
   isError: false,
   isLoaded: false,
-    
+
   isLoading: function() {
     var that = this;
     //TimeOut
@@ -51,7 +51,7 @@ App.RegistrationIndexController = Ember.Controller.extend({
     this.set("isLoaded", !Ember.isNone(this.get('earlyBird')));
     return Ember.isNone(this.get('earlyBird'));
   }.property('earlyBird'),
-    
+
 //disable CheckOut
   checkOutDisable: function () {
     var value =  (this.get("earlyBirdSelected") || this.get("regularSelected"));
@@ -70,13 +70,13 @@ App.RegistrationIndexController = Ember.Controller.extend({
     return totalPrice;
   }.property('earlyBirdSelected', 'regularSelected', 'hhfSelected' , 'commuterSelected'),
 //Event when check out is clicked
-    
-  
-    
+
+
+
   checkOutClicked: function() {
       //Only happen if enabled
     if(!this.get("checkOutDisable")) {
-      window.console.log("Checkout Process begins"); 
+      window.console.log("Checkout Process begins");
       //Compute package string and transition
       //At this point package should not be null
       var package = "";
@@ -84,44 +84,45 @@ App.RegistrationIndexController = Ember.Controller.extend({
       package += this.get('regularSelected')? "standalone" : "";
       package += this.get('hhfSelected')? "_farm" : "";
       package += this.get('commuterSelected')? "_commuter" : "";
-      
+      window.console.log("package total = ", package)
       window.console.log("Finished consolidating package info");
       //Transitioning
       var item = App.Package.find({key: package});
-      
+
+      window.console.log("item total = ", item)
       window.console.log("Finished looking for package");
-      
+
       //Transition as soon as finish loading up the selected model
-      var that = this;
-      item.one('didLoad', function() {
-        //Need to reset value in case user do backpost, do it here so that user doesn't notice
-        that.set("earlyBirdSelected", false);
-        that.set("regularSelected", false);
-        that.set("hhfSelected", false);
-        that.set("commuterSelected", false);
-        that.transitionToRoute("registration.item", item);  //********Deleted the specified model to see if situation improves */
-      });
-      window.console.log("Finished resetting selections");
-      
+      // var that = this;
+      // item.one('didLoad', function() {
+      //   //Need to reset value in case user do backpost, do it here so that user doesn't notice
+      //   that.set("earlyBirdSelected", false);
+      //   that.set("regularSelected", false);
+      //   that.set("hhfSelected", false);
+      //   that.set("commuterSelected", false);
+      //   that.transitionToRoute("registration.item", item);  //********Deleted the specified model to see if situation improves */
+      // });
+      // window.console.log("Finished resetting selections");
+
     }
   },
   updateAddons: function() {
     //Enable Addons
     if(this.get('earlyBirdSelected') || this.get('regularSelected')){
-      $('#farm').removeAttr('disabled');  
+      $('#farm').removeAttr('disabled');
       $('#commuter').removeAttr('disabled');
     }
     else {
     //Disable all addons
       $('#farm').attr("checked", false);
       $('#commuter').attr("checked", false);
-      $('#farm').attr('disabled', true);  
-      $('#commuter').attr('disabled', true);  
+      $('#farm').attr('disabled', true);
+      $('#commuter').attr('disabled', true);
       this.set("hhfSelected", false);
       this.set("commuterSelected", false);
     }
   }.observes('earlyBirdSelected', 'regularSelected')
-  
+
 });
 
 
@@ -168,19 +169,19 @@ App.RegistrationConfirmController = Ember.Controller.extend({
   enableAnimation: false,
 
   doneAnimation: false,
-    
+
   displayFroshGroup: false,
 
   base: true,
-  
+
   messageShowing: true,
 
   showFroshGroup: function () {
     return (this.get("displayFroshGroup") || this.get("showAlreadyVerified"))
   }.property("displayFroshGroup", "showAlreadyVerified"),
-      
+
   showAnimation: function() {
-    
+
     //return (this.get('firstTime')  && this.get('model.verified'));
     return false;
   }.property("firstTime"),
@@ -189,14 +190,14 @@ App.RegistrationConfirmController = Ember.Controller.extend({
   startClicked: function() {
     this.set("enableAnimation", true);
   },
-  
+
   doneClicked: function() {
     this.set("messageShowing", false);
      $("#froshgroup").fadeIn("slow");
   },
-  
-  
-  //Actual Form  
+
+
+  //Actual Form
   firstTime: false,
 
   url: function() {
