@@ -25,7 +25,7 @@ namespace :db do
       price: early,
       count: 0,
       max: early_bird_max,
-      left: early_bird_max,
+      left: 0,
       start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
       end_date: Date.strptime('08-31-2018', '%m-%d-%Y'),
     )
