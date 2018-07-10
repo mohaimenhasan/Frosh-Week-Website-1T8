@@ -173,7 +173,7 @@
                 </div>
 
             {{#each model}}
-                {{#ifBeforeDeadline key}}
+                {{#ifLeedurNoBus key}}
                 <div class="row registration-row">
                     <div class="registration-checkbox col">
                         {{#ifSoldOut left}}
@@ -215,7 +215,7 @@
                         </h3>
                     </div>
                 </div>
-                {{/ifBeforeDeadline}}
+                {{/ifLeedurNoBus}}
             {{/each}}
                 <div class="row registration-row">
                     <div class="col registration-price float-right">
