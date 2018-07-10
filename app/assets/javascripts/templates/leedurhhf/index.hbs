@@ -198,6 +198,13 @@
                             {{else}}
                                 <!--h5 style="color:crimson;">* Registration will be closed at 23:59:59 on Sept 4th *</h5-->
                             {{/ifLeedur}}
+                            {{#ifLeedurNoBus key left}}
+                                <h5 style="color:crimson;">* Transportation is filling up! *
+                                <br>
+                                After transportation is full, you can still buy ticket but will need to get there by yourself. </h5>
+                            {{else}}
+                                <!--h5 style="color:crimson;">* Registration will be closed at 23:59:59 on Sept 4th *</h5-->
+                            {{/ifLeedurNoBus}}
                         {{else}}
                             <h5 style="color:crimson;">* Registration is closed!  *</h5>
                         {{/ifBeforeDeadline }}
