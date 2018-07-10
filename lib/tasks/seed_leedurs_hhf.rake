@@ -17,8 +17,9 @@ namespace :db do
     leedur_max = 60
     fweek_max = 35
 
-    leedurbus = 46
-    fweekbus = 30
+    leedurbus = 60
+    fweekbus = 35
+    
     # BASIC ITEMS FOR SELECTION
     HhfPackageItem.create(
       key: 'leedur',

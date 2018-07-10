@@ -175,6 +175,7 @@
             {{#each model}}
                 {{#ifBeforeDeadline key}}
                 <div class="row registration-row">
+                  <!--
                     <div class="registration-checkbox col">
                         {{#ifSoldOut left}}
                         &nbsp;
@@ -187,6 +188,24 @@
                             {{/ifBeforeDeadline}}
                         {{/ifSoldOut}}
                     </div>
+                  -->
+                  <div class="registration-item  col">
+
+                      <h3><strong>{{name}}</strong> </h3>
+                      {{#ifBeforeDeadline key}}
+                          {{#ifLeedurNoBus key left}}
+                              <h5 style="color:crimson;"> You will need to get there by yourself. </h5>
+                          {{else}}
+                              <!--h5 style="color:crimson;">* Registration will be closed at 23:59:59 on Sept 4th *</h5-->
+                          {{/ifLeedurNoBus}}
+                      {{else}}
+                          <h5 style="color:crimson;">* Registration is closed!  *</h5>
+                      {{/ifBeforeDeadline }}
+                      <p>
+                          {{description}}
+                      </p>
+                  </div>
+
                     <div class="registration-item  col">
 
                         <h3><strong>{{name}}</strong> </h3>
