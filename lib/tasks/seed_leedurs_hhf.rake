@@ -19,7 +19,7 @@ namespace :db do
 
     leedurbus = 60
     fweekbus = 35
-    
+
     # BASIC ITEMS FOR SELECTION
     HhfPackageItem.create(
       key: 'leedur',
