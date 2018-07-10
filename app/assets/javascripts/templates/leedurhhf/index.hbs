@@ -215,46 +215,6 @@
                         </h3>
                     </div>
                 </div>
-                <div class="row registration-row">
-                    <div class="registration-checkbox col">
-                        {{#ifSoldOut left}}
-                        &nbsp;
-                        {{else}}
-                            {{#ifBeforeDeadline key}}
-                            <input {{bindAttr id="key" value="price"}} type="checkbox">
-                            <label {{bindAttr for="key"}}></label>
-                            {{else}}
-                            &nbsp;
-                            {{/ifBeforeDeadline}}
-                        {{/ifSoldOut}}
-                    </div>
-                    <div class="registration-item  col">
-
-                        <h3><strong>{{name}}</strong> </h3>
-                        {{#ifBeforeDeadline key}}
-                            {{#ifLeedurNoBus key left}}
-                                <h5 style="color:crimson;">*GG Bro You dun goof* </h5>
-                            {{else}}
-                                <!--h5 style="color:crimson;">* Registration will be closed at 23:59:59 on Sept 4th *</h5-->
-                            {{/ifLeedur}}
-                        {{else}}
-                            <h5 style="color:crimson;">* Registration is closed!  *</h5>
-                        {{/ifBeforeDeadline }}
-                        <p>
-                            {{description}}
-                        </p>
-                    </div>
-                    <div  class="registration-price col ">
-                        <h3 class="float-right">
-                            {{#ifSoldOut left}}
-                            <strong style="color:crimson;"> SOLD OUT</strong>
-                            {{else}}
-                            <strong>${{price}} </strong>
-                            {{/ifSoldOut}}
-                        </h3>
-                    </div>
-                </div>
-
                 {{/ifBeforeDeadline}}
             {{/each}}
                 <div class="row registration-row">
