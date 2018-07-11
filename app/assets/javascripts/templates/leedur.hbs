@@ -16,6 +16,7 @@
                 {{labelField email text="Your email address"}}
                 {{inputField email as=email placeholder="Please use your UToronto email"}}
             {{/input}}
+            <section class="registration-form-group aligned">
             {{#input gender}}
                 {{labelField gender text="Gender"}}
                 {{inputField gender
@@ -25,6 +26,8 @@
                 optionValuePath=content
                 optionLabelPath=content}}
             {{/input}}
+           </section>
+
             {{#input phone}}
                 {{labelField phone text="Phone number"}}
                 {{inputField phone as=tel placeholder="416 420 6969"}}
@@ -33,6 +36,7 @@
                 {{labelField year text="Year"}}
                 {{inputField year placeholder="1T8"}}
             {{/input}}
+            <section class="registration-form-group aligned">
             {{#input discipline}}
                 {{labelField discipline text="Engineering discipline"}}
                 {{inputField discipline
@@ -42,8 +46,10 @@
                 optionValuePath=content
                 optionLabelPath=content}}
             {{/input}}
-            <section class="registration-form-group aligned">
-                <!--{{#input shirtSize}}
+           </section>
+
+        <!--    <section class="registration-form-group aligned">
+                {{#input shirtSize}}
                     {{labelField shirtSize text="What's your t-shirt size?"}}
                     {{inputField shirtSize
                     as=select
@@ -51,8 +57,8 @@
                     selection=shirtSize
                     optionValuePath=content
                     optionLabelPath=content}}
-                {{/input}} !-->
-            </section>
+                {{/input}}
+            </section>!-->
         </section>
     </section>
 
