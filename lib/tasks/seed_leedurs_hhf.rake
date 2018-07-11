@@ -10,15 +10,13 @@ namespace :db do
 
 
     leedur = 50
-    fweek = 40
-    leedur_name = 'Leedurs Hart House Farm Retreat w/ Transportation'
-    fweek_name = 'Leedurs Hart House Farm Retreat w/out Transportation'
-
     leedur_max = 60
-    fweek_max = 35
+    leedur_name = 'Leedurs Hart House Farm Retreat w/Transport'
 
-    leedurbus = 60
-    fweekbus = 35
+    leedurnobus = 40
+    leedurnobus_max = 35
+    leedurnobus_name = 'Leedurs Hart House Farm Retreat w/out Transport'
+
 
     # BASIC ITEMS FOR SELECTION
     HhfPackageItem.create(
@@ -30,19 +28,19 @@ namespace :db do
       max: leedur_max,
       left: leedur_max,
       start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
-      end_date: Date.strptime('09-09-2018', '%m-%d-%Y'),
+      end_date: Date.strptime('07-15-2018', '%m-%d-%Y'),
     )
 
     HhfPackageItem.create(
-      key: 'fweek',
-      name: fweek_name ,
+      key: 'leedurnobus',
+      name: leedurnobus_name ,
       description: '',
-      price: fweek,
+      price: leedurnobus,
       count: 0,
-      max: fweek_max,
-      left: fweek_max,
+      max: leedurnobus_max,
+      left: leedurnobus_max,
       start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
-      end_date: Date.strptime('09-09-2018', '%m-%d-%Y'),
+      end_date: Date.strptime('07-15-2018', '%m-%d-%Y'),
     )
 
     # All Combo
@@ -53,16 +51,12 @@ namespace :db do
     )
 
     HhfPackage.create(
-      key: 'fweek',
-      name: fweek_name,
-      price: fweek
+      key: 'leedurnobus',
+      name: leedurnobus_name,
+      price: leedurnobus,
     )
 
-    HhfPackage.create(
-      key: 'leedur_fweek',
-      name: leedur_name + ' + ' + fweek_name,
-      price: leedur + fweek
-    )
+
   end
 
 end
