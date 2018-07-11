@@ -42,7 +42,7 @@ Ember.Handlebars.registerHelper('ifLeedur', function(key, left, options) {
 
   var _left = Em.get(this, left);
   var _key = Em.get(this, key);
-  if(_key === 'leedur' && _left > 0) {
+  if(_key == 'leedur' && _left > 0) {
       return options.fn(this);
   }
   else {
@@ -53,7 +53,7 @@ Ember.Handlebars.registerHelper('ifLeedur', function(key, left, options) {
 Ember.Handlebars.registerHelper('ifLeedurNoBus', function(key, left, options){
     var _left = Em.get(this, left);
     var _key = Em.get(this, key);
-    if(_key === 'fweek' && _left > 0){
+    if((_key == 'fweek' || _key == 'leedur' ) && _left > 0){
         return options.fn(this);
     }
     else {

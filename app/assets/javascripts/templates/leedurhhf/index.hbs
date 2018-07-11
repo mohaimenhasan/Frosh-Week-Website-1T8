@@ -179,28 +179,25 @@
                         {{#ifSoldOut left}}
                         &nbsp;
                         {{else}}
-                            {{#ifBeforeDeadline key}}
                             <input {{bindAttr id="key" value="price"}} type="checkbox">
                             <label {{bindAttr for="key"}}></label>
                             {{else}}
                             &nbsp;
-                            {{/ifBeforeDeadline}}
                         {{/ifSoldOut}}
                     </div>
                     <div class="registration-item  col">
 
                         <h3><strong>{{name}}</strong> </h3>
-                        {{#ifBeforeDeadline key}}
+                        {{#ifSoldOut key}}
                             {{#ifLeedur key left}}
                                 <h5 style="color:crimson;">* Transportation is filling up! *
                                 <br>
                                 After transportation is full, you can still buy ticket but will need to get there by yourself. </h5>
                             {{else}}
-                                <!--h5 style="color:crimson;">* Registration will be closed at 23:59:59 on Sept 4th *</h5-->
+                                 <h5 style="color:crimson;">* Program Full. </h5> </br>
+                                 <h5 style="color:crimson;">* Registration is closed!  *</h5>
                             {{/ifLeedur}}
-                        {{else}}
-                            <h5 style="color:crimson;">* Registration is closed!  *</h5>
-                        {{/ifBeforeDeadline }}
+                        {{/ifSoldOut }}
                         <p>
                             {{description}}
                         </p>
