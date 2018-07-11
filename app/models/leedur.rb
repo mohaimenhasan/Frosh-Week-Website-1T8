@@ -125,7 +125,7 @@ class Leedur < ActiveRecord::Base
   def send_email(opts)
     message = {
      subject: opts[:subject],
-     from_name: 'F!rosh Week 1T6',
+     from_name: 'F!rosh Week 1T8',
      html: ERB.new(File.read(Rails.root.join(opts[:html_body]))).result(binding),
      to: [
        {
@@ -194,7 +194,7 @@ class Leedur < ActiveRecord::Base
   end
 
   def get_confirm_url
-    'http://' + Rails.application.config.hostname + '/leedurs_adventures/confirm/' + id.to_s + '/' + confirmation_token
+    Rails.application.config.hostname + '/leedurs/confirm/' + id.to_s + '/' + confirmation_token
   end
 
   def get_billing_last4
