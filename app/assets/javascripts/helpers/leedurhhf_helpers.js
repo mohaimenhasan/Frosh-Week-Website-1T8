@@ -8,14 +8,16 @@ Ember.Handlebars.registerHelper('ifBeforeDeadline', function(key, options) {
   if(current < shirtEnd && _key == "leedur shirt"){
     return options.fn(this);
   }
-  else if(current < leedurEnd && (_key == 'leedur' || _key == 'fweek' || _key == 'leedurnobus' )){
-    window.console.log("Fuck this");
+  else if(current < leedurEnd && _key == "leedur"){
+    window.console.log("bus");
     return options.fn(this);
   }
   else if(current < leedurEnd && _key == "leedurnobus"){
+    window.console.log("no bus");
       return options.fn(this);
   }
   else if(current < fweekEnd && _key == "fweek"){
+    window.console.log("fweek");
     return options.fn(this);
   }
   else if(current < shirtEnd && _key == "shirt"){
@@ -54,7 +56,7 @@ Ember.Handlebars.registerHelper('ifLeedur', function(key, left, options) {
 Ember.Handlebars.registerHelper('ifLeedurNoBus', function(key, left, options){
     var _left = Em.get(this, left);
     var _key = Em.get(this, key);
-    if((_key == 'fweek' || _key == 'leedurnobus' ) && _left > 0){
+    if(_key == 'leedurnobus' && _left > 0){
         return options.fn(this);
     }
     else {
