@@ -14,7 +14,7 @@ namespace :db do
     leedur_name = 'Leedurs Hart House Farm Retreat w/Transport'
 
     leedurnobus = 40
-    leedurnobus_max = 35
+    leedurnobus_max = 1
     leedurnobus_name = 'Leedurs Hart House Farm Retreat w/out Transport'
 
 
