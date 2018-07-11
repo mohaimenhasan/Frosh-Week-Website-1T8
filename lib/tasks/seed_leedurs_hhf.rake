@@ -14,7 +14,7 @@ namespace :db do
     leedur_name = 'Leedurs Hart House Farm Retreat w/Transport'
 
     leedurnobus = 40
-    leedurnobus_max = 1
+    leedurnobus_max = 35
     leedurnobus_name = 'Leedurs Hart House Farm Retreat w/out Transport'
 
 
@@ -28,7 +28,7 @@ namespace :db do
       max: leedur_max,
       left: leedur_max,
       start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
-      end_date: Date.strptime('07-15-2018', '%m-%d-%Y'),
+      end_date: Date.strptime('07-20-2018', '%m-%d-%Y'),
     )
 
     HhfPackageItem.create(
@@ -40,7 +40,7 @@ namespace :db do
       max: leedurnobus_max,
       left: leedurnobus_max,
       start_date: Date.strptime('05-01-2018', '%m-%d-%Y'),
-      end_date: Date.strptime('07-15-2018', '%m-%d-%Y'),
+      end_date: Date.strptime('07-20-2018', '%m-%d-%Y'),
     )
 
     # All Combo
