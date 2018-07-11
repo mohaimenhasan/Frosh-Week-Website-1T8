@@ -9,6 +9,7 @@ Ember.Handlebars.registerHelper('ifBeforeDeadline', function(key, options) {
     return options.fn(this);
   }
   else if(current < leedurEnd && (_key == 'leedur' || _key == 'fweek' || _key == 'leedurnobus' )){
+    window.console.log("Fuck this");
     return options.fn(this);
   }
   else if(current < leedurEnd && _key == "leedurnobus"){
