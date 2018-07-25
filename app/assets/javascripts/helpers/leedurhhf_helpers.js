@@ -1,6 +1,6 @@
 
 Ember.Handlebars.registerHelper('ifBeforeDeadline', function(key, options) {
-  var leedurEnd = new Date('July 22 2018 23:59:59 EDT');
+  var leedurEnd = new Date('July 27 2018 23:59:59 EDT');
   var fweekEnd = new Date('Aug 18 2018 23:59:59 EDT');
   var shirtEnd = new Date('Aug 18 2018 23:59:59 EDT');
   var current = new Date();
