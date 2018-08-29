@@ -273,6 +273,7 @@ App.AdminUsersCheckinController = App.AdminUsersSubController.extend({
 
   filter: function(text) {
     this.set('query', text);
+	filteredUsers();
   }
 });
 
