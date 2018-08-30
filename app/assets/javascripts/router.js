@@ -20,7 +20,7 @@ App.RouteList = [
   Ember.Object.create({
     route: 'registration',
     path: '/extraextrareadallaboutit',
-    name: 'Register Now',
+    name: NULL,
     routes: [
       Ember.Object.create({ route: 'item',    path: '/:key' }),
       Ember.Object.create({ route: 'receipt', path: '/receipt' }),
